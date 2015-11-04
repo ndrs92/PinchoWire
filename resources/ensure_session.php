@@ -1,5 +1,8 @@
 <?php
 
+if(!$_SESSION){
+	session_destroy();
+
 //fun little code that redirects clients from a relative path correctly.
 //Just populate $relpath with your desired path and let the magic go.
 
@@ -11,11 +14,13 @@
 
 	}else{
 		
-		$relpath = 'view/login.php'; 
-		
+		$relpath = '../view/login.php'; 
+
 		header("Location: http://$host$uri/$relpath");
 
 	}
+
+}
 
 
 ?>
