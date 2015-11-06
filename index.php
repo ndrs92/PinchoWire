@@ -8,7 +8,7 @@
 	$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 
 	if($_SESSION){
-
+		//if you're login
 	}else{
 		
 		$relpath = 'view/login.php'; 

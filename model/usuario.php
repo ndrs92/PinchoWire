@@ -1,9 +1,9 @@
 <?php
 
-include_once "./juradopopular.php";
-include_once "./juradoprofesional.php";
-include_once "./administrador.php";
-include_once "./establecimiento.php";
+include_once "juradopopular.php";
+include_once "juradoprofesional.php";
+include_once "administrador.php";
+include_once "establecimiento.php";
 
 
 /*
@@ -23,9 +23,49 @@ class Usuario{
 	//Returns an object representing the user if all goes well
 	//Object returned will be enough to know which kind of user is that which logged in
 	public static function login_user($user, $pass){
+		if($user && $pass){
+			//connect to db
+			include_once "../resources/code/bd_manage.php";
+
+			//select data
+			$result = mysqli_query("SELECT * FROM juradopopular WHERE idemail = $user");
+
+			if(mysqli_fetch_array($result)){
+				//significa que es jurado popular
+			}else{
+				$result = mysqli_query("SELECT * FROM juradoprofesional WHERE idemail = $user");
+				if(mysqli_fetch_array($result)){
+					//significa que es jurado profesional
+				}else{
+					$result = mysqli_query("SELECT * FROM establecimiento WHERE idemail = $user");
+					if(mysqli_fetch_array($result)){
+						//significa que es establecimiento
+					}else{
+						$result = mysqli_query("SELECT * FROM administrador WHERE idemail = $user");
+						if(mysqli_fetch_array($result)){
+							//significa que es administrador
+						}else{
+							//Error, no se ha encontrado el usuario
+						}
+					}
+				}
+
+			}
 
 
-		return "Could not log in user - Not implemented";
+			//compare data
+
+			//instance correct type of user
+
+
+			//return user object
+
+
+
+		}else{
+			return "error, fields not validated";
+
+		}
 	}
 
 }

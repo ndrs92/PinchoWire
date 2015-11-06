@@ -1,6 +1,7 @@
 <?php
+
 //Super duper helper codes
-include_once "../resources/meta_helper.php";
+include_once "../resources/code/lang_coverage.php";
 
 ?>
 
