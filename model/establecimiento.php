@@ -24,6 +24,21 @@ class Establecimiento{
 		$this->geoloc = $geoloc;
 	}
 
+	public static function enviar_propuesta($nombre, $descripcion, $ingredientes, $precio){
+		//Abrir conexion BD
+		include_once("./../resources/code/bd_manage.php");
+		if (!$connectHandler) {
+    		die("Connection failed: " . mysqli_connect_error());
+		}
+		$query = "INSERT INTO pincho (idnombre, descripcion, ingredientes, precio, estadoPropuesta, ganadorPopular) VALUES ('$nombre','$descripcion','$ingredientes', $precio, 0, null);";
+		echo($query);
+
+		if(mysqli_query($connectHandler, $query)){
+			echo("Guardado satisfactorio");
+		}  
+		else{echo("Error en el guardado");}
+	}
+
 	
 	
 
