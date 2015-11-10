@@ -13,6 +13,16 @@
     "view_login_pinchowire" => "Pincho Wire"
     );
 
+$p = array(
+    "view_profile_edit" => "Perfil",
+    "view_profile_idmail" => "Correo electrónico",
+    "view_profile_title" => "Gestión de perfil",
+    "view_profile_editmail" => "Correo electrónico",
+    "view_profile_editname" => "Nombre",
+    "view_profile_editpass" => "Contraseña",
+    "view_profile_editavatar" => "Avatar",
+    "view_profile_save" => "Guardar",
+);
 
 
 ?>

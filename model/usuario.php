@@ -4,6 +4,7 @@ include_once "juradopopular.php";
 include_once "juradoprofesional.php";
 include_once "administrador.php";
 include_once "establecimiento.php";
+include_once "userMapper.php";
 
 
 /*
@@ -18,41 +19,31 @@ It is possible to establish this class as parent of JuradoPopular and so on. Nee
 */
 
 class Usuario{
-	
+	protected $idmail;
+	protected $nombre;
+	protected $contrasena;
+	protected $rutaavatar;
+
+	public function __construct($idmail, $nombre, $contrasena, $rutaavatar){
+		$this->idmail = $idmail;
+		$this->contrasena = $contrasena;
+		$this->nombre = $nombre;
+		$this->rutaavatar = $rutaavatar;
+	}
+
 	//Returns error string if failed to login
 	//Returns an object representing the user if all goes well
 	//Object returned will be enough to know which kind of user is that which logged in
 	public static function login_user($user, $pass){
 		if($user && $pass){
-			//connect to db
-			include_once "../resources/code/bd_manage.php";
+			if ($usertype = UserMapper::isValidUser($user, $pass)) {
+				$_SESSION["user"] = $user;
+				$_SESSION["usertype"] = $usertype;
 
-			//select data
-			$result = mysqli_query("SELECT * FROM juradopopular WHERE idemail = $user");
-
-			if(mysqli_fetch_array($result)){
-				//significa que es jurado popular
-			}else{
-				$result = mysqli_query("SELECT * FROM juradoprofesional WHERE idemail = $user");
-				if(mysqli_fetch_array($result)){
-					//significa que es jurado profesional
-				}else{
-					$result = mysqli_query("SELECT * FROM establecimiento WHERE idemail = $user");
-					if(mysqli_fetch_array($result)){
-						//significa que es establecimiento
-					}else{
-						$result = mysqli_query("SELECT * FROM administrador WHERE idemail = $user");
-						if(mysqli_fetch_array($result)){
-							//significa que es administrador
-						}else{
-							//Error, no se ha encontrado el usuario
-						}
-					}
-				}
-
+				echo "Conectado con ".$user." que es ".$usertype;
+			} else {
+				echo "ERROR: user or password incorrect";
 			}
-
-
 			//compare data
 
 			//instance correct type of user
@@ -61,11 +52,20 @@ class Usuario{
 			//return user object
 
 
-
 		}else{
 			return "error, fields not validated";
 
 		}
+	}
+
+	public function getNombre()
+	{
+		return $this->nombre;
+	}
+
+	public function getIdmail()
+	{
+		return $this->idmail;
 	}
 
 }
