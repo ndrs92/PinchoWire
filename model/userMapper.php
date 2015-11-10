@@ -3,16 +3,29 @@
 include_once("../resources/code/bd_manage.php");
 
 
-class UserMapper
-{
-    public static function findByEmailAdmin($idemail){
+class UserMapper{
+    public static function findByEmail($idemail, $usertype){
         global $connectHandler;
-        $result = mysqli_query($connectHandler, "SELECT * FROM `administrador` WHERE `idemail`=\"$idemail\"");
-
+        $result = mysqli_query($connectHandler, "SELECT * FROM $usertype WHERE `idemail`=\"$idemail\"");
 
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
-            return new Administrador($row["idemail"], $row["nombre"], $row["contrasena"], $row["rutaavatar"]);
+            switch($usertype) {
+                case "administrador":
+                    $user = new $usertype($row["idemail"], $row["nombre"], $row["contrasena"], $row["rutaavatar"]);
+                    break;
+                case "juradoprofesional":
+                    $user = new $usertype($row["idemail"], $row["nombre"], $row["contrasena"], $row["rutaavatar"], $row["curriculum"]);
+                    break;
+                case "juradopopular":
+                    $user = new $usertype($row["idemail"], $row["nombre"], $row["contrasena"], $row["rutaavatar"]);
+                    break;
+                case "establecimiento":
+                    $user = new $usertype($row["idemail"], $row["nombre"], $row["contrasena"], $row["rutaavatar"], $row["direccion"], $row["web"], $row["horario"], $row["rutaimagen"], $row["geoloc"]);
+                    break;
+            }
+
+            return $user;
 
         } else {
             return NULL;
@@ -56,6 +69,60 @@ class UserMapper
             }
         }
         return null; //No es nadie
+    }
+
+    public static function update($mail, $pass, $name, $avatar, $typeuser, $curriculum, $direccion, $web, $horario, $imagen, $geoloc){
+        global $connectHandler;
+
+        switch($typeuser){
+            case "administrador":
+                $lastmail = $_SESSION["user"];
+                $result = mysqli_query($connectHandler, "UPDATE administrador
+                                                          SET idemail=\"$mail\",
+                                                          nombre=\"$name\",
+                                                          contrasena=\"$pass\",
+                                                          rutaavatar=\"$avatar\"
+                                                          WHERE idemail=\"$lastmail\"");
+                break;
+
+            case "juradoprofesional":
+                $lastmail = $_SESSION["user"];
+                $result = mysqli_query($connectHandler, "UPDATE juradoprofesional
+                                                          SET idemail=\"$mail\",
+                                                          nombre=\"$name\",
+                                                          contrasena=\"$pass\",
+                                                          rutaavatar=\"$avatar\",
+                                                          curriculum=\"$curriculum\"
+                                                          WHERE idemail=\"$lastmail\"");
+                break;
+
+            case "juradopopular":
+                $lastmail = $_SESSION["user"];
+                $result = mysqli_query($connectHandler, "UPDATE juradopopular
+                                                          SET idemail=\"$mail\",
+                                                          nombre=\"$name\",
+                                                          contrasena=\"$pass\",
+                                                          rutaavatar=\"$avatar\"
+                                                          WHERE idemail=\"$lastmail\"");
+                break;
+
+            case "establecimiento":
+                $lastmail = $_SESSION["user"];
+                $result = mysqli_query($connectHandler, "UPDATE establecimiento
+                                                          SET idemail=\"$mail\",
+                                                          nombre=\"$name\",
+                                                          contrasena=\"$pass\",
+                                                          rutaavatar=\"$avatar\",
+                                                          geoloc=\"$geoloc\",
+                                                          direccion=\"$direccion\",
+                                                          web=\"$web\",
+                                                          horario=\"$horario\",
+                                                          rutaimagen=\"$imagen\"
+                                                          WHERE idemail=\"$lastmail\"");
+                break;
+
+
+        }
     }
 
 }

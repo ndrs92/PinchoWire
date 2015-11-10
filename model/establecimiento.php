@@ -1,22 +1,14 @@
 <?php
 
-class Establecimiento{
-	
-	private $idemail;
-	private $nombre;
-	private $contrasena;
-	private $rutaavatar;
+class Establecimiento extends Usuario{
 	private $direccion;
 	private $web;
 	private $horario;
-	private $rutaimagen;	
+	private $rutaimagen;
 	private $geoloc;
 
-	public function __construct($idemail, $nombre, $contrasena, $rutaavatar){
-		$this->idemail = $idemail;
-		$this->nombre = $nombre;
-		$this->contrasena = $contrasena;
-		$this->rutaavatar = $rutaavatar;
+	public function __construct($idemail, $nombre, $contrasena, $rutaavatar, $direccion, $web, $horario, $rutaimagen, $geoloc){
+		parent::__construct($idemail, $nombre, $contrasena, $rutaavatar);
 		$this->direccion = $direccion;
 		$this->web = $web;
 		$this->horario = $horario;
@@ -39,11 +31,30 @@ class Establecimiento{
 		else{echo("Error en el guardado");}
 	}
 
-	
-	
+	public function getDireccion()
+	{
+		return $this->direccion;
+	}
 
+	public function getGeoloc()
+	{
+		return $this->geoloc;
+	}
 
+	public function getHorario()
+	{
+		return $this->horario;
+	}
 
+	public function getRutaimagen()
+	{
+		return $this->rutaimagen;
+	}
+
+	public function getWeb()
+	{
+		return $this->web;
+	}
 }
 
 ?>

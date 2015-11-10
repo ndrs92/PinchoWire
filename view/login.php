@@ -1,8 +1,7 @@
 <?php
-
+session_start();
 //Super duper helper codes
 include_once "../resources/code/lang_coverage.php";
-
 ?>
 
 

@@ -68,6 +68,35 @@ class Usuario{
 		return $this->idmail;
 	}
 
+    public function getContrasena()
+    {
+        return $this->contrasena;
+    }
+
+    public function getRutaavatar()
+    {
+        return $this->rutaavatar;
+    }
+
+    public function setContrasena($contrasena)
+    {
+        $this->contrasena = $contrasena;
+    }
+
+    public function setIdmail($idmail)
+    {
+        $this->idmail = $idmail;
+    }
+
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    }
+
+    public function setRutaavatar($rutaavatar)
+    {
+        $this->rutaavatar = $rutaavatar;
+    }
 }
 
 

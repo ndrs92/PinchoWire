@@ -34,6 +34,12 @@ $p = array(
     "view_profile_editpass" => "Contraseña",
     "view_profile_editavatar" => "Avatar",
     "view_profile_save" => "Guardar",
+    "view_profile_editcurriculum" => "Curriculum",
+    "view_profile_address" => "Direccion",
+    "view_profile_web" => "Web",
+    "view_profile_schedule" => "Horario",
+    "view_profile_image" => "Imagenes",
+    "view_profile_geloc" => "Geolocalizacion",
 );
 
 

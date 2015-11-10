@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 	include_once "../model/usuario.php";
 
@@ -10,6 +11,7 @@ if($_POST["login_user_login"] && $_POST["login_user_pass"]){
 
 
 
+	echo "<br>Redireccion a la pagina principal...";
 
 	//echo "Error: Login yet to be implemented. Sorry";
 
