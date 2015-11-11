@@ -125,6 +125,17 @@ class UserMapper{
         }
     }
 
+    public static function getDatosEstablecimiento($email){
+      global $connectHandler;
+      $query = "SELECT * FROM establecimiento WHERE idemail = \"$email\"";
+      $result = mysqli_query($connectHandler, $query);
+      if(!$result){
+        echo "Error de BD, no se pudo consultar la base de datos\n";
+      }
+      $fila = mysqli_fetch_assoc($result);
+      return $fila;
+    }
+
 }
 
 ?>

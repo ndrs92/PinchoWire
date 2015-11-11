@@ -1,4 +1,6 @@
 <?php
+include_once "usuario.php";
+include_once("./../resources/code/bd_manage.php");
 
 class Establecimiento extends Usuario{
 	private $direccion;
@@ -16,13 +18,14 @@ class Establecimiento extends Usuario{
 		$this->geoloc = $geoloc;
 	}
 
-	public static function enviar_propuesta($nombre, $descripcion, $ingredientes, $precio){
+	public function enviar_propuesta($nombre, $descripcion, $ingredientes, $precio){
 		//Abrir conexion BD
-		include_once("./../resources/code/bd_manage.php");
+		global $connectHandler;
 		if (!$connectHandler) {
     		die("Connection failed: " . mysqli_connect_error());
 		}
-		$query = "INSERT INTO pincho (idnombre, descripcion, ingredientes, precio, estadoPropuesta, ganadorPopular) VALUES ('$nombre','$descripcion','$ingredientes', $precio, 0, null);";
+		
+		$query = "INSERT INTO pincho (idnombre, descripcion, ingredientes, precio, estadoPropuesta, ganadorPopular, establecimiento_idemail) VALUES ('$nombre','$descripcion','$ingredientes', $precio, 0, null,'$this->idmail');";
 		echo($query);
 
 		if(mysqli_query($connectHandler, $query)){
