@@ -22,7 +22,12 @@
     "view_enviarpropuesta_introprecio_placeholder" => "Precio del pincho...",
     "view_enviarpropuesta_introingredientes" => "Los Ingredientes: ",
     "view_enviarpropuesta_introingredientes_placeholder" => "Ingredientes del pincho...",
-    "view_enviarpropuesta_enviar" => "Enviar propuesta"
+    "view_enviarpropuesta_enviar" => "Enviar propuesta",
+
+    "view_addcomment_tittle" => "Añadir comentario",
+    "view_addcomment_comment" => "Comentario",
+    "view_addcomment_send" => "Enviar comentario",
+    "view_addcomment_comment_placeholder" => "Escribe un comentario...",
     );
 
 $p = array(
@@ -41,6 +46,4 @@ $p = array(
     "view_profile_image" => "Imagenes",
     "view_profile_geloc" => "Geolocalizacion",
 );
-
-
 ?>
