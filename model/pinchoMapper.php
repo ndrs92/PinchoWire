@@ -5,9 +5,9 @@ include_once("../resources/code/bd_manage.php");
 
 class PinchoMapper{
 
-	public static function retrieveAll(){
+	public static function retrieveAllAceptados(){
 		global $connectHandler;
-		$result = mysqli_query($connectHandler, "Select * from pincho");
+		$result = mysqli_query($connectHandler, "Select * from pincho where estadoPropuesta = 2");
 		while($row = mysqli_fetch_assoc($result)){
 			$toRet[$row["idnombre"]] = $row;
 		}
