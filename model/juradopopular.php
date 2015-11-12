@@ -11,7 +11,7 @@ class JuradoPopular extends Usuario{
         include_once("./../resources/code/bd_manage.php");
         global $connectHandler;
         $date = date('Y-m-d');
-        $query = "INSERT INTO comentario (idcomentario, juradopopular_idemail, pincho_idnombre, contenido, fecha) VALUES ('21', '$this->idemail','$pincho','$textcomentario', '$date')";
+        $query = "INSERT INTO comentario (juradopopular_idemail, pincho_idnombre, contenido, fecha) VALUES ('$this->idemail','$pincho','$textcomentario', '$date')";
         echo($query);
 
         if(mysqli_query($connectHandler, $query)){
