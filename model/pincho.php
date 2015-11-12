@@ -1,5 +1,7 @@
 <?php
 
+include_once "pinchoMapper.php";
+
 class Pincho {
     private $idnombre;
     private $descripcion;
@@ -15,6 +17,23 @@ class Pincho {
         $this->ingredientes = $ingredientes;
         $this->ganadorpopular = $ganadorpopular;
         $this->estadopropuesta = $estadopropuesta;
+    }
+
+    public static function getAllPinchos(){
+        $mapperData = pinchoMapper::retrieveAll();
+        
+
+        foreach($mapperData as $toMake){
+            $toRet[$toMake["idnombre"]] = new Pincho($toMake["idnombre"], $toMake["descripcion"], $toMake["precio"], $toMake["ingredientes"], $toMake["ganadorPopular"], $toMake["estadoPropuesta"], $toMake["establecimiento_idemail"]);
+        }
+
+        return $toRet;
+    }
+
+    public static function getByIdnombre($idnombre){
+        $mapperData = pinchoMapper::find($idnombre);
+
+        return new Pincho($mapperData["idnombre"], $mapperData["descripcion"], $mapperData["precio"], $mapperData["ingredientes"], $mapperData["ganadorPopular"], $mapperData["estadoPropuesta"], $mapperData["establecimiento_idemail"]);
     }
 
     public function getIdnombre()
