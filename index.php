@@ -11,7 +11,7 @@
 		//if you're login
 	}else{
 		
-		$relpath = 'view/login.php'; 
+		$relpath = 'view/list.php'; 
 		
 		header("Location: http://$host$uri/$relpath");
 
