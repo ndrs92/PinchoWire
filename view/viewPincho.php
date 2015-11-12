@@ -38,7 +38,7 @@ $pinchoActual = getCurrentPincho($_GET["id"]);
 	<h3>Comentarios al pincho: </h3>
 	
 	<?php
-	if(get_class($_SESSION["user"]) == "JuradoPopular"){
+	if($_SESSION && get_class($_SESSION["user"]) == "JuradoPopular"){
 		?>
 		<h4>Insertar un comentario</h4>
 		<form action="../controller/addcomment_controller.php" method="POST">
@@ -53,7 +53,7 @@ $pinchoActual = getCurrentPincho($_GET["id"]);
 	<table border="1">
 		<thead>
 			<?php
-			if(get_class($_SESSION["user"]) == "JuradoPopular"){
+			if($_SESSION && get_class($_SESSION["user"]) == "JuradoPopular"){
 				echo "<td>Acciones</td>";
 			}
 			?>
@@ -67,10 +67,10 @@ $pinchoActual = getCurrentPincho($_GET["id"]);
 			foreach(getAllComentarios($pinchoActual) as $comentario){
 				echo "
 				<tr>";
-					if(get_class($_SESSION["user"]) == "JuradoPopular" && $_SESSION["user"]->getIdmail() == $comentario["juradopopular_idemail"]){
+					if($_SESSION && get_class($_SESSION["user"]) == "JuradoPopular" && $_SESSION["user"]->getIdmail() == $comentario["juradopopular_idemail"]){
 						echo "<td><a href='../controller/eliminarcomentario_controller.php'>Eliminar </a></td>";
 					}else{
-						if(get_class($_SESSION["user"]) == "JuradoPopular"){
+						if($_SESSION && get_class($_SESSION["user"]) == "JuradoPopular"){
 							echo "<td></td>";
 						}
 					}

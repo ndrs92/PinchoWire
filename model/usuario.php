@@ -47,6 +47,24 @@ class Usuario{
 		}
 	}
 
+	public static function getAllUsuarios(){
+		$dataset = UserMapper::retrieveAll();
+		foreach($dataset["juradopopular"] as $parsed){
+			$toRet[$parsed["idemail"]] = new JuradoPopular($parsed["idemail"], $parsed["nombre"], $parsed["contrasena"], $parsed["rutaavatar"]);
+		}
+
+		foreach($dataset["juradoprofesional"] as $parsed){
+			$toRet[$parsed["idemail"]] = new JuradoProfesional($parsed["idemail"], $parsed["nombre"], $parsed["contrasena"], $parsed["rutaavatar"], $parsed["curriculum"] );
+		}
+
+		foreach($dataset["establecimiento"] as $parsed){
+			$toRet[$parsed["idemail"]] = new Establecimiento($parsed["idemail"], $parsed["nombre"], $parsed["contrasena"], $parsed["rutaavatar"], $parsed["direccion"], $parsed["web"], $parsed["horario"], $parsed["rutaimagen"], $parsed["geoloc"]);
+		}
+
+		return $toRet;
+
+	}
+
 	public function getNombre()
 	{
 		return $this->nombre;

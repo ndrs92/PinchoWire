@@ -5,6 +5,29 @@ include_once("../resources/code/bd_manage.php");
 
 class UserMapper{
 
+  public static function retrieveAll(){
+      global $connectHandler;
+      $query = "Select * from juradopopular";
+      $result = mysqli_query($connectHandler, $query);
+      while($row = mysqli_fetch_assoc($result)){
+        $toRet["juradopopular"][$row["idemail"]] = $row;
+      }
+
+      $query = "Select * from juradoprofesional";
+      $result = mysqli_query($connectHandler, $query);
+      while($row = mysqli_fetch_assoc($result)){
+        $toRet["juradoprofesional"][$row["idemail"]] = $row;
+      }
+
+      $query = "Select * from establecimiento";
+      $result = mysqli_query($connectHandler, $query);
+      while($row = mysqli_fetch_assoc($result)){
+        $toRet["establecimiento"][$row["idemail"]] = $row;
+      }
+
+      return $toRet;
+  }
+
   public static function registerUser($userObject){
     global $connectHandler;
 
