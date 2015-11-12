@@ -58,6 +58,10 @@ class Usuario{
 		}
 	}
 
+	public function registerUser(){
+		
+	}
+
 	public function getNombre()
 	{
 		return $this->nombre;

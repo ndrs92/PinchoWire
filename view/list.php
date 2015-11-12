@@ -16,8 +16,8 @@ include_once "../controller/pincho_controller.php";
 <body>
 	<h1>PinchoWire</h1>
 	<a href="./login.php">Identificarse</a><br>
-	<a href="./registerUser.php">Registrarse (Usuario)</a><br>
-	<a href="./registerEstablishment.php">Registrarse (Establecimiento)</a><br>
+	<a href="./register_user.php">Registrarse (Usuario)</a><br>
+	<a href="./register_establishment.php">Registrarse (Establecimiento)</a><br>
 
 	<h1>Lista de Pinchos </h1>
 	<table border="1">
@@ -45,9 +45,3 @@ include_once "../controller/pincho_controller.php";
 
 </body>
 </html>
-
-
-<?php
-
-
-?>

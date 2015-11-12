@@ -4,6 +4,12 @@ include_once("../resources/code/bd_manage.php");
 
 
 class UserMapper{
+    
+    public static function registerUser($userObject){
+
+      //utilizar campos de objeto usuario para añadir
+    }
+
     public static function findByEmail($idemail, $usertype){
         global $connectHandler;
         $result = mysqli_query($connectHandler, "SELECT * FROM $usertype WHERE `idemail`=\"$idemail\"");

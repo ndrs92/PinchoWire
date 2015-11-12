@@ -19,6 +19,10 @@ class JuradoPopular extends Usuario{
         }
         else{echo("Error en el guardado");}
     }
+
+    public function registerUser(){
+        UserMapper::registerUser($this);
+    }
 }
 
 ?>
