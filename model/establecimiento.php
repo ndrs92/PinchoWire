@@ -30,7 +30,7 @@ class Establecimiento extends Usuario{
 			die("Connection failed: " . mysqli_connect_error());
 		}
 		
-		$query = "INSERT INTO pincho (idnombre, descripcion, ingredientes, precio, estadoPropuesta, ganadorPopular, establecimiento_idemail) VALUES ('$nombre','$descripcion','$ingredientes', $precio, 0, null,'$this->idmail');";
+		$query = "INSERT INTO pincho (idnombre, descripcion, ingredientes, precio, estadoPropuesta, ganadorPopular, establecimiento_idemail) VALUES ('$nombre','$descripcion','$ingredientes', $precio, 0, null,'$this->idemail');";
 		echo($query);
 
 		if(mysqli_query($connectHandler, $query)){

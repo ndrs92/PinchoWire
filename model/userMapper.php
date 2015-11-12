@@ -32,10 +32,10 @@ class UserMapper{
     global $connectHandler;
 
     if(get_class($userObject) == "JuradoPopular"){
-      $query = "Insert into juradopopular values('".$userObject->getIdmail()."','".$userObject->getNombre()."','".$userObject->getContrasena()."','".$userObject->getRutaavatar()."')";
+      $query = "Insert into juradopopular values('".$userObject->getIdemail()."','".$userObject->getNombre()."','".$userObject->getContrasena()."','".$userObject->getRutaavatar()."')";
       $result = mysqli_query($connectHandler, $query);
     }else{
-      $query = "Insert into establecimiento values('".$userObject->getIdmail()."','".$userObject->getNombre()."','".$userObject->getContrasena()."','".$userObject->getRutaavatar()."','".$userObject->getDireccion()."','".$userObject->getWeb()."','".$userObject->getHorario()."','".$userObject->getRutaimagen()."','".$userObject->getGeoloc()."')";
+      $query = "Insert into establecimiento values('".$userObject->getIdemail()."','".$userObject->getNombre()."','".$userObject->getContrasena()."','".$userObject->getRutaavatar()."','".$userObject->getDireccion()."','".$userObject->getWeb()."','".$userObject->getHorario()."','".$userObject->getRutaimagen()."','".$userObject->getGeoloc()."')";
       $result = mysqli_query($connectHandler, $query);
       
     }

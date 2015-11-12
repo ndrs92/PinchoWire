@@ -19,13 +19,13 @@ It is possible to establish this class as parent of JuradoPopular and so on. Nee
 */
 
 class Usuario{
-	protected $idmail;
+	protected $idemail;
 	protected $nombre;
 	protected $contrasena;
 	protected $rutaavatar;
 
-	public function __construct($idmail, $nombre, $contrasena, $rutaavatar){
-		$this->idmail = $idmail;
+	public function __construct($idemail, $nombre, $contrasena, $rutaavatar){
+		$this->idemail = $idemail;
 		$this->contrasena = $contrasena;
 		$this->nombre = $nombre;
 		$this->rutaavatar = $rutaavatar;
@@ -70,9 +70,9 @@ class Usuario{
 		return $this->nombre;
 	}
 
-	public function getIdmail()
+	public function getIdemail()
 	{
-		return $this->idmail;
+		return $this->idemail;
 	}
 
 	public function getContrasena()
@@ -90,9 +90,9 @@ class Usuario{
 		$this->contrasena = $contrasena;
 	}
 
-	public function setIdmail($idmail)
+	public function setIdemail($idemail)
 	{
-		$this->idmail = $idmail;
+		$this->idemail = $idemail;
 	}
 
 	public function setNombre($nombre)

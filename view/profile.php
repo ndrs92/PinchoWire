@@ -21,7 +21,7 @@ $user = verPerfil();
 <body>
     <h1><?= $p["view_profile_title"] ?> </h1>
     <form action="../controller/profile_controller.php" method="POST">
-        <?php echo $p["view_profile_editmail"] ?><input type="text" name="profile_mail" value="<? echo $user->getIdmail(); ?>" /><br/>
+        <?php echo $p["view_profile_editmail"] ?><input type="text" name="profile_mail" value="<? echo $user->getIdemail(); ?>" /><br/>
         <?php echo $p["view_profile_editpass"] ?><input type="text" name="profile_pass" value="<? echo $user->getContrasena(); ?>" /><br/>
         <?php echo $p["view_profile_editname"] ?><input type="text" name="profile_name" value="<? echo $user->getNombre(); ?>" /><br/>
         <?php echo $p["view_profile_editavatar"] ?><input type="text" name="profile_avatar" value="<? echo $user->getRutaavatar(); ?>" /><br/>

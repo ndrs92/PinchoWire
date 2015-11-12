@@ -34,7 +34,7 @@ $allUsers = Usuario::getAllUsuarios();
 		<?php
 		foreach($allUsers as $user){
 			echo "<tr>";
-			echo "<td>".$user->getIdmail()."</td>";
+			echo "<td>".$user->getIdemail()."</td>";
 			echo "<td>".$user->getNombre()."</td>";
 			echo "<td>".get_class($user)."</td>";
 			echo "<td></td>";

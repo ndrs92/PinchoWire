@@ -67,7 +67,7 @@ $pinchoActual = getCurrentPincho($_GET["id"]);
 			foreach(getAllComentarios($pinchoActual) as $comentario){
 				echo "
 				<tr>";
-					if($_SESSION && get_class($_SESSION["user"]) == "JuradoPopular" && $_SESSION["user"]->getIdmail() == $comentario["juradopopular_idemail"]){
+					if($_SESSION && get_class($_SESSION["user"]) == "JuradoPopular" && $_SESSION["user"]->getIdemail() == $comentario["juradopopular_idemail"]){
 						echo "<td><a href='../controller/eliminarcomentario_controller.php'>Eliminar </a></td>";
 					}else{
 						if($_SESSION && get_class($_SESSION["user"]) == "JuradoPopular"){
