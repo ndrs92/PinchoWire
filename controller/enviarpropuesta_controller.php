@@ -1,17 +1,20 @@
 <?php
 
 	include_once "../model/establecimiento.php";
-	include_once "../model/userMapper.php";
+
 session_start();
 
 if($_POST["enviarpropuesta_propuesta_nombre"] && $_POST["enviarpropuesta_propuesta_descripcion"] && $_POST["enviarpropuesta_propuesta_ingredientes"] && $_POST["enviarpropuesta_propuesta_precio"]){
 
-	$fila = userMapper::getDatosEstablecimiento($_SESSION["user"]);
-
-	$establecimiento = new Establecimiento($fila["idemail"], $fila["nombre"], $fila["contrasena"], $fila["rutaavatar"], $fila["direccion"], $fila["web"], $fila["horario"], $fila["rutaimagen"], $fila["geoloc"] );
-	//$idemail, $nombre, $contrasena, $rutaavatar, $direccion, $web, $horario, $rutaimagen, $geoloc
-	$establecimiento->enviar_propuesta($_POST["enviarpropuesta_propuesta_nombre"], $_POST["enviarpropuesta_propuesta_descripcion"], $_POST["enviarpropuesta_propuesta_ingredientes"], $_POST["enviarpropuesta_propuesta_precio"]);
-
+	
+	$resultado = $_SESSION["user"]->enviar_propuesta($_POST["enviarpropuesta_propuesta_nombre"], $_POST["enviarpropuesta_propuesta_descripcion"], $_POST["enviarpropuesta_propuesta_ingredientes"], $_POST["enviarpropuesta_propuesta_precio"]);
+	if($resultado){
+		echo "guardado satisfactorio <br/>";
+	}
+	else{
+		echo "error en guardado <br/>";			
+	}
+	echo "<a href='../view/list.php'>Volver a pagina principal</a><br/>";
 
 
 }else{

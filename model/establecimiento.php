@@ -31,12 +31,14 @@ class Establecimiento extends Usuario{
 		}
 		
 		$query = "INSERT INTO pincho (idnombre, descripcion, ingredientes, precio, estadoPropuesta, ganadorPopular, establecimiento_idemail) VALUES ('$nombre','$descripcion','$ingredientes', $precio, 0, null,'$this->idemail');";
-		echo($query);
+		
 
 		if(mysqli_query($connectHandler, $query)){
-			echo("Guardado satisfactorio");
+			return true;
 		}  
-		else{echo("Error en el guardado");}
+		else{
+			return false;			
+		}
 	}
 
 	public function getDireccion()
