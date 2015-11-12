@@ -10,5 +10,9 @@ function getCurrentPincho($idNombre){
 	return Pincho::getByIdnombre($idNombre);
 }
 
+function getAllComentarios($pinchoActual){
+	return $pinchoActual->getAllComentarios();
+}
+
 
 ?>

@@ -36,6 +36,10 @@ class Pincho {
         return new Pincho($mapperData["idnombre"], $mapperData["descripcion"], $mapperData["precio"], $mapperData["ingredientes"], $mapperData["ganadorPopular"], $mapperData["estadoPropuesta"], $mapperData["establecimiento_idemail"]);
     }
 
+    public function getAllComentarios(){
+        return pinchoMapper::retrieveAllComentarios($this->getIdnombre());
+    }
+
     public function getIdnombre()
     {
         return $this->idnombre;

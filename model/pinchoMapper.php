@@ -22,6 +22,15 @@ class PinchoMapper{
 		return mysqli_fetch_assoc($result);
 	}
 
+	public static function retrieveAllComentarios($idnombre){
+		global $connectHandler;
+		$result = mysqli_query($connectHandler, "SELECT * FROM comentario WHERE pincho_idnombre = '".$idnombre."' ");
+		while($row = mysqli_fetch_assoc($result)){
+			$toRet[$row["idcomentario"]] = $row;
+		}
+		return $toRet;
+
+	}
 
 
 }
