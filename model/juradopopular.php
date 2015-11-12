@@ -20,6 +20,19 @@ class JuradoPopular extends Usuario{
         else{echo("Error en el guardado");}
     }
 
+    public function eliminar_pincho($idpincho){
+        //Abrir conexion BD
+        include_once("./../resources/code/bd_manage.php");
+        global $connectHandler;
+        $query = "DELETE FROM comentario WHERE (idcomentario = '$idpincho' AND juradopopular_idemail = '$this->nombre')";
+        echo($query);
+
+        if(mysqli_query($connectHandler, $query)){
+            echo("Comentario eliminado satisfactoriamente");
+        }
+        else{echo("Error en el eliminado del pincho");}
+    }
+
     public function registerUser(){
         UserMapper::registerUser($this);
     }

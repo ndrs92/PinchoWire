@@ -4,10 +4,10 @@ include_once "../model/juradopopular.php";
 include_once "../model/pincho.php";
 session_start();
 
-if($_POST["addcomment_comment_name"] && $_POST["addcomment_comment_idpincho"]){
-    //All params for add a comment OK
+if($_POST["delcomment_comment_id"]){
+    //All params for delete a comment OK
 
-    $_SESSION["user"]->comentar_pincho($_POST["addcomment_comment_idpincho"],$_POST["addcomment_comment_name"]);
+    $_SESSION["user"]->eliminar_pincho($_POST["delcomment_comment_id"]);
 
     $host  = $_SERVER['HTTP_HOST'];
     $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
