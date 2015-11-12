@@ -9,18 +9,28 @@ if($_POST["login_user_login"] && $_POST["login_user_pass"]){
 
 	$userObject = Usuario::login_user($_POST["login_user_login"], $_POST["login_user_pass"]);
 
-	//Opens a session if not open; we save the user object in it to have all the required functionalities
 	session_start();
+	if($userObject == NULL){
 
-	$_SESSION["user"] = $userObject;
+		$_SESSION["login"] = "fail";
+		$host  = $_SERVER['HTTP_HOST'];
+		$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+		$relpath = '../view/login.php';
+		header("Location: http://$host$uri/$relpath");
 
-	echo "<br>Redireccion a la pagina principal...";
+	}
+	else {
+		//Opens a session if not open; we save the user object in it to have all the required functionalities
 
-	$host  = $_SERVER['HTTP_HOST'];
-	$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-	$relpath = '../view/list.php'; 
-	header("Location: http://$host$uri/$relpath");
+		$_SESSION["user"] = $userObject;
 
+		echo "<br>Redireccion a la pagina principal...";
+
+		$host = $_SERVER['HTTP_HOST'];
+		$uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+		$relpath = '../view/list.php';
+		header("Location: http://$host$uri/$relpath");
+	}
 
 	//echo "Error: Login yet to be implemented. Sorry";
 

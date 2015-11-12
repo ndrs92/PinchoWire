@@ -19,6 +19,12 @@ include_once "../resources/code/lang_coverage.php";
 </head>
 <body>
 	<h1><?= $l["view_login_welcome"] ?> </h1>
+	<?php
+		if (isset($_SESSION["login"])){
+			session_unset();
+			echo "Login incorrecto";
+		}
+	?>
 	<form action="../controller/login_controller.php" method="POST">
 		<?= $l["view_login_introuser"] ?><input type="text" name="login_user_login" placeholder="<?= $l["view_login_introuser_placeholder"] ?>" />
 		<br/>

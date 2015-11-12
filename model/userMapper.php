@@ -103,7 +103,7 @@ class UserMapper{
       }
     }
         return null; //No es nadie
-      }
+  }
 
       public static function update($mail, $pass, $name, $avatar, $typeuser, $curriculum, $direccion, $web, $horario, $imagen, $geoloc){
         global $connectHandler;
