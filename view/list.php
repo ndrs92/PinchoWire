@@ -1,5 +1,10 @@
 <?php
 include_once "../controller/pincho_controller.php";
+include_once "../model/juradopopular.php";
+include_once "../model/juradoprofesional.php";
+include_once "../model/establecimiento.php";
+include_once "../model/administrador.php";
+session_start();
 ?>
 <html>
 <head>
@@ -15,10 +20,20 @@ include_once "../controller/pincho_controller.php";
 </head>
 <body>
 	<h1>PinchoWire</h1>
-	<a href="./login.php">Identificarse</a><br>
-	<a href="./register_user.php">Registrarse (Usuario)</a><br>
-	<a href="./register_establishment.php">Registrarse (Establecimiento)</a><br>
+	<?php
+	if(!$_SESSION){
+		?>
+		<a href="./login.php">Identificarse</a><br>
+		<a href="./register_user.php">Registrarse (Usuario)</a><br>
+		<a href="./register_establishment.php">Registrarse (Establecimiento)</a><br>
 
+		<?php
+	}else{
+		echo "Bienvenido, ".$_SESSION["user"]->getNombre();
+		echo "<br/>";
+		echo "<a href='../controller/logout_controller.php'>Desconectarse</a>";
+	}
+	?>
 	<h1>Lista de Pinchos </h1>
 	<table border="1">
 		<thead>

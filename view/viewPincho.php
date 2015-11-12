@@ -1,8 +1,12 @@
 <?php
 include_once "../controller/pincho_controller.php";
+include_once "../model/juradopopular.php";
+include_once "../model/juradoprofesional.php";
+include_once "../model/establecimiento.php";
+include_once "../model/administrador.php";
 
+session_start();
 $pinchoActual = getCurrentPincho($_GET["id"]);
-
 
 ?>
 
@@ -32,9 +36,28 @@ $pinchoActual = getCurrentPincho($_GET["id"]);
 	<p><?php echo $pinchoActual->getIngredientes(); ?></p>
 
 	<h3>Comentarios al pincho: </h3>
+	
+	<?php
+	if(get_class($_SESSION["user"]) == "JuradoPopular"){
+		?>
+		<h4>Insertar un comentario</h4>
+		<form action="../controller/addcomment_controller.php" method="POST">
+			<input type="hidden" name="addcomment_comment_idpincho" value="<?php echo $pinchoActual->getIdnombre(); ?>"/>
+			<textarea name="addcomment_comment_name" ></textarea>
+			<input type="submit" name="submit_button" value="Enviar Comentario" />
+		</form>
+		<?php
+	}
+	?>
+
 	<table border="1">
 		<thead>
-			<td>ID Comentario</td>
+			<?php
+			if(get_class($_SESSION["user"]) == "JuradoPopular"){
+				echo "<td>Acciones</td>";
+			}
+			?>
+			
 			<td>Autor</td>
 			<td>Fecha</td>
 			<td>Comentario</td>
@@ -43,9 +66,17 @@ $pinchoActual = getCurrentPincho($_GET["id"]);
 			<?php
 			foreach(getAllComentarios($pinchoActual) as $comentario){
 				echo "
-				<tr>
-					<td>".$comentario["idcomentario"]."</td>
-					<td><a href='profile.php?idnombre=".$comentario["juradopopular_idemail"]."'  >".$comentario["juradopopular_idemail"]."</a></td>
+				<tr>";
+					if(get_class($_SESSION["user"]) == "JuradoPopular" && $_SESSION["user"]->getIdmail() == $comentario["juradopopular_idemail"]){
+						echo "<td><a href='../controller/eliminarcomentario_controller.php'>Eliminar </a></td>";
+					}else{
+						if(get_class($_SESSION["user"]) == "JuradoPopular"){
+							echo "<td></td>";
+						}
+					}
+					
+					
+					echo "<td><a href='profile.php?idnombre=".$comentario["juradopopular_idemail"]."'  >".$comentario["juradopopular_idemail"]."</a></td>
 					<td>".$comentario["fecha"]."</td>
 					<td>".$comentario["contenido"]."</td>
 				</tr>

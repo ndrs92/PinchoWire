@@ -37,21 +37,10 @@ class Usuario{
 	public static function login_user($user, $pass){
 		if($user && $pass){
 			if ($usertype = UserMapper::isValidUser($user, $pass)) {
-				$_SESSION["user"] = $user;
-				$_SESSION["usertype"] = $usertype;
-
-				echo "Conectado con ".$user." que es ".$usertype;
+				return UserMapper::findByEmail($user, $usertype);
 			} else {
 				echo "ERROR: user or password incorrect";
 			}
-			//compare data
-
-			//instance correct type of user
-
-
-			//return user object
-
-
 		}else{
 			return "error, fields not validated";
 
@@ -68,35 +57,35 @@ class Usuario{
 		return $this->idmail;
 	}
 
-    public function getContrasena()
-    {
-        return $this->contrasena;
-    }
+	public function getContrasena()
+	{
+		return $this->contrasena;
+	}
 
-    public function getRutaavatar()
-    {
-        return $this->rutaavatar;
-    }
+	public function getRutaavatar()
+	{
+		return $this->rutaavatar;
+	}
 
-    public function setContrasena($contrasena)
-    {
-        $this->contrasena = $contrasena;
-    }
+	public function setContrasena($contrasena)
+	{
+		$this->contrasena = $contrasena;
+	}
 
-    public function setIdmail($idmail)
-    {
-        $this->idmail = $idmail;
-    }
+	public function setIdmail($idmail)
+	{
+		$this->idmail = $idmail;
+	}
 
-    public function setNombre($nombre)
-    {
-        $this->nombre = $nombre;
-    }
+	public function setNombre($nombre)
+	{
+		$this->nombre = $nombre;
+	}
 
-    public function setRutaavatar($rutaavatar)
-    {
-        $this->rutaavatar = $rutaavatar;
-    }
+	public function setRutaavatar($rutaavatar)
+	{
+		$this->rutaavatar = $rutaavatar;
+	}
 }
 
 

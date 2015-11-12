@@ -53,14 +53,12 @@ class UserMapper{
 
     if (mysqli_num_rows($result) > 0) {
             //Es jurado popular
-      $row = mysqli_fetch_assoc($result);
       return "juradopopular";
     } else {
       $result = mysqli_query($connectHandler, "SELECT * FROM juradoprofesional WHERE idemail=\"$idemail\" AND contrasena=\"$passwd\"");
 
       if (mysqli_num_rows($result) > 0) {
                 //Es juradoprofesional
-        $row = mysqli_fetch_assoc($result);
         return "juradoprofesional";
 
       } else {
@@ -68,7 +66,6 @@ class UserMapper{
 
         if (mysqli_num_rows($result) > 0) {
                     //Es establecimiento
-          $row = mysqli_fetch_assoc($result);
           return "establecimiento";
 
         } else {
@@ -76,7 +73,6 @@ class UserMapper{
 
           if (mysqli_num_rows($result) > 0) {
                         //Es administrador
-            $row = mysqli_fetch_assoc($result);
             return "administrador";
           }
 

@@ -9,12 +9,12 @@ class JuradoPopular extends Usuario{
     public function comentar_pincho($pincho, $textcomentario){
         //Abrir conexion BD
         include_once("./../resources/code/bd_manage.php");
-
+        global $connectHandler;
         $date = date('Y-m-d');
-        $query = "INSERT INTO comentario (juradopopular_idemail, pincho_idnombre, contenido, decha) VALUES ('$this->idmail','$pincho','$textcomentario', '$date');";
+        $query = "INSERT INTO comentario (idcomentario, juradopopular_idemail, pincho_idnombre, contenido, fecha) VALUES ('21', '$this->idmail','$pincho','$textcomentario', '$date')";
         echo($query);
 
-        if(mysqli_query($query)){
+        if(mysqli_query($connectHandler, $query)){
             echo("Guardado satisfactorio");
         }
         else{echo("Error en el guardado");}

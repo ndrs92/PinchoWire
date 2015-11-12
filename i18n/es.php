@@ -2,8 +2,8 @@
 
  $l = array(
     "view_login_authenticate"  => "Autentificación",
-    "view_login_introuser" => "Introduce tu nombre de usuario: ",
-    "view_login_introuser_placeholder" => "Tu nombre de usuario...",
+    "view_login_introuser" => "Introduce tu email de usuario: ",
+    "view_login_introuser_placeholder" => "Tu email de usuario...",
     "view_login_intropass" => "Introduce tu contraseña: ",
     "view_login_intropass_placeholder" => "Tu contraseña...",
     "view_login_welcome" => "Bienvenido a Pincho Wire",
