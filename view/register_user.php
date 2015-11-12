@@ -15,7 +15,7 @@ include_once "../controller/pincho_controller.php";
 <body>
 	<h1>Registrar Usuario </h1>
 
-	<form action="../controller/register_controller.php?type=establishment" method="POST">
+	<form action="../controller/register_controller.php?type=juradopopular" method="POST">
 		Nombre: <input type="text" name="nombre" /><br/>
 		email: <input type="email" name="idemail" /><br/>
 		Contraseña: <input type="password" name="contrasena" /><br/>

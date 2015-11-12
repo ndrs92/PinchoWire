@@ -18,11 +18,16 @@ class Establecimiento extends Usuario{
 		$this->geoloc = $geoloc;
 	}
 
+	public function registerUser(){
+		UserMapper::registerUser($this);
+	}
+
+
 	public function enviar_propuesta($nombre, $descripcion, $ingredientes, $precio){
 		//Abrir conexion BD
 		global $connectHandler;
 		if (!$connectHandler) {
-    		die("Connection failed: " . mysqli_connect_error());
+			die("Connection failed: " . mysqli_connect_error());
 		}
 		
 		$query = "INSERT INTO pincho (idnombre, descripcion, ingredientes, precio, estadoPropuesta, ganadorPopular, establecimiento_idemail) VALUES ('$nombre','$descripcion','$ingredientes', $precio, 0, null,'$this->idmail');";

@@ -15,13 +15,13 @@ include_once "../controller/pincho_controller.php";
 </head>
 <body>
 	<h1>Registrar Establecimiento </h1>
-	<form action="../controller/register_controller.php?type=user" method="POST">
+	<form action="../controller/register_controller.php?type=establishment" method="POST">
 		Nombre: <input type="text" name="nombre" /><br/>
 		email: <input type="email" name="idemail" /><br/>
 		Direccion: <input type="text" name="direccion" /><br/>
-		Página Web: <input type="text" name="direccion" /><br/>
-		Horario: <input type="text" name="direccion" /><br/>
-		Coordenadas del establecimiento: <input type="text" name="direccion" /><br/>
+		Página Web: <input type="text" name="paginaweb" /><br/>
+		Horario: <input type="text" name="horario" /><br/>
+		Coordenadas del establecimiento: <input type="text" name="coordenadas" /><br/>
 		Contraseña: <input type="password" name="contrasena" /><br/>
 		Repite tu contraseña: <input type="password" name="contrasena_verif" /><br/>
 		Fotografia: <input type="file" name="foto" /><br/>

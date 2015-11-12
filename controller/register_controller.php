@@ -5,32 +5,62 @@ include_once "../model/establecimiento.php";
 
 $registerType = $_GET["type"];
 
-if($registerType == "user"){
+if($registerType == "juradopopular"){
 
-	//verify all data is avaiable
-	if(!$_POST["idemail"] || !$_POST["nombre"] || !$_POST["contrasena"] || !$_POST["rutaavatar"]){
 
-		//error, introducir bien los datos
-	}else{
 	$idemail = $_POST["idemail"];
 	$nombre = $_POST["nombre"];
 	$contrasena = $_POST["contrasena"];
+	$contrasena_verif = $_POST["contrasena_verif"];
 	$rutaavatar = $_POST["rutaavatar"];
 	$userToAdd = new JuradoPopular($idemail, $nombre, $contrasena, $rutaavatar);
-
 	$userToAdd->registerUser();
 
+
+	$host  = $_SERVER['HTTP_HOST'];
+	$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+
+	if($_SESSION){
+		//if you're login
+	}else{
+		
+		$relpath = '../view/list.php'; 
+		
+		header("Location: http://$host$uri/$relpath");
+
 	}
-
-
 
 
 
 }else{
 	if($registerType == "establishment"){
 
-		$userToAdd = new Establecimiento();
+		$idemail = $_POST["idemail"];
+		$nombre = $_POST["nombre"];
+		$contrasena = $_POST["contrasena"];
+		$contrasena_verif = $_POST["contrasena_verif"];
+		$direccion = $_POST["direccion"];
+		$paginaweb = $_POST["paginaweb"];
+		$horario = $_POST["horario"];
+		$coordenadas = $_POST["coordenadas"];
+		$rutaavatar = $_POST["rutaavatar"];
+		$foto = $_POST["foto"];
+		$userToAdd = new Establecimiento($idemail, $nombre, $contrasena, $rutaavatar, $direccion, $paginaweb, $horario, $foto, $coordenadas);
+		$userToAdd->registerUser();
 
+
+		$host  = $_SERVER['HTTP_HOST'];
+		$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+
+		if($_SESSION){
+		//if you're login
+		}else{
+
+			$relpath = '../view/list.php'; 
+
+			header("Location: http://$host$uri/$relpath");
+
+		}
 	}else{
 
 		//error, you should not end here
