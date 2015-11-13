@@ -22,7 +22,6 @@ class Establecimiento extends Usuario{
 		UserMapper::registerUser($this);
 	}
 
-
 	public function enviar_propuesta($nombre, $descripcion, $ingredientes, $precio){
 		//Abrir conexion BD
 		global $connectHandler;

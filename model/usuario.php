@@ -65,6 +65,25 @@ class Usuario{
 
 	}
 
+    public function getTable(){
+        switch(get_class($this)){
+            case "Administrador":
+                return "administrador";
+                break;
+            case "JuradoPopular":
+                return "juradopopular";
+                break;
+            case "JuradoProfesional":
+                return "juradoprofesional";
+                break;
+            case "Establecimiento":
+                return "establecimiento";
+                break;
+            default:
+                return "FAIL";
+        }
+    }
+
 	public function getNombre()
 	{
 		return $this->nombre;

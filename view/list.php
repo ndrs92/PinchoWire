@@ -34,10 +34,11 @@ session_start();
 		if(get_class($_SESSION["user"]) == "Establecimiento"){
 			echo "<a href='enviarpropuesta.php'>Enviar Propuesta</a><br/>";
 		}
-		echo "<a href='../controller/logout_controller.php'>Desconectarse</a><br/>";
 		if(get_class($_SESSION["user"]) == "Administrador"){
-			echo "<a href='./view_administrar.php'>Administar el Concurso </a>";
+			echo "<a href='./view_administrar.php'>Administar el Concurso </a><br/>";
 		}
+		echo "<a href='profile.php'>Ver perfil</a><br/>";
+		echo "<a href='../controller/logout_controller.php'>Desconectarse</a><br/>";
 	}
 	?>
 	<h1>Lista de Pinchos </h1>

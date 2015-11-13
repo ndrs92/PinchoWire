@@ -1,18 +1,17 @@
 <?php
-session_start();
 include_once "../model/usuario.php";
+session_start();
 
 
-function verPerfil()
-{
-    if (!isset($_SESSION["user"])) {
-        throw new Exception("Debes iniciar sesion");
-    }
-
-    $user = UserMapper::findByEmail($_SESSION["user"], $_SESSION["usertype"]);
+function verPerfil($user){
+    $usertype = $user->getTable();
+    $user = UserMapper::findByEmail($user->getIdemail(), $usertype);
 
     if ($user == NULL) {
-        throw new Exception("No existe usuario. Tipico si cambiaste el email...");
+        $host  = $_SERVER['HTTP_HOST'];
+        $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+        $relpath = '../view/login.php';
+        header("Location: http://$host$uri/$relpath");
     }
 
     return $user;
@@ -22,7 +21,7 @@ if (isset($_POST["profile_user_submit"])) {
 
     if ($_POST["profile_mail"] && $_POST["profile_pass"] && $_POST["profile_name"]) {
 
-        switch ($_SESSION["usertype"]) {
+        switch ($_SESSION["user"]->getTable()) {
 
             case "administrador":
                 userMapper::update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $_POST["profile_avatar"], "administrador", NULL, NULL, NULL, NULL, NULL, NULL);
@@ -41,8 +40,10 @@ if (isset($_POST["profile_user_submit"])) {
                 break;
         }
 
-        echo "Datos guardados";
-        header("Location: ../view/profile.php");
+        $host  = $_SERVER['HTTP_HOST'];
+        $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+        $relpath = '../view/profile.php';
+        header("Location: http://$host$uri/$relpath");
     } else {
         throw new Exception("Ningun campo puede estar vacio. Comprobar javascript");
     }

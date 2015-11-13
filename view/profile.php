@@ -1,8 +1,7 @@
 <?php
-//Super duper helper codes
 include_once "../resources/code/lang_coverage.php";
 include_once "../controller/profile_controller.php";
-$user = verPerfil();
+$user = verPerfil($_SESSION["user"]);
 ?>
 
 
@@ -26,17 +25,17 @@ $user = verPerfil();
         <?php echo $p["view_profile_editname"] ?><input type="text" name="profile_name" value="<? echo $user->getNombre(); ?>" /><br/>
         <?php echo $p["view_profile_editavatar"] ?><input type="text" name="profile_avatar" value="<? echo $user->getRutaavatar(); ?>" /><br/>
 
-        <?php if($_SESSION["usertype"]=="juradoprofesional"){
+        <?php if($_SESSION["user"]->getTable()=="juradoprofesional"){
             echo $p["view_profile_editcurriculum"] ?><textarea rows="4" cols="50" name="profile_curriculum"><? echo $user->getCurriculum(); ?></textarea><br/>
             <?php } ?>
 
-            <?php if($_SESSION["usertype"]=="establecimiento"){
+        <?php if($_SESSION["user"]->getTable()=="establecimiento"){
               echo $p["view_profile_address"] ?><input type="text" name="profile_direccion" value="<? echo $user->getDireccion(); ?>" /><br/>
               <?php echo $p["view_profile_web"] ?><input type="text" name="profile_web" value="<? echo $user->getWeb(); ?>" /><br/>
               <?php echo $p["view_profile_schedule"] ?><input type="text" name="profile_horario" value="<? echo $user->getHorario(); ?>" /><br/>
               <?php echo $p["view_profile_image"] ?><input type="text" name="profile_rutaimagen" value="<? echo $user->getRutaimagen(); ?>" /><br/>
               <?php echo $p["view_profile_geloc"] ?><input type="text" name="profile_geoloc" value="<? echo $user->getGeoloc(); ?>" /><br/>
-              <?php } ?>
+          <?php } ?>
 
               <input type="submit" name="profile_user_submit" value="<?= $p["view_profile_save"] ?>" />
           </form>
