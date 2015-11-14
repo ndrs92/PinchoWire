@@ -1,12 +1,13 @@
 <?php
 include_once "../controller/pincho_controller.php";
+include_once "../controller/general_user_controller.php";
 include_once "../model/juradopopular.php";
 include_once "../model/juradoprofesional.php";
 include_once "../model/establecimiento.php";
 include_once "../model/administrador.php";
 session_start();
 
-$allUsers = Usuario::getAllUsuarios();
+$allUsers = getAllUsuarios();
 
 ?>
 <html>
