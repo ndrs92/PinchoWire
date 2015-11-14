@@ -6,6 +6,11 @@ class JuradoPopular extends Usuario{
         parent::__construct($idemail, $nombre, $contrasena, $rutaavatar);
     }
 
+    public function deleteFromDatabase()
+    {
+        UserMapper::deleteFromDatabase($this->idemail, strtolower(get_class($this)));
+    }
+
     public function comentar_pincho($pincho, $textcomentario){
         //Abrir conexion BD
         include_once("./../resources/code/bd_manage.php");

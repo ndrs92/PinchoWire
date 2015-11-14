@@ -18,55 +18,77 @@ It is possible to establish this class as parent of JuradoPopular and so on. Nee
 
 */
 
-class Usuario{
-	protected $idemail;
-	protected $nombre;
-	protected $contrasena;
-	protected $rutaavatar;
+class Usuario
+{
+    protected $idemail;
+    protected $nombre;
+    protected $contrasena;
+    protected $rutaavatar;
 
-	public function __construct($idemail, $nombre, $contrasena, $rutaavatar){
-		$this->idemail = $idemail;
-		$this->contrasena = $contrasena;
-		$this->nombre = $nombre;
-		$this->rutaavatar = $rutaavatar;
-	}
+    public function __construct($idemail, $nombre, $contrasena, $rutaavatar)
+    {
+        $this->idemail = $idemail;
+        $this->contrasena = $contrasena;
+        $this->nombre = $nombre;
+        $this->rutaavatar = $rutaavatar;
+    }
 
-	//Returns error string if failed to login
-	//Returns an object representing the user if all goes well
-	//Object returned will be enough to know which kind of user is that which logged in
-	public static function login_user($user, $pass){
-		if($user && $pass){
-			if ($usertype = UserMapper::isValidUser($user, $pass)) {
-				return UserMapper::findByEmail($user, $usertype);
-			} else {
-				echo "ERROR: user or password incorrect";
-			}
-		}else{
-			return "error, fields not validated";
+    public static function getByIdemail($idemail)
+    {
+        if ($toRet = UserMapper::findByEmail($idemail, "juradopopular")) {
+            return $toRet;
+        }
+        if ($toRet = UserMapper::findByEmail($idemail, "juradoprofesional")) {
+            return $toRet;
+        }
+        if ($toRet = UserMapper::findByEmail($idemail, "establecimiento")) {
+            return $toRet;
+        }
+        if ($toRet = UserMapper::findByEmail($idemail, "administrador")) {
+            return $toRet;
+        }
 
-		}
-	}
+    }
 
-	public static function getAllUsuarios(){
-		$dataset = UserMapper::retrieveAll();
-		foreach($dataset["juradopopular"] as $parsed){
-			$toRet[$parsed["idemail"]] = new JuradoPopular($parsed["idemail"], $parsed["nombre"], $parsed["contrasena"], $parsed["rutaavatar"]);
-		}
+    //Returns error string if failed to login
+    //Returns an object representing the user if all goes well
+    //Object returned will be enough to know which kind of user is that which logged in
+    public static function login_user($user, $pass)
+    {
+        if ($user && $pass) {
+            if ($usertype = UserMapper::isValidUser($user, $pass)) {
+                return UserMapper::findByEmail($user, $usertype);
+            } else {
+                echo "ERROR: user or password incorrect";
+            }
+        } else {
+            return "error, fields not validated";
 
-		foreach($dataset["juradoprofesional"] as $parsed){
-			$toRet[$parsed["idemail"]] = new JuradoProfesional($parsed["idemail"], $parsed["nombre"], $parsed["contrasena"], $parsed["rutaavatar"], $parsed["curriculum"] );
-		}
+        }
+    }
 
-		foreach($dataset["establecimiento"] as $parsed){
-			$toRet[$parsed["idemail"]] = new Establecimiento($parsed["idemail"], $parsed["nombre"], $parsed["contrasena"], $parsed["rutaavatar"], $parsed["direccion"], $parsed["web"], $parsed["horario"], $parsed["rutaimagen"], $parsed["geoloc"]);
-		}
+    public static function getAllUsuarios()
+    {
+        $dataset = UserMapper::retrieveAll();
+        foreach ($dataset["juradopopular"] as $parsed) {
+            $toRet[$parsed["idemail"]] = new JuradoPopular($parsed["idemail"], $parsed["nombre"], $parsed["contrasena"], $parsed["rutaavatar"]);
+        }
 
-		return $toRet;
+        foreach ($dataset["juradoprofesional"] as $parsed) {
+            $toRet[$parsed["idemail"]] = new JuradoProfesional($parsed["idemail"], $parsed["nombre"], $parsed["contrasena"], $parsed["rutaavatar"], $parsed["curriculum"]);
+        }
 
-	}
+        foreach ($dataset["establecimiento"] as $parsed) {
+            $toRet[$parsed["idemail"]] = new Establecimiento($parsed["idemail"], $parsed["nombre"], $parsed["contrasena"], $parsed["rutaavatar"], $parsed["direccion"], $parsed["web"], $parsed["horario"], $parsed["rutaimagen"], $parsed["geoloc"]);
+        }
 
-    public function getTable(){
-        switch(get_class($this)){
+        return $toRet;
+
+    }
+
+    public function getTable()
+    {
+        switch (get_class($this)) {
             case "Administrador":
                 return "administrador";
                 break;
@@ -84,45 +106,45 @@ class Usuario{
         }
     }
 
-	public function getNombre()
-	{
-		return $this->nombre;
-	}
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
 
-	public function getIdemail()
-	{
-		return $this->idemail;
-	}
+    public function getIdemail()
+    {
+        return $this->idemail;
+    }
 
-	public function getContrasena()
-	{
-		return $this->contrasena;
-	}
+    public function getContrasena()
+    {
+        return $this->contrasena;
+    }
 
-	public function getRutaavatar()
-	{
-		return $this->rutaavatar;
-	}
+    public function getRutaavatar()
+    {
+        return $this->rutaavatar;
+    }
 
-	public function setContrasena($contrasena)
-	{
-		$this->contrasena = $contrasena;
-	}
+    public function setContrasena($contrasena)
+    {
+        $this->contrasena = $contrasena;
+    }
 
-	public function setIdemail($idemail)
-	{
-		$this->idemail = $idemail;
-	}
+    public function setIdemail($idemail)
+    {
+        $this->idemail = $idemail;
+    }
 
-	public function setNombre($nombre)
-	{
-		$this->nombre = $nombre;
-	}
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    }
 
-	public function setRutaavatar($rutaavatar)
-	{
-		$this->rutaavatar = $rutaavatar;
-	}
+    public function setRutaavatar($rutaavatar)
+    {
+        $this->rutaavatar = $rutaavatar;
+    }
 }
 
 

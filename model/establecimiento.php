@@ -18,6 +18,11 @@ class Establecimiento extends Usuario{
 		$this->geoloc = $geoloc;
 	}
 
+	public function deleteFromDatabase()
+	{
+		UserMapper::deleteFromDatabase($this->idemail, strtolower(get_class($this)));
+	}
+
 	public function registerUser(){
 		UserMapper::registerUser($this);
 	}
