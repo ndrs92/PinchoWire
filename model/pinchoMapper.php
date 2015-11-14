@@ -7,6 +7,7 @@ class PinchoMapper{
 
 	public static function retrieveAllAceptados(){
 		global $connectHandler;
+		$toRet = NULL;
 		$result = mysqli_query($connectHandler, "Select * from pincho where estadoPropuesta = 2");
 		while($row = mysqli_fetch_assoc($result)){
 			$toRet[$row["idnombre"]] = $row;
@@ -26,6 +27,7 @@ class PinchoMapper{
 
 	public static function retrieveAllComentarios($idnombre){
 		global $connectHandler;
+		$toRet = NULL;
 		$result = mysqli_query($connectHandler, "SELECT * FROM comentario WHERE pincho_idnombre = '".$idnombre."' ");
 		while($row = mysqli_fetch_assoc($result)){
 			$toRet[$row["idcomentario"]] = $row;

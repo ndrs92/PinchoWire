@@ -42,38 +42,31 @@ session_start();
 	}
 	?>
 
-	<?php
-	if(getAllPinchos()){
-		?>
-		<h1>Lista de Pinchos </h1>
-		<table border="1">
-			<thead>
-				<td>Nombre</td>
-				<td>Descripción</td>
-				<td>Precio</td>
-				<td>Ingredientes</td>
-			</thead>
-			<tbody>
-				<?php
-				foreach(getAllPinchos() as $pincho){
+	<h1>Lista de Pinchos </h1>
+	<table border="1">
+		<thead>
+			<td>Nombre</td>
+			<td>Descripción</td>
+			<td>Precio</td>
+			<td>Ingredientes</td>
+		</thead>
+		<tbody>
+			<?php
+			if (getAllPinchos() != NULL) {
+				foreach (getAllPinchos() as $pincho) {
 					echo "
-					<tr>
-						<td><a href='viewPincho.php?id=".$pincho->getIdnombre()."'  >".$pincho->getIdnombre()."</a></td>
-						<td>".$pincho->getDescripcion()."</td>
-						<td>".$pincho->getPrecio()."</td>
-						<td>".$pincho->getIngredientes()."</td>
-					</tr>
-					";
+				<tr>
+					<td><a href='viewPincho.php?id=" . $pincho->getIdnombre() . "'  >" . $pincho->getIdnombre() . "</a></td>
+					<td>" . $pincho->getDescripcion() . "</td>
+					<td>" . $pincho->getPrecio() . "</td>
+					<td>" . $pincho->getIngredientes() . "</td>
+				</tr>
+				";
 				}
-				?>
-			</tbody>
-		</table>
-
-		<?php
-	}else{
-		echo "<p>No hay pinchos para mostrar</p>";
-	}
-	?>
+			}
+			?>
+		</tbody>
+	</table>
 
 </body>
 </html>
