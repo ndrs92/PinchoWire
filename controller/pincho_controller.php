@@ -14,5 +14,7 @@ function getAllComentarios($pinchoActual){
 	return $pinchoActual->getAllComentarios();
 }
 
-
+function isProbado($pinchoid,$userid){
+	return PinchoMapper::isProbado($pinchoid,$userid);
+}
 ?>

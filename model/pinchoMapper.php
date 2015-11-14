@@ -53,6 +53,47 @@ class PinchoMapper{
 
 	}
 
+	public static function toggleMarcado($pinchoid,$userid){
+		global $connectHandler;
+		if (!$connectHandler) {
+			die("Connection failed: " . mysqli_connect_error());
+		}
+
+		if(PinchoMapper::isProbado($pinchoid,$userid)){
+			$query = "DELETE FROM probado WHERE pincho_idnombre = '$pinchoid' AND juradopopular_idemail = '$userid';";
+		}
+		else {
+			$query = "INSERT INTO probado (pincho_idnombre, juradopopular_idemail) VALUES ('$pinchoid','$userid');";
+		}
+		if(mysqli_query($connectHandler, $query)){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
+	public static function isProbado($pinchoid, $userid){
+		global $connectHandler;
+		if (!$connectHandler) {
+		die("Connection failed: " . mysqli_connect_error());
+		}
+
+		$query = "SELECT * FROM probado WHERE pincho_idnombre = '$pinchoid' AND juradopopular_idemail = '$userid';";
+		$result = mysqli_query($connectHandler, $query);
+		$exist = mysqli_num_rows($result);
+		if(mysqli_query($connectHandler, $query)){
+			if($exist == 1) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else{
+			return false;
+		}
+	}
 
 }
 

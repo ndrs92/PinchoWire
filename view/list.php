@@ -53,17 +53,25 @@ session_start();
 			<td><?= $l["view_list_description"] ?></td>
 			<td><?= $l["view_list_price"] ?></td>
 			<td><?= $l["view_list_ingredients"] ?></td>
+			<td><?= $l["view_list_eaten"]?></td>
 		</thead>
 		<tbody>
 			<?php
 			if (getAllPinchos() != NULL) {
 				foreach (getAllPinchos() as $pincho) {
+					if(isProbado($pincho->getIdnombre(),$_SESSION["user"]->getIdemail())){
+						$probado = $l["view_list_eaten"];
+					}
+					else{
+						$probado = $l["view_list_not_eaten"];
+					}
 					echo "
 				<tr>
 					<td><a href='viewPincho.php?id=" . $pincho->getIdnombre() . "'  >" . $pincho->getIdnombre() . "</a></td>
 					<td>" . $pincho->getDescripcion() . "</td>
 					<td>" . $pincho->getPrecio() . "</td>
 					<td>" . $pincho->getIngredientes() . "</td>
+					<td><a href='../controller/markeatenpincho_controller.php?markeatenpincho_probado_idpincho=". $pincho->getIdnombre() . "&markeatenpincho_probado_idmail=" . $_SESSION["user"]->getIdemail() . "'>" . $probado . "</a></td>
 				</tr>
 				";
 				}

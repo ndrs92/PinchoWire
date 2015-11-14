@@ -26,6 +26,8 @@
      "view_list_price" => "Precio",
      "view_list_ingredients" => "Ingredientes",
      "view_list_welcome_comma" => "Bienvenido, ",
+     "view_list_eaten" => "Probado",
+     "view_list_not_eaten" => "No probado",
 
     "view_enviarpropuesta_enviarpropuesta" => "Enviar propuesta",
     "view_enviarpropuesta_titulo" => "Introduce los datos de tu propuesta de pincho:",
