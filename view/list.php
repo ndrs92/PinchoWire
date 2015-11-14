@@ -51,15 +51,17 @@ session_start();
 		</thead>
 		<tbody>
 			<?php
-			foreach(getAllPinchos() as $pincho){
-				echo "
+			if (getAllPinchos() != NULL) {
+				foreach (getAllPinchos() as $pincho) {
+					echo "
 				<tr>
-					<td><a href='viewPincho.php?id=".$pincho->getIdnombre()."'  >".$pincho->getIdnombre()."</a></td>
-					<td>".$pincho->getDescripcion()."</td>
-					<td>".$pincho->getPrecio()."</td>
-					<td>".$pincho->getIngredientes()."</td>
+					<td><a href='viewPincho.php?id=" . $pincho->getIdnombre() . "'  >" . $pincho->getIdnombre() . "</a></td>
+					<td>" . $pincho->getDescripcion() . "</td>
+					<td>" . $pincho->getPrecio() . "</td>
+					<td>" . $pincho->getIngredientes() . "</td>
 				</tr>
 				";
+				}
 			}
 			?>
 		</tbody>

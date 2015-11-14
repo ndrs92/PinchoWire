@@ -12,7 +12,7 @@ if($_POST["addcomment_comment_name"] && $_POST["addcomment_comment_idpincho"]){
     $host  = $_SERVER['HTTP_HOST'];
     $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
     $relpath = '../view/viewPincho.php';
-    header("Location: http://$host$uri/$relpath");
+    header("Location: http://$host$uri/$relpath?id=".$_POST["addcomment_comment_idpincho"]);
 
 }else{
     //Sketchy, should be handled by javascript, user is not supposed to be here

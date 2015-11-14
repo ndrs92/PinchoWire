@@ -22,11 +22,12 @@ class Pincho {
     public static function getAllPinchos(){
         $mapperData = pinchoMapper::retrieveAllAceptados();
         
-
-        foreach($mapperData as $toMake){
-            $toRet[$toMake["idnombre"]] = new Pincho($toMake["idnombre"], $toMake["descripcion"], $toMake["precio"], $toMake["ingredientes"], $toMake["ganadorPopular"], $toMake["estadoPropuesta"], $toMake["establecimiento_idemail"]);
+        $toRet = NULL;
+        if($mapperData != NULL) {
+            foreach ($mapperData as $toMake) {
+                $toRet[$toMake["idnombre"]] = new Pincho($toMake["idnombre"], $toMake["descripcion"], $toMake["precio"], $toMake["ingredientes"], $toMake["ganadorPopular"], $toMake["estadoPropuesta"], $toMake["establecimiento_idemail"]);
+            }
         }
-
         return $toRet;
     }
 

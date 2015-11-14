@@ -23,67 +23,68 @@ $pinchoActual = getCurrentPincho($_GET["id"]);
 
 </head>
 <body>
-	<h3>Nombre del pincho </h3>
-	<p><?php echo $pinchoActual->getIdnombre(); ?></p>
+<h3>Nombre del pincho </h3>
+<p><?php echo $pinchoActual->getIdnombre(); ?></p>
 
-	<h3>Descripción del pincho </h3>
-	<p><?php echo $pinchoActual->getDescripcion(); ?></p>
+<h3>Descripción del pincho </h3>
+<p><?php echo $pinchoActual->getDescripcion(); ?></p>
 
-	<h3>Precio del pincho </h3>
-	<p><?php echo $pinchoActual->getPrecio(); ?></p>
+<h3>Precio del pincho </h3>
+<p><?php echo $pinchoActual->getPrecio(); ?></p>
 
-	<h3>Ingredientes del pincho </h3>
-	<p><?php echo $pinchoActual->getIngredientes(); ?></p>
+<h3>Ingredientes del pincho </h3>
+<p><?php echo $pinchoActual->getIngredientes(); ?></p>
 
-	<h3>Comentarios al pincho: </h3>
-	
+<h3>Comentarios al pincho: </h3>
+
+<?php
+if($_SESSION && get_class($_SESSION["user"]) == "JuradoPopular"){
+	?>
+	<h4>Insertar un comentario</h4>
+	<form action="../controller/addcomment_controller.php" method="POST">
+		<input type="hidden" name="addcomment_comment_idpincho" value="<?php echo $pinchoActual->getIdnombre(); ?>"/>
+		<textarea name="addcomment_comment_name" ></textarea>
+		<input type="submit" name="submit_button" value="Enviar Comentario" />
+	</form>
+	<?php
+}
+?>
+
+<table border="1">
+	<thead>
 	<?php
 	if($_SESSION && get_class($_SESSION["user"]) == "JuradoPopular"){
-		?>
-		<h4>Insertar un comentario</h4>
-		<form action="../controller/addcomment_controller.php" method="POST">
-			<input type="hidden" name="addcomment_comment_idpincho" value="<?php echo $pinchoActual->getIdnombre(); ?>"/>
-			<textarea name="addcomment_comment_name" ></textarea>
-			<input type="submit" name="submit_button" value="Enviar Comentario" />
-		</form>
-		<?php
+		echo "<td>Acciones</td>";
 	}
 	?>
 
-	<table border="1">
-		<thead>
-			<?php
-			if($_SESSION && get_class($_SESSION["user"]) == "JuradoPopular"){
-				echo "<td>Acciones</td>";
-			}
-			?>
-			
-			<td>Autor</td>
-			<td>Fecha</td>
-			<td>Comentario</td>
-		</thead>
-		<tbody>
-			<?php
-			foreach(getAllComentarios($pinchoActual) as $comentario){
-				echo "
+	<td>Autor</td>
+	<td>Fecha</td>
+	<td>Comentario</td>
+	</thead>
+	<tbody>
+	<?php
+	if(getAllComentarios($pinchoActual) != NULL) {
+		foreach (getAllComentarios($pinchoActual) as $comentario) {
+			echo "
 				<tr>";
-					if($_SESSION && get_class($_SESSION["user"]) == "JuradoPopular" && $_SESSION["user"]->getIdemail() == $comentario["juradopopular_idemail"]){
-						echo "<td><a href='../controller/eliminarcomentario_controller.php?delcomment_comment_id=". $comentario["idcomentario"]."'>Eliminar </a></td>";
-					}else{
-						if($_SESSION && get_class($_SESSION["user"]) == "JuradoPopular"){
-							echo "<td></td>";
-						}
-					}
-					
-					
-					echo "<td><a href='profile.php?idnombre=".$comentario["juradopopular_idemail"]."'  >".$comentario["juradopopular_idemail"]."</a></td>
-					<td>".$comentario["fecha"]."</td>
-					<td>".$comentario["contenido"]."</td>
+			if ($_SESSION && get_class($_SESSION["user"]) == "JuradoPopular" && $_SESSION["user"]->getIdemail() == $comentario["juradopopular_idemail"]) {
+				echo "<td><a href='../controller/eliminarcomentario_controller.php?delcomment_comment_id=" . $comentario["idcomentario"] . " &delcomment_comment_idpincho=" . $pinchoActual->getIdnombre() . "'>Eliminar </a></td>";
+			} else {
+				if ($_SESSION && get_class($_SESSION["user"]) == "JuradoPopular") {
+					echo "<td></td>";
+				}
+			}
+
+			echo "<td><a href='profile.php?idnombre=" . $comentario["juradopopular_idemail"] . "'  >" . $comentario["juradopopular_idemail"] . "</a></td>
+					<td>" . $comentario["fecha"] . "</td>
+					<td>" . $comentario["contenido"] . "</td>
 				</tr>
 				";
-			}
-			?>
-		</tbody>
-	</table>
+		}
+	}
+	?>
+	</tbody>
+</table>
 </body>
 </html>
