@@ -12,7 +12,7 @@ include_once "../resources/code/lang_coverage.php";
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title> <?= $l["view_enviarPropuesta_enviarPropuesta"] ?> </title>
+	<title> <?= $l["view_enviarpropuesta_enviarpropuesta"] ?> </title>
 	<link rel="stylesheet" type="text/css" href="../resources/bootstrap/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="../resources/bootstrap/css/bootstrap-theme.css" />
 	<link rel="stylesheet" type="text/css" href="../css/main.css" />

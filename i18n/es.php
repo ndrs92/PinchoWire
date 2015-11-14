@@ -24,6 +24,14 @@
     "view_enviarpropuesta_introingredientes_placeholder" => "Ingredientes del pincho...",
     "view_enviarpropuesta_enviar" => "Enviar propuesta",
 
+    "view_editpropuesta_editpropuesta" => "Editar propuesta",
+    "view_editpropuesta_titulo" => "Modifique los datos de su propuesta de pincho:",
+    "view_editpropuesta_intronombre" => "Nombre: ",
+    "view_editpropuesta_introdescripcion" => "Su descripción: ",
+    "view_editpropuesta_introprecio" => "Precio: ",
+    "view_editpropuesta_introingredientes" => "Los Ingredientes: ",
+    "view_editpropuesta_enviar" => "Editar propuesta",
+
     "view_addcomment_tittle" => "Añadir comentario",
     "view_addcomment_comment" => "Comentario",
     "view_addcomment_send" => "Enviar comentario",

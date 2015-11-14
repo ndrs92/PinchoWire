@@ -33,6 +33,7 @@ session_start();
 		echo "<br/>";
 		if(get_class($_SESSION["user"]) == "Establecimiento"){
 			echo "<a href='enviarpropuesta.php'>Enviar Propuesta</a><br/>";
+			echo "<a href='editpropuesta.php'>Editar Propuesta</a><br/>";
 		}
 		if(get_class($_SESSION["user"]) == "Administrador"){
 			echo "<a href='./view_administrar.php'>Administar el Concurso </a><br/>";

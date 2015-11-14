@@ -159,6 +159,18 @@ class UserMapper{
         }
       }
 
+      public static function havePropuesta($idemail){
+        global $connectHandler;
+        $query="SELECT * FROM pincho WHERE establecimiento_idemail = '$idemail' "; 
+        if($result = mysqli_query($connectHandler, $query)){
+          $row=mysqli_fetch_assoc($result);
+          return $row;
+        }  
+        else{
+          return $row;     
+        }
+      }
+
     }
 
     ?>

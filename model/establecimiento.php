@@ -1,6 +1,7 @@
 <?php
 include_once "usuario.php";
 include_once("./../resources/code/bd_manage.php");
+include_once("pinchoMapper.php");
 
 class Establecimiento extends Usuario{
 	private $direccion;
@@ -23,21 +24,12 @@ class Establecimiento extends Usuario{
 	}
 
 	public function enviar_propuesta($nombre, $descripcion, $ingredientes, $precio){
-		//Abrir conexion BD
-		global $connectHandler;
-		if (!$connectHandler) {
-			die("Connection failed: " . mysqli_connect_error());
-		}
+		//Abrir conexion BD $this->idemail
 		
-		$query = "INSERT INTO pincho (idnombre, descripcion, ingredientes, precio, estadoPropuesta, ganadorPopular, establecimiento_idemail) VALUES ('$nombre','$descripcion','$ingredientes', $precio, 0, null,'$this->idemail');";
-		
-
-		if(mysqli_query($connectHandler, $query)){
-			return true;
-		}  
-		else{
-			return false;			
-		}
+		return PinchoMapper::addPropuesta($nombre, $descripcion, $ingredientes, $precio, $this->idemail); 
+	}
+	public function havePropuesta(){
+		return UserMapper::havePropuesta($this->idemail);
 	}
 
 	public function getDireccion()
