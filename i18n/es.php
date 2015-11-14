@@ -11,7 +11,21 @@
     "view_login_forgot" => "He olvidado mi contraseña",
     "view_login_register" => "Registro",
     "view_login_pinchowire" => "Pincho Wire",
-    
+
+     "view_list_login" => "Identificarse",
+     "view_list_register_user" => "Registrarse (Jurado Popular)",
+     "view_list_register_establishment" => "Registrarse (Jurado Profesional)",
+     "view_list_send_proposal" => "Enviar Propuesta",
+     "view_list_admin_event" => "Administrar Concurso",
+     "view_list_view_profile" => "Ver Perfil",
+     "view_list_disconnect" => "Desconectarse",
+     "view_list_list_pinchos" => "Lista de Pinchos",
+     "view_list_name" => "Nombre",
+     "view_list_description" => "Descripción",
+     "view_list_price" => "Precio",
+     "view_list_ingredients" => "Ingredientes",
+     "view_list_welcome_comma" => "Bienvenido, ",
+
     "view_enviarpropuesta_enviarpropuesta" => "Enviar propuesta",
     "view_enviarpropuesta_titulo" => "Introduce los datos de tu propuesta de pincho:",
     "view_enviarpropuesta_intronombre" => "Nombre: ",
@@ -28,9 +42,8 @@
     "view_addcomment_comment" => "Comentario",
     "view_addcomment_send" => "Enviar comentario",
     "view_addcomment_comment_placeholder" => "Escribe un comentario...",
-    );
 
-$p = array(
+
     "view_profile_edit" => "Perfil",
     "view_profile_idmail" => "Correo electrónico",
     "view_profile_title" => "Gestión de perfil",

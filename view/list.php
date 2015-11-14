@@ -4,6 +4,8 @@ include_once "../model/juradopopular.php";
 include_once "../model/juradoprofesional.php";
 include_once "../model/establecimiento.php";
 include_once "../model/administrador.php";
+include_once "../resources/code/lang_coverage.php";
+
 session_start();
 ?>
 <html>
@@ -23,32 +25,32 @@ session_start();
 	<?php
 	if(!$_SESSION){
 		?>
-		<a href="./login.php">Identificarse</a><br>
-		<a href="./register_user.php">Registrarse (Jurado Popular)</a><br>
-		<a href="./register_establishment.php">Registrarse (Establecimiento)</a><br>
+		<a href="./login.php"><?= $l["view_list_login"] ?></a><br>
+		<a href="./register_user.php"><?= $l["view_list_register_user"] ?></a><br>
+		<a href="./register_establishment.php"><?= $l["view_list_register_establishment"] ?></a><br>
 
 		<?php
 	}else{
-		echo "Bienvenido, ".$_SESSION["user"]->getNombre();
+		echo $l["view_list_welcome_comma"].$_SESSION["user"]->getNombre();
 		echo "<br/>";
 		if(get_class($_SESSION["user"]) == "Establecimiento"){
-			echo "<a href='enviarpropuesta.php'>Enviar Propuesta</a><br/>";
+			echo "<a href='enviarpropuesta.php'>".$l["view_list_send_proposal"]."</a><br/>";
 		}
 		if(get_class($_SESSION["user"]) == "Administrador"){
-			echo "<a href='./view_administrar.php'>Administar el Concurso </a><br/>";
+			echo "<a href='./view_administrar.php'>".$l["view_list_admin_event"]."</a><br/>";
 		}
-		echo "<a href='profile.php'>Ver perfil</a><br/>";
-		echo "<a href='../controller/logout_controller.php'>Desconectarse</a><br/>";
+		echo "<a href='profile.php'>".$l["view_list_view_profile"]."</a><br/>";
+		echo "<a href='../controller/logout_controller.php'>".$l["view_list_disconnect"]."</a><br/>";
 	}
 	?>
 
-	<h1>Lista de Pinchos </h1>
+	<h1><?= $l["view_list_list_pinchos"] ?></h1>
 	<table border="1">
 		<thead>
-			<td>Nombre</td>
-			<td>Descripción</td>
-			<td>Precio</td>
-			<td>Ingredientes</td>
+			<td><?= $l["view_list_name"] ?></td>
+			<td><?= $l["view_list_description"] ?></td>
+			<td><?= $l["view_list_price"] ?></td>
+			<td><?= $l["view_list_ingredients"] ?></td>
 		</thead>
 		<tbody>
 			<?php
