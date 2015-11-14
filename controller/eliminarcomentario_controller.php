@@ -4,10 +4,10 @@ include_once "../model/juradopopular.php";
 include_once "../model/pincho.php";
 session_start();
 
-if($_POST["delcomment_comment_id"]){
+if($_GET["delcomment_comment_id"]){
     //All params for delete a comment OK
 
-    $_SESSION["user"]->eliminar_pincho($_POST["delcomment_comment_id"]);
+    $_SESSION["user"]->eliminar_pincho($_GET["delcomment_comment_id"]);
 
     $host  = $_SERVER['HTTP_HOST'];
     $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');

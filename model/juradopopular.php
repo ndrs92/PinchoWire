@@ -24,7 +24,7 @@ class JuradoPopular extends Usuario{
         //Abrir conexion BD
         include_once("./../resources/code/bd_manage.php");
         global $connectHandler;
-        $query = "DELETE FROM comentario WHERE (idcomentario = '$idpincho' AND juradopopular_idemail = '$this->nombre')";
+        $query = "DELETE FROM comentario WHERE (idcomentario = $idpincho AND juradopopular_idemail = '$this->idemail')";
         echo($query);
 
         if(mysqli_query($connectHandler, $query)){
