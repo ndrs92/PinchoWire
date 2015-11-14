@@ -1,2 +1,5 @@
+.Trash*
 .git/*
 .idea/*
+._*
+.DS*

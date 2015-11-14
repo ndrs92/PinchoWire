@@ -25,6 +25,7 @@ include_once "../controller/pincho_controller.php";
 		Contraseña: <input type="password" name="contrasena" /><br/>
 		Repite tu contraseña: <input type="password" name="contrasena_verif" /><br/>
 		Fotografia: <input type="file" name="foto" /><br/>
+		Avatar: <input type="file" name="rutaavatar" /><br/>
 		<input type="submit" value="Crear usuario" /><br/>
 	</form>
 

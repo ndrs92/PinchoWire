@@ -12,7 +12,9 @@ class PinchoMapper{
 		while($row = mysqli_fetch_assoc($result)){
 			$toRet[$row["idnombre"]] = $row;
 		}
-		return $toRet;
+		if(isset($toRet)){
+			return $toRet;
+		}
 	}
 
 	public static function find($idnombre){

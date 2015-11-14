@@ -8,6 +8,11 @@ class JuradoProfesional extends Usuario{
 		$this->curriculum = $curriculum;
 	}
 
+	public function deleteFromDatabase()
+	{
+		UserMapper::deleteFromDatabase($this->idemail, strtolower(get_class($this)));
+	}
+
 	public function getCurriculum()
 	{
 		return $this->curriculum;

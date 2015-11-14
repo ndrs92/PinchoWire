@@ -5,6 +5,19 @@ include_once("../resources/code/bd_manage.php");
 
 class UserMapper{
 
+  public static function deleteFromDatabase($idemail, $usertype){
+    global $connectHandler;
+    $query = "Delete from ".$usertype." where idemail='".$idemail."'";
+
+    $status = mysqli_query($connectHandler, $query);
+    if($status == true){
+      return;
+    }else{
+      echo "error, probablemente existan comentarios o informacion para borrar en cascada en este usuario. hay que arreglar eso";
+      exit();;
+    }
+  }
+
   public static function retrieveAll(){
       global $connectHandler;
       $query = "Select * from juradopopular";

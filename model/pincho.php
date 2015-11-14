@@ -21,7 +21,7 @@ class Pincho {
 
     public static function getAllPinchos(){
         $mapperData = pinchoMapper::retrieveAllAceptados();
-        
+
         $toRet = NULL;
         if($mapperData != NULL) {
             foreach ($mapperData as $toMake) {
