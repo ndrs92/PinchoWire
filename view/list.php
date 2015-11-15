@@ -34,13 +34,20 @@ session_start();
 		echo $l["view_list_welcome_comma"].$_SESSION["user"]->getNombre();
 		echo "<br/>";
 		if(get_class($_SESSION["user"]) == "Establecimiento"){
+			if(!$_SESSION["user"]->havePinchoAccepted()){
+				echo "<a href='enviarpropuesta.php'>".$l["view_list_send_proposal"]."</a><br/>";
+				echo "<a href='editpropuesta.php'>".$l["view_list_edit_proposal"]."</a><br/>";
+			}else{
+				echo " - Tu pincho está concursando! <br/>";
 
-			echo "<a href='enviarpropuesta.php'>".$l["view_list_send_proposal"]."</a><br/>";
-			echo "<a href='editpropuesta.php'>".$l["view_list_edit_proposal"]."</a><br/>";
+				echo "<a href='./view_establishment_codes.php'>".$l["view_list_establishment_codes"]."</a><br/>";
+				
+			}
 		}
 		if(get_class($_SESSION["user"]) == "Administrador"){
 			echo "<a href='./view_administrar.php'>".$l["view_list_admin_event"]."</a><br/>";
 		}
+		
 		echo "<a href='profile.php'>".$l["view_list_view_profile"]."</a><br/>";
 		echo "<a href='../controller/logout_controller.php'>".$l["view_list_disconnect"]."</a><br/>";
 	}

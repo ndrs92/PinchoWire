@@ -2,6 +2,7 @@
 include_once "usuario.php";
 include_once("./../resources/code/bd_manage.php");
 include_once("pinchoMapper.php");
+include_once("pincho.php");
 
 class Establecimiento extends Usuario{
 	private $direccion;
@@ -38,6 +39,19 @@ class Establecimiento extends Usuario{
 	}
 	public function havePropuesta(){
 		return UserMapper::havePropuesta($this->idemail);
+	}
+
+	public function havePinchoAccepted(){
+		return UserMapper::havePinchoAccepted($this->idemail);
+	}
+
+	public function getAssociatedPincho(){
+		$target = PinchoMapper::getPinchoByIdemail($this->idemail);
+		if(isset($target)){
+			return new Pincho($target["idnombre"], $target["descripcion"], $target["precio"], $target["ingredientes"], $target["ganadorPopular"], $target["estadoPropuesta"] );
+		}else{
+			return NULL;
+		}
 	}
 
 	public function getDireccion()

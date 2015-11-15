@@ -19,8 +19,40 @@ class Pincho {
         $this->estadopropuesta = $estadopropuesta;
     }
 
-    public function getEstablecimiento(){
 
+    public function createCodes($numberOfCodes){
+        for($i = 0; $i < $numberOfCodes; $i++){
+            $code = uniqid();
+            PinchoMapper::createCodeForPincho($code, $this->getIdnombre());
+        }
+    }
+
+    public function getAllCodes(){
+        $mapperData = pinchoMapper::retrieveAllCodes($this->getIdnombre());
+
+        $toRet = NULL;
+        if($mapperData != NULL) {
+            $toRet = $mapperData;
+        }
+        return $toRet;
+    } 
+
+    public function getRetrievedCodes(){
+        $mapperData = pinchoMapper::retrieveRetrievedCodes($this->getIdnombre());
+        $toRet = NULL;
+        if($mapperData != NULL) {
+            $toRet = $mapperData;
+        }
+        return $toRet;
+    }
+
+    public function getAvailableCodes(){
+        $mapperData = pinchoMapper::retrieveUnusedCodes($this->getIdnombre());
+        $toRet = NULL;
+        if($mapperData != NULL) {
+            $toRet = $mapperData;
+        }
+        return $toRet;
     }
 
     public static function getAllPropuestas(){

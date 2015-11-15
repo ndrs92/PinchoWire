@@ -54,6 +54,75 @@ class PinchoMapper{
 
 	}
 
+	public static function createCodeForPincho($code, $idnombre){
+		global $connectHandler;
+		$query = "INSERT INTO codigo(pincho_idnombre, idcodigo) values('$idnombre', '$code')";
+		mysqli_query($connectHandler, $query);
+	}
+
+	public static function retrieveAllCodes($idnombre){
+		global $connectHandler;
+		$query = "Select * from codigo where pincho_idnombre = '$idnombre'";
+
+		$result = mysqli_query($connectHandler, $query);	
+		
+
+		while($row = mysqli_fetch_assoc($result)){
+			$toRet[$row["idcodigo"]] = $row;
+		}
+
+		return $toRet;
+
+	}
+
+
+	public static function retrieveRetrievedCodes($idnombre){
+		global $connectHandler;
+		$query = "Select * from canjea";
+
+		$result = mysqli_query($connectHandler, $query);	
+		
+		$allCodes =  PinchoMapper::retrieveAllCodes($idnombre);
+
+		while($row = mysqli_fetch_assoc($result)){
+			$allRetrievedCodes[$row["codigo_idcodigo"]] = $row;
+		}
+
+		foreach($allRetrievedCodes as $individual){
+			if(array_key_exists($individual["codigo_idcodigo"], $allCodes)){
+				$toRet[$individual["codigo_idcodigo"]] = $individual;
+			}
+		}
+
+
+		return $toRet;
+
+	}
+
+	public static function retrieveUnusedCodes($idnombre){
+		global $connectHandler;
+		$query = "Select * from canjea";
+
+		$result = mysqli_query($connectHandler, $query);	
+		
+		$allCodes =  PinchoMapper::retrieveAllCodes($idnombre);
+
+		while($row = mysqli_fetch_assoc($result)){
+			$allRetrievedCodes[$row["codigo_idcodigo"]] = $row;
+		}
+
+		foreach($allCodes as $individual){
+			if(!array_key_exists($individual["idcodigo"], $allRetrievedCodes)){
+				$toRet[$individual["idcodigo"]] = $individual;
+			}
+		}
+
+
+		return $toRet;
+
+	}
+
+
 	public static function addPropuesta($nombre, $descripcion, $ingredientes, $precio, $idemail){
 		global $connectHandler;
 		if (!$connectHandler) {
@@ -104,6 +173,18 @@ class PinchoMapper{
 		}
 		else{
 			return false;
+		}
+	}
+
+	public static function getPinchoByIdemail($idemail){
+		global $connectHandler;
+		$query="SELECT * FROM pincho WHERE establecimiento_idemail = '$idemail' AND estadoPropuesta = 2"; 
+		if($result = mysqli_query($connectHandler, $query)){
+			$row=mysqli_fetch_assoc($result);
+			return $row;
+		}  
+		else{
+			return $row;     
 		}
 	}
 

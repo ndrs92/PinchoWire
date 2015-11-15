@@ -19,26 +19,26 @@ class UserMapper{
   }
 
   public static function retrieveAll(){
-      global $connectHandler;
-      $query = "Select * from juradopopular";
-      $result = mysqli_query($connectHandler, $query);
-      while($row = mysqli_fetch_assoc($result)){
-        $toRet["juradopopular"][$row["idemail"]] = $row;
-      }
+    global $connectHandler;
+    $query = "Select * from juradopopular";
+    $result = mysqli_query($connectHandler, $query);
+    while($row = mysqli_fetch_assoc($result)){
+      $toRet["juradopopular"][$row["idemail"]] = $row;
+    }
 
-      $query = "Select * from juradoprofesional";
-      $result = mysqli_query($connectHandler, $query);
-      while($row = mysqli_fetch_assoc($result)){
-        $toRet["juradoprofesional"][$row["idemail"]] = $row;
-      }
+    $query = "Select * from juradoprofesional";
+    $result = mysqli_query($connectHandler, $query);
+    while($row = mysqli_fetch_assoc($result)){
+      $toRet["juradoprofesional"][$row["idemail"]] = $row;
+    }
 
-      $query = "Select * from establecimiento";
-      $result = mysqli_query($connectHandler, $query);
-      while($row = mysqli_fetch_assoc($result)){
-        $toRet["establecimiento"][$row["idemail"]] = $row;
-      }
+    $query = "Select * from establecimiento";
+    $result = mysqli_query($connectHandler, $query);
+    while($row = mysqli_fetch_assoc($result)){
+      $toRet["establecimiento"][$row["idemail"]] = $row;
+    }
 
-      return $toRet;
+    return $toRet;
   }
 
   public static function registerUser($userObject){
@@ -116,7 +116,7 @@ class UserMapper{
       }
     }
         return null; //No es nadie
-  }
+      }
 
       public static function update($mail, $pass, $name, $avatar, $typeuser, $curriculum, $direccion, $web, $horario, $imagen, $geoloc){
         global $connectHandler;
@@ -171,6 +171,21 @@ class UserMapper{
 
         }
       }
+
+      
+
+      public static function havePinchoAccepted($idemail){
+        global $connectHandler;
+        $query="SELECT * FROM pincho WHERE establecimiento_idemail = '$idemail' AND estadoPropuesta = 2"; 
+        if($result = mysqli_query($connectHandler, $query)){
+          $row=mysqli_fetch_assoc($result);
+          return $row;
+        }  
+        else{
+          return $row;     
+        }
+      }
+
 
       public static function havePropuesta($idemail){
         global $connectHandler;

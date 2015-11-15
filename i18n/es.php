@@ -29,6 +29,7 @@
      "view_list_eaten" => "Probado",
      "view_list_not_eaten" => "No probado",
      "view_list_eaten_not_logged" => "Identifícate para marcarlo!",
+     "view_list_establishment_codes" => "Códigos para mi pincho",
 
     "view_enviarpropuesta_enviarpropuesta" => "Enviar propuesta",
     "view_enviarpropuesta_titulo" => "Introduce los datos de tu propuesta de pincho:",
