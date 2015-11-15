@@ -14,7 +14,7 @@
 
      "view_list_login" => "Identificarse",
      "view_list_register_user" => "Registrarse (Jurado Popular)",
-     "view_list_register_establishment" => "Registrarse (Jurado Profesional)",
+     "view_list_register_establishment" => "Registrarse (Establecimiento)",
      "view_list_send_proposal" => "Enviar Propuesta",
      "view_list_edit_proposal" => "Editar Propuesta",
      "view_list_admin_event" => "Administrar Concurso",
@@ -28,6 +28,7 @@
      "view_list_welcome_comma" => "Bienvenido, ",
      "view_list_eaten" => "Probado",
      "view_list_not_eaten" => "No probado",
+     "view_list_eaten_not_logged" => "Identifícate para marcarlo!",
 
     "view_enviarpropuesta_enviarpropuesta" => "Enviar propuesta",
     "view_enviarpropuesta_titulo" => "Introduce los datos de tu propuesta de pincho:",

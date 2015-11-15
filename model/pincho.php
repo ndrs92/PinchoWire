@@ -19,13 +19,29 @@ class Pincho {
         $this->estadopropuesta = $estadopropuesta;
     }
 
+    public function getEstablecimiento(){
+
+    }
+
+    public static function getAllPropuestas(){
+        $mapperData = pinchoMapper::retrieveAllPropuestas();
+
+        $toRet = NULL;
+        if($mapperData != NULL) {
+            foreach ($mapperData as $toMake) {
+                $toRet[$toMake["establecimiento_idemail"]] = new Pincho($toMake["idnombre"], $toMake["descripcion"], $toMake["precio"], $toMake["ingredientes"], $toMake["ganadorPopular"], $toMake["estadoPropuesta"], $toMake["establecimiento_idemail"]);
+            }
+        }
+        return $toRet;
+    }
+
     public static function getAllPinchos(){
         $mapperData = pinchoMapper::retrieveAllAceptados();
 
         $toRet = NULL;
         if($mapperData != NULL) {
             foreach ($mapperData as $toMake) {
-                $toRet[$toMake["idnombre"]] = new Pincho($toMake["idnombre"], $toMake["descripcion"], $toMake["precio"], $toMake["ingredientes"], $toMake["ganadorPopular"], $toMake["estadoPropuesta"], $toMake["establecimiento_idemail"]);
+                $toRet[$toMake["establecimiento_idemail"]] = new Pincho($toMake["idnombre"], $toMake["descripcion"], $toMake["precio"], $toMake["ingredientes"], $toMake["ganadorPopular"], $toMake["estadoPropuesta"], $toMake["establecimiento_idemail"]);
             }
         }
         return $toRet;
@@ -99,6 +115,7 @@ class Pincho {
     public function setEstadopropuesta($estadopropuesta)
     {
         $this->estadopropuesta = $estadopropuesta;
+        PinchoMapper::updateEstado($this->getEstadopropuesta(), $this->getIdnombre());
     }
 }
 

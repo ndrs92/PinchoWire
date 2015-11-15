@@ -20,6 +20,7 @@ session_start();
 </head>
 <body>
 	<h1>Administración del Concurso</h1>
-	<a href="view_admin_usuarios.php"> Administrar Usuarios </a>
+	<a href="view_admin_usuarios.php"> Administrar Usuarios </a><br/>
+	<a href="view_admin_propuestas.php"> Administrar Propuestas de Pinchos </a><br/>
 </body>
 </html>

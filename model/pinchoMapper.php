@@ -5,10 +5,28 @@ include_once("../resources/code/bd_manage.php");
 
 class PinchoMapper{
 
+	public static function updateEstado($new, $target){
+		global $connectHandler;
+		$query = "UPDATE pincho SET estadoPropuesta = '".$new."' WHERE idnombre = '".$target."'";
+		mysqli_query($connectHandler,$query);
+	}
+
 	public static function retrieveAllAceptados(){
 		global $connectHandler;
 		$toRet = NULL;
 		$result = mysqli_query($connectHandler, "Select * from pincho where estadoPropuesta = 2");
+		while($row = mysqli_fetch_assoc($result)){
+			$toRet[$row["idnombre"]] = $row;
+		}
+		if(isset($toRet)){
+			return $toRet;
+		}
+	}
+
+	public static function retrieveAllPropuestas(){
+		global $connectHandler;
+		$toRet = NULL;
+		$result = mysqli_query($connectHandler, "Select * from pincho where estadoPropuesta in (0,1)");
 		while($row = mysqli_fetch_assoc($result)){
 			$toRet[$row["idnombre"]] = $row;
 		}
@@ -92,7 +110,7 @@ class PinchoMapper{
 	public static function isProbado($pinchoid, $userid){
 		global $connectHandler;
 		if (!$connectHandler) {
-		die("Connection failed: " . mysqli_connect_error());
+			die("Connection failed: " . mysqli_connect_error());
 		}
 
 		$query = "SELECT * FROM probado WHERE pincho_idnombre = '$pinchoid' AND juradopopular_idemail = '$userid';";
