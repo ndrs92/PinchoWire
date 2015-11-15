@@ -24,7 +24,7 @@ session_start();
 <body>
 	<?php
 		$row = $_SESSION["user"]->havePropuesta();
-		if(!empty($row)){
+		if(!empty($row) && $row["estadoPropuesta"] == 0){
 	?>
 	<h1><?= $l["view_editpropuesta_titulo"] ?> </h1>
 	<form action="../controller/editpropuesta_controller.php" method="POST">
@@ -40,7 +40,7 @@ session_start();
 	</form>
 	<?php 
 		}else{
-			echo "No tiene una propuesta, por lo que no se puede editar<br/>";
+			echo "No tiene una propuesta, por lo que no se puede editar o su propuesta ya ha sido validada<br/>";
 			echo "<a href='./list.php'>Volver a pagina principal</a>";
 		}
 	?>

@@ -53,6 +53,22 @@ class PinchoMapper{
 
 	}
 
+	public static function editPropuesta($nombre, $descripcion, $ingredientes, $precio, $idemail){
+		global $connectHandler;
+		if (!$connectHandler) {
+			die("Connection failed: " . mysqli_connect_error());
+		}
+		
+		$query = "UPDATE pincho SET idnombre = '$nombre', descripcion = '$descripcion', ingredientes = '$ingredientes', precio = $precio WHERE establecimiento_idemail = '$idemail';";
+		if(mysqli_query($connectHandler, $query)){
+			return true;
+		}  
+		else{
+			return false;			
+		}
+
+	}
+
 	public static function toggleMarcado($pinchoid,$userid){
 		global $connectHandler;
 		if (!$connectHandler) {
