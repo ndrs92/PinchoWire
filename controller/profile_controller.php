@@ -3,9 +3,8 @@ include_once "../model/usuario.php";
 session_start();
 
 
-function verPerfil($user){
-    $usertype = $user->getTable();
-    $user = UserMapper::findByEmail($user->getIdemail(), $usertype);
+function verPerfil($idemail){
+    $user = Usuario::getByIdemail($idemail);
 
     if ($user == NULL) {
         $host  = $_SERVER['HTTP_HOST'];
@@ -21,7 +20,7 @@ if (isset($_POST["profile_user_submit"])) {
 
     if ($_POST["profile_mail"] && $_POST["profile_pass"] && $_POST["profile_name"]) {
 
-        switch ($_SESSION["user"]->getTable()) {
+        switch ($_POST["type"]) {
 
             case "administrador":
                 userMapper::update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $_POST["profile_avatar"], "administrador", NULL, NULL, NULL, NULL, NULL, NULL);
@@ -42,7 +41,7 @@ if (isset($_POST["profile_user_submit"])) {
 
         $host  = $_SERVER['HTTP_HOST'];
         $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-        $relpath = '../view/profile.php';
+        $relpath = '../view/profile.php?idemail='.$_POST["profile_mail"];
         header("Location: http://$host$uri/$relpath");
     } else {
         throw new Exception("Ningun campo puede estar vacio. Comprobar javascript");

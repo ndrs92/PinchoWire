@@ -48,7 +48,7 @@ session_start();
 			echo "<a href='./view_administrar.php'>".$l["view_list_admin_event"]."</a><br/>";
 		}
 		
-		echo "<a href='profile.php'>".$l["view_list_view_profile"]."</a><br/>";
+		echo "<a href='profile.php?idemail=".$_SESSION['user']->getIdemail()."'>".$l["view_list_view_profile"]."</a><br/>";
 		echo "<a href='../controller/logout_controller.php'>".$l["view_list_disconnect"]."</a><br/>";
 	}
 	?>

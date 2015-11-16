@@ -9,17 +9,25 @@ include_once "../model/usuario.php";
 
 $_GET["action"]($_GET["idemail"]);
 
-$host  = $_SERVER['HTTP_HOST'];
-$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-
-$relpath = '../view/view_admin_usuarios.php'; 
-
-header("Location: http://$host$uri/$relpath");
-
 function delete_popular($idemail)
 {
     $toDelete = Usuario::getByIdemail($idemail);
     $toDelete->deleteFromDatabase();
+    $host  = $_SERVER['HTTP_HOST'];
+    $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+
+    $relpath = '../view/view_admin_usuarios.php';
+
+    header("Location: http://$host$uri/$relpath");
+
+}
+
+function edit($idemail)
+{
+    $host  = $_SERVER['HTTP_HOST'];
+    $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+    $relpath = '../view/profile.php?idemail='.$idemail;
+    header("Location: http://$host$uri/$relpath");
 
 }
 
@@ -27,6 +35,12 @@ function delete_professional($idemail)
 {
     $toDelete = Usuario::getByIdemail($idemail);
     $toDelete->deleteFromDatabase();
+    $host  = $_SERVER['HTTP_HOST'];
+    $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+
+    $relpath = '../view/view_admin_usuarios.php';
+
+    header("Location: http://$host$uri/$relpath");
 
 }
 
@@ -34,5 +48,11 @@ function delete_establishment($idemail)
 {
     $toDelete = Usuario::getByIdemail($idemail);
     $toDelete->deleteFromDatabase();
+    $host  = $_SERVER['HTTP_HOST'];
+    $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+
+    $relpath = '../view/view_admin_usuarios.php';
+
+    header("Location: http://$host$uri/$relpath");
 
 }

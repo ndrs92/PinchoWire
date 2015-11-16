@@ -40,14 +40,17 @@ $allUsers = getAllUsuarios();
         echo "<td>" . get_class($user) . "</td>";
         echo "<td>";
         if (get_class($user) == "JuradoPopular") {
-            echo "<a href='../controller/useradmin_controller.php?action=delete_popular&idemail=" . $user->getIdemail() . "'>Eliminar</a>";
+            echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'>Editar</a>";
+            echo ", <a href='../controller/useradmin_controller.php?action=delete_popular&idemail=" . $user->getIdemail() . "'>Eliminar</a>";
             echo ", <a href='../controller/useradmin_controller.php?action=promote&idemail=" . $user->getIdemail() . "'>Promocionar a Jurado Profesional</a>";
         }
         if (get_class($user) == "JuradoProfesional") {
-            echo "<a href='../controller/useradmin_controller.php?action=delete_professional&idemail=" . $user->getIdemail() . "'>Eliminar</a>";
+            echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'>Editar</a>";
+            echo ", <a href='../controller/useradmin_controller.php?action=delete_professional&idemail=" . $user->getIdemail() . "'>Eliminar</a>";
         }
         if (get_class($user) == "Establecimiento") {
-            echo "<a href='../controller/useradmin_controller.php?action=delete_establishment&idemail=" . $user->getIdemail() . "'>Eliminar</a>";
+            echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'>Editar</a>";
+            echo ", <a href='../controller/useradmin_controller.php?action=delete_establishment&idemail=" . $user->getIdemail() . "'>Eliminar</a>";
         }
         echo "</td>";
         echo "</tr>";

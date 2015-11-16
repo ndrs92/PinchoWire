@@ -123,13 +123,12 @@ class UserMapper{
 
         switch($typeuser){
           case "administrador":
-          $lastmail = $_SESSION["user"]->getIdemail();
           $result = mysqli_query($connectHandler, "UPDATE administrador
             SET idemail=\"$mail\",
             nombre=\"$name\",
             contrasena=\"$pass\",
             rutaavatar=\"$avatar\"
-            WHERE idemail=\"$lastmail\"");
+            WHERE idemail=\"$mail\"");
           break;
 
           case "juradoprofesional":
@@ -140,7 +139,7 @@ class UserMapper{
             contrasena=\"$pass\",
             rutaavatar=\"$avatar\",
             curriculum=\"$curriculum\"
-            WHERE idemail=\"$lastmail\"");
+            WHERE idemail=\"$mail\"");
           break;
 
           case "juradopopular":
@@ -150,7 +149,7 @@ class UserMapper{
             nombre=\"$name\",
             contrasena=\"$pass\",
             rutaavatar=\"$avatar\"
-            WHERE idemail=\"$lastmail\"");
+            WHERE idemail=\"$mail\"");
           break;
 
           case "establecimiento":
@@ -165,7 +164,7 @@ class UserMapper{
             web=\"$web\",
             horario=\"$horario\",
             rutaimagen=\"$imagen\"
-            WHERE idemail=\"$lastmail\"");
+            WHERE idemail=\"$mail\"");
           break;
 
 
