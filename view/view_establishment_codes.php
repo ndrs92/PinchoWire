@@ -59,11 +59,17 @@ $retrievedCodes = $pinchoTarget->getRetrievedCodes();
 		<tbody>
 
 			<?php
-			foreach($retrievedCodes as $fila){
-				echo "<tr>";
-				echo "<td>".$fila["codigo_idcodigo"]."</td>";
-				echo "<td>".$fila["juradopopular_idemail"]."</td>";
-				echo "</tr>";
+			if(isset($retrievedCodes)){
+
+				foreach($retrievedCodes as $fila){
+					echo "<tr>";
+					echo "<td>".$fila["codigo_idcodigo"]."</td>";
+					echo "<td>".$fila["juradopopular_idemail"]."</td>";
+					echo "</tr>";
+				}
+				
+			}else{
+				echo "No hay codigos canjeados";
 			}
 
 			?>

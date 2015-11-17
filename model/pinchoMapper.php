@@ -78,6 +78,7 @@ class PinchoMapper{
 
 	public static function retrieveRetrievedCodes($idnombre){
 		global $connectHandler;
+		$toRet = NULL;
 		$query = "Select * from canjea";
 
 		$result = mysqli_query($connectHandler, $query);	
