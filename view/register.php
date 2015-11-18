@@ -7,6 +7,10 @@ include_once "../model/establecimiento.php";
 include_once "../model/administrador.php";
 
 session_start();
+
+if(!empty($_SESSION["user"])){
+	header("Location: list.php");
+}
 ?>
 
 <!DOCTYPE html>

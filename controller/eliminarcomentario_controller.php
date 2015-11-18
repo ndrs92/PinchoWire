@@ -4,6 +4,11 @@ include_once "../model/juradopopular.php";
 include_once "../model/pincho.php";
 session_start();
 
+if(get_class($_SESSION["user"])!="JuradoPopular"){
+    header("Location: ../view/403.php");
+    exit;
+}
+
 if($_GET["delcomment_comment_id"] && $_GET["delcomment_comment_idpincho"]){
     //All params for delete a comment OK
 

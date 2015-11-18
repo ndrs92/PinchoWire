@@ -2,6 +2,9 @@
 include_once "../model/usuario.php";
 session_start();
 
+if(empty($_SESSION["user"])){
+    header("Location: ../view/403.php");
+}
 
 function verPerfil($idemail){
     $user = Usuario::getByIdemail($idemail);
