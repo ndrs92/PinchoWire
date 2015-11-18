@@ -49,7 +49,7 @@ class Establecimiento extends Usuario{
 	public function getAssociatedPincho(){
 		$target = PinchoMapper::getPinchoByIdemail($this->idemail);
 		if(isset($target)){
-			return new Pincho($target["idnombre"], $target["descripcion"], $target["precio"], $target["ingredientes"], $target["ganadorPopular"], $target["estadoPropuesta"] );
+			return new Pincho($target["idnombre"], $target["descripcion"], $target["precio"], $target["ingredientes"], $target["ganadorPopular"], $target["estadoPropuesta"], $target["rutaimagen"] );
 		}else{
 			return NULL;
 		}

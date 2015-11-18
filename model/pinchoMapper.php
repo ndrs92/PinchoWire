@@ -6,8 +6,14 @@ include_once("../resources/code/bd_manage.php");
 class PinchoMapper{
 
 	public static function getPinchoFromCode($code){
+		$toRet = null;
+
 		global $connectHandler;
 		$query = "SELECT pincho_idnombre from codigo WHERE idcodigo = '". $code ."'";
+		$result = mysqli_query($connectHandler, $query);
+		$row = mysqli_fetch_assoc($result);
+		return $row["pincho_idnombre"];
+
 	}
 
 	public static function updateEstado($new, $target){
@@ -67,6 +73,7 @@ class PinchoMapper{
 
 	public static function retrieveAllCodes($idnombre){
 		global $connectHandler;
+		$toRet = null;
 		$query = "Select * from codigo where pincho_idnombre = '$idnombre'";
 
 		$result = mysqli_query($connectHandler, $query);	
@@ -93,10 +100,11 @@ class PinchoMapper{
 		while($row = mysqli_fetch_assoc($result)){
 			$allRetrievedCodes[$row["codigo_idcodigo"]] = $row;
 		}
-
-		foreach($allRetrievedCodes as $individual){
-			if(array_key_exists($individual["codigo_idcodigo"], $allCodes)){
-				$toRet[$individual["codigo_idcodigo"]] = $individual;
+		if(isset($allRetrievedCodes)) {
+			foreach ($allRetrievedCodes as $individual) {
+				if (array_key_exists($individual["codigo_idcodigo"], $allCodes)) {
+					$toRet[$individual["codigo_idcodigo"]] = $individual;
+				}
 			}
 		}
 
@@ -117,10 +125,15 @@ class PinchoMapper{
 			$allRetrievedCodes[$row["codigo_idcodigo"]] = $row;
 		}
 
-		foreach($allCodes as $individual){
-			if(!array_key_exists($individual["idcodigo"], $allRetrievedCodes)){
-				$toRet[$individual["idcodigo"]] = $individual;
+		if(isset($allRetrievedCodes)) {
+			foreach ($allCodes as $individual) {
+				if (!array_key_exists($individual["idcodigo"], $allRetrievedCodes)) {
+					$toRet[$individual["idcodigo"]] = $individual;
+				}
 			}
+		}
+		else{
+			return $allCodes;
 		}
 
 
@@ -164,9 +177,6 @@ class PinchoMapper{
 
 	public static function toggleMarcado($pinchoid,$userid){
 		global $connectHandler;
-		if (!$connectHandler) {
-			die("Connection failed: " . mysqli_connect_error());
-		}
 
 		if(PinchoMapper::isProbado($pinchoid,$userid)){
 			$query = "DELETE FROM probado WHERE pincho_idnombre = '$pinchoid' AND juradopopular_idemail = '$userid';";
@@ -184,6 +194,7 @@ class PinchoMapper{
 
 	public static function getPinchoByIdemail($idemail){
 		global $connectHandler;
+		$row = null;
 		$query="SELECT * FROM pincho WHERE establecimiento_idemail = '$idemail' AND estadoPropuesta = 2"; 
 		if($result = mysqli_query($connectHandler, $query)){
 			$row=mysqli_fetch_assoc($result);
@@ -196,9 +207,6 @@ class PinchoMapper{
 
 	public static function isProbado($pinchoid, $userid){
 		global $connectHandler;
-		if (!$connectHandler) {
-			die("Connection failed: " . mysqli_connect_error());
-		}
 
 		$query = "SELECT * FROM probado WHERE pincho_idnombre = '$pinchoid' AND juradopopular_idemail = '$userid';";
 		$result = mysqli_query($connectHandler, $query);
@@ -210,6 +218,39 @@ class PinchoMapper{
 			else {
 				return false;
 			}
+		}
+		else{
+			return false;
+		}
+	}
+
+	public static function isRetrieved($codigo){
+		global $connectHandler;
+
+		$query = "SELECT * FROM canjea WHERE codigo_idcodigo = '$codigo';";
+		$result = mysqli_query($connectHandler, $query);
+		$exist = mysqli_num_rows($result);
+		if(mysqli_query($connectHandler, $query)){
+			if($exist == 1) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else{
+			return false;
+		}
+	}
+
+	public static function burnCode($codigo, $idemail){
+		global $connectHandler;
+		$date = date('Y-m-d H:i:sa');
+
+		$query = "INSERT INTO canjea (codigo_idcodigo, juradopopular_idemail, fecha) values('$codigo', '$idemail', '$date')";
+
+		if(mysqli_query($connectHandler, $query)){
+			return true;
 		}
 		else{
 			return false;
