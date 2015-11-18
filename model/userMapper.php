@@ -5,15 +5,15 @@ include_once("../resources/code/bd_manage.php");
 
 class UserMapper{
 
-  public static function banFromDatabase($idemail, $usertype){
+  public static function editBanFromDatabase($idemail, $usertype, $banned){
     global $connectHandler;
-    $query = "UPDATE ".$usertype." SET baneado = '1' WHERE idemail='".$idemail."'";
+    $query = "UPDATE ".$usertype." SET baneado = '".$banned."' WHERE idemail='".$idemail."'";
 	
 	$status = mysqli_query($connectHandler, $query);
     if($status == true){
       return;
     }else{
-      echo "error. no es posible banear";
+      echo "Error. Fallo de baneación.";
       exit();
     }
   }

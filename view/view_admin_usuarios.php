@@ -46,25 +46,29 @@ $allUsers = getAllUsuarios();
         echo "<td>";
         if (get_class($user) == "JuradoPopular") {
             echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'>Editar</a>";
-			if($user->getBaneado()=='1')
-				echo ", <a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'>Desbanear</a>";
-			else
-				echo ", <a href='../controller/useradmin_controller.php?action=ban_popular&idemail=" . $user->getIdemail() . "'>Banear</a>";
-            echo ", <a href='../controller/useradmin_controller.php?action=promote&idemail=" . $user->getIdemail() . "'>Promocionar a Jurado Profesional</a>";
+			if($user->getBaneado()) {
+                echo ", <a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'>Desbanear</a>";
+            }else {
+                echo ", <a href='../controller/useradmin_controller.php?action=ban&idemail=" . $user->getIdemail() . "'>Banear</a>";
+            }
         }
+
         if (get_class($user) == "JuradoProfesional") {
             echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'>Editar</a>";
-            if($user->getBaneado()=='1')
-				echo ", <a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'>Desbanear</a>";
-			else
-				echo ", <a href='../controller/useradmin_controller.php?action=ban_professional&idemail=" . $user->getIdemail() . "'>Banear</a>";
+            if($user->getBaneado()) {
+                echo ", <a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'>Desbanear</a>";
+            }else {
+                echo ", <a href='../controller/useradmin_controller.php?action=ban&idemail=" . $user->getIdemail() . "'>Banear</a>";
+            }
         }
+
         if (get_class($user) == "Establecimiento") {
             echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'>Editar</a>";
-            if($user->getBaneado()=='1')
-				echo ", <a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'>Desbanear</a>";
-			else
-				echo ", <a href='../controller/useradmin_controller.php?action=ban_establishment&idemail=" . $user->getIdemail() . "'>Banear</a>";
+            if($user->getBaneado()) {
+                echo ", <a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'>Desbanear</a>";
+            }else {
+                echo ", <a href='../controller/useradmin_controller.php?action=ban&idemail=" . $user->getIdemail() . "'>Banear</a>";
+            }
         }
         echo "</td>";
         echo "</tr>";

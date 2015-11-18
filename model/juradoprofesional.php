@@ -10,9 +10,8 @@ class JuradoProfesional extends Usuario{
 		$this->baneado = $baneado;
 	}
 
-	public function banFromDatabase()
-	{
-		UserMapper::banFromDatabase($this->idemail, strtolower(get_class($this)));
+	public function editBanFromDatabase($banned){
+		UserMapper::editBanFromDatabase($this->idemail, strtolower(get_class($this)), $banned);
 	}
 
 	public function getCurriculum()
@@ -29,6 +28,7 @@ class JuradoProfesional extends Usuario{
 	{
 		return $this->baneado;
 	}
+
 }
 
 ?>

@@ -11,13 +11,18 @@ if($_POST["login_user_login"] && $_POST["login_user_pass"]){
 
 	session_start();
 	if($userObject == NULL){
-
 		$_SESSION["login"] = "fail";
 		$host  = $_SERVER['HTTP_HOST'];
 		$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 		$relpath = '../view/login.php';
 		header("Location: http://$host$uri/$relpath");
 
+	}else if($userObject->getBaneado()){
+		$_SESSION["login"] = "banned";
+		$host  = $_SERVER['HTTP_HOST'];
+		$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+		$relpath = '../view/login.php';
+		header("Location: http://$host$uri/$relpath");
 	}
 	else {
 		//Opens a session if not open; we save the user object in it to have all the required functionalities

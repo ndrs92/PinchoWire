@@ -1,11 +1,5 @@
 <?php
 include_once "../model/usuario.php";
-/**
- * Created by PhpStorm.
- * User: ndrs
- * Date: 14/11/2015
- * Time: 16:28
- */
 
 $_GET["action"]($_GET["idemail"]);
 
@@ -18,36 +12,10 @@ function edit($idemail)
 
 }
 
-function ban_popular($idemail)
+function ban($idemail)
 {
     $toBan = Usuario::getByIdemail($idemail);
-    $toBan->banFromDatabase();
-    $host  = $_SERVER['HTTP_HOST'];
-    $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-
-    $relpath = '../view/view_admin_usuarios.php';
-
-    header("Location: http://$host$uri/$relpath");
-
-}
-
-function ban_professional($idemail)
-{
-    $toBan = Usuario::getByIdemail($idemail);
-    $toBan->banFromDatabase();
-    $host  = $_SERVER['HTTP_HOST'];
-    $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-
-    $relpath = '../view/view_admin_usuarios.php';
-
-    header("Location: http://$host$uri/$relpath");
-
-}
-
-function ban_establishment($idemail)
-{
-    $toBan = Usuario::getByIdemail($idemail);
-    $toBan->banFromDatabase();
+    $toBan->editBanFromDatabase("1");
     $host  = $_SERVER['HTTP_HOST'];
     $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 
@@ -60,35 +28,7 @@ function ban_establishment($idemail)
 function unban($idemail)
 {
     $toUnBan = Usuario::getByIdemail($idemail);
-    $toUnBan->unbanFromDatabase();
-    $host  = $_SERVER['HTTP_HOST'];
-    $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-
-    $relpath = '../view/view_admin_usuarios.php';
-
-    header("Location: http://$host$uri/$relpath");
-
-}
-
-
-/* Borrar?? */
-function unban_professional($idemail)
-{
-    $toUnBan = Usuario::getByIdemail($idemail);
-    $toUnBan->banFromDatabase();
-    $host  = $_SERVER['HTTP_HOST'];
-    $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-
-    $relpath = '../view/view_admin_usuarios.php';
-
-    header("Location: http://$host$uri/$relpath");
-
-}
-
-function unban_establishment($idemail)
-{
-    $toBan = Usuario::getByIdemail($idemail);
-    $toBan->banFromDatabase();
+    $toUnBan->editBanFromDatabase("0");
     $host  = $_SERVER['HTTP_HOST'];
     $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 
