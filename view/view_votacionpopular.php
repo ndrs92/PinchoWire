@@ -19,6 +19,24 @@ session_start();
 <body>
 <h1><?= $l["view_votacionpopular_titulo"] . $_GET["idpincho"]?> </h1>
 <h2><?= $l["view_votacionpopular_subtitulo"] ?></h2>
+<?php
+    if(isset($_SESSION["vote"]))
+    {
+        if($_SESSION["vote"] == "burned_code") {
+            echo "<h3>Algun código está canjeado ya</h3>";
+        }
+        if($_SESSION["vote"] == "repeated_code") {
+            echo "<h3>Existe más de 1 codigo del mismo pincho</h3>";
+        }
+        if($_SESSION["vote"] == "invalid_code") {
+            echo "<h3>Algún codigo es invalido</h3>";
+        }
+        if($_SESSION["vote"] == "incorrect_pincho_code") {
+            echo "<h3>No se ha introducido un codigo del pincho que se quiere votar</h3>";
+        }
+        unset($_SESSION["vote"]);
+    }
+?>
 <form action="../controller/votacionpopular_controller.php" method="POST">
     <?= $l["view_votacionpopular_codigo1"] . $_GET["idpincho"] ?><input type="text" name="votacionpopular_codigo1" placeholder="<?= $l["view_votacionpopular_codigo1_placeholder"]?>"/>
     <br/>

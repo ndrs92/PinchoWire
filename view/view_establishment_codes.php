@@ -40,12 +40,13 @@ $retrievedCodes = $pinchoTarget->getRetrievedCodes();
 		</thead>
 		<tbody>
 			<?php
-			foreach($availableCodes as $fila){
-				echo "<tr>";
-				echo "<td>".$fila["idcodigo"]."</td>";
-				echo "</tr>";
+			if(isset($availableCodes)) {
+				foreach ($availableCodes as $fila) {
+					echo "<tr>";
+					echo "<td>" . $fila["idcodigo"] . "</td>";
+					echo "</tr>";
+				}
 			}
-
 			?>
 
 		</tbody>

@@ -93,6 +93,7 @@ $l = array(
     "view_list_not_eaten" => "No probado",
     "view_list_eaten_not_logged" => "Identifícate para marcarlo!",
     "view_list_establishment_codes" => "Códigos para mi pincho",
+    "view_list_vote" => "Vota este pincho",
 
     "view_enviarpropuesta_enviarpropuesta" => "Enviar propuesta",
     "view_enviarpropuesta_titulo" => "Introduce los datos de tu propuesta de pincho:",
@@ -104,6 +105,7 @@ $l = array(
     "view_enviarpropuesta_introprecio_placeholder" => "Precio del pincho...",
     "view_enviarpropuesta_introingredientes" => "Los Ingredientes: ",
     "view_enviarpropuesta_introingredientes_placeholder" => "Ingredientes del pincho...",
+    "view_enviarpropuesta_rutaimagen" => "Ruta de la imagen",
     "view_enviarpropuesta_enviar" => "Enviar propuesta",
 
     "view_editpropuesta_editpropuesta" => "Editar propuesta",
@@ -134,5 +136,16 @@ $l = array(
     "view_profile_schedule" => "Horario",
     "view_profile_image" => "Imagenes",
     "view_profile_geloc" => "Geolocalizacion",
+
+    "view_votacionpopular_tittle" => "Votación popular",
+    "view_votacionpopular_titulo" => "Votación para el pincho: ",
+    "view_votacionpopular_subtitulo" => "Introduce su código y 2 códigos más de pinchos diferentes ",
+    "view_votacionpopular_codigo1" => "Código del pincho: ",
+    "view_votacionpopular_codigo2" => "Código del pincho 2",
+    "view_votacionpopular_codigo3" => "Código del pincho 3",
+    "view_votacionpopular_codigo1_placeholder" => "Código...  ",
+    "view_votacionpopular_codigo2_placeholder" => "Código del pincho 2...",
+    "view_votacionpopular_codigo3_placeholder" => "Código del pincho 3...",
+    "view_votacionpopular_enviar" => "Votar"
 );
 ?>
