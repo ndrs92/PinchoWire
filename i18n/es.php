@@ -1,6 +1,9 @@
 <?php
 
  $l = array(
+
+    "view_votacionpopular_tittle" => "Votación popular",
+
     "view_login_authenticate"  => "Autentificación",
     "view_login_introuser" => "Introduce tu email de usuario: ",
     "view_login_introuser_placeholder" => "Tu email de usuario...",
@@ -28,8 +31,10 @@
      "view_list_welcome_comma" => "Bienvenido, ",
      "view_list_eaten" => "Probado",
      "view_list_not_eaten" => "No probado",
-     "view_list_eaten_not_logged" => "Identifícate para marcarlo!",
+     "view_list_eaten_not_logged" => "Identifícate como jurado popular para marcarlo!",
      "view_list_establishment_codes" => "Códigos para mi pincho",
+     "view_list_popular_votation" => "Votación popular",
+    "view_list_vote" => "Votar",
 
     "view_enviarpropuesta_enviarpropuesta" => "Enviar propuesta",
     "view_enviarpropuesta_titulo" => "Introduce los datos de tu propuesta de pincho:",
@@ -72,5 +77,15 @@
     "view_profile_schedule" => "Horario",
     "view_profile_image" => "Imagenes",
     "view_profile_geloc" => "Geolocalizacion",
-);
+
+    "view_votacionpopular_titulo" => "Votación para el pincho: ",
+    "view_votacionpopular_subtitulo" => "Introduce su código y 2 códigos más de pinchos diferentes ",
+    "view_votacionpopular_codigo1" => "Código del pincho: ",
+    "view_votacionpopular_codigo2" => "Código del pincho 2",
+    "view_votacionpopular_codigo3" => "Código del pincho 3",
+    "view_votacionpopular_codigo1_placeholder" => "Código...  ",
+    "view_votacionpopular_codigo2_placeholder" => "Código del pincho 2...",
+    "view_votacionpopular_codigo3_placeholder" => "Código del pincho 3...",
+    "view_votacionpopular_enviar" => "Votar"
+     );
 ?>

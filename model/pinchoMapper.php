@@ -5,6 +5,11 @@ include_once("../resources/code/bd_manage.php");
 
 class PinchoMapper{
 
+	public static function getPinchoFromCode($code){
+		global $connectHandler;
+		$query = "SELECT pincho_idnombre from codigo WHERE idcodigo = '". $code ."'";
+	}
+
 	public static function updateEstado($new, $target){
 		global $connectHandler;
 		$query = "UPDATE pincho SET estadoPropuesta = '".$new."' WHERE idnombre = '".$target."'";

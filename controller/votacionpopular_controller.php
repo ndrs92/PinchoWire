@@ -3,10 +3,13 @@ include_once "../model/juradopopular.php";
 include_once "../model/pincho.php";
 session_start();
 
-if($_POST["addcomment_comment_name"] && $_POST["addcomment_comment_idpincho"]){
-    //All params for add a comment OK
+if($_POST["votacionpopular_codigo1"] && $_POST["votacionpopular_codigo2"] && $_POST["votacionpopular_codigo3"] && $_POST["votacionpopular_idpincho"]){
+    //All params for vote a pincho OK
 
-    $_SESSION["user"]->comentar_pincho($_POST["addcomment_comment_idpincho"],$_POST["addcomment_comment_name"]);
+    $_SESSION["user"]->votar_pincho($_POST["votacionpopular_idpincho"]);
+    $pinchoCodigo1;
+    $pinchoCodigo2;
+    $pinchoCodigo3;
 
     $host  = $_SERVER['HTTP_HOST'];
     $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');

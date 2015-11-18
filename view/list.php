@@ -47,7 +47,9 @@ session_start();
 		if(get_class($_SESSION["user"]) == "Administrador"){
 			echo "<a href='./view_administrar.php'>".$l["view_list_admin_event"]."</a><br/>";
 		}
-		
+		if(get_class($_SESSION["user"]) == "JuradoPopular"){
+			echo "<a href='./view_votacionpopular.php'>".$l["view_list_popular_votation"]."</a><br/>";
+		}
 		echo "<a href='profile.php?idemail=".$_SESSION['user']->getIdemail()."'>".$l["view_list_view_profile"]."</a><br/>";
 		echo "<a href='../controller/logout_controller.php'>".$l["view_list_disconnect"]."</a><br/>";
 	}
@@ -60,14 +62,19 @@ session_start();
 			<td><?= $l["view_list_description"] ?></td>
 			<td><?= $l["view_list_price"] ?></td>
 			<td><?= $l["view_list_ingredients"] ?></td>
-			<td><?= $l["view_list_eaten"]?></td>
+			<?php
+				if(isset($_SESSION["user"]) && get_class($_SESSION["user"]) == "JuradoPopular") {
+					echo "<td>". $l["view_list_eaten"]. "</td >";
+					echo "<td>". $l["view_list_vote"] . "</td>";
+			}
+			?>
 		</thead>
 		<tbody>
 			<?php
 			if (getAllPinchos() != NULL) {
 				foreach (getAllPinchos() as $pincho) {
 					
-					if(isset($_SESSION["user"])){
+					if(isset($_SESSION["user"]) && get_class($_SESSION["user"]) == "JuradoPopular"){
 						if(isProbado($pincho->getIdnombre(),$_SESSION["user"]->getIdemail())){
 							$probado = $l["view_list_eaten"];
 						}
@@ -87,10 +94,9 @@ session_start();
 						<td>" . $pincho->getIngredientes() . "</td>";
 
 						
-						if(isset($_SESSION["user"])){
+						if(isset($_SESSION["user"]) && get_class($_SESSION["user"]) == "JuradoPopular"){
 							echo "<td><a href='../controller/markeatenpincho_controller.php?markeatenpincho_probado_idpincho=". $pincho->getIdnombre() . "&markeatenpincho_probado_idmail=" . $_SESSION["user"]->getIdemail() . "'>" . $probado . "</a></td>";
-						}else{
-							echo "<td>".$probado."</td>";	
+							echo "<td><a href='./view_votacionpopular.php?idpincho=". $pincho->getIdnombre() . "'>" . $l["view_list_vote"] . "</a></td>";
 						}
 
 						echo "</tr>";
