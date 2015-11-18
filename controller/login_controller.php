@@ -4,6 +4,10 @@ session_start();
 include_once "../model/usuario.php";
 
 
+if(!empty($_SESSION["user"])){
+	header("Location: ../view/list.php");
+}
+
 if($_POST["login_user_login"] && $_POST["login_user_pass"]){
 	//Okey, all seems legit, proceed to log in
 

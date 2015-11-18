@@ -3,6 +3,10 @@
 	include_once "../model/establecimiento.php";
 
 session_start();
+if(get_class($_SESSION["user"])!="Establecimiento"){
+	header("Location: ../view/403.php");
+	exit;
+}
 
 if($_POST["enviarpropuesta_propuesta_nombre"] && $_POST["enviarpropuesta_propuesta_descripcion"] && $_POST["enviarpropuesta_propuesta_ingredientes"] && $_POST["enviarpropuesta_propuesta_precio"]){
 

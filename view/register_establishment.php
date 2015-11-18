@@ -1,5 +1,10 @@
 <?php
 include_once "../controller/pincho_controller.php";
+
+session_start();
+if(!empty($_SESSION["user"])){
+	header("Location: list.php");
+}
 ?>
 <html>
 <head>

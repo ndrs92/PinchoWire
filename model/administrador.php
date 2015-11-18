@@ -1,4 +1,5 @@
 <?php
+include_once "../model/usuario.php";
 
 class Administrador extends Usuario{
 

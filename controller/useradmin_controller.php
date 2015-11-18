@@ -6,6 +6,11 @@ include_once "../model/usuario.php";
  * Date: 14/11/2015
  * Time: 16:28
  */
+session_start();
+if(get_class($_SESSION["user"])!="Administrador"){
+    header("Location: ../view/403.php");
+    exit;
+}
 
 $_GET["action"]($_GET["idemail"]);
 

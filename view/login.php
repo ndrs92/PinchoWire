@@ -2,6 +2,11 @@
 session_start();
 //Super duper helper codes
 include_once "../resources/code/lang_coverage.php";
+
+if(!empty($_SESSION["user"])){
+	header("Location: list.php");
+}
+
 ?>
 
 

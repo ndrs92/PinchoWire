@@ -8,6 +8,11 @@ include_once "../model/administrador.php";
 session_start();
 $pinchoActual = getCurrentPincho($_GET["id"]);
 
+if($pinchoActual->getIdnombre() == NULL){
+	header("Location: 404.php");
+	exit();
+}
+
 ?>
 
 <html>

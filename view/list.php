@@ -34,21 +34,38 @@ session_start();
 		echo $l["view_list_welcome_comma"].$_SESSION["user"]->getNombre();
 		echo "<br/>";
 		if(get_class($_SESSION["user"]) == "Establecimiento"){
-			if(!$_SESSION["user"]->havePinchoAccepted()){
+			$row = $_SESSION["user"]->havePropuesta();
+			/*
+			<?php
+			$row = $_SESSION["user"]->havePropuesta();
+			if(!empty($row) && $row["estadoPropuesta"] == 0){
+			?>
+			*/
+			if(empty($row)){
 				echo "<a href='enviarpropuesta.php'>".$l["view_list_send_proposal"]."</a><br/>";
-				echo "<a href='editpropuesta.php'>".$l["view_list_edit_proposal"]."</a><br/>";
-			}else{
-				echo " - Tu pincho está concursando! <br/>";
-
-				echo "<a href='./view_establishment_codes.php'>".$l["view_list_establishment_codes"]."</a><br/>";
-				
 			}
+			else{
+				if($row["estadoPropuesta"] == 0){
+					echo "<a href='editpropuesta.php'>".$l["view_list_edit_proposal"]."</a><br/>";
+				}
+				else{
+					if($row["estadoPropuesta"] == 1){
+						echo " - Tu pincho ha sido denegado! <br/>";
+					}
+					else{
+						echo " - Tu pincho está concursando! <br/>";
+
+						echo "<a href='./view_establishment_codes.php'>".$l["view_list_establishment_codes"]."</a><br/>";
+					}
+				}
+			}
+
 		}
 		if(get_class($_SESSION["user"]) == "Administrador"){
 			echo "<a href='./view_administrar.php'>".$l["view_list_admin_event"]."</a><br/>";
 		}
 		
-		echo "<a href='profile.php?idemail=".$_SESSION['user']->getIdemail()."'>".$l["view_list_view_profile"]."</a><br/>";
+		echo "<a href='profile.php'>".$l["view_list_view_profile"]."</a><br/>";
 		echo "<a href='../controller/logout_controller.php'>".$l["view_list_disconnect"]."</a><br/>";
 	}
 	?>
@@ -88,6 +105,8 @@ session_start();
 
 						
 						if(isset($_SESSION["user"])){
+							
+
 							echo "<td><a href='../controller/markeatenpincho_controller.php?markeatenpincho_probado_idpincho=". $pincho->getIdnombre() . "&markeatenpincho_probado_idmail=" . $_SESSION["user"]->getIdemail() . "'>" . $probado . "</a></td>";
 						}else{
 							echo "<td>".$probado."</td>";	

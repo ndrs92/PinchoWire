@@ -1,9 +1,13 @@
 <?php
 
 include_once "../model/pincho.php";
+include_once "../model/administrador.php";
 
 session_start();
-
+if(get_class($_SESSION["user"])!="Administrador"){
+    header("Location: 403.php");
+    exit;
+}
 $pinchoList = Pincho::getAllPropuestas();
 
 ?>

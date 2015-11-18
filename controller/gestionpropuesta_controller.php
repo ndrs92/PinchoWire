@@ -1,6 +1,13 @@
 <?php
 include_once "../model/pincho.php";
 
+session_start();
+if(get_class($_SESSION["user"])!="Administrador"){
+	header("Location: ../view/403.php");
+	exit;
+}
+
+
 $_GET["action"]($_GET["idnombre"]);
 
 $host  = $_SERVER['HTTP_HOST'];
