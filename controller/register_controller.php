@@ -8,6 +8,10 @@ if(empty($_GET["type"])){
 	exit;
 }
 
+if(!empty($_SESSION["user"])){
+	header("Location: ../view/list.php");
+}
+
 $registerType = $_GET["type"];
 
 if($registerType == "juradopopular"){

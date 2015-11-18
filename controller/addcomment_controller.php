@@ -4,6 +4,12 @@ include_once "../model/juradopopular.php";
 include_once "../model/pincho.php";
 session_start();
 
+
+if(get_class($_SESSION["user"])!="JuradoPopular"){
+    header("Location: ../view/403.php");
+    exit;
+}
+
 if($_POST["addcomment_comment_name"] && $_POST["addcomment_comment_idpincho"]){
     //All params for add a comment OK
 

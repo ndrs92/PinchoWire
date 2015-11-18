@@ -43,14 +43,20 @@ $l = array(
     "main_about_type_establecimiento_3" => "Acceso a gestión de códigos de cata de pinchos",
     "main_about_type_establecimiento_4" => "Monitorización de consumiciones registradas",
 
-
-
     "main_team" => "Equipo de Desarrollo",
     "main_team_role1" => "Diseñador & Desarrollador",
     "main_team_role2" => "Desarrollo de Backend & Documentación",
     "main_team_role3" => "Desarrollador de Backend & Seguridad",
     "main_team_role4" => "Desarrollador de Backend & Diseño de BD",
 
+
+    "register_title" => "Registro",
+    "register_select" => "Selecciona como te quieres registrar. Los jurados populares son usuarios dedicados a la cata de pinchos. Votan pinchos y deciden su destino en la votación popular. Los establecimientos son aquellos usuarios que envían una propuesta de pincho a participar en el concurso, los cuales serán valorados por Jurados Populares y Profesionales, para así poder serlos ganadores del concurso.",
+    "register_user1" => "Soy Jurado Popular",
+    "register_user2" => "Soy Establecimiento",
+
+    "login_title" => "Autentificación",
+    "login_desc" => "Introduce tus credenciales de acceso",
 
 
 

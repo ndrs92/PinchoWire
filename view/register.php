@@ -7,6 +7,10 @@ include_once "../model/establecimiento.php";
 include_once "../model/administrador.php";
 
 session_start();
+
+if(!empty($_SESSION["user"])){
+	header("Location: list.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -55,9 +59,9 @@ session_start();
 
 		<div class="container register">
 			<div class="row">
-				<div class="col-sm-3"></div>
+				<div class="col-md-3 hidden-sm hidden-xs"></div>
 				
-				<div class="col-sm-6 register-body">
+				<div class="col-md-6 col-sm-12 col-xs-12 register-body">
 					<h2><?= $l["register_title"] ?></h2>
 					<p class="register-description" ><?= $l["register_select"]?></p><br>
 					
@@ -147,7 +151,7 @@ session_start();
 					</div><!-- /.register-tab -->
 
 				</div>
-				<div class="col-sm-3"></div>
+				<div class="col-md-3 hidden-xs hidden-sm"></div>
 
 			</div>
 		</div>

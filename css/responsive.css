@@ -93,15 +93,12 @@
 }
 
 /* xs */
-@media (max-width: 767px) {
+@media (max-width: 749px) {
 
 	.logo{
 		margin-left: 15px;
 	}
 
-	.navbar-nav{
-		background-color: #f5f5f5;
-	}
 
 	.st-navbar .navbar-collapse ul{
 		margin-top: 18px;
@@ -178,6 +175,10 @@
 
 	.st-service {
 		margin-top: 50px;
+	}
+
+	#st-navbar-collapse{
+		box-shadow: 0px 2px 2px #888888;
 	}
 
 
