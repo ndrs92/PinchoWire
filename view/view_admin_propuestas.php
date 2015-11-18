@@ -20,58 +20,60 @@ $pinchoList = Pincho::getAllPropuestas();
 
 </head>
 <body>
-    <h1>Administración de Pinchos</h1>
-    <table border="1">
-        <thead>
-            <td>Establecimiento encargado</td>
-            <td>Nombre</td>
-            <td>Descripcion</td>
-            <td>Ingredientes</td>
-            <td>Estado</td>
-            <td>Acciones</td>
-        </thead>
-        <tbody>
-            <?php
-            foreach($pinchoList as $indexRow => $row){
-                echo "<tr>";
-                echo "<td>".$indexRow."</td>";
-                echo "<td>".$row->getIdnombre()."</td>";
-                echo "<td>".$row->getDescripcion()."</td>";
-                echo "<td>".$row->getIngredientes()."</td>";
+<h1>Administración de Pinchos</h1>
+<table border="1">
+    <thead>
+    <td>Establecimiento encargado</td>
+    <td>Nombre</td>
+    <td>Descripcion</td>
+    <td>Ingredientes</td>
+    <td>Estado</td>
+    <td>Acciones</td>
+    </thead>
+    <tbody>
+    <?php
+    if (isset($pinchoList)) {
+        foreach ($pinchoList as $indexRow => $row) {
+            echo "<tr>";
+            echo "<td>" . $indexRow . "</td>";
+            echo "<td>" . $row->getIdnombre() . "</td>";
+            echo "<td>" . $row->getDescripcion() . "</td>";
+            echo "<td>" . $row->getIngredientes() . "</td>";
 
-                switch($row->getEstadopropuesta()){
-                    case 0:
+            switch ($row->getEstadopropuesta()) {
+                case 0:
                     echo "<td>Pendiente</td>";
                     break;
-                    case 1:
+                case 1:
                     echo "<td>Denegado</td>";
                     break;
-                    default:
+                default:
                     echo "<td>Error por aqui</td>";
                     break;
-                }
+            }
 
-                switch($row->getEstadopropuesta()){
-                    case 0:
+            switch ($row->getEstadopropuesta()) {
+                case 0:
                     echo "<td>
-                    <a href='../controller/gestionpropuesta_controller.php?action=accept_pincho&idnombre=".$row->getIdnombre()."'>Aceptar</a><br/>
-                    <a href='../controller/gestionpropuesta_controller.php?action=deny_pincho&idnombre=".$row->getIdnombre()."'>Denegar</a>
+                    <a href='../controller/gestionpropuesta_controller.php?action=accept_pincho&idnombre=" . $row->getIdnombre() . "'>Aceptar</a><br/>
+                    <a href='../controller/gestionpropuesta_controller.php?action=deny_pincho&idnombre=" . $row->getIdnombre() . "'>Denegar</a>
                     </td>";
                     break;
-                    case 1:
-                    echo "<td><a href='../controller/gestionpropuesta_controller.php?action=set_pendant&idnombre=".$row->getIdnombre()."'>Restablecer para revision</a></td>";
+                case 1:
+                    echo "<td><a href='../controller/gestionpropuesta_controller.php?action=set_pendant&idnombre=" . $row->getIdnombre() . "'>Restablecer para revision</a></td>";
                     break;
-                    default:
+                default:
                     echo "<td>Error por aqui</td>";
                     break;
-                }
-
-                echo "</tr>";
             }
-            ?>
-        </tbody>
 
-    </table>
+            echo "</tr>";
+        }
+    }
+    ?>
+    </tbody>
+
+</table>
 
 </body>
 </html>

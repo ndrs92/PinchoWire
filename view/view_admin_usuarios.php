@@ -34,44 +34,46 @@ $allUsers = getAllUsuarios();
     </thead>
     <tbody>
     <?php
-    foreach ($allUsers as $user) {
-        echo "<tr>";
-        echo "<td>" . $user->getIdemail() . "</td>";
-        echo "<td>" . $user->getNombre() . "</td>";
-        echo "<td>" . get_class($user) . "</td>";
-		if($user->getBaneado()=='1')
-			echo "<td> Baneado </td>";
-		else
-			echo "<td> Activo </td>";
-        echo "<td>";
-        if (get_class($user) == "JuradoPopular") {
-            echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'>Editar</a>";
-			if($user->getBaneado()) {
-                echo ", <a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'>Desbanear</a>";
-            }else {
-                echo ", <a href='../controller/useradmin_controller.php?action=ban&idemail=" . $user->getIdemail() . "'>Banear</a>";
+    if(isset($allUsers)) {
+        foreach ($allUsers as $user) {
+            echo "<tr>";
+            echo "<td>" . $user->getIdemail() . "</td>";
+            echo "<td>" . $user->getNombre() . "</td>";
+            echo "<td>" . get_class($user) . "</td>";
+            if ($user->getBaneado() == '1')
+                echo "<td> Baneado </td>";
+            else
+                echo "<td> Activo </td>";
+            echo "<td>";
+            if (get_class($user) == "JuradoPopular") {
+                echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'>Editar</a>";
+                if ($user->getBaneado()) {
+                    echo ", <a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'>Desbanear</a>";
+                } else {
+                    echo ", <a href='../controller/useradmin_controller.php?action=ban&idemail=" . $user->getIdemail() . "'>Banear</a>";
+                }
             }
-        }
 
-        if (get_class($user) == "JuradoProfesional") {
-            echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'>Editar</a>";
-            if($user->getBaneado()) {
-                echo ", <a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'>Desbanear</a>";
-            }else {
-                echo ", <a href='../controller/useradmin_controller.php?action=ban&idemail=" . $user->getIdemail() . "'>Banear</a>";
+            if (get_class($user) == "JuradoProfesional") {
+                echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'>Editar</a>";
+                if ($user->getBaneado()) {
+                    echo ", <a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'>Desbanear</a>";
+                } else {
+                    echo ", <a href='../controller/useradmin_controller.php?action=ban&idemail=" . $user->getIdemail() . "'>Banear</a>";
+                }
             }
-        }
 
-        if (get_class($user) == "Establecimiento") {
-            echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'>Editar</a>";
-            if($user->getBaneado()) {
-                echo ", <a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'>Desbanear</a>";
-            }else {
-                echo ", <a href='../controller/useradmin_controller.php?action=ban&idemail=" . $user->getIdemail() . "'>Banear</a>";
+            if (get_class($user) == "Establecimiento") {
+                echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'>Editar</a>";
+                if ($user->getBaneado()) {
+                    echo ", <a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'>Desbanear</a>";
+                } else {
+                    echo ", <a href='../controller/useradmin_controller.php?action=ban&idemail=" . $user->getIdemail() . "'>Banear</a>";
+                }
             }
+            echo "</td>";
+            echo "</tr>";
         }
-        echo "</td>";
-        echo "</tr>";
     }
     ?>
     </tbody>

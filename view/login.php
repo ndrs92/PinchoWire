@@ -35,7 +35,7 @@ if (isset($_SESSION["login"])) {
     <?= $l["view_login_intropass"] ?><input type="password" name="login_user_pass"
                                             placeholder="<?= $l["view_login_intropass_placeholder"] ?>"/>
     <br/>
-    <input type="submit" name="login_user_submit" value="<?= $l["view_login_login"] ?>"/>
-</form>
 </body>
+<input type="submit" name="login_user_submit" value="<?= $l["view_login_login"] ?>"/>
+</form>
 </html>
