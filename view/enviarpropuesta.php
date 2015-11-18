@@ -36,6 +36,7 @@ if(get_class($_SESSION["user"])!="Establecimiento"){
 		<br/>	
 		<?= $l["view_enviarpropuesta_introprecio"] ?><input type="text" name="enviarpropuesta_propuesta_precio" placeholder="<?= $l["view_enviarpropuesta_introprecio_placeholder"] ?>" />
 		<br/>
+		<?= $l["view_enviarpropuesta_rutaimagen"] ?><input type="text" name="enviarpropuesta_propuesta_rutaimagen" placeholder="Ruta de la imagen..."/>
 		<input type="submit" name="enviarpropuesta_propuesta_enviar" value="<?= $l["view_enviarpropuesta_enviar"] ?>" />
 	</form>
 </body>

@@ -7,7 +7,7 @@
 $host  = $_SERVER['HTTP_HOST'];
 $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 
-$relpath = 'view/pinchowire.php'; 
+$relpath = 'view/list.php'; 
 
 header("Location: http://$host$uri/$relpath");
 

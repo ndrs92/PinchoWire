@@ -29,7 +29,15 @@ class JuradoPopularMapper{
         else{echo("Error en el eliminado del pincho");}
     }
 
-
+    public static function votar_pincho($idpincho, $idemail){
+        global $connectHandler;
+        $query = "INSERT INTO vota (pincho_idnombre, juradopopular_idemail) VALUES ('$idpincho','$idemail')";
+        echo($query);
+        if(mysqli_query($connectHandler, $query)){
+            echo("Guardado satisfactorio");
+        }
+        else{echo("Error en el guardado");}
+    }
 }
 
 ?>

@@ -1,4 +1,3 @@
-
 <?php
 include_once "../controller/pincho_controller.php";
 include_once "../resources/code/lang_coverage.php";
@@ -99,7 +98,12 @@ session_start();
 							<td><?= $l["view_list_description"] ?></td>
 							<td><?= $l["view_list_price"] ?></td>
 							<td class='hidden-xs'><?= $l["view_list_ingredients"] ?></td>
-							<td><?= $l["view_list_eaten"]?></td>
+							<?php
+							if(isset($_SESSION["user"]) && get_class($_SESSION["user"]) == "JuradoPopular") {
+								echo "<td>". $l["view_list_eaten"]. "</td >";
+								echo "<td>". $l["view_list_vote"] . "</td>";
+							}
+							?>
 						</thead>
 						<tbody>
 							<?php
@@ -126,11 +130,10 @@ session_start();
 										<td class='hidden-xs'>" . $pincho->getIngredientes() . "</td>";
 
 
-										if(isset($_SESSION["user"])){
-											echo "<td><a href='../controller/markeatenpincho_controller.php?markeatenpincho_probado_idpincho=". $pincho->getIdnombre() . "&markeatenpincho_probado_idmail=" . $_SESSION["user"]->getIdemail() . "'>" . $probado . "</a></td>";
-										}else{
-											echo "<td>".$probado."</td>";	
-										}
+									if(isset($_SESSION["user"]) && get_class($_SESSION["user"]) == "JuradoPopular"){
+										echo "<td><a href='../controller/markeatenpincho_controller.php?markeatenpincho_probado_idpincho=". $pincho->getIdnombre() . "&markeatenpincho_probado_idmail=" . $_SESSION["user"]->getIdemail() . "'>" . $probado . "</a></td>";
+										echo "<td><a href='./view_votacionpopular.php?idpincho=". $pincho->getIdnombre() . "'>" . $l["view_list_vote"] . "</a></td>";
+									}
 
 										echo "</tr>";
 
@@ -388,4 +391,3 @@ session_start();
 
 		</body>
 		</html>
-
