@@ -5,16 +5,16 @@ include_once("../resources/code/bd_manage.php");
 
 class UserMapper{
 
-  public static function deleteFromDatabase($idemail, $usertype){
+  public static function editBanFromDatabase($idemail, $usertype, $banned){
     global $connectHandler;
-    $query = "Delete from ".$usertype." where idemail='".$idemail."'";
-
-    $status = mysqli_query($connectHandler, $query);
+    $query = "UPDATE ".$usertype." SET baneado = '".$banned."' WHERE idemail='".$idemail."'";
+	
+	$status = mysqli_query($connectHandler, $query);
     if($status == true){
       return;
     }else{
-      echo "error, probablemente existan comentarios o informacion para borrar en cascada en este usuario. hay que arreglar eso";
-      exit();;
+      echo "Error. Fallo de baneación.";
+      exit();
     }
   }
 
@@ -45,10 +45,10 @@ class UserMapper{
     global $connectHandler;
 
     if(get_class($userObject) == "JuradoPopular"){
-      $query = "Insert into juradopopular values('".$userObject->getIdemail()."','".$userObject->getNombre()."','".$userObject->getContrasena()."','".$userObject->getRutaavatar()."')";
+      $query = "Insert into juradopopular values('".$userObject->getIdemail()."','".$userObject->getNombre()."','".$userObject->getContrasena()."','".$userObject->getRutaavatar()."','".$userObject->getBaneado()."')";
       $result = mysqli_query($connectHandler, $query);
     }else{
-      $query = "Insert into establecimiento values('".$userObject->getIdemail()."','".$userObject->getNombre()."','".$userObject->getContrasena()."','".$userObject->getRutaavatar()."','".$userObject->getDireccion()."','".$userObject->getWeb()."','".$userObject->getHorario()."','".$userObject->getRutaimagen()."','".$userObject->getGeoloc()."')";
+      $query = "Insert into establecimiento values('".$userObject->getIdemail()."','".$userObject->getNombre()."','".$userObject->getContrasena()."','".$userObject->getRutaavatar()."','".$userObject->getDireccion()."','".$userObject->getWeb()."','".$userObject->getHorario()."','".$userObject->getRutaimagen()."','".$userObject->getGeoloc()."','".$userObject->getBaneado()."')";
       $result = mysqli_query($connectHandler, $query);
       
     }
@@ -66,13 +66,13 @@ class UserMapper{
         $user = new $usertype($row["idemail"], $row["nombre"], $row["contrasena"], $row["rutaavatar"]);
         break;
         case "juradoprofesional":
-        $user = new $usertype($row["idemail"], $row["nombre"], $row["contrasena"], $row["rutaavatar"], $row["curriculum"]);
+        $user = new $usertype($row["idemail"], $row["nombre"], $row["contrasena"], $row["rutaavatar"], $row["curriculum"], $row["baneado"]);
         break;
         case "juradopopular":
-        $user = new $usertype($row["idemail"], $row["nombre"], $row["contrasena"], $row["rutaavatar"]);
+        $user = new $usertype($row["idemail"], $row["nombre"], $row["contrasena"], $row["rutaavatar"], $row["baneado"]);
         break;
         case "establecimiento":
-        $user = new $usertype($row["idemail"], $row["nombre"], $row["contrasena"], $row["rutaavatar"], $row["direccion"], $row["web"], $row["horario"], $row["rutaimagen"], $row["geoloc"]);
+        $user = new $usertype($row["idemail"], $row["nombre"], $row["contrasena"], $row["rutaavatar"], $row["direccion"], $row["web"], $row["horario"], $row["rutaimagen"], $row["geoloc"], $row["baneado"]);
         break;
       }
 
