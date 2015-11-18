@@ -5,7 +5,7 @@ include_once "../model/juradopopular.php";
 include_once "../model/juradoprofesional.php";
 include_once "../model/establecimiento.php";
 include_once "../model/administrador.php";
-session_start();
+
 if(get_class($_SESSION["user"])!="Administrador"){
     header("Location: 403.php");
     exit;

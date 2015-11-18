@@ -20,7 +20,7 @@ if(!empty($_SESSION["user"])){
 </head>
 <body>
 	<h1>Registrar Establecimiento </h1>
-	<form action="../controller/register_controller.php?type=establishment" method="POST">
+	<form action="../controller/register_controller.php?type=establishment" method="POST" enctype="multipart/form-data">
 		Nombre: <input type="text" name="nombre" /><br/>
 		email: <input type="email" name="idemail" /><br/>
 		Direccion: <input type="text" name="direccion" /><br/>
