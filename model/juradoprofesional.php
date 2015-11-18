@@ -2,15 +2,17 @@
 
 class JuradoProfesional extends Usuario{
 	private $curriculum;
+	private $baneado;
 
-	public function __construct($idemail, $nombre, $contrasena, $rutaavatar, $curriculum){
+	public function __construct($idemail, $nombre, $contrasena, $rutaavatar, $curriculum, $baneado){
 		parent::__construct($idemail, $nombre, $contrasena, $rutaavatar);
 		$this->curriculum = $curriculum;
+		$this->baneado = $baneado;
 	}
 
-	public function deleteFromDatabase()
+	public function banFromDatabase()
 	{
-		UserMapper::deleteFromDatabase($this->idemail, strtolower(get_class($this)));
+		UserMapper::banFromDatabase($this->idemail, strtolower(get_class($this)));
 	}
 
 	public function getCurriculum()
@@ -21,6 +23,11 @@ class JuradoProfesional extends Usuario{
 	public function setCurriculum($curriculum)
 	{
 		$this->curriculum = $curriculum;
+	}
+	
+	public function getBaneado()
+	{
+		return $this->baneado;
 	}
 }
 

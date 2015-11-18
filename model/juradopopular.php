@@ -2,14 +2,16 @@
 include_once("usuario.php");
 include_once("juradopopularMapper.php");
 class JuradoPopular extends Usuario{
-
-    public function __construct($idemail, $nombre, $contrasena, $rutaavatar){
+	private $baneado;
+	
+    public function __construct($idemail, $nombre, $contrasena, $rutaavatar, $baneado){
         parent::__construct($idemail, $nombre, $contrasena, $rutaavatar);
+		$this->baneado = $baneado;
     }
 
-    public function deleteFromDatabase()
+    public function banFromDatabase()
     {
-        UserMapper::deleteFromDatabase($this->idemail, strtolower(get_class($this)));
+        UserMapper::banFromDatabase($this->idemail, strtolower(get_class($this)));
     }
 
     public function comentar_pincho($pincho, $textcomentario){
@@ -23,6 +25,11 @@ class JuradoPopular extends Usuario{
     public function registerUser(){
         UserMapper::registerUser($this);
     }
+	
+	public function getBaneado()
+	{
+		return $this->baneado;
+	}
 }
 
 ?>

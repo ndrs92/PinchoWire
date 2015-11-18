@@ -10,19 +10,21 @@ class Establecimiento extends Usuario{
 	private $horario;
 	private $rutaimagen;
 	private $geoloc;
+	private $baneado;
 
-	public function __construct($idemail, $nombre, $contrasena, $rutaavatar, $direccion, $web, $horario, $rutaimagen, $geoloc){
+	public function __construct($idemail, $nombre, $contrasena, $rutaavatar, $direccion, $web, $horario, $rutaimagen, $geoloc, $baneado){
 		parent::__construct($idemail, $nombre, $contrasena, $rutaavatar);
 		$this->direccion = $direccion;
 		$this->web = $web;
 		$this->horario = $horario;
 		$this->rutaimagen = $rutaimagen;
 		$this->geoloc = $geoloc;
+		$this->baneado = $baneado;
 	}
 
-	public function deleteFromDatabase()
+	public function banFromDatabase()
 	{
-		UserMapper::deleteFromDatabase($this->idemail, strtolower(get_class($this)));
+		UserMapper::banFromDatabase($this->idemail, strtolower(get_class($this)));
 	}
 
 	public function registerUser(){
@@ -77,6 +79,11 @@ class Establecimiento extends Usuario{
 	public function getWeb()
 	{
 		return $this->web;
+	}
+	
+	public function getBaneado()
+	{
+		return $this->baneado;
 	}
 }
 

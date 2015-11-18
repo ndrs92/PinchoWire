@@ -9,19 +9,6 @@ include_once "../model/usuario.php";
 
 $_GET["action"]($_GET["idemail"]);
 
-function delete_popular($idemail)
-{
-    $toDelete = Usuario::getByIdemail($idemail);
-    $toDelete->deleteFromDatabase();
-    $host  = $_SERVER['HTTP_HOST'];
-    $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-
-    $relpath = '../view/view_admin_usuarios.php';
-
-    header("Location: http://$host$uri/$relpath");
-
-}
-
 function edit($idemail)
 {
     $host  = $_SERVER['HTTP_HOST'];
@@ -31,10 +18,10 @@ function edit($idemail)
 
 }
 
-function delete_professional($idemail)
+function ban_popular($idemail)
 {
-    $toDelete = Usuario::getByIdemail($idemail);
-    $toDelete->deleteFromDatabase();
+    $toBan = Usuario::getByIdemail($idemail);
+    $toBan->banFromDatabase();
     $host  = $_SERVER['HTTP_HOST'];
     $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 
@@ -44,10 +31,64 @@ function delete_professional($idemail)
 
 }
 
-function delete_establishment($idemail)
+function ban_professional($idemail)
 {
-    $toDelete = Usuario::getByIdemail($idemail);
-    $toDelete->deleteFromDatabase();
+    $toBan = Usuario::getByIdemail($idemail);
+    $toBan->banFromDatabase();
+    $host  = $_SERVER['HTTP_HOST'];
+    $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+
+    $relpath = '../view/view_admin_usuarios.php';
+
+    header("Location: http://$host$uri/$relpath");
+
+}
+
+function ban_establishment($idemail)
+{
+    $toBan = Usuario::getByIdemail($idemail);
+    $toBan->banFromDatabase();
+    $host  = $_SERVER['HTTP_HOST'];
+    $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+
+    $relpath = '../view/view_admin_usuarios.php';
+
+    header("Location: http://$host$uri/$relpath");
+
+}
+
+function unban($idemail)
+{
+    $toUnBan = Usuario::getByIdemail($idemail);
+    $toUnBan->unbanFromDatabase();
+    $host  = $_SERVER['HTTP_HOST'];
+    $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+
+    $relpath = '../view/view_admin_usuarios.php';
+
+    header("Location: http://$host$uri/$relpath");
+
+}
+
+
+/* Borrar?? */
+function unban_professional($idemail)
+{
+    $toUnBan = Usuario::getByIdemail($idemail);
+    $toUnBan->banFromDatabase();
+    $host  = $_SERVER['HTTP_HOST'];
+    $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+
+    $relpath = '../view/view_admin_usuarios.php';
+
+    header("Location: http://$host$uri/$relpath");
+
+}
+
+function unban_establishment($idemail)
+{
+    $toBan = Usuario::getByIdemail($idemail);
+    $toBan->banFromDatabase();
     $host  = $_SERVER['HTTP_HOST'];
     $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 

@@ -20,7 +20,7 @@ include_once "../controller/pincho_controller.php";
 		email: <input type="email" name="idemail" /><br/>
 		Contraseña: <input type="password" name="contrasena" /><br/>
 		Repite tu contraseña: <input type="password" name="contrasena_verif" /><br/>
-		Avatar: <input type="file" name="avatar" /><br/>
+		Avatar: <input type="text" name="rutaavatar" /><br/>
 		<input type="submit" value="Crear usuario" /><br/>
 	</form>
 
