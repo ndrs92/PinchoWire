@@ -68,7 +68,7 @@ session_start();
 									<p><?= $l["app_description"]?></p><br>
 									<?php if(!isset($_SESSION["user"])){
 										?>
-										<a href="" class="btn btn-lg btn-send"><?= $l["app_signup"]?></a>
+										<a href="./register.php" class="btn btn-lg btn-send"><?= $l["app_signup"]?></a>
 										<?php
 									}
 									?>
@@ -185,7 +185,7 @@ session_start();
 								</ul>
 								<?php if(!isset($_SESSION["user"])){
 									?>
-									<a href="" class="btn btn-send"><?= $l["app_signup"] ?></a>
+									<a href="./register.php" class="btn btn-send"><?= $l["app_signup"] ?></a>
 									<?php
 								}
 								?>
@@ -218,6 +218,12 @@ session_start();
 									<li><?= $l["main_about_type_establecimiento_3"]?></li>
 									<li><?= $l["main_about_type_establecimiento_4"]?></li>
 								</ul>
+								<?php if(!isset($_SESSION["user"])){
+									?>
+									<a href="./register.php" class="btn btn-send"><?= $l["app_signup"] ?></a>
+									<?php
+								}
+								?>
 							</div>
 						</div>
 

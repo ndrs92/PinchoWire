@@ -17,15 +17,15 @@ include_once "../model/administrador.php";
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="logo" href="./pinchowire.php"><img src="../images/logo.png" alt=""></a>
+				<a class="logo" href="./list.php"><img src="../images/logo.png" alt=""></a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="st-navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="./pinchowire.php#header"><?= $l["header_home"] ?></a></li>
-					<li><a href="./pinchowire.php#pinchos"><?= $l["header_pinchos"] ?></a></li>
-					<li><a href="./pinchowire.php#stats"><?= $l["header_stats"] ?></a></li>
-					<li><a href="./pinchowire.php#about"><?= $l["header_about"] ?></a></li>
+					<li><a href="./list.php#header"><?= $l["header_home"] ?></a></li>
+					<li><a href="./list.php#pinchos"><?= $l["header_pinchos"] ?></a></li>
+					<li><a href="./list.php#stats"><?= $l["header_stats"] ?></a></li>
+					<li><a href="./list.php#about"><?= $l["header_about"] ?></a></li>
 
 					<?php
 					if(!isset($_SESSION["user"])){
