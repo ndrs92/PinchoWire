@@ -1,6 +1,15 @@
 <?php
 
     include_once "../model/pinchoMapper.php";
+    include_once "../model/juradopopular.php";
+
+
+    session_start();
+    if(get_class($_SESSION["user"])!="JuradoPopular"){
+        header("Location: ../view/403.php");
+        exit;
+    }
+
 
     if($_GET["markeatenpincho_probado_idpincho"] && $_GET["markeatenpincho_probado_idmail"]){
         //All params for delete a comment OK

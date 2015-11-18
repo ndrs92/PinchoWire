@@ -1,26 +1,14 @@
 <?php
 include_once "../model/usuario.php";
-/**
- * Created by PhpStorm.
- * User: ndrs
- * Date: 14/11/2015
- * Time: 16:28
- */
+
+session_start();
+if(get_class($_SESSION["user"])!="Administrador"){
+    header("Location: ../view/403.php");
+    exit;
+}
+
 
 $_GET["action"]($_GET["idemail"]);
-
-function delete_popular($idemail)
-{
-    $toDelete = Usuario::getByIdemail($idemail);
-    $toDelete->deleteFromDatabase();
-    $host  = $_SERVER['HTTP_HOST'];
-    $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-
-    $relpath = '../view/view_admin_usuarios.php';
-
-    header("Location: http://$host$uri/$relpath");
-
-}
 
 function edit($idemail)
 {
@@ -31,10 +19,10 @@ function edit($idemail)
 
 }
 
-function delete_professional($idemail)
+function ban($idemail)
 {
-    $toDelete = Usuario::getByIdemail($idemail);
-    $toDelete->deleteFromDatabase();
+    $toBan = Usuario::getByIdemail($idemail);
+    $toBan->editBanFromDatabase("1");
     $host  = $_SERVER['HTTP_HOST'];
     $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 
@@ -44,10 +32,10 @@ function delete_professional($idemail)
 
 }
 
-function delete_establishment($idemail)
+function unban($idemail)
 {
-    $toDelete = Usuario::getByIdemail($idemail);
-    $toDelete->deleteFromDatabase();
+    $toUnBan = Usuario::getByIdemail($idemail);
+    $toUnBan->editBanFromDatabase("0");
     $host  = $_SERVER['HTTP_HOST'];
     $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 

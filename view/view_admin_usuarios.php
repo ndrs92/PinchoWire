@@ -6,7 +6,10 @@ include_once "../model/juradoprofesional.php";
 include_once "../model/establecimiento.php";
 include_once "../model/administrador.php";
 session_start();
-
+if(get_class($_SESSION["user"])!="Administrador"){
+    header("Location: 403.php");
+    exit;
+}
 $allUsers = getAllUsuarios();
 
 ?>
@@ -29,31 +32,51 @@ $allUsers = getAllUsuarios();
     <td>Email</td>
     <td>Nombre</td>
     <td>Tipo de Usuario</td>
+    <td>Estado</td>
     <td>Acciones</td>
     </thead>
     <tbody>
     <?php
-    foreach ($allUsers as $user) {
-        echo "<tr>";
-        echo "<td>" . $user->getIdemail() . "</td>";
-        echo "<td>" . $user->getNombre() . "</td>";
-        echo "<td>" . get_class($user) . "</td>";
-        echo "<td>";
-        if (get_class($user) == "JuradoPopular") {
-            echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'>Editar</a>";
-            echo ", <a href='../controller/useradmin_controller.php?action=delete_popular&idemail=" . $user->getIdemail() . "'>Eliminar</a>";
-            echo ", <a href='../controller/useradmin_controller.php?action=promote&idemail=" . $user->getIdemail() . "'>Promocionar a Jurado Profesional</a>";
+    if(isset($allUsers)) {
+        foreach ($allUsers as $user) {
+            echo "<tr>";
+            echo "<td>" . $user->getIdemail() . "</td>";
+            echo "<td>" . $user->getNombre() . "</td>";
+            echo "<td>" . get_class($user) . "</td>";
+            if ($user->getBaneado() == '1')
+                echo "<td> Baneado </td>";
+            else
+                echo "<td> Activo </td>";
+            echo "<td>";
+            if (get_class($user) == "JuradoPopular") {
+                echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'>Editar</a>";
+                if ($user->getBaneado()) {
+                    echo ", <a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'>Desbanear</a>";
+                } else {
+                    echo ", <a href='../controller/useradmin_controller.php?action=ban&idemail=" . $user->getIdemail() . "'>Banear</a>";
+                }
+            }
+
+            if (get_class($user) == "JuradoProfesional") {
+                echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'>Editar</a>";
+                if ($user->getBaneado()) {
+                    echo ", <a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'>Desbanear</a>";
+                } else {
+                    echo ", <a href='../controller/useradmin_controller.php?action=ban&idemail=" . $user->getIdemail() . "'>Banear</a>";
+                }
+            }
+
+            if (get_class($user) == "Establecimiento") {
+                echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'>Editar</a>";
+                if ($user->getBaneado()) {
+                    echo ", <a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'>Desbanear</a>";
+                } else {
+                    echo ", <a href='../controller/useradmin_controller.php?action=ban&idemail=" . $user->getIdemail() . "'>Banear</a>";
+                }
+            }
+            echo "</td>";
+            echo "</tr>";
         }
-        if (get_class($user) == "JuradoProfesional") {
-            echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'>Editar</a>";
-            echo ", <a href='../controller/useradmin_controller.php?action=delete_professional&idemail=" . $user->getIdemail() . "'>Eliminar</a>";
-        }
-        if (get_class($user) == "Establecimiento") {
-            echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'>Editar</a>";
-            echo ", <a href='../controller/useradmin_controller.php?action=delete_establishment&idemail=" . $user->getIdemail() . "'>Eliminar</a>";
-        }
-        echo "</td>";
-        echo "</tr>";
     }
     ?>
     </tbody>

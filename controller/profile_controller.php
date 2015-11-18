@@ -41,7 +41,7 @@ if (isset($_POST["profile_user_submit"])) {
 
         $host  = $_SERVER['HTTP_HOST'];
         $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-        $relpath = '../view/profile.php?idemail='.$_POST["profile_mail"];
+        $relpath = '../view/profile.php';
         header("Location: http://$host$uri/$relpath");
     } else {
         throw new Exception("Ningun campo puede estar vacio. Comprobar javascript");

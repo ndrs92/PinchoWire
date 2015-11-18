@@ -2,7 +2,14 @@
 
 //Super duper helper codes
 include_once "../resources/code/lang_coverage.php";
+include_once "../model/establecimiento.php";
 
+session_start();
+
+if(get_class($_SESSION["user"])!="Establecimiento"){
+	header("Location: 403.php");
+	exit;
+}
 ?>
 
 
@@ -34,14 +41,3 @@ include_once "../resources/code/lang_coverage.php";
 	</form>
 </body>
 </html>
-<!-- 
-idnombre
-descripcion
-precio
-ingredientes
-ganadorPopular
-estadopropuesta
-	- 0: propuesta enviada
-	- 1: propuesta denegada
-	- 2: propuesta aceptada(pincho que participa)
--->

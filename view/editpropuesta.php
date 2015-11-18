@@ -6,6 +6,10 @@ include_once "../model/establecimiento.php";
 
 session_start();
 
+if(get_class($_SESSION["user"])!="Establecimiento"){
+	header("Location: 403.php");
+	exit;
+}
 ?>
 
 

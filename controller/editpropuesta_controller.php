@@ -4,6 +4,11 @@
 
 session_start();
 
+if(get_class($_SESSION["user"])!="Establecimiento"){
+	header("Location: ../view/403.php");
+	exit;
+}
+
 if($_POST["editpropuesta_propuesta_nombre"] && $_POST["editpropuesta_propuesta_descripcion"] && $_POST["editpropuesta_propuesta_ingredientes"] && $_POST["editpropuesta_propuesta_precio"]){
 	
 	$resultado = $_SESSION["user"]->editar_propuesta($_POST["editpropuesta_propuesta_nombre"], $_POST["editpropuesta_propuesta_descripcion"], $_POST["editpropuesta_propuesta_ingredientes"], $_POST["editpropuesta_propuesta_precio"]);

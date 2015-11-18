@@ -1,4 +1,5 @@
 <?php
+include_once "../model/usuario.php";
 
 class Administrador extends Usuario{
 
@@ -9,6 +10,10 @@ class Administrador extends Usuario{
     public function deleteFromDatabase()
     {
         UserMapper::deleteFromDatabase($this->idemail, strtolower(get_class($this)));
+    }
+
+    public function getBaneado(){
+        return "0";
     }
 
 }

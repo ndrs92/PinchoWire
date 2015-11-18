@@ -4,6 +4,10 @@ session_start();
 include_once "../model/usuario.php";
 
 
+if(!empty($_SESSION["user"])){
+	header("Location: ../view/list.php");
+}
+
 if($_POST["login_user_login"] && $_POST["login_user_pass"]){
 	//Okey, all seems legit, proceed to log in
 
@@ -11,13 +15,18 @@ if($_POST["login_user_login"] && $_POST["login_user_pass"]){
 
 	session_start();
 	if($userObject == NULL){
-
 		$_SESSION["login"] = "fail";
 		$host  = $_SERVER['HTTP_HOST'];
 		$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 		$relpath = '../view/login.php';
 		header("Location: http://$host$uri/$relpath");
 
+	}else if($userObject->getBaneado()){
+		$_SESSION["login"] = "banned";
+		$host  = $_SERVER['HTTP_HOST'];
+		$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+		$relpath = '../view/login.php';
+		header("Location: http://$host$uri/$relpath");
 	}
 	else {
 		//Opens a session if not open; we save the user object in it to have all the required functionalities

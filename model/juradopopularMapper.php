@@ -7,7 +7,7 @@ class JuradoPopularMapper{
 
     public static function comentar_pincho($pincho, $textcomentario, $idemail){
         global $connectHandler;
-        $date = date('Y-m-d');
+        $date = date('Y-m-d H:i:sa');
         $query = "INSERT INTO comentario (juradopopular_idemail, pincho_idnombre, contenido, fecha) VALUES ('$idemail','$pincho','$textcomentario', '$date')";
         echo($query);
 
