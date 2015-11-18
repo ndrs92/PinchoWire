@@ -70,16 +70,22 @@ class Usuario
     public static function getAllUsuarios()
     {
         $dataset = UserMapper::retrieveAll();
-        foreach ($dataset["juradopopular"] as $parsed) {
-            $toRet[$parsed["idemail"]] = new JuradoPopular($parsed["idemail"], $parsed["nombre"], $parsed["contrasena"], $parsed["rutaavatar"]);
+        if (isset($dataset["juradopopular"])) {
+            foreach ($dataset["juradopopular"] as $parsed) {
+                $toRet[$parsed["idemail"]] = new JuradoPopular($parsed["idemail"], $parsed["nombre"], $parsed["contrasena"], $parsed["rutaavatar"], $parsed["baneado"]);
+            }
         }
 
-        foreach ($dataset["juradoprofesional"] as $parsed) {
-            $toRet[$parsed["idemail"]] = new JuradoProfesional($parsed["idemail"], $parsed["nombre"], $parsed["contrasena"], $parsed["rutaavatar"], $parsed["curriculum"]);
+        if (isset($dataset["juradoprofesional"])) {
+            foreach ($dataset["juradoprofesional"] as $parsed) {
+                $toRet[$parsed["idemail"]] = new JuradoProfesional($parsed["idemail"], $parsed["nombre"], $parsed["contrasena"], $parsed["rutaavatar"], $parsed["curriculum"], $parsed["baneado"]);
+            }
         }
 
-        foreach ($dataset["establecimiento"] as $parsed) {
-            $toRet[$parsed["idemail"]] = new Establecimiento($parsed["idemail"], $parsed["nombre"], $parsed["contrasena"], $parsed["rutaavatar"], $parsed["direccion"], $parsed["web"], $parsed["horario"], $parsed["rutaimagen"], $parsed["geoloc"]);
+        if (isset($dataset["establecimiento"])) {
+            foreach ($dataset["establecimiento"] as $parsed) {
+                $toRet[$parsed["idemail"]] = new Establecimiento($parsed["idemail"], $parsed["nombre"], $parsed["contrasena"], $parsed["rutaavatar"], $parsed["direccion"], $parsed["web"], $parsed["horario"], $parsed["rutaimagen"], $parsed["geoloc"], $parsed["baneado"]);
+            }
         }
 
         return $toRet;

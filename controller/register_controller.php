@@ -17,8 +17,9 @@ if($registerType == "juradopopular"){
 	$nombre = $_POST["nombre"];
 	$contrasena = $_POST["contrasena"];
 	$contrasena_verif = $_POST["contrasena_verif"];
-	$rutaavatar = $_POST["rutaavatar"];
-	$userToAdd = new JuradoPopular($idemail, $nombre, $contrasena, $rutaavatar);
+	$rutaavatar = "ruta";
+	$baneado = "0";
+	$userToAdd = new JuradoPopular($idemail, $nombre, $contrasena, $rutaavatar, $baneado);
 	$userToAdd->registerUser();
 
 
@@ -50,7 +51,8 @@ if($registerType == "juradopopular"){
 		$coordenadas = $_POST["coordenadas"];
 		$rutaavatar = $_POST["rutaavatar"];
 		$foto = $_POST["foto"];
-		$userToAdd = new Establecimiento($idemail, $nombre, $contrasena, $rutaavatar, $direccion, $paginaweb, $horario, $foto, $coordenadas);
+		$baneado = "0";
+		$userToAdd = new Establecimiento($idemail, $nombre, $contrasena, $rutaavatar, $direccion, $paginaweb, $horario, $foto, $coordenadas, $baneado);
 		$userToAdd->registerUser();
 
 
