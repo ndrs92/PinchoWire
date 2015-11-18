@@ -24,6 +24,10 @@ class JuradoPopular extends Usuario{
     public function registerUser(){
         UserMapper::registerUser($this);
     }
+
+    public function votar_pincho($idpincho){
+        JuradoPopularMapper::votar_pincho($idpincho,$this->idemail);
+    }
 	
 	public function getBaneado()
 	{

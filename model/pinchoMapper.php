@@ -5,6 +5,11 @@ include_once("../resources/code/bd_manage.php");
 
 class PinchoMapper{
 
+	public static function getPinchoFromCode($code){
+		global $connectHandler;
+		$query = "SELECT pincho_idnombre from codigo WHERE idcodigo = '". $code ."'";
+	}
+
 	public static function updateEstado($new, $target){
 		global $connectHandler;
 		$query = "UPDATE pincho SET estadoPropuesta = '".$new."' WHERE idnombre = '".$target."'";
@@ -124,13 +129,13 @@ class PinchoMapper{
 	}
 
 
-	public static function addPropuesta($nombre, $descripcion, $ingredientes, $precio, $idemail){
+	public static function addPropuesta($nombre, $descripcion, $ingredientes, $precio, $idemail, $rutaimagen){
 		global $connectHandler;
 		if (!$connectHandler) {
 			die("Connection failed: " . mysqli_connect_error());
 		}
 		
-		$query = "INSERT INTO pincho (idnombre, descripcion, ingredientes, precio, estadoPropuesta, ganadorPopular, establecimiento_idemail) VALUES ('$nombre','$descripcion','$ingredientes', $precio, 0, null,'$idemail');";
+		$query = "INSERT INTO pincho (idnombre, descripcion, ingredientes, precio, estadoPropuesta, ganadorPopular, establecimiento_idemail, rutaimagen) VALUES ('$nombre','$descripcion','$ingredientes', $precio, 0, null,'$idemail','$rutaimagen');";
 		
 		if(mysqli_query($connectHandler, $query)){
 			return true;

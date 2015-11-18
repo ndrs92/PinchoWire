@@ -134,5 +134,5 @@ $l = array(
     "view_profile_schedule" => "Horario",
     "view_profile_image" => "Imagenes",
     "view_profile_geloc" => "Geolocalizacion",
-    );
+);
 ?>
