@@ -124,13 +124,13 @@ class PinchoMapper{
 	}
 
 
-	public static function addPropuesta($nombre, $descripcion, $ingredientes, $precio, $idemail){
+	public static function addPropuesta($nombre, $descripcion, $ingredientes, $precio, $idemail, $rutaimagen){
 		global $connectHandler;
 		if (!$connectHandler) {
 			die("Connection failed: " . mysqli_connect_error());
 		}
 		
-		$query = "INSERT INTO pincho (idnombre, descripcion, ingredientes, precio, estadoPropuesta, ganadorPopular, establecimiento_idemail) VALUES ('$nombre','$descripcion','$ingredientes', $precio, 0, null,'$idemail');";
+		$query = "INSERT INTO pincho (idnombre, descripcion, ingredientes, precio, estadoPropuesta, ganadorPopular, establecimiento_idemail, rutaimagen) VALUES ('$nombre','$descripcion','$ingredientes', $precio, 0, null,'$idemail','$rutaimagen');";
 		
 		if(mysqli_query($connectHandler, $query)){
 			return true;

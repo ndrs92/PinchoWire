@@ -41,6 +41,7 @@
     "view_enviarpropuesta_introprecio_placeholder" => "Precio del pincho...",
     "view_enviarpropuesta_introingredientes" => "Los Ingredientes: ",
     "view_enviarpropuesta_introingredientes_placeholder" => "Ingredientes del pincho...",
+    "view_enviarpropuesta_rutaimagen" => "Imagen del pincho:",
     "view_enviarpropuesta_enviar" => "Enviar propuesta",
 
     "view_editpropuesta_editpropuesta" => "Editar propuesta",

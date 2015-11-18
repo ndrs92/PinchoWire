@@ -29,10 +29,10 @@ class Establecimiento extends Usuario{
 		UserMapper::registerUser($this);
 	}
 
-	public function enviar_propuesta($nombre, $descripcion, $ingredientes, $precio){
+	public function enviar_propuesta($nombre, $descripcion, $ingredientes, $precio, $rutaimagen){
 		//Abrir conexion BD $this->idemail
 		
-		return PinchoMapper::addPropuesta($nombre, $descripcion, $ingredientes, $precio, $this->idemail); 
+		return PinchoMapper::addPropuesta($nombre, $descripcion, $ingredientes, $precio, $this->idemail, $rutaimagen);
 	}
 	public function editar_propuesta($nombre, $descripcion, $ingredientes, $precio){
 		return PinchoMapper::editPropuesta($nombre, $descripcion, $ingredientes, $precio, $this->idemail);

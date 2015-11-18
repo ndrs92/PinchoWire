@@ -9,14 +9,16 @@ class Pincho {
     private $ingredientes;
     private $ganadorpopular;
     private $estadopropuesta;
+    private $rutaimagen;
 
-    public function __construct($idnombre, $descripcion, $precio, $ingredientes, $ganadorpopular, $estadopropuesta){
+    public function __construct($idnombre, $descripcion, $precio, $ingredientes, $ganadorpopular, $estadopropuesta, $rutaimagen){
         $this->idnombre = $idnombre;
         $this->descripcion = $descripcion;
         $this->precio = $precio;
         $this->ingredientes = $ingredientes;
         $this->ganadorpopular = $ganadorpopular;
         $this->estadopropuesta = $estadopropuesta;
+        $this->rutaimagen = $rutaimagen;
     }
 
 
