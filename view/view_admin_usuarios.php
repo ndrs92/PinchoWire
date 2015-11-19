@@ -80,8 +80,9 @@ $allUsers = getAllUsuarios();
     }
     ?>
     </tbody>
-
 </table>
+
+<a href="register_professional.php">Registrar Jurado Profesional</a>
 
 </body>
 </html>

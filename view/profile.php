@@ -148,6 +148,7 @@ if(get_class($_SESSION["user"]) == "Administrador") {
               <?php } ?>
 
 
+              <input class="btn btn-default" type="hidden" name="profile_mail" value="<? echo $user->getIdemail(); ?>" />
               <input class="btn btn-default" type="hidden" name="type" value="<?php echo $user->getTable(); ?>" />
               <input class="btn btn-default" type="submit" name="profile_user_submit" value="<?= $l["view_profile_save"] ?>" />
             </form>

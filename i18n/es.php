@@ -52,8 +52,10 @@ $l = array(
 
     "register_title" => "Registro",
     "register_select" => "Selecciona como te quieres registrar. Los jurados populares son usuarios dedicados a la cata de pinchos. Votan pinchos y deciden su destino en la votación popular. Los establecimientos son aquellos usuarios que envían una propuesta de pincho a participar en el concurso, los cuales serán valorados por Jurados Populares y Profesionales, para así poder serlos ganadores del concurso.",
+    "register_professional" => "Introduce los datos para registrar a un usuario que forma parte del Jurado Profesional. Su objetivo será el de votar aquellos pinchos que aspiren al premio dependiente del jurado profesional.",
     "register_user1" => "Soy Jurado Popular",
     "register_user2" => "Soy Establecimiento",
+    "register_user3" => "Jurado Profesional",
 
     "login_title" => "Autentificación",
     "login_desc" => "Introduce tus credenciales de acceso",

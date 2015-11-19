@@ -47,12 +47,14 @@ class UserMapper{
     if(get_class($userObject) == "JuradoPopular"){
       $query = "Insert into juradopopular values('".$userObject->getIdemail()."','".$userObject->getNombre()."','".$userObject->getContrasena()."','".$userObject->getRutaavatar()."','".$userObject->getBaneado()."')";
       $result = mysqli_query($connectHandler, $query);
-    }else{
+    }else if(get_class($userObject) == "JuradoPopular"){
       $query = "Insert into establecimiento values('".$userObject->getIdemail()."','".$userObject->getNombre()."','".$userObject->getContrasena()."','".$userObject->getRutaavatar()."','".$userObject->getDireccion()."','".$userObject->getWeb()."','".$userObject->getHorario()."','".$userObject->getRutaimagen()."','".$userObject->getGeoloc()."','".$userObject->getBaneado()."')";
       $result = mysqli_query($connectHandler, $query);
       
+    }else if(get_class($userObject) == "JuradoProfesional"){
+      $query = "Insert into juradoprofesional values('".$userObject->getCurriculum()."','".$userObject->getIdemail()."','".$userObject->getNombre()."','".$userObject->getContrasena()."','".$userObject->getRutaavatar()."','".$userObject->getBaneado()."')";
+      $result = mysqli_query($connectHandler, $query);
     }
-
   }
 
   public static function findByEmail($idemail, $usertype){

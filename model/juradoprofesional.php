@@ -14,6 +14,10 @@ class JuradoProfesional extends Usuario{
 		UserMapper::editBanFromDatabase($this->idemail, strtolower(get_class($this)), $banned);
 	}
 
+	public function registerUser(){
+		UserMapper::registerUser($this);
+	}
+
 	public function getCurriculum()
 	{
 		return $this->curriculum;

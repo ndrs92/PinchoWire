@@ -16,18 +16,19 @@ if(!empty($_SESSION["user"])){
 $registerType = $_GET["type"];
 
 if($registerType == "juradopopular"){
-	
-	
-
 	$idemail = $_POST["idemail"];
 	$nombre = $_POST["nombre"];
 	$contrasena = $_POST["contrasena"];
 	$contrasena_verif = $_POST["contrasena_verif"];
 	$rutaavatar = $_POST["rutaavatar"];
 	$baneado = "0";
-	$userToAdd = new JuradoPopular($idemail, $nombre, $contrasena, $rutaavatar, $baneado);
-	$userToAdd->registerUser();
 
+    if($contrasena == $contrasena_verif) {
+	    $userToAdd = new JuradoPopular($idemail, $nombre, $contrasena, $rutaavatar, $baneado);
+	    $userToAdd->registerUser();
+    } else {
+        // Password incorrect. Javascript correct?
+    }
 
 	$host  = $_SERVER['HTTP_HOST'];
 	$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
@@ -35,18 +36,11 @@ if($registerType == "juradopopular"){
 	if($_SESSION){
 		//if you're login
 	}else{
-		
-		$relpath = '../view/list.php'; 
-		
+		$relpath = '../view/list.php';
 		header("Location: http://$host$uri/$relpath");
-
 	}
-
-
-
 }else{
 	if($registerType == "establishment"){
-
 		$idemail = $_POST["idemail"];
 		$nombre = $_POST["nombre"];
 		$contrasena = $_POST["contrasena"];
@@ -58,23 +52,48 @@ if($registerType == "juradopopular"){
 		$rutaavatar = $_POST["rutaavatar"];
 		$foto = $_POST["foto"];
 		$baneado = "0";
-		$userToAdd = new Establecimiento($idemail, $nombre, $contrasena, $rutaavatar, $direccion, $paginaweb, $horario, $foto, $coordenadas, $baneado);
-		$userToAdd->registerUser();
 
+        if($contrasena == $contrasena_verif) {
+	    	$userToAdd = new Establecimiento($idemail, $nombre, $contrasena, $rutaavatar, $direccion, $paginaweb, $horario, $foto, $coordenadas, $baneado);
+		    $userToAdd->registerUser();
+        } else {
+            // Password incorrect. Javascript correct?
+        }
 
-		$host  = $_SERVER['HTTP_HOST'];
+    $host  = $_SERVER['HTTP_HOST'];
 		$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 
 		if($_SESSION){
 		//if you're login
 		}else{
-
-			$relpath = '../view/list.php'; 
-
+			$relpath = '../view/list.php';
 			header("Location: http://$host$uri/$relpath");
-
 		}
 	}else{
+        if($registerType == "juradoprofesional"){
+            $idemail = $_POST["idemail"];
+            $nombre = $_POST["nombre"];
+            $contrasena = $_POST["contrasena"];
+            $contrasena_verif = $_POST["contrasena_verif"];
+            $baneado = "0";
+
+            if($contrasena == $contrasena_verif) {
+                $userToAdd = new JuradoProfesional($idemail, $nombre, $contrasena, "", "", $baneado);
+                $userToAdd->registerUser();
+            } else {
+                // Password incorrect. Javascript correct?
+            }
+
+            $host  = $_SERVER['HTTP_HOST'];
+            $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+
+            if($_SESSION){
+                //if you're login
+            }else{
+                $relpath = '../view/view_admin_usuarios.php';
+                header("Location: http://$host$uri/$relpath");
+            }
+        }
 
 		//error, you should not end here
 	}
