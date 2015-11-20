@@ -14,10 +14,6 @@ if(get_class($_SESSION["user"]) == "Administrador" || isEstablishment($_GET["ide
 } else {
   $user = verPerfil($_SESSION["user"]->getIdemail());
 }
-
-echo isEstablishment($_GET["idemail"]);
-
-
 ?>
 
 <!DOCTYPE html>
