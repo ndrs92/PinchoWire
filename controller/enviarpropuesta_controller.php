@@ -1,6 +1,6 @@
 <?php
 
-	include_once "../model/establecimiento.php";
+include_once "../model/establecimiento.php";
 
 session_start();
 if(get_class($_SESSION["user"])!="Establecimiento"){
@@ -19,7 +19,7 @@ if($_POST["enviarpropuesta_propuesta_nombre"] && $_POST["enviarpropuesta_propues
 		echo "error en guardado <br/>";			
 	}
 	echo "<a href='../view/list.php'>Volver a pagina principal</a><br/>";
-
+	header("Location: ../view/list.php");
 
 }else{
 	//Sketchy, should be handled by javascript, user is not supposed to be here

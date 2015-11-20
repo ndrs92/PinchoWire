@@ -19,6 +19,7 @@ if($_POST["editpropuesta_propuesta_nombre"] && $_POST["editpropuesta_propuesta_d
 		echo "Error al guardar la modificación <br/>";			
 	}
 	echo "<a href='../view/list.php'>Volver a pagina principal</a><br/>";
+	header("Location: ../view/list.php");
 
 
 }else{

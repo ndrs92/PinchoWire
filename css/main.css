@@ -132,3 +132,8 @@ table tbody td {
 #map{
 	height: 600px;
 }
+
+.form-enviar-propuesta{
+	padding-left: 50px;
+	padding-right: 50px;
+}
