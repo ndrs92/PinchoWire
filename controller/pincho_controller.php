@@ -17,4 +17,9 @@ function getAllComentarios($pinchoActual){
 function isProbado($pinchoid,$userid){
 	return PinchoMapper::isProbado($pinchoid,$userid);
 }
+
+function getCurrentEstablishment($pincho){
+	return $pincho->getEstablishment();
+}
+
 ?>

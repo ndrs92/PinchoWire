@@ -6,6 +6,13 @@ if(empty($_SESSION["user"])){
     header("Location: ../view/403.php");
 }
 
+function isEstablishment($idemail){
+    $result = UserMapper::findByEmail($idemail, "establecimiento");
+    if($result == NULL)
+        return false;
+    return true;
+}
+
 function verPerfil($idemail){
     $user = Usuario::getByIdemail($idemail);
 
@@ -54,7 +61,7 @@ if (isset($_POST["profile_user_submit"])) {
 
         $host  = $_SERVER['HTTP_HOST'];
         $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-        $relpath = '../view/profile.php';
+        $relpath = '../view/profile.php?idemail='.$_POST["profile_mail"];
         header("Location: http://$host$uri/$relpath");
     } else {
         throw new Exception("Ningun campo puede estar vacio. Comprobar javascript");
