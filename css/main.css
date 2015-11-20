@@ -37,3 +37,59 @@ table tbody td {
 	font-size: 10px;
 	font-weight: bold;
 }
+
+.votacion-body{
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+.btn-probar-pincho{
+	background-color: #808080;
+	color: white;
+	text-align: center;
+	vertical-align: center;
+	height: 30px;
+	line-height: 30px;
+	transition: 0.1s;
+}
+
+.btn-probar-pincho:hover{
+	background-color: #D1D1D1;
+	color: black;
+	transition: 0.1s;
+}
+
+.btn-votar-pincho{
+	background-color: #636363;
+	color: white;
+	text-align: center;
+	vertical-align: center;
+	height: 30px;
+	line-height: 30px;
+	transition: 0.1s;
+}
+
+.btn-votar-pincho:hover{
+	background-color: #D1D1D1;
+	color: black;
+	transition: 0.1s;
+}
+
+.pincho-info{
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-bottom: 15px;
+}
+
+.pincho-image{
+	background-color: black;
+}
+.pincho-image img{
+	opacity: 1;
+	transition: 0.1s;
+}
+
+.pincho-image img:hover{
+	opacity: 0.8;
+	transition: 0.1s;
+}

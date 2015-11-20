@@ -92,56 +92,47 @@ session_start();
 							<span class="st-border"></span>
 						</div>
 					</div>
-					<table class="table table-bordered table-striped table-hover">
-						<thead>
-							<td><?= $l["view_list_name"] ?></td>
-							<td><?= $l["view_list_description"] ?></td>
-							<td><?= $l["view_list_price"] ?></td>
-							<td class='hidden-xs'><?= $l["view_list_ingredients"] ?></td>
-							<?php
-							if(isset($_SESSION["user"]) && get_class($_SESSION["user"]) == "JuradoPopular") {
-								echo "<td>". $l["view_list_eaten"]. "</td >";
-								echo "<td>". $l["view_list_vote"] . "</td>";
+					<?php
+					if (getAllPinchos() != NULL) {
+						foreach (getAllPinchos() as $pincho) {
+
+							if(isset($_SESSION["user"])){
+								if(isProbado($pincho->getIdnombre(),$_SESSION["user"]->getIdemail())){
+									$probado = $l["view_list_eaten"];
+								}
+								else{
+									$probado = $l["view_list_not_eaten"];
+								}
+							}else{
+								$probado = $l["view_list_eaten_not_logged"];
 							}
 							?>
-						</thead>
-						<tbody>
-							<?php
-							if (getAllPinchos() != NULL) {
-								foreach (getAllPinchos() as $pincho) {
 
-									if(isset($_SESSION["user"])){
-										if(isProbado($pincho->getIdnombre(),$_SESSION["user"]->getIdemail())){
-											$probado = $l["view_list_eaten"];
-										}
-										else{
-											$probado = $l["view_list_not_eaten"];
-										}
-									}else{
-										$probado = $l["view_list_eaten_not_logged"];
-									}
-
-
-									echo "
-									<tr>
-										<td><a href='viewPincho.php?id=" . $pincho->getIdnombre() . "'  >" . $pincho->getIdnombre() . "</a></td>
-										<td>" . $pincho->getDescripcion() . "</td>
-										<td>" . $pincho->getPrecio() . "€</td>
-										<td class='hidden-xs'>" . $pincho->getIngredientes() . "</td>";
-
-
+							<div class="col-md-3 col-sm-6">
+								<div class="team-member">
+									<a href='viewPincho.php?id=<?= $pincho->getIdnombre() ?> '>
+										<div class="member-image pincho-image">
+											<img class="img-responsive" src="../images/pinchos/default.jpg" alt="">
+										</div>
+									</a>
+									<?php
 									if(isset($_SESSION["user"]) && get_class($_SESSION["user"]) == "JuradoPopular"){
-										echo "<td><a href='../controller/markeatenpincho_controller.php?markeatenpincho_probado_idpincho=". $pincho->getIdnombre() . "&markeatenpincho_probado_idmail=" . $_SESSION["user"]->getIdemail() . "'>" . $probado . "</a></td>";
-										echo "<td><a href='./view_votacionpopular.php?idpincho=". $pincho->getIdnombre() . "'>" . $l["view_list_vote"] . "</a></td>";
-									}
-
-										echo "</tr>";
+										echo "<a href='../controller/markeatenpincho_controller.php?markeatenpincho_probado_idpincho=". $pincho->getIdnombre() . "&markeatenpincho_probado_idmail=" . $_SESSION["user"]->getIdemail() . "'><div class='btn-probar-pincho'>" . $probado . "</div></a>";
+										echo "<a href='./view_votacionpopular.php?idpincho=". $pincho->getIdnombre() . "'><div class='btn-votar-pincho'>" . $l["view_list_vote"] . "</div></a>";
 
 									}
-								}
-								?>
-							</tbody>
-						</table>
+									?>
+									<div class="pincho-info">
+										<h4><?= $pincho->getIdnombre() ?></h4>
+										<span><?= $pincho->getDescripcion() ?></span>
+									</div>
+									<hr class="visible-xs" />
+								</div>
+							</div>
+							<?php
+						}
+					}
+					?>
 
 					</div>
 				</div>
