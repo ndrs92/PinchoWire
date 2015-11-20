@@ -1,15 +1,25 @@
 <?php
 include_once "../model/juradopopular.php";
-include_once "../model/pincho.php";
+
+include_once "pincho_controller.php";
+
 session_start();
+
+if(get_class($_SESSION["user"]) != "JuradoPopular"){
+    header("Location: ../view/403.php");
+    exit;
+}
+
+$pinchoActual = getCurrentPincho($_GET["idpincho"]);
+
 
 if($_POST["votacionpopular_codigo1"] && $_POST["votacionpopular_codigo2"] && $_POST["votacionpopular_codigo3"] && $_POST["votacionpopular_idpincho"]){
     //All params for vote a pincho OK
 
     //$_SESSION["user"]->votar_pincho($_POST["votacionpopular_idpincho"]);
-    $pinchoCodigo1 = PinchoMapper::getPinchoFromCode($_POST["votacionpopular_codigo1"]);
-    $pinchoCodigo2 = PinchoMapper::getPinchoFromCode($_POST["votacionpopular_codigo2"]);
-    $pinchoCodigo3 = PinchoMapper::getPinchoFromCode($_POST["votacionpopular_codigo3"]);
+    $pinchoCodigo1 = PinchoMapper::getPinchoIdFromCode($_POST["votacionpopular_codigo1"]);
+    $pinchoCodigo2 = PinchoMapper::getPinchoIdFromCode($_POST["votacionpopular_codigo2"]);
+    $pinchoCodigo3 = PinchoMapper::getPinchoIdFromCode($_POST["votacionpopular_codigo3"]);
     $relpath = '../view/view_votacionpopular.php?idpincho='. $_POST["votacionpopular_idpincho"];
 
     if( $pinchoCodigo1 == $_POST["votacionpopular_idpincho"] ||
@@ -56,7 +66,8 @@ if($_POST["votacionpopular_codigo1"] && $_POST["votacionpopular_codigo2"] && $_P
     header("Location: http://$host$uri/$relpath");
     echo "$relpath";
 }else{
-    //Sketchy, should be handled by javascript, user is not supposed to be here
-    echo "you should not end here. Check javascript form verification";
+    header("Location: ../view/404.php");
+    exit();//Sketchy, should be handled by javascript, user is not supposed to be here
+    //echo "you should not end here. Check javascript form verification";
 }
 ?>

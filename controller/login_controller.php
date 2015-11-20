@@ -45,7 +45,8 @@ if($_POST["login_user_login"] && $_POST["login_user_pass"]){
 
 }else{
 	//Sketchy, should be handled by javascript, user is not supposed to be here
-	echo "you should not end here. Check javascript form verification";
+	header("Location: ../view/404.php");
+    exit();//echo "you should not end here. Check javascript form verification";
 }
 
 ?>

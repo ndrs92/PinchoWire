@@ -21,8 +21,9 @@ if($_POST["addcomment_comment_name"] && $_POST["addcomment_comment_idpincho"]){
     header("Location: http://$host$uri/$relpath?id=".$_POST["addcomment_comment_idpincho"]);
 
 }else{
-    //Sketchy, should be handled by javascript, user is not supposed to be here
-    echo "you should not end here. Check javascript form verification";
+    header("Location: ../view/404.php");
+    exit();//Sketchy, should be handled by javascript, user is not supposed to be here
+    //echo "you should not end here. Check javascript form verification";
 }
 
 ?>
