@@ -107,12 +107,12 @@ $pinchoList = Pincho::getAllPropuestas();
                                     switch ($row->getEstadopropuesta()) {
                                         case 0:
                                         echo "<td>
-                                        <a href='../controller/gestionpropuesta_controller.php?action=accept_pincho&idnombre=" . $row->getIdnombre() . "'>Aceptar</a><br/>
-                                        <a href='../controller/gestionpropuesta_controller.php?action=deny_pincho&idnombre=" . $row->getIdnombre() . "'>Denegar</a>
+                                        <a class='btn btn-success' href='../controller/gestionpropuesta_controller.php?action=accept_pincho&idnombre=" . $row->getIdnombre() . "'>Aceptar</a>
+                                        <a class='btn btn-danger' href='../controller/gestionpropuesta_controller.php?action=deny_pincho&idnombre=" . $row->getIdnombre() . "'>Denegar</a>
                                     </td>";
                                     break;
                                     case 1:
-                                    echo "<td><a href='../controller/gestionpropuesta_controller.php?action=set_pendant&idnombre=" . $row->getIdnombre() . "'>Restablecer para revision</a></td>";
+                                    echo "<td><a class='btn btn-success' href='../controller/gestionpropuesta_controller.php?action=set_pendant&idnombre=" . $row->getIdnombre() . "'>Restablecer para revision</a></td>";
                                     break;
                                     default:
                                     echo "<td>Error por aqui</td>";
