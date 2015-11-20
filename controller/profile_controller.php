@@ -23,23 +23,33 @@ if (isset($_POST["profile_user_submit"])) {
 
     if ($_POST["profile_mail"] && $_POST["profile_pass"] && $_POST["profile_name"]) {
 
-        switch ($_POST["type"]) {
+        if (is_uploaded_file($_FILES["profile_avatar"]["tmp_name"])) {
+            $from = $_FILES["profile_avatar"]["tmp_name"];
+            $rutaavatar = "images/avatars/" . $_POST["profile_mail"];
+        } else {
+            $rutaavatar = $_POST["avatar"];
+        }
 
+        switch ($_POST["type"]) {
             case "administrador":
-                userMapper::update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $_POST["profile_avatar"], "administrador", NULL, NULL, NULL, NULL, NULL, NULL);
+                userMapper::update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $rutaavatar, "administrador", NULL, NULL, NULL, NULL, NULL, NULL);
                 break;
 
             case "juradoprofesional":
-                userMapper::update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $_POST["profile_avatar"], "juradoprofesional", $_POST["profile_curriculum"], NULL, NULL, NULL, NULL);
+                userMapper::update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $rutaavatar, "juradoprofesional", $_POST["profile_curriculum"], NULL, NULL, NULL, NULL);
                 break;
 
             case "juradopopular":
-                userMapper::update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $_POST["profile_avatar"], "juradopopular", NULL, NULL, NULL, NULL, NULL, NULL);
+                userMapper::update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $rutaavatar, "juradopopular", NULL, NULL, NULL, NULL, NULL, NULL);
                 break;
 
             case "establecimiento":
-                userMapper::update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $_POST["profile_avatar"], "establecimiento", NULL, $_POST["profile_direccion"], $_POST["profile_web"], $_POST["profile_horario"], $_POST["profile_rutaimagen"], $_POST["profile_geoloc"]);
+                userMapper::update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $rutaavatar, "establecimiento", NULL, $_POST["profile_direccion"], $_POST["profile_web"], $_POST["profile_horario"], $_POST["profile_rutaimagen"], $_POST["profile_geoloc"]);
                 break;
+        }
+
+        if (is_uploaded_file($_FILES["profile_avatar"]["tmp_name"])) {
+            move_uploaded_file($from, "../" . $rutaavatar);
         }
 
         $host  = $_SERVER['HTTP_HOST'];

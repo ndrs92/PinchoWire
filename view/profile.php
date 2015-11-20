@@ -82,18 +82,18 @@ if(get_class($_SESSION["user"]) == "Administrador") {
           <div class="col-md-4 col-sm-12">
             <div class="team-member">
               <div class="member-image">
-                <img class="img-responsive" src="../images/members/team1.jpg" alt="">
+                <img class="img-responsive" src="../<?php echo $user->getRutaavatar(); ?>" alt="">
               </div>
               <div class="member-info">
-                <h4>Andrés Vieira</h4>
-                <span><?= strtoupper(get_class($_SESSION["user"])) ?></span>
+                <h4><? echo $user->getNombre(); ?></h4>
+                <span><?= strtoupper(get_class($user)) ?></span>
               </div>
             </div>
           </div>
 
           <div class="col-md-8 col-sm-12">
 
-            <form role="form" action="../controller/profile_controller.php" method="POST">
+            <form role="form" action="../controller/profile_controller.php" method="POST" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="name"><?php echo $l["view_profile_editmail"] ?></label>
                 <div class="well well-sm"><? echo $user->getIdemail(); ?> </div>
@@ -108,7 +108,7 @@ if(get_class($_SESSION["user"]) == "Administrador") {
               </div>
               <div class="form-group">
                 <label for="name"><?php echo $l["view_profile_editavatar"] ?></label>
-                <input class="form-control" type="text" name="profile_avatar" value="<? echo $user->getRutaavatar(); ?>" />
+                <input class="form-control" type="file" name="profile_avatar" />
               </div>
 
               <?php if($user->getTable()=="juradoprofesional"){
@@ -146,8 +146,7 @@ if(get_class($_SESSION["user"]) == "Administrador") {
 
               <br/>
               <?php } ?>
-
-
+              <input class="btn btn-default" type="hidden" name="avatar" value="<? echo $user->getRutaavatar(); ?>" />
               <input class="btn btn-default" type="hidden" name="profile_mail" value="<? echo $user->getIdemail(); ?>" />
               <input class="btn btn-default" type="hidden" name="type" value="<?php echo $user->getTable(); ?>" />
               <input class="btn btn-default" type="submit" name="profile_user_submit" value="<?= $l["view_profile_save"] ?>" />

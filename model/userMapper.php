@@ -55,6 +55,7 @@ class UserMapper{
       $query = "Insert into juradoprofesional values('".$userObject->getCurriculum()."','".$userObject->getIdemail()."','".$userObject->getNombre()."','".$userObject->getContrasena()."','".$userObject->getRutaavatar()."','".$userObject->getBaneado()."')";
       $result = mysqli_query($connectHandler, $query);
     }
+    return $result;
   }
 
   public static function findByEmail($idemail, $usertype){

@@ -72,7 +72,7 @@ if(!empty($_SESSION["user"])){
 						</ul>
 						<div class="tab-content">
 							<div id="pane1" class="tab-pane active">
-								<form role="form" action="../controller/register_controller.php?type=juradopopular" method="POST">
+								<form role="form" action="../controller/register_controller.php?type=juradopopular" method="POST" enctype="multipart/form-data">
 									<div class="form-group">
 										<label for="name">Nombre:</label>
 										<input type="text" class="form-control" name="nombre">
@@ -98,9 +98,7 @@ if(!empty($_SESSION["user"])){
 								</form>
 							</div>
 							<div id="pane2" class="tab-pane">
-
-
-								<form role="form" action="../controller/register_controller.php?type=establishment" method="POST">
+								<form role="form" action="../controller/register_controller.php?type=establishment" method="POST" enctype="multipart/form-data">
 									<div class="form-group">
 										<label for="name">Nombre:</label>
 										<input type="text" class="form-control" name="nombre">
@@ -144,8 +142,6 @@ if(!empty($_SESSION["user"])){
 									</div>
 									<input class="btn btn-success" type="submit" value="Crear usuario" />
 								</form>
-
-
 							</div>
 						</div><!-- /.tab-content -->
 					</div><!-- /.register-tab -->

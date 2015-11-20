@@ -9,7 +9,8 @@ include_once "../model/administrador.php";
 session_start();
 
 if(get_class($_SESSION["user"]) != "Administrador"){
-	header("Location: list.php");
+	header("Location: ../view/403.php");
+	exit;
 }
 ?>
 
