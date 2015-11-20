@@ -142,7 +142,13 @@ if(get_class($_SESSION["user"]) == "Administrador") {
               <div class="form-group">
                 <label for="name"><?php echo $l["view_profile_geloc"] ?></label>
                 <input class="form-control" type="text" name="profile_geoloc" value="<? echo $user->getGeoloc(); ?>" />
+                <?php
+                  $lat = explode(", ",$user->getGeoloc())[0];
+                  $lng = explode(", ",$user->getGeoloc())[1];
+                ?>
               </div>
+              <div id="map"></div>
+
 
               <br/>
               <?php } ?>
@@ -184,8 +190,32 @@ if(get_class($_SESSION["user"]) == "Administrador") {
     <script type="text/javascript" src="../js/jquery.isotope.min.js"></script><!-- isotope -->
     <script type="text/javascript" src="../js/jquery.magnific-popup.min.js"></script><!-- magnific-popup -->
     <script type="text/javascript" src="../js/scripts.js"></script><!-- Scripts -->
+    <script>
+
+      var map;
+      function initMap() {
+        var myLatLng = {lat: <?= $lat ?>, lng: <?= $lng ?>};
+
+  // Create a map object and specify the DOM element for display.
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: myLatLng,
+    scrollwheel: false,
+    zoom: 17
+  });
+
+  // Create a marker and set its position.
+  var marker = new google.maps.Marker({
+    map: map,
+    position: myLatLng,
+    title: 'Hello World!'
+  });
+}
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApOBPY5dso4qlFcJUfiwwALFGBmdlWPGo&callback=initMap"
+async defer></script>
 
 
-  </body>
-  </html>
+</body>
+</html>
 

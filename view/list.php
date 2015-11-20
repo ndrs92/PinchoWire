@@ -417,7 +417,9 @@ $concurso = new Concurso();
 				"export": {
 					"enabled": false
 				}
-			} );
+			});
+
+			
 		</script><!-- Chart -->
 
 

@@ -128,3 +128,7 @@ table tbody td {
 	height		: 500px;
 	font-size	: 11px;
 }					
+
+#map{
+	height: 600px;
+}
