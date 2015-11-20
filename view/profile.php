@@ -9,11 +9,13 @@ include_once "../model/administrador.php";
 
 session_start();
 
-if(get_class($_SESSION["user"]) == "Administrador") {
+if(get_class($_SESSION["user"]) == "Administrador" || isEstablishment($_GET["idemail"])) {
   $user = verPerfil($_GET["idemail"]);
 } else {
   $user = verPerfil($_SESSION["user"]->getIdemail());
 }
+
+echo isEstablishment($_GET["idemail"]);
 
 
 ?>

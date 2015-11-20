@@ -8,6 +8,7 @@ include_once "../model/administrador.php";
 
 session_start();
 $pinchoActual = getCurrentPincho($_GET["id"]);
+$establecimientoAsociado = getCurrentEstablishment($pinchoActual);
 
 if($pinchoActual->getIdnombre() == NULL){
 	header("Location: 404.php");
@@ -79,6 +80,13 @@ if($pinchoActual->getIdnombre() == NULL){
 						<h3> Descripción: <?php echo $pinchoActual->getIdnombre(); ?> </h3>
 						<h3> Precio: <?php echo $pinchoActual->getPrecio(); ?>€</h3>
 						<h3> Ingredientes: <?php echo $pinchoActual->getIngredientes(); ?> </h3>
+						<h3> Establecimiento:
+							<?php
+								echo "<a href=profile.php?idemail=".$establecimientoAsociado->getIdemail().">";
+								echo $establecimientoAsociado->getNombre();
+								echo "</a>";
+							?>
+						</h3>
 					</div>
 				</div>
 			</div>

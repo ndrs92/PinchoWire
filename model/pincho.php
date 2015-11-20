@@ -21,6 +21,11 @@ class Pincho {
         $this->rutaimagen = $rutaimagen;
     }
 
+    public function getEstablishment(){
+        $pincho = PinchoMapper::find($this->getIdnombre());
+        $idmail = $pincho["establecimiento_idemail"];
+        return Usuario::getByIdemail($idmail);
+    }
 
     public function createCodes($numberOfCodes){
         for($i = 0; $i < $numberOfCodes; $i++){
