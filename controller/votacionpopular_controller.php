@@ -7,9 +7,9 @@ if($_POST["votacionpopular_codigo1"] && $_POST["votacionpopular_codigo2"] && $_P
     //All params for vote a pincho OK
 
     //$_SESSION["user"]->votar_pincho($_POST["votacionpopular_idpincho"]);
-    $pinchoCodigo1 = PinchoMapper::getPinchoFromCode($_POST["votacionpopular_codigo1"]);
-    $pinchoCodigo2 = PinchoMapper::getPinchoFromCode($_POST["votacionpopular_codigo2"]);
-    $pinchoCodigo3 = PinchoMapper::getPinchoFromCode($_POST["votacionpopular_codigo3"]);
+    $pinchoCodigo1 = PinchoMapper::getPinchoIdFromCode($_POST["votacionpopular_codigo1"]);
+    $pinchoCodigo2 = PinchoMapper::getPinchoIdFromCode($_POST["votacionpopular_codigo2"]);
+    $pinchoCodigo3 = PinchoMapper::getPinchoIdFromCode($_POST["votacionpopular_codigo3"]);
     $relpath = '../view/view_votacionpopular.php?idpincho='. $_POST["votacionpopular_idpincho"];
 
     if( $pinchoCodigo1 == $_POST["votacionpopular_idpincho"] ||

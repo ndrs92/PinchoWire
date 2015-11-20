@@ -5,7 +5,7 @@ include_once("../resources/code/bd_manage.php");
 
 class PinchoMapper{
 
-	public static function getPinchoFromCode($code){
+	public static function getPinchoIdFromCode($code){
 		$toRet = null;
 
 		global $connectHandler;
