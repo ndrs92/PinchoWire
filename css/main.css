@@ -1,3 +1,15 @@
+body{
+	background-color: #262626;
+}
+
+#stats{
+	background-color: white;
+}
+
+#equipo{
+	background-color: white;
+}
+
 table thead td {
 	font-weight: bold;
 	font-size: 12px;
@@ -92,4 +104,21 @@ table tbody td {
 .pincho-image img:hover{
 	opacity: 0.8;
 	transition: 0.1s;
+}
+
+.admin-options{
+	padding-left: 50px;
+}
+
+.admin-user-table{
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
+.edit-button{
+	margin-right: 10px;
+}
+
+.btn-register-professional{
+	margin-bottom: 15px;
 }
