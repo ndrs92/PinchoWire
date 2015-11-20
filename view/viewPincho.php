@@ -82,9 +82,9 @@ if($pinchoActual->getIdnombre() == NULL){
 						<h3> Ingredientes: <?php echo $pinchoActual->getIngredientes(); ?> </h3>
 						<h3> Establecimiento:
 							<?php
-								echo "<a href=profile.php?idemail=".$establecimientoAsociado->getIdemail().">";
-								echo $establecimientoAsociado->getNombre();
-								echo "</a>";
+							echo "<a href=profile.php?idemail=".$establecimientoAsociado->getIdemail().">";
+							echo $establecimientoAsociado->getNombre();
+							echo "</a>";
 							?>
 						</h3>
 					</div>
@@ -138,7 +138,13 @@ if($pinchoActual->getIdnombre() == NULL){
 										<div class="col-md-1 botonera-comment">
 											<?php
 											if ($_SESSION && get_class($_SESSION["user"]) == "JuradoPopular" && $_SESSION["user"]->getIdemail() == $comentario["juradopopular_idemail"]) {
-												echo "<a href='../controller/eliminarcomentario_controller.php?delcomment_comment_id=" . $comentario["idcomentario"] . " &delcomment_comment_idpincho=" . $pinchoActual->getIdnombre() . "'><img class='delete-comment' src='../images/trash.png'/> </a>";
+												?>
+												<form id="comment_<?= $comentario["idcomentario"] ?>" method="post" action="../controller/eliminarcomentario_controller.php">
+													<input type="hidden" name="delcomment_comment_id" value="<?= $comentario["idcomentario"] ?>" />  
+													<input type="hidden" name="delcomment_comment_idpincho" value="<?= $pinchoActual->getIdnombre() ?>" />  
+													<a onclick="document.getElementById('comment_<?= $comentario["idcomentario"] ?>').submit();"><img class='delete-comment' src='../images/trash.png'/></a>
+												</form>
+												<?php
 											}
 											?>
 										</div>
