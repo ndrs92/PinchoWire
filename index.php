@@ -12,8 +12,11 @@ if($connectHandler){
 
 	header("Location: http://$host$uri/$relpath");
 	
+	 
 }
 else{
+	
+	if(php_uname("s")=="Linux"){
 	?>
 	<h1>No se ha encontrado la Base de Datos</h1>
 	<br>
@@ -25,6 +28,10 @@ else{
 		<input type= "submit" name = "submit" value = "Enviar">
 	</form>
 	<?php
+	}
+	else{
+		echo "<h1>No se puede hacer el Dump de la BD automaticamente.</h1>";
+	}
 }
 
 

@@ -1,5 +1,17 @@
 <?php
-	
+
+	/*
+	$command="mysql -h ".$_POST['host']." -u '".$_POST['user']."' -p'".$_POST['pass']."' 'G23' < '../config/database.sql'";
+	$output = shell_exec($command);
+	if($output != 0){
+		echo "Error durante el dump de la BD";
+	}
+	else{
+		echo "Database saved";
+	}
+
+	*/
+	 
 	$conn = mysqli_connect($_POST["host"], $_POST["user"], $_POST["pass"]);
 	if(!$conn){
 		die("Connection failed: " . mysqli_connect_error());
@@ -365,9 +377,13 @@
 
 
 
+
+
+
+
 	/*
 
 mysqli_close($conn);
-header('Location: ../view/list.php');*/
+header('Location: ..');*/
 
 ?>
