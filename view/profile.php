@@ -13,7 +13,7 @@ if(isEstablishment($_GET["idemail"])) {
   $user = verPerfil($_GET["idemail"]);
 } else {
   if(isset($_SESSION["user"]) && (get_class($_SESSION["user"]) == "Administrador" || $_SESSION["user"]->getIdemail() == $_GET["idemail"])){
-    $user = verPerfil($_SESSION["user"]->getIdemail());
+    $user = verPerfil($_GET["idemail"]);
   }else{
    header("Location: 403.php");
  }
@@ -162,7 +162,7 @@ if(isEstablishment($_GET["idemail"])) {
               <input class="btn btn-default" type="hidden" name="profile_mail" value="<? echo $user->getIdemail(); ?>" />
               <input class="btn btn-default" type="hidden" name="type" value="<?php echo $user->getTable(); ?>" />
               <?php
-              if(isset($_SESSION["user"]) && $_SESSION["user"]->getIdemail() == $_GET["idemail"]){
+              if(isset($_SESSION["user"]) && ($_SESSION["user"]->getIdemail() == $_GET["idemail"] || get_class($_SESSION["user"]) == "Administrador" )){
                 ?>
                 <input class="btn btn-default" type="submit" name="profile_user_submit" value="<?= $l["view_profile_save"] ?>" />
                 <?php
