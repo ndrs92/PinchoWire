@@ -26,11 +26,16 @@ if (isset($_POST["profile_user_submit"])) {
 
     if ($_POST["profile_mail"] && $_POST["profile_pass"] && $_POST["profile_name"]) {
 
+        $isValidType = 0;
+        $rutaavatar = $_POST["avatar"];
         if (is_uploaded_file($_FILES["profile_avatar"]["tmp_name"])) {
-            $from = $_FILES["profile_avatar"]["tmp_name"];
-            $rutaavatar = "images/avatars/" . $_POST["profile_mail"];
-        } else {
-            $rutaavatar = $_POST["avatar"];
+            $from = $_FILES["profile_avatar"];
+            $imageFileType = pathinfo($from["name"], PATHINFO_EXTENSION);
+            if ($imageFileType == "jpg" || $imageFileType == "png" || $imageFileType == "bmp") {
+                $isValidType = 1;
+                $imageFileType = pathinfo($from["name"], PATHINFO_EXTENSION);
+                $rutaavatar = "images/avatars/" . $_POST["profile_mail"] . "." . $imageFileType;
+            }
         }
 
         switch ($_POST["type"]) {
@@ -51,8 +56,8 @@ if (isset($_POST["profile_user_submit"])) {
                 break;
         }
 
-        if (is_uploaded_file($_FILES["profile_avatar"]["tmp_name"])) {
-            move_uploaded_file($from, "../" . $rutaavatar);
+        if ($isValidType) {
+            move_uploaded_file($from["tmp_name"], "../" . $rutaavatar);
         }
 
         $host  = $_SERVER['HTTP_HOST'];
