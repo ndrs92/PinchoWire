@@ -9,10 +9,14 @@ include_once "../model/administrador.php";
 
 session_start();
 
-if(get_class($_SESSION["user"]) == "Administrador" || isEstablishment($_GET["idemail"])) {
+if(isEstablishment($_GET["idemail"])) {
   $user = verPerfil($_GET["idemail"]);
 } else {
-  $user = verPerfil($_SESSION["user"]->getIdemail());
+  if(isset($_SESSION["user"]) && (get_class($_SESSION["user"]) == "Administrador" || $_SESSION["user"]->getIdemail() == $_GET["idemail"])){
+    $user = verPerfil($_SESSION["user"]->getIdemail());
+  }else{
+   header("Location: 403.php");
+ }
 }
 ?>
 
@@ -141,11 +145,15 @@ if(get_class($_SESSION["user"]) == "Administrador" || isEstablishment($_GET["ide
                 <label for="name"><?php echo $l["view_profile_geloc"] ?></label>
                 <input class="form-control" type="text" name="profile_geoloc" value="<? echo $user->getGeoloc(); ?>" />
                 <?php
-                  $lat = explode(", ",$user->getGeoloc())[0];
-                  $lng = explode(", ",$user->getGeoloc())[1];
+                $lat = explode(", ",$user->getGeoloc())[0];
+                $lng = explode(", ",$user->getGeoloc())[1];
                 ?>
               </div>
-              <div id="map"></div>
+              <?php
+              if(isset($lat) && isset($lng)){
+                echo '<div id="map"></div>';
+              }
+              ?>
 
 
               <br/>
@@ -153,7 +161,14 @@ if(get_class($_SESSION["user"]) == "Administrador" || isEstablishment($_GET["ide
               <input class="btn btn-default" type="hidden" name="avatar" value="<? echo $user->getRutaavatar(); ?>" />
               <input class="btn btn-default" type="hidden" name="profile_mail" value="<? echo $user->getIdemail(); ?>" />
               <input class="btn btn-default" type="hidden" name="type" value="<?php echo $user->getTable(); ?>" />
-              <input class="btn btn-default" type="submit" name="profile_user_submit" value="<?= $l["view_profile_save"] ?>" />
+              <?php
+              if(isset($_SESSION["user"]) && $_SESSION["user"]->getIdemail() == $_GET["idemail"]){
+                ?>
+                <input class="btn btn-default" type="submit" name="profile_user_submit" value="<?= $l["view_profile_save"] ?>" />
+                <?php
+              }
+
+              ?>
             </form>
 
 

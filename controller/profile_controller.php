@@ -2,10 +2,6 @@
 include_once "../model/usuario.php";
 session_start();
 
-if(empty($_SESSION["user"])){
-    header("Location: ../view/403.php");
-}
-
 function isEstablishment($idemail){
     $result = UserMapper::findByEmail($idemail, "establecimiento");
     if($result == NULL)

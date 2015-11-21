@@ -14,17 +14,19 @@ if(!empty($_SESSION["user"])){
 
 ?>
 
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title><?= $l["register_title"] ?></title>
+    <title><?= $l["login_title"] ?></title>
     
     <!-- Main CSS file -->
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/owl.carousel.css" />
+    <link rel="stylesheet" href="../css/magnific-popup.css" />
     <link rel="stylesheet" href="../css/font-awesome.css" />
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/responsive.css" />
@@ -46,7 +48,7 @@ if(!empty($_SESSION["user"])){
       <![endif]-->
 
   </head>
-  <body id="register-body">
+  <body>
 
     <!-- PRELOADER -->
     <div id="st-preloader">
@@ -56,47 +58,59 @@ if(!empty($_SESSION["user"])){
     </div>
     <!-- /PRELOADER -->
 
-    <a class="logo-register" href="./list.php"><img src="../images/logo.png" alt=""></a>
 
-    <div class="container register">
-        <div class="row">
-            <div class="col-md-3 hidden-sm hidden-xs"></div>
+    <?php include("./header.php"); ?>
 
-            <div class="col-md-6 col-sm-12 col-xs-12 register-body">
-                <h2><?= $l["login_title"] ?></h2>
-                <p class="register-description" ><?= $l["login_desc"]?></p>
-                <?php
-                if (isset($_SESSION["login"])) {
-                    if ($_SESSION["login"] == "fail")
-                        echo "<p class='error-message'>Login incorrecto</p>";
-                    if ($_SESSION["login"] == "banned")
-                        echo "<p class='error-message'>Este usuario ha sido baneado. Póngase en contacto con el Administrador</p>";
-                    session_unset();
-                }
-                ?>
-                <br/>
 
-                <form role="form" action="../controller/login_controller.php" method="POST">
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" class="form-control" name="login_user_login">
+    <!-- PINCHOS -->
+    <section id="pinchos">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h1><?= $l["login_title"] ?></h1>
+                        <p class="register-description" ><?= $l["login_desc"]?></p>
+                        <span class="st-border"></span>
                     </div>
-                    <div class="form-group">
-                        <label for="pwd">Password:</label>
-                        <input type="password" class="form-control" name="login_user_pass">
-                    </div>
-                    <input id="login-button" class="btn btn-success" type="submit" value="Log In" />
-                </form>
+                </div>
+                <div class="col-md-12">
+                    <?php
+                    if (isset($_SESSION["login"])) {
+                        if ($_SESSION["login"] == "fail")
+                            echo "<p class='error-message'>Login incorrecto</p>";
+                        if ($_SESSION["login"] == "banned")
+                            echo "<p class='error-message'>Este usuario ha sido baneado. Póngase en contacto con el Administrador</p>";
+                        session_unset();
+                    }
+                    ?>
+                    <br/>
+
+                    <form role="form" action="../controller/login_controller.php" method="POST">
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" name="login_user_login">
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" name="login_user_pass">
+                        </div>
+                        <input id="login-button" class="btn btn-success" type="submit" value="Log In" />
+                    </form>
 
 
+                </div>
             </div>
-            <div class="col-md-3 hidden-xs hidden-sm"></div>
-
         </div>
-    </div>
+    </section>
+    <!-- /PINCHOS -->
 
 
     <?php include("./footer.php"); ?>
+
+    <!-- Scroll-up -->
+    <div class="scroll-up">
+        <ul><li><a href="#header"><i class="fa fa-angle-up"></i></a></li></ul>
+    </div>
 
 
     <!-- JS -->
