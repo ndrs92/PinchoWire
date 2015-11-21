@@ -163,6 +163,24 @@ $concurso = new Concurso();
 		</section>
 		<!-- /STATS -->
 
+		<!-- GASTROMAPA -->
+		<section id="gastromapa">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="section-title">
+							<h1><?= $l["header_gastromapa"]?></h1>
+							<span class="st-border"></span>
+
+							<div id="gastromapa-map"></div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+		<!-- /GASTROMAPA -->
+
 
 		<!-- ABOUT -->
 		<section id="about">
@@ -422,6 +440,33 @@ $concurso = new Concurso();
 			
 		</script><!-- Chart -->
 
+		<script type="text/javascript">
 
-	</body>
-	</html>
+			var map;
+			function initMap() {
+				var myLatLng = {lat: 42.344782, lng: -7.854748};
+
+		  // Create a map object and specify the DOM element for display.
+		  var map = new google.maps.Map(document.getElementById('gastromapa-map'), {
+		  	//Need to be set to... whatever, the first establishment inserted or something
+		  	center: myLatLng,
+		  	scrollwheel: false,
+		  	zoom: 17
+		  });
+
+		  // Create a marker and set its position.
+		  // needs one for each establishment in the database
+		  var marker = new google.maps.Marker({
+		  	map: map,
+		  	position: myLatLng,
+		  	title: 'EST1'
+		  });
+		}
+
+</script><!-- Gastromapa -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApOBPY5dso4qlFcJUfiwwALFGBmdlWPGo&callback=initMap"
+async defer></script>
+
+
+</body>
+</html>

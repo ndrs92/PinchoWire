@@ -72,10 +72,22 @@ if(get_class($_SESSION["user"])!="Administrador"){
 							<span class="st-border"></span>
 						</div>
 					</div>
-					<div class="admin-options">
-						<h2><a href="view_admin_usuarios.php"> · Administrar Usuarios </a></h2>
-						<h2><a href="view_admin_propuestas.php"> · Administrar Propuestas de Pinchos </a></h2>
-						<h2><a href="view_admin_concurso.php"> · Administrar informacion del Concurso </a></h2>
+
+					<div class="admin-options col-md-12">
+						<div class="list-group">
+							<a href="view_admin_concurso.php" class="list-group-item">
+								<h4 class="list-group-item-heading">Administrar Concurso</h4>
+								<p class="list-group-item-text">Permite editar la información relativa al concurso de pinchos actual.</p>
+							</a>
+							<a href="view_admin_usuarios.php" class="list-group-item">
+								<h4 class="list-group-item-heading">Administrar Usuarios</h4>
+								<p class="list-group-item-text">Página de administración de usuarios. Permite crear jurados profesionales, editar perfiles de usuario, y restringir acceso a los no deseados.</p>
+							</a>
+							<a href="view_admin_propuestas.php" class="list-group-item">
+								<h4 class="list-group-item-heading">Administrar Propuestas de Pinchos</h4>
+								<p class="list-group-item-text">Permite revisar las propuestas de pinchos para aceptarlos o denegarlos.</p>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>

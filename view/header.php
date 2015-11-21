@@ -22,10 +22,22 @@ include_once "../model/administrador.php";
 
 			<div class="collapse navbar-collapse" id="st-navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="./list.php#header"><?= $l["header_home"] ?></a></li>
-					<li><a href="./list.php#pinchos"><?= $l["header_pinchos"] ?></a></li>
-					<li><a href="./list.php#stats"><?= $l["header_stats"] ?></a></li>
+					
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Concurso <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="./list.php#pinchos"><?= $l["header_pinchos"] ?></a></li>
+							<li><a href="./list.php#stats"><?= $l["header_stats"] ?></a></li>
+							<li class="divider"></li>
+							<li><a href="./list.php#gastromapa"><?= $l["header_gastromapa"] ?></a></li>
+						</ul>
+					</li>
+
 					<li><a href="./list.php#about"><?= $l["header_about"] ?></a></li>
+
+
+
+
 
 					<?php
 					if(!isset($_SESSION["user"])){
