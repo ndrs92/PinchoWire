@@ -9,6 +9,7 @@ $l = array(
     "header_stats" => "Estadísticas",
     "header_login" => "Identificarse",
     "header_about" => "Acerca de...",
+    "header_gastromapa" => "GastroMapa",
 
     "footer_followus" => "Síguenos:",
     "footer_message" => "2015 Aprendizaxe Basada en Proxectos. Escola Superior de Enxeñería Informática.",
