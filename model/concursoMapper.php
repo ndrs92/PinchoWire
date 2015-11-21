@@ -86,5 +86,11 @@ public static function retrieveNumComments(){
 	$toRet = mysqli_fetch_assoc($result);
 	return $toRet['COUNT(*)'];
 }
+public static function updateConcurso($titulo, $descripcion){
+	global $connectHandler;
+	$query = "UPDATE concurso SET titulo = '$titulo', descripcion = '$descripcion' ";
+	$result = mysqli_query($connectHandler, $query);
+	return $result;
+}
 
 }

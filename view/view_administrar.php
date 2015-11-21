@@ -75,6 +75,7 @@ if(get_class($_SESSION["user"])!="Administrador"){
 					<div class="admin-options">
 						<h2><a href="view_admin_usuarios.php"> · Administrar Usuarios </a></h2>
 						<h2><a href="view_admin_propuestas.php"> · Administrar Propuestas de Pinchos </a></h2>
+						<h2><a href="view_admin_concurso.php"> · Administrar informacion del Concurso </a></h2>
 					</div>
 				</div>
 			</div>

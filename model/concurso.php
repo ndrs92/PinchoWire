@@ -7,7 +7,7 @@ class Concurso{
 	private $descripcion;
 	private $fecha;
 	private $rutaportada;
-	private $titulo;
+	private $titulo; 
 
 
 	//returns the only row in database, as an object
@@ -18,10 +18,11 @@ class Concurso{
 		$this->rutaportada = ConcursoMapper::retrieveRutaportada();
 		$this->titulo = ConcursoMapper::retrieveTitulo();
 
-	if(!isset($this->idconcurso) || !isset($this->descripcion) || !isset($this->fecha) || !isset($this->rutaportada) || !isset($this->titulo)){
-		throw new Exception('<<Concurso>> info inexistent in database or corrupted.');
+		if(!isset($this->idconcurso) || !isset($this->descripcion) || !isset($this->fecha) || !isset($this->rutaportada) || !isset($this->titulo)){
+			throw new Exception('<<Concurso>> info inexistent in database or corrupted.');
+		}
 	}
-	}
+
 
 	public function getIdconcurso(){
 		return $this->idconcurso;
