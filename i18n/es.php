@@ -137,7 +137,7 @@ $l = array(
     "view_profile_address" => "Direccion",
     "view_profile_web" => "Web",
     "view_profile_schedule" => "Horario",
-    "view_profile_image" => "Imagenes",
+    "view_profile_image" => "Fotografía del local",
     "view_profile_geloc" => "Geolocalizacion",
 
     "view_votacionpopular_tittle" => "Votación popular",
