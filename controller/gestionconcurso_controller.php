@@ -15,7 +15,7 @@ if($_POST["nombre"] && $_POST["descripcion"] ){
 	$from = $_FILES["rutaportada"];
 	$imageFileType = pathinfo($from["name"], PATHINFO_EXTENSION);
 	if (is_uploaded_file($from["tmp_name"])) {
-		if ($imageFileType == "jpg" || $imageFileType == "png" || $imageFileType == "bmp") {
+		if ($imageFileType == "jpg" || $imageFileType == "png" || $imageFileType == "jpeg" || $imageFileType == "bmp") {
 			$rutaavatar = "images/avatars/" . $idemail . "." . $imageFileType;
 			$validUpload = 1;
 		}

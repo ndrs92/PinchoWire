@@ -28,7 +28,7 @@ if (isset($_POST["profile_user_submit"])) {
 
         /* Validar avatar */
         $rutaavatar = $_POST["avatar"];
-        $validFormats = array("jpg", "png", "bmp");
+        $validFormats = array("jpg", "jpeg", "png", "bmp");
         if (is_uploaded_file($_FILES["profile_avatar"]["tmp_name"])) {
             $from = $_FILES["profile_avatar"];
             $imageFileType = pathinfo($from["name"], PATHINFO_EXTENSION);

@@ -43,7 +43,7 @@ if ($_POST["idemail"] && $_POST["contrasena"] && $_POST["nombre"]) {
         /* Validar avatar */
         $validUpload = 0;
         $validUploadEst = 0;
-        $validFormats = array("jpg", "png", "bmp");
+        $validFormats = array("jpg", "jpeg", "png", "bmp");
         $rutaavatar = "images/avatars/default.jpg";
 
         $from = $_FILES["rutaavatar"];

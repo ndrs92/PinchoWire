@@ -1,5 +1,6 @@
 <?php
 include_once "../controller/pincho_controller.php";
+include_once "../controller/general_user_controller.php";
 include_once "../resources/code/lang_coverage.php";
 include_once "../model/juradopopular.php";
 include_once "../model/juradoprofesional.php";
@@ -130,7 +131,9 @@ if($pinchoActual->getIdnombre() == NULL){
 						<?php
 						if(getAllComentarios($pinchoActual) != NULL) {
 							foreach (getAllComentarios($pinchoActual) as $comentario) {
+								$rutaImagen = getUsuarioByID($comentario["juradopopular_idemail"])->getRutaavatar();
 								?>
+
 
 								<!-- Start comment -->
 								<div class="row">
@@ -149,7 +152,7 @@ if($pinchoActual->getIdnombre() == NULL){
 											?>
 										</div>
 										<div class="col-md-1">
-											<img height="56px"src="../images/avatars/defect" />
+											<img height="56px"src="../<?= $rutaImagen ?>" />
 										</div>
 										<div class="col-md-8">
 											<div class="panel panel-default">
