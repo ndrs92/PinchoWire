@@ -3,7 +3,7 @@
 include_once "../model/pincho.php";
 include_once "../model/establecimiento.php";
 
-session_start();
+if(!isset($_SESSION)) session_start();
 
 if(get_class($_SESSION["user"])!="Establecimiento"){
     header("Location: ../view/403.php");

@@ -9,7 +9,7 @@ include_once "../model/establecimiento.php";
  * Date: 14/11/2015
  * Time: 17:11
  */
-session_start();
+if(!isset($_SESSION)) session_start();
 
 
 function getAllUsuarios(){

@@ -3,7 +3,7 @@
 include_once "../model/juradopopular.php";
 include_once "../model/establecimiento.php";
 
-session_start();
+if(!isset($_SESSION)) session_start();
 if (empty($_GET["type"])) {
     header("Location: ../view/404.php");
     exit;

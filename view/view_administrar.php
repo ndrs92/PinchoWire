@@ -6,7 +6,7 @@ include_once "../model/juradoprofesional.php";
 include_once "../model/establecimiento.php";
 include_once "../model/administrador.php";
 
-session_start();
+if(!isset($_SESSION)) session_start();
 $pinchoActual = getCurrentPincho($_GET["id"]);
 
 if(get_class($_SESSION["user"])!="Administrador"){

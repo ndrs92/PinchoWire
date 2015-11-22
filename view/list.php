@@ -9,7 +9,7 @@ include_once "../model/establecimiento.php";
 include_once "../model/administrador.php";
 include_once "../model/concurso.php";
 
-session_start();
+if(!isset($_SESSION)) session_start();
 $concurso = getConcurso();
 $establecimientos = getAllEstablecimientos();
 ?>

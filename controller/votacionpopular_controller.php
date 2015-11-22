@@ -3,7 +3,7 @@ include_once "../model/juradopopular.php";
 
 include_once "pincho_controller.php";
 
-session_start();
+if(!isset($_SESSION)) session_start();
 
 if(get_class($_SESSION["user"]) != "JuradoPopular"){
     header("Location: ../view/403.php");

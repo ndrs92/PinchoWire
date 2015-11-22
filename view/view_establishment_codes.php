@@ -2,7 +2,7 @@
 include_once "../resources/code/lang_coverage.php";
 include_once "../controller/pincho_controller.php";
 include_once "../model/establecimiento.php";
-session_start();
+if(!isset($_SESSION)) session_start();
 
 
 if(get_class($_SESSION["user"])!="Establecimiento"){

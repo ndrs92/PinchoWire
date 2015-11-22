@@ -1,7 +1,7 @@
 <?php
 	include_once("../model/concursoMapper.php");
 	include_once("../model/administrador.php");
-session_start();
+if(!isset($_SESSION)) session_start();
 if(get_class($_SESSION["user"])!="Administrador"){
 	header("Location: ../view/403.php");
 	exit;

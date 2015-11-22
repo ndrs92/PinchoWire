@@ -1,5 +1,5 @@
 <?php
-session_start();
+if(!isset($_SESSION)) session_start();
 
 include_once "../model/usuario.php";
 
@@ -12,8 +12,7 @@ if($_POST["login_user_login"] && $_POST["login_user_pass"]){
 	//Okey, all seems legit, proceed to log in
 
 	$userObject = Usuario::login_user($_POST["login_user_login"], $_POST["login_user_pass"]);
-
-	session_start();
+	
 	if($userObject == NULL){
 		$_SESSION["login"] = "fail";
 		$host  = $_SERVER['HTTP_HOST'];

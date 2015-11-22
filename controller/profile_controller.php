@@ -1,6 +1,6 @@
 <?php
 include_once "../model/usuario.php";
-session_start();
+if(!isset($_SESSION)) session_start();
 
 function isEstablishment($idemail){
     $result = UserMapper::findByEmail($idemail, "establecimiento");
