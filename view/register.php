@@ -81,23 +81,27 @@ if(!empty($_SESSION["user"])){
 							</ul>
 							<div class="tab-content">
 								<div id="pane1" class="tab-pane active">
-									<form role="form" action="../controller/register_controller.php?type=juradopopular" method="POST" enctype="multipart/form-data">
+									<form data-toggle="validator" role="form" action="../controller/register_controller.php?type=juradopopular" method="POST" enctype="multipart/form-data">
 										<div class="form-group">
 											<label for="name">Nombre:</label>
-											<input type="text" class="form-control" name="nombre">
+											<input data-error="Introduce un nombre de mínimo 4 caracteres" required data-minlength="4" type="text" class="form-control" name="nombre">
+											<div class="help-block with-errors"></div>
 										</div>
 
 										<div class="form-group">
 											<label for="email">Email:</label>
-											<input type="email" class="form-control" name="idemail">
+											<input data-error="Introduce un email válido" required data-minlength="7" type="email" class="form-control" name="idemail">
+											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
 											<label for="pwd">Password:</label>
-											<input type="password" class="form-control" name="contrasena">
+											<input data-error="Introduce una contraseña de al menos 8 caracteres" required data-minlength="8" id="passToMatch" type="password" class="form-control" name="contrasena">
+											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
 											<label for="pwd">Repite Password:</label>
-											<input type="password" class="form-control" name="contrasena_verif">
+											<input data-error="Las contraseñas no coinciden" data-minlength="8" data-match="#passToMatch" required type="password" class="form-control" name="contrasena_verif">
+											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
 											<label for="avatar">Avatar:</label>
@@ -107,47 +111,57 @@ if(!empty($_SESSION["user"])){
 									</form>
 								</div>
 								<div id="pane2" class="tab-pane">
-									<form role="form" action="../controller/register_controller.php?type=establishment" method="POST" enctype="multipart/form-data">
+									<form data-toggle="validator" role="form" action="../controller/register_controller.php?type=establishment" method="POST" enctype="multipart/form-data">
 										<div class="form-group">
 											<label for="name">Nombre:</label>
-											<input type="text" class="form-control" name="nombre">
+											<input required data-error="Introduce un nombre de mínimo 4 caracteres" required data-minlength="4" type="text" class="form-control" name="nombre">
+											<div class="help-block with-errors"></div>
 										</div>
 
 										<div class="form-group">
 											<label for="email">Email:</label>
-											<input type="email" class="form-control" name="idemail">
+											<input required data-error="Introduce un email válido" required data-minlength="7" type="email" class="form-control" name="idemail">
+											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
 											<label for="direction">Dirección:</label>
-											<input type="text" class="form-control" name="direccion">
+											<input required data-error="Introduce una ubicación de al menos 8 caracteres" required data-minlength="8" type="text" class="form-control" name="direccion">
+											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
 											<label for="web">Pagina Web:</label>
-											<input type="url" class="form-control" name="paginaweb">
+											<input required type="url" data-error="Introduce una URL válida" class="form-control" name="paginaweb">
+											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
 											<label for="time">Horario:</label>
-											<input type="text" class="form-control" name="horario">
+											<input required type="text" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9] - ([01]?[0-9]|2[0-3]):[0-5][0-9]" data-error="Introduce un horario de la forma: 8:00 - 16:00" class="form-control" name="horario">
+											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
 											<label for="time">Coordenadas del establecimiento:</label>
-											<input type="text" class="form-control" name="coordenadas">
+											<input required type="text" pattern="^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?), \s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$" data-error="Introduce unas coordenadas formato google maps: 42.347285, -7.856278" class="form-control" name="coordenadas">
+											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
 											<label for="pwd">Password:</label>
-											<input type="password" class="form-control" name="contrasena">
+											<input required type="password" data-error="Introduce una contraseña de al menos 8 caracteres" required data-minlength="8" id="passToMatch" class="form-control" name="contrasena">
+											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
 											<label for="pwd">Repite Password:</label>
-											<input type="password" class="form-control" name="contrasena_verif">
+											<input required type="password" data-error="Las contraseñas no coinciden" data-minlength="8" data-match="#passToMatch" class="form-control" name="contrasena_verif">
+											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
 											<label for="avatar">Fotografía del local:</label>
 											<input type="file" class="form-control" name="foto" accept="image/*" />
+											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
 											<label for="avatar">Logo de la empresa:</label>
 											<input type="file" class="form-control" name="rutaavatar" accept="image/*" />
+											<div class="help-block with-errors"></div>
 										</div>
 										<input class="btn btn-success" type="submit" value="Crear usuario" />
 									</form>
@@ -181,6 +195,7 @@ if(!empty($_SESSION["user"])){
 		<script type="text/javascript" src="../js/jquery.counterup.min.js"></script><!-- CounterUp -->
 		<script type="text/javascript" src="../js/waypoints.min.js"></script><!-- CounterUp -->
 		<script type="text/javascript" src="../js/jquery.isotope.min.js"></script><!-- isotope -->
+		<script type="text/javascript" src="../js/validator.min.js"></script><!-- isotope -->
 		<script type="text/javascript" src="../js/scripts.js"></script><!-- Scripts -->
 
 
