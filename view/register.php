@@ -142,12 +142,12 @@ if(!empty($_SESSION["user"])){
 											<input type="password" class="form-control" name="contrasena_verif">
 										</div>
 										<div class="form-group">
-											<label for="avatar">Fotografía:</label>
-											<input type="file" class="form-control" name="foto">
+											<label for="avatar">Fotografía del local:</label>
+											<input type="file" class="form-control" name="foto" accept="image/*" />
 										</div>
 										<div class="form-group">
-											<label for="avatar">Avatar:</label>
-											<input type="file" class="form-control" name="rutaavatar">
+											<label for="avatar">Logo de la empresa:</label>
+											<input type="file" class="form-control" name="rutaavatar" accept="image/*" />
 										</div>
 										<input class="btn btn-success" type="submit" value="Crear usuario" />
 									</form>

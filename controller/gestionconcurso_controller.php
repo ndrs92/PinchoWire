@@ -7,7 +7,21 @@ if(get_class($_SESSION["user"])!="Administrador"){
 	exit;
 }
 if($_POST["nombre"] && $_POST["descripcion"] ){
-	
+
+
+	/* Validar avatar */
+	$validUpload = 0;
+	$rutaavatar = "images/concurso/default.jpg";
+	$from = $_FILES["rutaportada"];
+	$imageFileType = pathinfo($from["name"], PATHINFO_EXTENSION);
+	if (is_uploaded_file($from["tmp_name"])) {
+		if ($imageFileType == "jpg" || $imageFileType == "png" || $imageFileType == "bmp") {
+			$rutaavatar = "images/avatars/" . $idemail . "." . $imageFileType;
+			$validUpload = 1;
+		}
+	}
+
+
 	$resultado = concursoMapper::updateConcurso($_POST["nombre"], $_POST ["descripcion"]);
 	if($resultado){
 		echo "Se ha modificado correctamente<br/>";

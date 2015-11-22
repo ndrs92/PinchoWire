@@ -75,7 +75,7 @@ $pinchoList = Pincho::getAllPropuestas();
                     $concurso = new Concurso();
                 ?>
                 <div class="admin-user-table">
-                    <form action = "../controller/gestionconcurso_controller.php" method = "post">
+                    <form action = "../controller/gestionconcurso_controller.php" method = "post" enctype="multipart/form-data">
                         Nombre del Concurso: <input type="text" class="form-control" name="nombre" value = "<?php echo $concurso->getTitulo();?>"></br>
                         Descripcion del Concurso: <textarea class = "form-control" name = "descripcion"  rows = "5"><?php echo $concurso->getDescripcion();?></textarea></br>
                         Avatar <input type="file" class="form-control" name="rutaportada"></br>

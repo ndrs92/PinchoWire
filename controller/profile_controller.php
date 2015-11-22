@@ -28,10 +28,11 @@ if (isset($_POST["profile_user_submit"])) {
 
         $isValidType = 0;
         $rutaavatar = $_POST["avatar"];
+        $validFormats = array("jpg", "png", "bmp");
         if (is_uploaded_file($_FILES["profile_avatar"]["tmp_name"])) {
             $from = $_FILES["profile_avatar"];
             $imageFileType = pathinfo($from["name"], PATHINFO_EXTENSION);
-            if ($imageFileType == "jpg" || $imageFileType == "png" || $imageFileType == "bmp") {
+            if (in_array($imageFileType, $validFormats)) {
                 $isValidType = 1;
                 $imageFileType = pathinfo($from["name"], PATHINFO_EXTENSION);
                 $rutaavatar = "images/avatars/" . $_POST["profile_mail"] . "." . $imageFileType;

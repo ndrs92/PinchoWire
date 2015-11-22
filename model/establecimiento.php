@@ -27,7 +27,7 @@ class Establecimiento extends Usuario{
 	}
 
 	public function registerUser(){
-		UserMapper::registerUser($this);
+		return UserMapper::registerUser($this);
 	}
 
 	public function enviar_propuesta($nombre, $descripcion, $ingredientes, $precio, $rutaimagen){

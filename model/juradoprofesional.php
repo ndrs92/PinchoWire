@@ -15,7 +15,7 @@ class JuradoProfesional extends Usuario{
 	}
 
 	public function registerUser(){
-		UserMapper::registerUser($this);
+		return UserMapper::registerUser($this);
 	}
 
 	public function getCurriculum()
