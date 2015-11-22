@@ -1,6 +1,7 @@
 <?php
 
 include_once "../model/usuario.php";
+include_once "../model/establecimiento.php";
 
 /**
  * Created by PhpStorm.
@@ -14,6 +15,11 @@ session_start();
 function getAllUsuarios(){
     return Usuario::getAllUsuarios();
 }
+
+function getAllEstablecimientos(){
+    return Establecimiento::getAll();
+}
+
 
 function getUsuarioById($idemail){
 	return Usuario::getByIdemail($idemail);

@@ -44,6 +44,18 @@ class UserMapper
         return $toRet;
     }
 
+    public static function retrieveAllEstablecimientos()
+    {
+        global $connectHandler;
+        $query = "Select * from establecimiento";
+        $result = mysqli_query($connectHandler, $query);
+        while ($row = mysqli_fetch_assoc($result)) {
+            $toRet[$row["idemail"]] = $row;
+        }
+
+        return $toRet;
+    }
+
     public static function registerUser($userObject)
     {
         global $connectHandler;

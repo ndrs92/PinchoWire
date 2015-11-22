@@ -1,6 +1,7 @@
 <?php
 include_once "../controller/pincho_controller.php";
 include_once "../controller/concurso_controller.php";
+include_once "../controller/general_user_controller.php";
 include_once "../resources/code/lang_coverage.php";
 include_once "../model/juradopopular.php";
 include_once "../model/juradoprofesional.php";
@@ -10,6 +11,7 @@ include_once "../model/concurso.php";
 
 session_start();
 $concurso = getConcurso();
+$establecimientos = getAllEstablecimientos();
 ?>
 
 <!DOCTYPE html>
@@ -343,7 +345,7 @@ $concurso = getConcurso();
 		<!-- /EQUIPO -->
 
 		<!-- TESTIMONIAL -->
-		<section id="testimonial">
+		<section id="testimonial" style="background-image: url('../<?= $concurso->getRutaportada() ?>')">
 			<div class="container">
 				<div class="row">
 					<div class="overlay"></div>
@@ -444,30 +446,50 @@ $concurso = getConcurso();
 
 		<script type="text/javascript">
 
+			<?php
+			//Procesar todos los establecimientos y sus geoloc
+			//Se pasan las geolocs a un array particular
+			//Se calcula la geoloc media
+			foreach($establecimientos as $e){
+				$geoloc[$e->getIdemail()]["lat"] = explode(", ", $e->getGeoloc())[0];
+				$latarray[$e->getIdemail()] = explode(", ", $e->getGeoloc())[0];
+				$geoloc[$e->getIdemail()]["lng"] = explode(", ", $e->getGeoloc())[1];
+				$lngarray[$e->getIdemail()] = explode(", ", $e->getGeoloc())[1];
+			}
+
+			?>
+
 			var map;
 			function initMap() {
-				var myLatLng = {lat: 42.344782, lng: -7.854748};
+				var myLatLng = {lat: <?= (min($latarray) + max($latarray)) /2 ?>, lng: <?= (min($lngarray) + max($lngarray)) /2 ?>};
 
 		  // Create a map object and specify the DOM element for display.
 		  var map = new google.maps.Map(document.getElementById('gastromapa-map'), {
 		  	//Need to be set to... whatever, the first establishment inserted or something
 		  	center: myLatLng,
 		  	scrollwheel: false,
-		  	zoom: 17
+		  	zoom: 14
 		  });
 
 		  // Create a marker and set its position.
 		  // needs one for each establishment in the database
-		  var marker = new google.maps.Marker({
-		  	map: map,
-		  	position: myLatLng,
-		  	title: 'EST1'
-		  });
+		  <?php
+		  foreach($geoloc as $key=>$g){
+		  	?>
+		  	var marker = new google.maps.Marker({
+		  		map: map,
+		  		position: {lat: <?= $g["lat"] ?> , lng: <?= $g["lng"] ?>},
+		  		title: '<?= $key ?>'
+		  	});	
+		  	<?php	  	
+		  }
+		  ?>
+
 		}
 
-</script><!-- Gastromapa -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApOBPY5dso4qlFcJUfiwwALFGBmdlWPGo&callback=initMap"
-async defer></script>
+	</script><!-- Gastromapa -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApOBPY5dso4qlFcJUfiwwALFGBmdlWPGo&callback=initMap"
+	async defer></script>
 
 
 </body>

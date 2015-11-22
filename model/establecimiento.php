@@ -30,6 +30,15 @@ class Establecimiento extends Usuario{
 		return UserMapper::registerUser($this);
 	}
 
+	public static function getAll(){
+		$ests = UserMapper::retrieveAllEstablecimientos();
+		$toRet = NULL;
+		foreach($ests as $e){
+			$toRet[$e["idemail"]] = new Establecimiento($e["idemail"], $e["nombre"], $e["contrasena"], $e["rutaavatar"], $e["direccion"], $e["web"], $e["horario"], $e["rutaimagen"], $e["geoloc"], $e["baneado"]);
+		}
+		return $toRet;
+	}
+
 	public function enviar_propuesta($nombre, $descripcion, $ingredientes, $precio, $rutaimagen){
 		//Abrir conexion BD $this->idemail
 		

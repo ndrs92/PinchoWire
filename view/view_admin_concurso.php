@@ -72,46 +72,55 @@ $pinchoList = Pincho::getAllPropuestas();
                     </div>
                 </div>
                 <?php
-                    $concurso = new Concurso();
+                $concurso = new Concurso();
                 ?>
                 <div class="admin-user-table">
-                    <form action = "../controller/gestionconcurso_controller.php" method = "post" enctype="multipart/form-data">
-                        Nombre del Concurso: <input type="text" class="form-control" name="nombre" value = "<?php echo $concurso->getTitulo();?>"></br>
-                        Descripcion del Concurso: <textarea class = "form-control" name = "descripcion"  rows = "5"><?php echo $concurso->getDescripcion();?></textarea></br>
-                        Avatar <input type="file" class="form-control" name="rutaportada"></br>
-                        <input type="submit" value="Enviar">
+                    <form class="form" action = "../controller/gestionconcurso_controller.php" method = "post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="name">Nombre:</label>
+                            <input type="text" class="form-control" name="nombre" value = "<?php echo $concurso->getTitulo();?>"></br>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Descripción del Concurso:</label>
+                            <textarea class = "form-control" name = "descripcion"  rows = "5"><?php echo $concurso->getDescripcion();?></textarea></br>
+                        </div>
+                        <div class="form-group">
+                            <label for="avatar">Fotografia de portada:</label>
+                            <input type="file" class="form-control" name="rutaportada"></br>
+                        </div>
+                        <input class="btn btn-success" type="submit" value="Enviar">
                     </form>
                     
+                </div>
+
+
             </div>
-
-
         </div>
+    </section>
+
+
+
+    <?php include("./footer.php"); ?>
+
+    <!-- Scroll-up -->
+    <div class="scroll-up">
+        <ul><li><a href="#header"><i class="fa fa-angle-up"></i></a></li></ul>
     </div>
-</section>
 
 
-
-<?php include("./footer.php"); ?>
-
-<!-- Scroll-up -->
-<div class="scroll-up">
-    <ul><li><a href="#header"><i class="fa fa-angle-up"></i></a></li></ul>
-</div>
-
-
-<!-- JS -->
-<script type="text/javascript" src="../js/jquery.min.js"></script><!-- jQuery -->
-<script type="text/javascript" src="../js/bootstrap.min.js"></script><!-- Bootstrap -->
-<script type="text/javascript" src="../js/jquery.parallax.js"></script><!-- Parallax -->
-<script type="text/javascript" src="../js/smoothscroll.js"></script><!-- Smooth Scroll -->
-<script type="text/javascript" src="../js/masonry.pkgd.min.js"></script><!-- masonry -->
-<script type="text/javascript" src="../js/jquery.fitvids.js"></script><!-- fitvids -->
-<script type="text/javascript" src="../js/owl.carousel.min.js"></script><!-- Owl-Carousel -->
-<script type="text/javascript" src="../js/jquery.counterup.min.js"></script><!-- CounterUp -->
-<script type="text/javascript" src="../js/waypoints.min.js"></script><!-- CounterUp -->
-<script type="text/javascript" src="../js/jquery.isotope.min.js"></script><!-- isotope -->
-<script type="text/javascript" src="../js/jquery.magnific-popup.min.js"></script><!-- magnific-popup -->
-<script type="text/javascript" src="../js/scripts.js"></script><!-- Scripts -->
+    <!-- JS -->
+    <script type="text/javascript" src="../js/jquery.min.js"></script><!-- jQuery -->
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script><!-- Bootstrap -->
+    <script type="text/javascript" src="../js/jquery.parallax.js"></script><!-- Parallax -->
+    <script type="text/javascript" src="../js/smoothscroll.js"></script><!-- Smooth Scroll -->
+    <script type="text/javascript" src="../js/masonry.pkgd.min.js"></script><!-- masonry -->
+    <script type="text/javascript" src="../js/jquery.fitvids.js"></script><!-- fitvids -->
+    <script type="text/javascript" src="../js/owl.carousel.min.js"></script><!-- Owl-Carousel -->
+    <script type="text/javascript" src="../js/jquery.counterup.min.js"></script><!-- CounterUp -->
+    <script type="text/javascript" src="../js/waypoints.min.js"></script><!-- CounterUp -->
+    <script type="text/javascript" src="../js/jquery.isotope.min.js"></script><!-- isotope -->
+    <script type="text/javascript" src="../js/jquery.magnific-popup.min.js"></script><!-- magnific-popup -->
+    <script type="text/javascript" src="../js/scripts.js"></script><!-- Scripts -->
 
 
 </body>
