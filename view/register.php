@@ -145,12 +145,12 @@ if(!empty($_SESSION["user"])){
 										</div>
 										<div class="form-group">
 											<label for="pwd">Password:</label>
-											<input required type="password" data-error="Introduce una contraseña de al menos 8 caracteres" required data-minlength="8" id="passToMatch" class="form-control" name="contrasena">
+											<input required type="password" data-error="Introduce una contraseña de al menos 8 caracteres" required data-minlength="8" id="pass2ToMatch" class="form-control" name="contrasena">
 											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
 											<label for="pwd">Repite Password:</label>
-											<input required type="password" data-error="Las contraseñas no coinciden" data-minlength="8" data-match="#passToMatch" class="form-control" name="contrasena_verif">
+											<input required type="password" data-error="Las contraseñas no coinciden" data-minlength="8" data-match="#pass2ToMatch" class="form-control" name="contrasena_verif">
 											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
