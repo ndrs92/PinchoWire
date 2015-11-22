@@ -1,5 +1,6 @@
 <?php
 include_once "../controller/pincho_controller.php";
+include_once "../controller/concurso_controller.php";
 include_once "../resources/code/lang_coverage.php";
 include_once "../model/juradopopular.php";
 include_once "../model/juradoprofesional.php";
@@ -8,7 +9,7 @@ include_once "../model/administrador.php";
 include_once "../model/concurso.php";
 
 session_start();
-$concurso = new Concurso();
+$concurso = getConcurso();
 ?>
 
 <!DOCTYPE html>
@@ -64,12 +65,13 @@ $concurso = new Concurso();
 		<section id="slider">
 			<div id="home-carousel" class="carousel slide" data-ride="carousel">			
 				<div class="carousel-inner">
-					<div class="item active" style="background-image: url(../images/title.jpg)">
+					<div class="item active" style="background-image: url(../<?= $concurso->getRutaportada() ?>)">
 						<div class="carousel-caption container">
 							<div class="row">
-								<div class="col-sm-7">
-									<h2><?= $l["appname"] ?></h2>
-									<p><?= $l["app_description"]?></p><br>
+								<div class="col-sm-12">
+									<h2><?= $concurso->getTitulo() ?></h2>
+									<p><?= $concurso->getDescripcion() ?></p>
+									<small>Powered by PinchoWire</small><br/>
 									<?php if(!isset($_SESSION["user"])){
 										?>
 										<a href="./register.php" class="btn btn-lg btn-send"><?= $l["app_signup"]?></a>
