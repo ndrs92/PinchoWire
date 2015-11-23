@@ -92,6 +92,22 @@ class Usuario
 
     }
 
+    public static function getAllJuradoProfesional(){
+        $dataset = UserMapper::retriveAllJuradoProfesional();
+        if(isset($dataset)){
+            foreach ($dataset as $parsed) {
+                 $toRet[$parsed["idemail"]] = new JuradoProfesional($parsed["idemail"], $parsed["nombre"], $parsed["contrasena"], $parsed["rutaavatar"], $parsed["curriculum"], $parsed["baneado"]);
+            } 
+        }
+        return $toRet;
+    }
+    public static function assignPinchoJuradoProfesional( $idemail, $pincho){
+        return UserMapper::assignPinchoJuradoProfesional($idemail, $pincho);
+    }
+    public static function isAssignedPinchoJuradoProfesional( $idemail, $pincho){
+        return UserMapper::isAssignedPinchoJuradoProfesional( $idemail, $pincho);
+    }
+
     public function getTable()
     {
         switch (get_class($this)) {

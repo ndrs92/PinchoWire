@@ -87,6 +87,10 @@ if(get_class($_SESSION["user"])!="Administrador"){
 								<h4 class="list-group-item-heading">Administrar Propuestas de Pinchos</h4>
 								<p class="list-group-item-text">Permite revisar las propuestas de pinchos para aceptarlos o denegarlos.</p>
 							</a>
+							<a href="view_admin_asignar.php" class="list-group-item">
+								<h4 class="list-group-item-heading">Administrar Asignación de Pinchos</h4>
+								<p class="list-group-item-text">Permite asignar un pincho a distintos miembros del jurado profesional.</p>
+							</a>
 						</div>
 					</div>
 				</div>

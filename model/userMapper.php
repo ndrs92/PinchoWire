@@ -3,7 +3,7 @@
 include_once("../resources/code/bd_manage.php");
 
 
-class UserMapper
+class UserMapper 
 {
 
     public static function editBanFromDatabase($idemail, $usertype, $banned)
@@ -41,6 +41,17 @@ class UserMapper
             $toRet["establecimiento"][$row["idemail"]] = $row;
         }
 
+        return $toRet;
+    }
+
+    public static function retriveAllJuradoProfesional()
+    {
+        global $connectHandler;
+        $query = "Select * from juradoprofesional";
+        $result = mysqli_query($connectHandler, $query);
+        while ($row = mysqli_fetch_assoc($result)) {
+            $toRet[$row["idemail"]] = $row;
+        }
         return $toRet;
     }
 
@@ -218,6 +229,26 @@ class UserMapper
         } else {
             return $row;
         }
+    }
+
+    public static function assignPinchoJuradoProfesional($idemail, $pincho){
+        global $connectHandler;
+        $query = "INSERT INTO asignado VALUES('".$idemail."', '".$pincho."') ";
+        $result = mysqli_query($connectHandler, $query);
+        return $result;
+
+    }
+    public static function isAssignedPinchoJuradoProfesional( $idemail, $pincho){
+        global $connectHandler;
+        $query = "SELECT * FROM asignado WHERE juradoprofesional_idemail='".$idemail."' AND pincho_idnombre='".$pincho."';";
+        $result = mysqli_query($connectHandler, $query) or die("Error en isAssignedPinchoJuradoProfesional() mapper");
+        if(mysqli_num_rows($result) == 0){
+            return false;
+        }
+        else {
+            return true;
+        }
+
     }
 
 }

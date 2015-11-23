@@ -122,7 +122,7 @@ $establecimientos = getAllEstablecimientos();
 										<div class="member-image pincho-image">
 											<img class="img-responsive" src="../images/pinchos/default.jpg" alt="">
 										</div>
-									</a>
+									</a> 
 									<?php
 									if(isset($_SESSION["user"]) && get_class($_SESSION["user"]) == "JuradoPopular"){
 										echo "<a href='../controller/markeatenpincho_controller.php?markeatenpincho_probado_idpincho=". $pincho->getIdnombre() . "&markeatenpincho_probado_idmail=" . $_SESSION["user"]->getIdemail() . "'><div class='btn-probar-pincho'>" . $probado . "</div></a>";

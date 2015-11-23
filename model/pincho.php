@@ -59,7 +59,7 @@ class Pincho {
         if($mapperData != NULL) {
             $toRet = $mapperData;
         }
-        return $toRet;
+        return $toRet; 
     }
 
     public static function getAllPropuestas(){

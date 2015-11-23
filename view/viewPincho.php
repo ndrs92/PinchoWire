@@ -78,7 +78,7 @@ if($pinchoActual->getIdnombre() == NULL){
 						<img src="../images/pinchos/default.jpg" height="250px" />
 					</div>
 					<div class="col-md-12">
-						<h3> Descripción: <?php echo $pinchoActual->getIdnombre(); ?> </h3>
+						<h3> Descripción: <?php echo $pinchoActual->getDescripcion(); ?> </h3>
 						<h3> Precio: <?php echo $pinchoActual->getPrecio(); ?>€</h3>
 						<h3> Ingredientes: <?php echo $pinchoActual->getIngredientes(); ?> </h3>
 						<h3> Establecimiento:
