@@ -1,6 +1,6 @@
 <?php
-	include_once("../model/concursoMapper.php");
-	include_once("../model/administrador.php");
+include_once("../model/concursoMapper.php");
+include_once("../model/administrador.php");
 if(!isset($_SESSION)) session_start();
 if(get_class($_SESSION["user"])!="Administrador"){
 	header("Location: ../view/403.php");
@@ -11,18 +11,22 @@ if($_POST["nombre"] && $_POST["descripcion"] ){
 
 	/* Validar avatar */
 	$validUpload = 0;
-	$rutaavatar = "images/concurso/default.jpg";
+	$rutaportada = "images/concurso/default.jpg";
 	$from = $_FILES["rutaportada"];
 	$imageFileType = pathinfo($from["name"], PATHINFO_EXTENSION);
 	if (is_uploaded_file($from["tmp_name"])) {
 		if ($imageFileType == "jpg" || $imageFileType == "png" || $imageFileType == "jpeg" || $imageFileType == "bmp") {
-			$rutaavatar = "images/avatars/" . $idemail . "." . $imageFileType;
 			$validUpload = 1;
 		}
 	}
 
 
 	$resultado = concursoMapper::updateConcurso($_POST["nombre"], $_POST ["descripcion"]);
+	if ($validUpload == 1) {
+		$from = $_FILES["rutaportada"]["tmp_name"];
+		move_uploaded_file($from, "../images/title." . $imageFileType);
+	}
+
 	if($resultado){
 		echo "Se ha modificado correctamente<br/>";
 	}
