@@ -184,3 +184,27 @@ table tbody td {
 	border-color: #4C4C4C;
 	border-radius: 4px;
 }
+
+.icon-logo{
+	height: 40px;
+	margin-top: -6px;
+}
+
+.logo-about{
+	height: 33px;
+	padding-bottom: 3px;
+}
+
+.logo-footer{
+	height: 33px;
+	padding-left: 15px;
+	margin-bottom: 10px;
+}
+
+.logo-powered{
+	position: absolute;
+	bottom: 0px;
+	left: 18px;
+	opacity: 0.3;
+	height: 20px !important;
+}

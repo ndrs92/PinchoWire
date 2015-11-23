@@ -15,7 +15,7 @@ include_once "../resources/code/lang_coverage.php";
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="logo" href="./list.php"><img src="../images/logo.png" alt=""></a>
+				<a href="./list.php"><img class="icon-logo" src="../images/icon.png" alt=""></a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="st-navbar-collapse">

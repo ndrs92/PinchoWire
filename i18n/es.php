@@ -24,7 +24,7 @@ $l = array(
     "main_stats" => "Estadísticas",
 
 
-    "main_about" => "Acerca de Pincho Wire",
+    "main_about" => "Acerca de ",
     "main_about_type_jurado_popular" => "Usuario Jurado Popular",
     "main_about_type_jurado_profesional" => "Usuario Jurado Profesional",
     "main_about_type_establecimiento" => "Usuario Establecimiento",

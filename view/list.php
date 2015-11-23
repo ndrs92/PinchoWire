@@ -70,7 +70,7 @@ $establecimientos = getAllEstablecimientos();
 								<div class="col-sm-12">
 									<h2><?= $concurso->getTitulo() ?></h2>
 									<p><?= $concurso->getDescripcion() ?></p>
-									<small>Powered by PinchoWire</small><br/>
+									<br/>
 									<?php if(!isset($_SESSION["user"])){
 										?>
 										<a href="./register.php" class="btn btn-lg btn-send"><?= $l["app_signup"]?></a>
@@ -79,6 +79,7 @@ $establecimientos = getAllEstablecimientos();
 									?>
 								</div>
 							</div>
+						<img class="logo-powered" src="../images/logo-inverted.png" alt="">
 						</div>					
 					</div>
 				</div>		
@@ -189,7 +190,7 @@ $establecimientos = getAllEstablecimientos();
 				<div class="row">
 					<div class="col-md-12">
 						<div class="section-title">
-							<h1><?= $l["main_about"]?></h1>
+							<h1><?= $l["main_about"]?><img class="logo-about" src="../images/logo.png" alt=""></h1>
 							<span class="st-border"></span>
 						</div>
 					</div>
