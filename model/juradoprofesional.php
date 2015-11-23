@@ -3,11 +3,15 @@
 class JuradoProfesional extends Usuario{
 	private $curriculum;
 	private $baneado;
-
+ 
 	public function __construct($idemail, $nombre, $contrasena, $rutaavatar, $curriculum, $baneado){
 		parent::__construct($idemail, $nombre, $contrasena, $rutaavatar);
 		$this->curriculum = $curriculum;
 		$this->baneado = $baneado;
+	}
+
+	public function getPinchosAsignados(){
+		UserMapper::retrievePinchosAsignados($this->idemail);
 	}
 
 	public function editBanFromDatabase($banned){
