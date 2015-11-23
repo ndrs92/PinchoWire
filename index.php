@@ -1,38 +1,56 @@
 <?php
 
-//fun little code that redirects clients from a relative path correctly.
-//Just populate $relpath with your desired path and let the magic go.
+include_once "resources/code/bd_manage.php";
 
-include_once("resources/code/bd_manage.php");
-if($connectHandler){
-	$host  = $_SERVER['HTTP_HOST'];
-	$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+/*
+	Enter point of the application.
+	Redirects user to 3 cases:
+		- CASE A:
+			Server does not have permissions to write in this, so database cannot be installed or configured.
+			Script redirects to error and tutorial to make it work again.
+		- CASE B:
+			Database 'G23' does not exist. Script redirects to an installation page in which the user
+			can input the options for its server. Then, creates DB and writes config to disk.
+			Also, if all goes well, give an option to user for inserting example data to the application
+		- CASE C:
+			All goes well. User gets redirected to list.php and the competition begins!
+*/
 
-	$relpath = 'view/list.php'; 
+			//Checks
+			$permissions = false;
+			$database = false;
 
-	header("Location: http://$host$uri/$relpath");
-	
-	 
-}
-else{
-	
-	if(php_uname("s")=="Linux"){
-	?>
-	<h1>No se ha encontrado la Base de Datos</h1>
-	<br>
-	<h3>Para crear la base de datos introduzca:</h3>
-	<form action = "controller/createDB_controller.php" method = "post">
-		Host: <input type = "text" name = "host"></br>
-		Nombre Usuario: <input type = "text" name = "user"></br>
-		Contraseña: <input type = "password" name = "pass"></br>
-		<input type= "submit" name = "submit" value = "Enviar">
-	</form>
-	<?php
-	}
-	else{
-		echo "<h1>No se puede hacer el Dump de la BD automaticamente.</h1>";
-	}
-}
+			$permissions = check_permissions();
+			$database = check_database();
 
+			if(!$permissions){
+			//Redirects user to error and suggestions on how to fix it
+				header("Location: ./resources/config/permissions.php");
+				die();
+			}
 
-?>
+			if(!$database){
+			//Redirects user to application install
+				header("Location: ./resources/config/install.php");
+				die();
+			}
+
+			//All goes well, redirect user to the application
+			header("Location: ./view/list.php");
+			
+
+			function check_permissions(){
+				if(is_writable("./")){
+					return true;
+				}else{
+					return false;
+				}
+			}
+
+			function check_database(){
+				global $connectHandler;
+				return isset($connectHandler);
+			}
+
+			
+			?>
