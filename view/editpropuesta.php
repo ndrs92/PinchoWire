@@ -94,8 +94,8 @@ if(get_class($_SESSION["user"])!="Establecimiento"){
   					</form>
   					<?php 
   				}else{
-  					echo "No tiene una propuesta, por lo que no se puede editar o su propuesta ya ha sido validada<br/>";
-  					echo "<a href='./list.php'>Volver a pagina principal</a>";
+  					echo $l["view_editpropuesta_exists"]."<br/>";
+  					echo "<a href='./list.php'>". $l["view_editpropuesta_return"] ."</a>";
   				}
   				?>
   				

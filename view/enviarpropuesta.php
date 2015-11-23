@@ -88,7 +88,7 @@ if(get_class($_SESSION["user"])!="Establecimiento"){
   						</div>
   						<div class="form-group">
   							<label for="image"><?= $l["view_enviarpropuesta_rutaimagen"] ?></label>
-  							<input class="form-control"  type="text" name="enviarpropuesta_propuesta_rutaimagen" placeholder="Ruta de la imagen..."/>
+  							<input class="form-control"  type="text" name="enviarpropuesta_propuesta_rutaimagen" placeholder="<?= $l["view_enviarpropuesta_rutaimagen_placeholder"] ?>"/>
   						</div>
   						<input class="btn btn-success"  type="submit" name="enviarpropuesta_propuesta_enviar" value="<?= $l["view_enviarpropuesta_enviar"] ?>" />
   					</form>

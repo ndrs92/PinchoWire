@@ -81,9 +81,9 @@ if($pinchoActual->getIdnombre() == NULL){
                     <img src="../images/pinchos/default.jpg" height="250px" />
                 </div>
                 <div class="col-md-12">
-                    <h3> Descripción: <?php echo $pinchoActual->getIdnombre(); ?> </h3>
-                    <h3> Precio: <?php echo $pinchoActual->getPrecio(); ?>€</h3>
-                    <h3> Ingredientes: <?php echo $pinchoActual->getIngredientes(); ?> </h3>
+                    <h3><?= $l["view_votacionpopular_description"] . $pinchoActual->getIdnombre(); ?> </h3>
+                    <h3><?= $l["view_votacionpopular_price"] . $pinchoActual->getPrecio(); ?>€</h3>
+                    <h3><?= $l["view_votacionpopular_ingredients"] . $pinchoActual->getIngredientes(); ?> </h3>
                 </div>
             </div>
         </div>
@@ -96,21 +96,21 @@ if($pinchoActual->getIdnombre() == NULL){
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h1>Votación</h1>
+                        <h1><?= $l["view_votacionpopular_vote"] ?></h1>
                         <?php
                         if(isset($_SESSION["vote"]))
                         {
                             if($_SESSION["vote"] == "burned_code") {
-                                echo "<h3>Algun código está canjeado ya</h3>";
+                                echo "<h3>". $l["view_votacionpopular_burntCode"] ."</h3>";
                             }
                             if($_SESSION["vote"] == "repeated_code") {
-                                echo "<h3>Existe más de 1 codigo del mismo pincho</h3>";
+                                echo "<h3>". $l["view_votacionpopular_repeatedPincho"] ."</h3>";
                             }
                             if($_SESSION["vote"] == "invalid_code") {
-                                echo "<h3>Algún codigo es invalido</h3>";
+                                echo "<h3>". $l["view_votacionpopular_invalidCode"] ."</h3>";
                             }
                             if($_SESSION["vote"] == "incorrect_pincho_code") {
-                                echo "<h3>No se ha introducido un codigo del pincho que se quiere votar</h3>";
+                                echo "<h3>". $l["view_votacionpopular_noPinchoCode"] ."</h3>";
                             }
                             unset($_SESSION["vote"]);
                         }

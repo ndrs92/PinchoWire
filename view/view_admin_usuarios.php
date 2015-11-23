@@ -22,7 +22,7 @@ $allUsers = getAllUsuarios();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Administración de Usuarios</title>
+    <title><?= $l["view_admin_userManage"] ?></title>
     
     <!-- Main CSS file -->
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
@@ -69,14 +69,14 @@ $allUsers = getAllUsuarios();
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h1>Administración de Usuarios</h1>
+                        <h1><?= $l["view_admin_userManage"] ?></h1>
                         <span class="st-border"></span>
                     </div>
                 </div>
                 
 
                 <div class="col-md-3">                    
-                    <a href="register_professional.php"><button class="btn btn-success btn-register-professional" >Registrar Jurado Profesional</button></a>
+                    <a href="register_professional.php"><button class="btn btn-success btn-register-professional" ><?= $l["view_admin_register"] ?></button></a>
                 </div>
                 <div class="col-md-6"></div>
                 <div class="col-md-3">
@@ -92,11 +92,11 @@ $allUsers = getAllUsuarios();
 
                   <table class="table table-striped">
                     <thead>
-                        <td>Email</td>
-                        <td>Nombre</td>
-                        <td>Tipo de Usuario</td>
-                        <td>Estado</td>
-                        <td>Acciones</td>
+                        <td><?= $l["view_admin_email"] ?></td>
+                        <td><?= $l["view_admin_name"] ?></td>
+                        <td><?= $l["view_admin_userType"] ?></td>
+                        <td><?= $l["view_admin_status"] ?></td>
+                        <td><?= $l["view_admin_actions"] ?></td>
                     </thead>
                     <tbody >
                         <?php

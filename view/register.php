@@ -81,87 +81,87 @@ if(!empty($_SESSION["user"])){
 								<div id="pane1" class="tab-pane active">
 									<form data-toggle="validator" role="form" action="../controller/register_controller.php?type=juradopopular" method="POST" enctype="multipart/form-data">
 										<div class="form-group">
-											<label for="name">Nombre:</label>
-											<input data-error="Introduce un nombre de mínimo 4 caracteres" required data-minlength="4" type="text" class="form-control" name="nombre">
+											<label for="name"><?= $l["register_name"] ?></label>
+											<input data-error="<?= $l["register_name_error"] ?>" required data-minlength="4" type="text" class="form-control" name="nombre">
 											<div class="help-block with-errors"></div>
 										</div>
 
 										<div class="form-group">
-											<label for="email">Email:</label>
-											<input data-error="Introduce un email válido" required data-minlength="7" type="email" class="form-control" name="idemail">
+											<label for="email"><?= $l["register_email"] ?></label>
+											<input data-error="<?= $l["register_email_error"] ?>" required data-minlength="7" type="email" class="form-control" name="idemail">
 											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
-											<label for="pwd">Password:</label>
-											<input data-error="Introduce una contraseña de al menos 8 caracteres" required data-minlength="8" id="passToMatch" type="password" class="form-control" name="contrasena">
+											<label for="pwd"><?= $l["register_password"] ?></label>
+											<input data-error="<?= $l["register_password_error_length"] ?>" required data-minlength="8" id="passToMatch" type="password" class="form-control" name="contrasena">
 											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
-											<label for="pwd">Repite Password:</label>
-											<input data-error="Las contraseñas no coinciden" data-minlength="8" data-match="#passToMatch" required type="password" class="form-control" name="contrasena_verif">
+											<label for="pwd"><?= $l["register_passwordRepeat"] ?></label>
+											<input data-error="<?= $l["register_password_error_match"] ?>" data-minlength="8" data-match="#passToMatch" required type="password" class="form-control" name="contrasena_verif">
 											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
-											<label for="avatar">Avatar:</label>
+											<label for="avatar"><?= $l["register_avatar"] ?></label>
 											<input type="file" class="form-control" name="rutaavatar">
 										</div>
-										<input class="btn btn-success" type="submit" value="Crear usuario" />
+										<input class="btn btn-success" type="submit" value="<?= $l["register_createUser"] ?>" />
 									</form>
 								</div>
 								<div id="pane2" class="tab-pane">
 									<form data-toggle="validator" role="form" action="../controller/register_controller.php?type=establishment" method="POST" enctype="multipart/form-data">
 										<div class="form-group">
-											<label for="name">Nombre:</label>
-											<input required data-error="Introduce un nombre de mínimo 4 caracteres" required data-minlength="4" type="text" class="form-control" name="nombre">
+											<label for="name"><?= $l["register_name"] ?></label>
+											<input required data-error="<?= $l["register_name_error"] ?>" required data-minlength="4" type="text" class="form-control" name="nombre">
 											<div class="help-block with-errors"></div>
 										</div>
 
 										<div class="form-group">
-											<label for="email">Email:</label>
-											<input required data-error="Introduce un email válido" required data-minlength="7" type="email" class="form-control" name="idemail">
+											<label for="email"><?= $l["register_email"] ?></label>
+											<input required data-error="<?= $l["register_email_error"] ?>" required data-minlength="7" type="email" class="form-control" name="idemail">
 											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
-											<label for="direction">Dirección:</label>
-											<input required data-error="Introduce una ubicación de al menos 8 caracteres" required data-minlength="8" type="text" class="form-control" name="direccion">
+											<label for="direction"><?= $l["register_adress"] ?></label>
+											<input required data-error="<?= $l["register_address_error"] ?>" required data-minlength="8" type="text" class="form-control" name="direccion">
 											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
-											<label for="web">Pagina Web:</label>
-											<input required type="url" data-error="Introduce una URL válida" class="form-control" name="paginaweb">
+											<label for="web"><?= $l["register_webPage"] ?></label>
+											<input required type="url" data-error="<?= $l["register_webPage_error"] ?>" class="form-control" name="paginaweb">
 											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
-											<label for="time">Horario:</label>
-											<input required type="text" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9] - ([01]?[0-9]|2[0-3]):[0-5][0-9]" data-error="Introduce un horario de la forma: 8:00 - 16:00" class="form-control" name="horario">
+											<label for="time"><?= $l["register_schedule"] ?></label>
+											<input required type="text" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9] - ([01]?[0-9]|2[0-3]):[0-5][0-9]" data-error="<?= $l["register_schedule_error"] ?>" class="form-control" name="horario">
 											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
-											<label for="time">Coordenadas del establecimiento:</label>
-											<input required type="text" pattern="^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?), \s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$" data-error="Introduce unas coordenadas formato google maps: 42.347285, -7.856278" class="form-control" name="coordenadas">
+											<label for="time"><?= $l["register_geoloc"] ?></label>
+											<input required type="text" pattern="^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?), \s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$" data-error="<?= $l["register_geoloc_error"] ?>" class="form-control" name="coordenadas">
 											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
-											<label for="pwd">Password:</label>
-											<input required type="password" data-error="Introduce una contraseña de al menos 8 caracteres" required data-minlength="8" id="pass2ToMatch" class="form-control" name="contrasena">
+											<label for="pwd"><?= $l["register_password"] ?></label>
+											<input required type="password" data-error="<?= $l["register_password_error_length"] ?>" required data-minlength="8" id="pass2ToMatch" class="form-control" name="contrasena">
 											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
-											<label for="pwd">Repite Password:</label>
-											<input required type="password" data-error="Las contraseñas no coinciden" data-minlength="8" data-match="#pass2ToMatch" class="form-control" name="contrasena_verif">
+											<label for="pwd"><?= $l["register_passwordRepeat"] ?></label>
+											<input required type="password" data-error="<?= $l["register_password_error_match"] ?>" data-minlength="8" data-match="#pass2ToMatch" class="form-control" name="contrasena_verif">
 											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
-											<label for="avatar">Fotografía del local:</label>
+											<label for="avatar"><?= $l["register_photo"] ?></label>
 											<input type="file" class="form-control" name="foto" accept="image/*" />
 											<div class="help-block with-errors"></div>
 										</div>
 										<div class="form-group">
-											<label for="avatar">Logo de la empresa:</label>
+											<label for="avatar"><?= $l["register_logo"] ?></label>
 											<input type="file" class="form-control" name="rutaavatar" accept="image/*" />
 											<div class="help-block with-errors"></div>
 										</div>
-										<input class="btn btn-success" type="submit" value="Crear usuario" />
+										<input class="btn btn-success" type="submit" value="<?= $l["register_createUser"] ?>" />
 									</form>
 								</div>
 							</div><!-- /.tab-content -->

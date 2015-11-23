@@ -72,23 +72,23 @@ if(get_class($_SESSION["user"]) != "Administrador"){
 							<div id="pane1" class="tab-pane active">
 								<form role="form" action="../controller/register_controller.php?type=juradoprofesional" method="POST">
 									<div class="form-group">
-										<label for="name">Nombre:</label>
+										<label for="name"><?= $l["register_name"]?></label>
 										<input type="text" class="form-control" name="nombre">
 									</div>
 
 									<div class="form-group">
-										<label for="email">Email:</label>
+										<label for="email"><?= $l["register_email"]?></label>
 										<input type="email" class="form-control" name="idemail">
 									</div>
 									<div class="form-group">
-										<label for="pwd">Contraseña:</label>
+										<label for="pwd"><?= $l["register_password"]?></label>
 										<input type="password" class="form-control" name="contrasena">
 									</div>
 									<div class="form-group">
-										<label for="pwd">Repite contraseña:</label>
+										<label for="pwd"><?= $l["register_passwordRepeat"]?></label>
 										<input type="password" class="form-control" name="contrasena_verif">
 									</div>
-									<input class="btn btn-success" type="submit" value="Crear usuario" />
+									<input class="btn btn-success" type="submit" value="<?= $l["register_createUser"] ?>" />
 								</form>
 							</div>
 

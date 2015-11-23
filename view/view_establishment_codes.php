@@ -28,7 +28,7 @@ $retrievedCodes = $pinchoTarget->getRetrievedCodes();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Códigos de mi pincho</title>
+    <title><?= $l["view_establishment_codes_myCodes"] ?></title>
     
     <!-- Main CSS file -->
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
@@ -75,11 +75,11 @@ $retrievedCodes = $pinchoTarget->getRetrievedCodes();
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h1>Códigos de mi pincho</h1>
+                        <h1><?= $l["view_establishment_codes_myCodes"] ?></h1>
                         <span class="st-border"></span>
-                        <h3>Pincho: <?= $pinchoTarget->getIdnombre(); ?></h3>
-                        <a href="../controller/code_generator_controller.php?idnombre=<?= $pinchoTarget->getIdnombre(); ?>"><button class="btn btn-success">Generar 5 códigos más</button></a><br/><br/>
-                        <h4>Códigos disponibles sin canjear</h4>
+                        <h3><?= $l["view_establishment_codes_pincho"].$pinchoTarget->getIdnombre(); ?></h3>
+                        <a href="../controller/code_generator_controller.php?idnombre=<?= $pinchoTarget->getIdnombre(); ?>"><button class="btn btn-success"><?= $l["view_establishment_codes_generate"] ?></button></a><br/><br/>
+                        <h4><?= $l["view_establishment_codes_unretrieved"] ?></h4>
                     </div>
                 </div>
                 
@@ -87,7 +87,7 @@ $retrievedCodes = $pinchoTarget->getRetrievedCodes();
                 <div class="admin-user-table">
                     <table class="table table-striped">
                         <thead>
-                            <td>Código</td>
+                            <td><?= $l["view_establishment_codes_code"] ?></td>
                         </thead>
                         <tbody>
                             <?php
@@ -105,12 +105,12 @@ $retrievedCodes = $pinchoTarget->getRetrievedCodes();
                     </table>
 
                 </div>
-                <h4>Códigos canjeados</h4>
+                <h4><?= $l["view_establishment_codes_burnt"] ?></h4>
                 <div class="admin-user-table">
                     <table class="table table-striped">
                         <thead>
-                            <td>Código</td>
-                            <td>Usuario</td>
+                            <td><?= $l["view_establishment_codes_code"] ?></td>
+                            <td><?= $l["view_establishment_codes_user"] ?></td>
                         </thead>
                         <tbody>
 

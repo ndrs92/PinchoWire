@@ -78,10 +78,10 @@ if($pinchoActual->getIdnombre() == NULL){
 						<img src="../images/pinchos/default.jpg" height="250px" />
 					</div>
 					<div class="col-md-12">
-						<h3> Descripción: <?php echo $pinchoActual->getDescripcion(); ?> </h3>
-						<h3> Precio: <?php echo $pinchoActual->getPrecio(); ?>€</h3>
-						<h3> Ingredientes: <?php echo $pinchoActual->getIngredientes(); ?> </h3>
-						<h3> Establecimiento:
+						<h3><?= $l["view_pincho_description"] . $pinchoActual->getDescripcion(); ?> </h3>
+						<h3><?= $l["view_pincho_price"] . $pinchoActual->getPrecio(); ?>€</h3>
+						<h3><?= $l["view_pincho_ingredients"] . $pinchoActual->getIngredientes(); ?> </h3>
+						<h3><?= $l["view_pincho_establishment"] ?>
 							<?php
 							echo "<a href=profile.php?idemail=".$establecimientoAsociado->getIdemail().">";
 							echo $establecimientoAsociado->getNombre();
@@ -101,7 +101,7 @@ if($pinchoActual->getIdnombre() == NULL){
 				<div class="row">
 					<div class="col-md-12">
 						<div class="section-title">
-							<h1>Comentarios</h1>
+							<h1><?= $l["view_pincho_comment"] ?></h1>
 							<span class="st-border"></span>
 						</div>
 					</div>
@@ -115,10 +115,10 @@ if($pinchoActual->getIdnombre() == NULL){
 								<div>
 									<form role="form" action="../controller/addcomment_controller.php" method="POST">
 										<input type="hidden" name="addcomment_comment_idpincho" value="<?php echo $pinchoActual->getIdnombre(); ?>"/>
-										<div class="col-md-2"><h5>Insertar comentario:</h5></div>
+										<div class="col-md-2"><h5><?= $l["view_pincho_insertComment"] ?></h5></div>
 										<div class="col-md-6"><textarea class="form-control" rows="1" name="addcomment_comment_name" ></textarea></div>
 										<br class="visible-xs visible-sm" />
-										<div class="col-md-1"><input class="btn btn-success" type="submit" name="submit_button" value="Enviar Comentario" /></div>
+										<div class="col-md-1"><input class="btn btn-success" type="submit" name="submit_button" value="<?= $l["view_pincho_sendComment"] ?>" /></div>
 
 									</form>
 								</div>

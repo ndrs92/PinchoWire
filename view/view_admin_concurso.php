@@ -68,7 +68,7 @@ $pinchoList = Pincho::getAllPropuestas();
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h1>Administración de la información del Concurso</h1>
+                        <h1><?= $l["view_admin_infoManage"] ?></h1>
                         <span class="st-border"></span>
                     </div>
                 </div>
@@ -78,18 +78,18 @@ $pinchoList = Pincho::getAllPropuestas();
                 <div class="admin-user-table">
                     <form class="form" action = "../controller/gestionconcurso_controller.php" method = "post" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label for="name">Nombre:</label>
+                            <label for="name"><?= $l["view_admin_name"] ?></label>
                             <input type="text" class="form-control" name="nombre" value = "<?php echo $concurso->getTitulo();?>"></br>
                         </div>
                         <div class="form-group">
-                            <label for="description">Descripción del Concurso:</label>
+                            <label for="description"><?= $l["view_admin_contestInfo"] ?></label>
                             <textarea class = "form-control" name = "descripcion"  rows = "5"><?php echo $concurso->getDescripcion();?></textarea></br>
                         </div>
                         <div class="form-group">
-                            <label for="avatar">Fotografia de portada:</label>
+                            <label for="avatar"><?= $l["view_admin_mainPhoto"] ?></label>
                             <input type="file" class="form-control" name="rutaportada"></br>
                         </div>
-                        <input class="btn btn-success" type="submit" value="Enviar">
+                        <input class="btn btn-success" type="submit" value="<?= $l["view_admin_send"] ?>">
                     </form>
                     
                 </div>

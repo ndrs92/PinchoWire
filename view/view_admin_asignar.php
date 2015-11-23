@@ -70,7 +70,7 @@ $juradoList = Usuario::getAllJuradoProfesional();
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h1>Asignación de pinchos</h1>
+                        <h1><?= $l["view_admin_assignPincho"] ?></h1>
                         <span class="st-border"></span>
                     </div>
                 </div>
@@ -79,9 +79,9 @@ $juradoList = Usuario::getAllJuradoProfesional();
                 <div class="admin-user-table">
                     <table class="table table-stripped">
                         <thead>
-                            <td>Nombre</td>
-                            <td>Jurado</td>
-                            <td>Asignar</td>
+                            <td><?= $l["view_admin_name"] ?></td>
+                            <td><?= $l["view_admin_jury"] ?></td>
+                            <td><?= $l["view_admin_assign"] ?></td>
 
                         </thead>
                         <tbody>
@@ -108,15 +108,15 @@ $juradoList = Usuario::getAllJuradoProfesional();
                                                 
                                             }
                                             if(!$test){
-                                                    echo "<option>No quedan J. Profesionales a asignar</option>";
+                                                    echo "<option>". $l["view_admin_noJuries"] ."</option>";
                                                 } 
                                         echo "</select>";
                                     echo "</td>";
                                     if($boton){
-                                        echo "<td><button type='submit' class='btn btn-success'>Asignar</button></td>";  
+                                        echo "<td><button type='submit' class='btn btn-success'>". $l["view_admin_assign"] ."</button></td>";
                                     }
                                     else{
-                                        echo "<td><button type='submit' class='btn btn-success' disabled>Asignar</button></td>";
+                                        echo "<td><button type='submit' class='btn btn-success' disabled>". $l["view_admin_assign"] ."</button></td>";
                                     }
                                     echo "</form>";
                                 echo "</tr>";

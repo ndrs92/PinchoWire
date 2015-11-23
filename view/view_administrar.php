@@ -20,7 +20,7 @@ if(get_class($_SESSION["user"])!="Administrador"){
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Administración</title>
+	<title><?= $l["view_admin_management"] ?></title>
 	
 	<!-- Main CSS file -->
 	<link rel="stylesheet" href="../css/bootstrap.min.css" />
@@ -67,7 +67,7 @@ if(get_class($_SESSION["user"])!="Administrador"){
 				<div class="row">
 					<div class="col-md-12">
 						<div class="section-title">
-							<h1>Administración</h1>
+							<h1><?= $l["view_admin_management"] ?></h1>
 							<span class="st-border"></span>
 						</div>
 					</div>
@@ -75,20 +75,20 @@ if(get_class($_SESSION["user"])!="Administrador"){
 					<div class="admin-options col-md-12">
 						<div class="list-group">
 							<a href="view_admin_concurso.php" class="list-group-item">
-								<h4 class="list-group-item-heading">Administrar Concurso</h4>
-								<p class="list-group-item-text">Permite editar la información relativa al concurso de pinchos actual.</p>
+								<h4 class="list-group-item-heading"><?= $l["view_admin_manageContest"] ?></h4>
+								<p class="list-group-item-text"><?= $l["view_admin_manageContest_text"] ?></p>
 							</a>
 							<a href="view_admin_usuarios.php" class="list-group-item">
-								<h4 class="list-group-item-heading">Administrar Usuarios</h4>
-								<p class="list-group-item-text">Página de administración de usuarios. Permite crear jurados profesionales, editar perfiles de usuario, y restringir acceso a los no deseados.</p>
+								<h4 class="list-group-item-heading"><?= $l["view_admin_manageUsers"] ?></h4>
+								<p class="list-group-item-text"><?= $l["view_admin_manageUsers_text"] ?></p>
 							</a>
 							<a href="view_admin_propuestas.php" class="list-group-item">
-								<h4 class="list-group-item-heading">Administrar Propuestas de Pinchos</h4>
-								<p class="list-group-item-text">Permite revisar las propuestas de pinchos para aceptarlos o denegarlos.</p>
+								<h4 class="list-group-item-heading"><?= $l["view_admin_managePinchos"] ?></h4>
+								<p class="list-group-item-text"><?= $l["view_admin_managePinchos_text"] ?></p>
 							</a>
 							<a href="view_admin_asignar.php" class="list-group-item">
-								<h4 class="list-group-item-heading">Administrar Asignación de Pinchos</h4>
-								<p class="list-group-item-text">Permite asignar un pincho a distintos miembros del jurado profesional.</p>
+								<h4 class="list-group-item-heading"><?= $l["view_admin_assignPinchos"] ?></h4>
+								<p class="list-group-item-text"><?= $l["view_admin_assignPinchos_text"] ?></p>
 							</a>
 						</div>
 					</div>

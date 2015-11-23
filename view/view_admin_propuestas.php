@@ -21,7 +21,7 @@ $pinchoList = Pincho::getAllPropuestas();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Administración de Propuestas</title>
+    <title><?= $l["view_admin_proposeManage"] ?></title>
     
     <!-- Main CSS file -->
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
@@ -68,7 +68,7 @@ $pinchoList = Pincho::getAllPropuestas();
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h1>Administración de Propuestas</h1>
+                        <h1><?= $l["view_admin_proposeManage"] ?></h1>
                         <span class="st-border"></span>
                     </div>
                 </div>
@@ -77,12 +77,12 @@ $pinchoList = Pincho::getAllPropuestas();
                 <div class="admin-user-table">
                     <table class="table table-stripped">
                         <thead>
-                            <td>Establecimiento encargado</td>
-                            <td>Nombre</td>
-                            <td>Descripcion</td>
-                            <td>Ingredientes</td>
-                            <td>Estado</td>
-                            <td>Acciones</td>
+                            <td><?= $l["view_admin_propertyManager"] ?></td>
+                            <td><?= $l["view_admin_name"] ?></td>
+                            <td><?= $l["view_admin_description"] ?></td>
+                            <td><?= $l["view_admin_ingredients"] ?></td>
+                            <td><?= $l["view_admin_status"] ?></td>
+                            <td><?= $l["view_admin_actions"] ?></td>
                         </thead>
                         <tbody>
                             <?php
@@ -96,25 +96,25 @@ $pinchoList = Pincho::getAllPropuestas();
 
                                     switch ($row->getEstadopropuesta()) {
                                         case 0:
-                                        echo "<td>Pendiente</td>";
+                                        echo "<td>". $l["view_admin_pending"] ."</td>";
                                         break;
                                         case 1:
-                                        echo "<td>Denegado</td>";
+                                        echo "<td>". $l["view_admin_denied"] ."</td>";
                                         break;
                                         default:
-                                        echo "<td>Error por aqui</td>";
+                                            echo "<td>Error por aqui</td>";
                                         break;
                                     }
 
                                     switch ($row->getEstadopropuesta()) {
                                         case 0:
                                         echo "<td>
-                                        <a class='btn btn-success' href='../controller/gestionpropuesta_controller.php?action=accept_pincho&idnombre=" . $row->getIdnombre() . "'>Aceptar</a>
-                                        <a class='btn btn-danger' href='../controller/gestionpropuesta_controller.php?action=deny_pincho&idnombre=" . $row->getIdnombre() . "'>Denegar</a>
+                                        <a class='btn btn-success' href='../controller/gestionpropuesta_controller.php?action=accept_pincho&idnombre=" . $row->getIdnombre() . "'>". $l["view_admin_accept"] ."</a>
+                                        <a class='btn btn-danger' href='../controller/gestionpropuesta_controller.php?action=deny_pincho&idnombre=" . $row->getIdnombre() . "'>". $l["view_admin_deny"] ."</a>
                                     </td>";
                                     break;
                                     case 1:
-                                    echo "<td><a class='btn btn-success' href='../controller/gestionpropuesta_controller.php?action=set_pendant&idnombre=" . $row->getIdnombre() . "'>Restablecer para revision</a></td>";
+                                    echo "<td><a class='btn btn-success' href='../controller/gestionpropuesta_controller.php?action=set_pendant&idnombre=" . $row->getIdnombre() . "'>". $l["view_admin_revision"] ."</a></td>";
                                     break;
                                     default:
                                     echo "<td>Error por aqui</td>";

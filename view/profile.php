@@ -110,7 +110,7 @@ if (isEstablishment($_GET["idemail"])) {
                     </div>
                     <div class="form-group">
                         <label for="name"><?php echo $l["view_profile_editname"] ?></label>
-                        <input data-error="Introduce un nombre de mínimo 4 caracteres" required data-minlength="4" class="form-control" type="text" name="profile_name"
+                        <input data-error="<?= $l["view_profile_name_error"] ?>" required data-minlength="4" class="form-control" type="text" name="profile_name"
                         value="<? echo $user->getNombre(); ?>"/>
                         <div class="help-block with-errors"></div>
                     </div>
@@ -140,19 +140,19 @@ if (isEstablishment($_GET["idemail"])) {
                             ?>
                             <div class="form-group">
                                 <label for="name"><?php echo $l["view_profile_address"] ?></label>
-                                <input required data-error="Introduce una ubicación de al menos 8 caracteres" required data-minlength="8" class="form-control" type="text" name="profile_direccion"
+                                <input required data-error="<?= $l["view_profile_place_error"] ?>" required data-minlength="8" class="form-control" type="text" name="profile_direccion"
                                 value="<? echo $user->getDireccion(); ?>"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="name"><?php echo $l["view_profile_web"] ?></label>
-                                <input required type="url" data-error="Introduce una URL válida" class="form-control" name="profile_web"
+                                <input required type="url" data-error="<?= $l["view_profile_url_error"] ?>" class="form-control" name="profile_web"
                                 value="<? echo $user->getWeb(); ?>"/>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
                                 <label for="name"><?php echo $l["view_profile_schedule"] ?></label>
-                                <input required type="text" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9] - ([01]?[0-9]|2[0-3]):[0-5][0-9]" data-error="Introduce un horario de la forma: 8:00 - 16:00"  class="form-control" type="text" name="profile_horario"
+                                <input required type="text" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9] - ([01]?[0-9]|2[0-3]):[0-5][0-9]" data-error="<?= $l["view_profile_schedule_error"] ?>"  class="form-control" type="text" name="profile_horario"
                                 value="<? echo $user->getHorario(); ?>"/>
                                 <div class="help-block with-errors"></div>
                             </div>
@@ -169,7 +169,7 @@ if (isEstablishment($_GET["idemail"])) {
                             </div>
                             <div class="form-group">
                                 <label for="name"><?php echo $l["view_profile_geloc"] ?></label>
-                                <input required type="text" pattern="^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?), \s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$" data-error="Introduce unas coordenadas formato google maps: 42.347285, -7.856278" class="form-control" type="text" name="profile_geoloc"
+                                <input required type="text" pattern="^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?), \s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$" data-error="<?= $l["view_profile_geoloc_error"] ?>" class="form-control" type="text" name="profile_geoloc"
                                 value="<? echo $user->getGeoloc(); ?>"/>
                                 <div class="help-block with-errors"></div>
                                 <?php

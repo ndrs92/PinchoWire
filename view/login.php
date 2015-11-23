@@ -75,9 +75,9 @@ if(!empty($_SESSION["user"])){
                     <?php
                     if (isset($_SESSION["login"])) {
                         if ($_SESSION["login"] == "fail")
-                            echo "<p class='error-message'>Login incorrecto</p>";
+                            echo "<p class='error-message'>". $l["login_incorrect"] ."</p>";
                         if ($_SESSION["login"] == "banned")
-                            echo "<p class='error-message'>Este usuario ha sido baneado. Póngase en contacto con el Administrador</p>";
+                            echo "<p class='error-message'>". $l["login_baned"] ."</p>";
                         session_unset();
                     }
                     ?>
@@ -85,11 +85,11 @@ if(!empty($_SESSION["user"])){
 
                     <form role="form" action="../controller/login_controller.php" method="POST">
                         <div class="form-group">
-                            <label for="email">Email:</label>
+                            <label for="email"><?= $l["login_email"] ?></label>
                             <input type="email" class="form-control" name="login_user_login">
                         </div>
                         <div class="form-group">
-                            <label for="pwd">Password:</label>
+                            <label for="pwd"><?= $l["login_password"] ?></label>
                             <input type="password" class="form-control" name="login_user_pass">
                         </div>
                         <input id="login-button" class="btn btn-success" type="submit" value="Log In" />

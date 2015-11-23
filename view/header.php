@@ -22,7 +22,7 @@ include_once "../resources/code/lang_coverage.php";
 				<ul class="nav navbar-nav navbar-right">
 					
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Concurso <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?= $l["header_contest"] ?> <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="./list.php#pinchos"><?= $l["header_pinchos"] ?></a></li>
 							<li><a href="./list.php#stats"><?= $l["header_stats"] ?></a></li>
@@ -60,10 +60,10 @@ include_once "../resources/code/lang_coverage.php";
 										}
 										else{
 											if($row["estadoPropuesta"] == 1){
-												echo " <li><a>- Tu pincho ha sido denegado! </a></li>";
+												echo " <li><a>". $l["header_pincho_denied"] ."</a></li>";
 											}
 											else{
-												echo " <li><a>- Tu pincho está concursando! </a></li>";
+												echo " <li><a>". $l["header_pincho_allowed"] ."</a></li>";
 
 												echo "<li><a href='./view_establishment_codes.php'>".$l["view_list_establishment_codes"]."</a></li>";
 											}
