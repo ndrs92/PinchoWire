@@ -13,18 +13,20 @@ $l = array(
     "header_login" => "Identificarse",
     "header_about" => "Acerca de...",
     "header_gastromapa" => "GastroMapa",
+    "gastromapa_desc" => "El GastroMapa muestra las ubicaciones de los establecimientos que se encuentran en el concurso. Vé a echarle un ojo a los pinchos que ofrecen!",
 
     "footer_followus" => "Síguenos:",
     "footer_message" => "2015 Aprendizaxe Basada en Proxectos. Escola Superior de Enxeñería Informática.",
 
     "main_lista_pinchos" => "Lista de Pinchos",
-
+    "main_lista_pinchos_desc" => "En esta sección se muestran los pinchos aceptados en el concurso. Los jurados populares votan a estos pinchos y los consumen para hacerles ganar el premio popular.",
 
 
     "main_stats" => "Estadísticas",
-
+    "main_stats_desc" => "Las estadísticas se generan dinámicamente para dar un vistazo rápido de la actividad del concurso.",
 
     "main_about" => "Acerca de ",
+    "main_about_desc" => "Pincho Wire es un framework para la creación de concursos de pinchos. Con diferentes tipos de usuarios, trata de promocionar el consumo de pinchos al mismo tiempo que ofrece una interfaz amigable para gestionar un sistema competitivo de votos y resultados.",
     "main_about_type_jurado_popular" => "Usuario Jurado Popular",
     "main_about_type_jurado_profesional" => "Usuario Jurado Profesional",
     "main_about_type_establecimiento" => "Usuario Establecimiento",
@@ -48,6 +50,7 @@ $l = array(
     "main_about_type_establecimiento_4" => "Monitorización de consumiciones registradas",
 
     "main_team" => "Equipo de Desarrollo",
+    "main_team_desc" => "Con más de 10 años de realización de trabajos forzados en el ámbito académico, así como la experiencia recibida por innumerables proyectos que personal docente carga en nuestras espaldas, el equipo de Pincho Wire dedica un gran esfuerzo y dedicación en el desarrollo de esta aplicación. Con actualizaciones diarias (Hasta que termine el proyecto), los 4 integrantes que ves más abajo merecen una nota final más que respetable.",
     "main_team_role1" => "Diseñador & Desarrollador",
     "main_team_role2" => "Desarrollo de Backend & Documentación",
     "main_team_role3" => "Desarrollador de Backend & Seguridad",

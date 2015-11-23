@@ -95,6 +95,7 @@ $establecimientos = getAllEstablecimientos();
 					<div class="col-md-12">
 						<div class="section-title">
 							<h1><?= $l["main_lista_pinchos"]?></h1>
+							<h5><?= $l["main_lista_pinchos_desc"]?></h5>
 							<span class="st-border"></span>
 						</div>
 					</div>
@@ -153,6 +154,7 @@ $establecimientos = getAllEstablecimientos();
 					<div class="col-md-12">
 						<div class="section-title">
 							<h1><?= $l["main_stats"]?></h1>
+							<h5><?= $l["main_stats_desc"]?></h5>
 							<span class="st-border"></span>
 
 							<div id="chartdiv"></div>
@@ -172,6 +174,7 @@ $establecimientos = getAllEstablecimientos();
 					<div class="col-md-12">
 						<div class="section-title">
 							<h1><?= $l["header_gastromapa"]?></h1>
+							<h5><?= $l["gastromapa_desc"]?></h5>
 							<span class="st-border"></span>
 
 							<div id="gastromapa-map"></div>
@@ -191,6 +194,7 @@ $establecimientos = getAllEstablecimientos();
 					<div class="col-md-12">
 						<div class="section-title">
 							<h1><?= $l["main_about"]?><img class="logo-about" src="../images/logo.png" alt=""></h1>
+							<h5><?= $l["main_about_desc"]?></h5>
 							<span class="st-border"></span>
 						</div>
 					</div>
@@ -262,6 +266,7 @@ $establecimientos = getAllEstablecimientos();
 					<div class="col-md-12">
 						<div class="section-title">
 							<h1><?= $l["main_team"]?></h1>
+							<h5><?= $l["main_team_desc"]?></h1>
 							<span class="st-border"></span>
 						</div>
 					</div>
