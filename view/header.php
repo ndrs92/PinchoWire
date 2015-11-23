@@ -1,8 +1,6 @@
 <?php
-include_once "../model/juradopopular.php";
-include_once "../model/juradoprofesional.php";
-include_once "../model/establecimiento.php";
-include_once "../model/administrador.php";
+include_once "../resources/code/models.php";
+include_once "../resources/code/lang_coverage.php";
 
 ?>
 
@@ -85,6 +83,16 @@ include_once "../model/administrador.php";
 					}
 					?>
 					<li><a><i class="fa fa-search"></i></a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-globe"></i><span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="../controller/lang.php?l=es"><img class="lang" src="../images/lang/es.png" />Español</a></li>
+							<li><a href="../controller/lang.php?l=en"><img class="lang" src="../images/lang/gb.png" />English</a></li>
+							<li><a href="../controller/lang.php?l=de"><img class="lang" src="../images/lang/de.png" />Deusch</a></li>
+							<li><a href="../controller/lang.php?l=jp"><img class="lang" src="../images/lang/jp.png" />日本人</a></li>
+							<li><a href="../controller/lang.php?l=pt"><img class="lang" src="../images/lang/pt.png" />Português</a></li>
+						</ul>
+					</li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container -->
