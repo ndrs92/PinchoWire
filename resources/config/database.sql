@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS `G23`.`juradoprofesional` (
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
   `contrasena` VARCHAR(32) NULL DEFAULT NULL,
   `rutaavatar` VARCHAR(40) NULL DEFAULT NULL,
+  `baneado` INT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`idemail`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -63,6 +64,7 @@ CREATE TABLE IF NOT EXISTS `G23`.`establecimiento` (
   `horario` VARCHAR(45) NULL DEFAULT NULL,
   `rutaimagen` VARCHAR(40) NULL DEFAULT NULL,
   `geoloc` VARCHAR(45) NULL DEFAULT NULL,
+  `baneado` INT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`idemail`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -146,6 +148,7 @@ CREATE TABLE IF NOT EXISTS `G23`.`juradopopular` (
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
   `contrasena` VARCHAR(32) NULL DEFAULT NULL,
   `rutaavatar` VARCHAR(40) NULL DEFAULT NULL,
+  `baneado` INT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`idemail`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -212,10 +215,14 @@ DROP TABLE IF EXISTS `G23`.`concurso` ;
 
 CREATE TABLE IF NOT EXISTS `G23`.`concurso` (
   `idconcurso` INT(2) NOT NULL,
-  `descripcion` VARCHAR(45) NULL DEFAULT NULL,
-  `fecha` VARCHAR(45) NULL DEFAULT NULL,
+  `descripcion` VARCHAR(45) NOT NULL DEFAULT 'descripcion',
+  `fecha` DATE NULL,
   `rutaportada` VARCHAR(45) NULL DEFAULT NULL,
-  `titulo` TEXT NULL DEFAULT NULL,
+  `titulo` TEXT NOT NULL,
+  `estado` INT(1) NOT NULL DEFAULT 0,
+  `facebook` VARCHAR(45) NULL,
+  `twitter` VARCHAR(45) NULL,
+  `googleplus` VARCHAR(45) NULL,
   PRIMARY KEY (`idconcurso`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;

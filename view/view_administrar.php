@@ -1,4 +1,5 @@
 <?php
+include_once "../resources/code/models.php";
 include_once "../resources/code/lang_coverage.php";
 include_once "../controller/pincho_controller.php";
 
