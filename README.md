@@ -27,7 +27,7 @@ Una vez satisfecha basta con:
 * Acceder al sitio web instalado. Si hay problemas de permisos, la aplicación te ayudará a solucionarlos
 * Al instalar, tú decides si prefieres cargar datos de prueba, o darlos de alta tú mismo.
 
-Ten en cuenta que con los datos de prueba, el usuario administrador del concurso será el que tú elijas en la instalación. A partir de ahí, mediante la aplicación, tú mismo serás capaz de conocer el nombre del resto de usuarios y sus contraseñas (Administración de usuarios).
+Ten en cuenta que con los datos de prueba proporcionados, el usuario administrador del concurso será el que tú elijas en la instalación. A partir de ahí, mediante la aplicación, tú mismo serás capaz de conocer el nombre del resto de usuarios y sus contraseñas (Administración de usuarios).
 
 ### Anotaciones ###
 
