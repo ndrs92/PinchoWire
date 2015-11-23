@@ -170,3 +170,17 @@ table tbody td {
 	padding-bottom: 3px;
 	margin-right: 10px;
 }
+
+.perms-error{
+	color: red;
+}
+
+.terminal{
+	padding: 10px;
+	background-color: black;
+	color:#34B700;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #4C4C4C;
+	border-radius: 4px;
+}
