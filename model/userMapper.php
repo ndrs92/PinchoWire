@@ -67,9 +67,9 @@ class UserMapper
         return $toRet;
     }
 
-    public static function retrievePinchosAsignados($this->idemail){
+    public static function retrievePinchosAsignados($idemail){
         global $connectHandler;
-        $query = "SELECT * FROM asignado, pincho WHERE asignado.juradoprofesional_idemail = '".$this->idemail."' AND pincho.idnombre = asignado.pincho_idnombre";
+        $query = "SELECT * FROM asignado, pincho WHERE asignado.juradoprofesional_idemail = '".$idemail."' AND pincho.idnombre = asignado.pincho_idnombre";
         $result = mysql_query($query);
     }
 
