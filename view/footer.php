@@ -16,6 +16,7 @@
 			<!-- /SOCIAL ICONS -->
 			<div class="col-sm-6 col-sm-pull-6 copyright">
 				<p>&copy; <?= $l["footer_message"] ?></p>
+				<p><a href="./eula.php"><?= $l["eula"] ?></a> - <?= $l["cookies"] ?></p>
 			</div>
 		</div>
 	</div>

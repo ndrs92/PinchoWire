@@ -115,7 +115,7 @@ $establecimientos = getAllEstablecimientos();
 							}
 							?>
 
-							<div class="col-md-3 col-sm-6">
+							<div class="col-md-3 col-sm-6 col-xs-6">
 								<div class="team-member">
 									<a href='viewPincho.php?id=<?= $pincho->getIdnombre() ?> '>
 										<div class="member-image pincho-image">
@@ -133,7 +133,7 @@ $establecimientos = getAllEstablecimientos();
 										<h4><?= $pincho->getIdnombre() ?></h4>
 										<span><?= $pincho->getDescripcion() ?></span>
 									</div>
-									<hr class="visible-xs" />
+									
 								</div>
 							</div>
 							<?php
@@ -271,7 +271,7 @@ $establecimientos = getAllEstablecimientos();
 						</div>
 					</div>
 
-					<div class="col-md-3 col-sm-6">
+					<div class="col-md-3 col-sm-6  col-xs-6">
 						<div class="team-member">
 							<div class="member-image">
 								<img class="img-responsive" src="../images/members/team1.jpg" alt="">
@@ -284,12 +284,12 @@ $establecimientos = getAllEstablecimientos();
 							</div>
 							<div class="member-info">
 								<h4>Andrés Vieira</h4>
-								<span><?= $l["main_team_role1"]?></span>
+								<p class="dev-role"><?= $l["main_team_role1"]?></p>
 							</div>
 						</div>
 					</div>
 
-					<div class="col-md-3 col-sm-6">
+					<div class="col-md-3 col-sm-6  col-xs-6">
 						<div class="team-member">
 							<div class="member-image">
 								<img class="img-responsive" src="../images/members/team2.jpg" alt="">
@@ -302,12 +302,12 @@ $establecimientos = getAllEstablecimientos();
 							</div>
 							<div class="member-info">
 								<h4>Alejandro Gutiérrez</h4>
-								<span><?= $l["main_team_role2"]?></span>
+								<p class="dev-role"><?= $l["main_team_role2"]?></p>
 							</div>
 						</div>
 					</div>
 
-					<div class="col-md-3 col-sm-6">
+					<div class="col-md-3 col-sm-6  col-xs-6">
 						<div class="team-member">
 							<div class="member-image">
 								<img class="img-responsive" src="../images/members/team1.jpg" alt="">
@@ -320,12 +320,12 @@ $establecimientos = getAllEstablecimientos();
 							</div>
 							<div class="member-info">
 								<h4>Javier Villalobos</h4>
-								<span><?= $l["main_team_role3"]?></span>
+								<p class="dev-role"><?= $l["main_team_role3"]?></p>
 							</div>
 						</div>
 					</div>
 
-					<div class="col-md-3 col-sm-6">
+					<div class="col-md-3 col-sm-6  col-xs-6">
 						<div class="team-member">
 							<div class="member-image">
 								<img class="img-responsive" src="../images/members/team2.jpg" alt="">
@@ -338,7 +338,7 @@ $establecimientos = getAllEstablecimientos();
 							</div>
 							<div class="member-info">
 								<h4>Diego Villanueva</h4>
-								<span><?= $l["main_team_role4"]?></span>
+								<p class="dev-role"><?= $l["main_team_role4"]?></p>
 							</div>
 						</div>
 					</div>

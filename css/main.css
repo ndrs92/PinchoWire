@@ -188,6 +188,7 @@ table tbody td {
 .icon-logo{
 	height: 40px;
 	margin-top: -6px;
+	padding-left: 20px;
 }
 
 .logo-about{
@@ -207,4 +208,8 @@ table tbody td {
 	left: 18px;
 	opacity: 0.3;
 	height: 20px !important;
+}
+
+.dev-role{
+	font-size: 12px;
 }

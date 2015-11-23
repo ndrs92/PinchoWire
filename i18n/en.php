@@ -246,5 +246,9 @@ $l = array(
     "view_pincho_comment" => "Reviews",
     "view_pincho_insertComment" => "Insert Comment:",
     "view_pincho_sendComment" => "Send Comment",
+
+
+    "eula" => "End User License Agreement",
+    "cookies" => "This website uses cookies. By using it you consent their use.",
 );
 ?>

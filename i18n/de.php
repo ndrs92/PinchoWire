@@ -25,7 +25,7 @@ $l = array(
     "main_stats" => "Statistik",
     "main_stats_desc" => "Die Statistiken werden dynamisch generiert, um einen schnellen Überblick über die Aktivitäten der Konkurrenz zu geben.",
 
-    "main_about" => "Über",
+    "main_about" => "Über ",
     "main_about_desc" => "Drahtspanner ist ein Framework für die Erstellung von Wettbewerben Spieße. Mit verschiedenen Arten von Benutzern, ist es, den Konsum von Snacks zu fördern, während bietet eine benutzerfreundliche Oberfläche, um einen Wettbewerbssystem der Stimmen und Ergebnisse zu verwalten.",
     "main_about_type_jurado_popular" => "Beliebte Jury Member",
     "main_about_type_jurado_profesional" => "Benutzerfachjury",
@@ -246,5 +246,9 @@ $l = array(
     "view_pincho_comment" => "Bewertungen",
     "view_pincho_insertComment" => "Legen Kommentar:",
     "view_pincho_sendComment" => "Senden Kommentar",
+
+
+    "eula" => "Endbenutzer-Lizenzvereinbarung",
+    "cookies" => "Diese Website verwendet Cookies. Indem Sie es Ihnen deren Verwendung Weisen ein.",
 );
 ?>

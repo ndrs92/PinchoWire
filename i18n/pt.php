@@ -25,7 +25,7 @@ $l = array(
     "main_stats" => "Estatísticas",
     "main_stats_desc" => "As estatísticas são geradas dinamicamente para dar uma visão geral da atividade da competição.",
 
-    "main_about" => "Acerca de",
+    "main_about" => "Acerca de ",
     "main_about_desc" => "Espeto fio é um framework para a criação de concursos de espetos. Com diferentes tipos de usuários, é promover o consumo de lanches, enquanto oferece uma interface amigável para gerenciar um sistema competitivo de votos e resultados.",
     "main_about_type_jurado_popular" => "Membro do Júri Popular",
     "main_about_type_jurado_profesional" => "Usuário Professional Júri",
@@ -246,5 +246,9 @@ $l = array(
     "view_pincho_comment" => "Avaliações",
     "view_pincho_insertComment" => "Inserir comentário:",
     "view_pincho_sendComment" => "Enviar Comentário",
+
+
+    "eula" => "End User License Agreement",
+    "cookies" => "Este site usa cookies. Ao usá-lo você consente seu uso.",
 );
 ?>

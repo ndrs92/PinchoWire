@@ -11,7 +11,7 @@ $l = array(
     "header_pinchos" => "リスト串",
     "header_stats" => "統計",
     "header_login" => "特定",
-    "header_about" => "...",
+    "header_about" => "について...",
     "header_gastromapa" => "GastroMapa",
     "gastromapa_desc" => "GastroMapaはコンテストにある事業所の位置を示しています。移動していたスパイクを見てみましょう！",
 
@@ -25,7 +25,7 @@ $l = array(
     "main_stats" => "統計",
     "main_stats_desc" => "統計は、競争の活動の概要を与えるために動的に生成されます。",
 
-    "main_about" => "について",
+    "main_about" => "について ",
     "main_about_desc" => "ワイヤー串は、コンテストの串焼きを作成するためのフレームワークです。異なるタイプのユーザで、投票と結果の競争力のあるシステムを管理するための使いやすいインターフェイスを提供してスナックの消費を促進することです。",
     "main_about_type_jurado_popular" => "人気の審査員",
     "main_about_type_jurado_profesional" => "ユーザープロフェッショナル審査員",
@@ -246,5 +246,9 @@ $l = array(
     "view_pincho_comment" => "レビュー",
     "view_pincho_insertComment" => "コメントを挿入します。",
     "view_pincho_sendComment" => "コメントを送信",
+
+
+    "eula" => "エンドユーザーライセンス契約",
+    "cookies" => "このウェブサイトはCookieを使用しています。それを使用することにより、その使用を同意するものとします。",
 );
 ?>
