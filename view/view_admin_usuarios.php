@@ -75,94 +75,107 @@ $allUsers = getAllUsuarios();
                 </div>
                 
 
-                <div class="admin-user-table">
-                    <h3><a href="register_professional.php"><button class="btn btn-success btn-register-professional" >Registrar Jurado Profesional</button></a></h3>
-
-                    <table class="table table-striped">
-                        <thead>
-                            <td>Email</td>
-                            <td>Nombre</td>
-                            <td>Tipo de Usuario</td>
-                            <td>Estado</td>
-                            <td>Acciones</td>
-                        </thead>
-                        <tbody>
-                            <?php
-                            if(isset($allUsers)) {
-                                foreach ($allUsers as $user) {
-                                    echo "<tr>";
-                                    echo "<td>" . $user->getIdemail() . "</td>";
-                                    echo "<td>" . $user->getNombre() . "</td>";
-                                    echo "<td>" . get_class($user) . "</td>";
-                                    if ($user->getBaneado() == '1')
-                                        echo "<td> Baneado </td>";
-                                    else
-                                        echo "<td> Activo </td>";
-                                    echo "<td>";
-                                    if (get_class($user) == "JuradoPopular") {
-                                        echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'><button class='btn btn-default edit-button'>Editar</button></a>";
-                                        if ($user->getBaneado()) {
-                                            echo "<a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'><button class='btn btn-success'>Desbanear</button></a>";
-                                        } else {
-                                            echo "<a href='../controller/useradmin_controller.php?action=ban&idemail=" . $user->getIdemail() . "'><button class='btn btn-warning'>Banear</button></a>";
-                                        }
-                                    }
-
-                                    if (get_class($user) == "JuradoProfesional") {
-                                        echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'><button class='btn btn-default edit-button'>Editar</button></a>";
-                                        if ($user->getBaneado()) {
-                                            echo "<a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'><button class='btn btn-success'>Desbanear</button></a>";
-                                        } else {
-                                            echo "<a href='../controller/useradmin_controller.php?action=ban&idemail=" . $user->getIdemail() . "'><button class='btn btn-warning'>Banear</button></a>";
-                                        }
-                                    }
-
-                                    if (get_class($user) == "Establecimiento") {
-                                        echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'><button class='btn btn-default edit-button'>Editar</button></a>";
-                                        if ($user->getBaneado()) {
-                                            echo "<a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'><button class='btn btn-success'>Desbanear</button></a>";
-                                        } else {
-                                            echo "<a href='../controller/useradmin_controller.php?action=ban&idemail=" . $user->getIdemail() . "'><button class='btn btn-warning'>Banear</button></a>";
-                                        }
-                                    }
-                                    echo "</td>";
-                                    echo "</tr>";
-                                }
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-
+                <div class="col-md-3">                    
+                    <a href="register_professional.php"><button class="btn btn-success btn-register-professional" >Registrar Jurado Profesional</button></a>
                 </div>
+                <div class="col-md-6"></div>
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                        <input id="filter" type="text" onkeyup="filterAdminUsers()" class="form-control">
+                  </div>
 
+              </div>
+
+              <div class="admin-user-table">
+
+
+                  <table class="table table-striped">
+                    <thead>
+                        <td>Email</td>
+                        <td>Nombre</td>
+                        <td>Tipo de Usuario</td>
+                        <td>Estado</td>
+                        <td>Acciones</td>
+                    </thead>
+                    <tbody >
+                        <?php
+                        if(isset($allUsers)) {
+                            foreach ($allUsers as $user) {
+                                echo "<tr class='row-to-filter'>";
+                                echo "<td class='data-to-filter'>" . $user->getIdemail() . "</td>";
+                                echo "<td class='data-to-filter'>" . $user->getNombre() . "</td>";
+                                echo "<td class='data-to-filter'>" . get_class($user) . "</td>";
+                                if ($user->getBaneado() == '1')
+                                    echo "<td class='data-to-filter'> Baneado </td>";
+                                else
+                                    echo "<td class='data-to-filter'> Activo </td>";
+                                echo "<td>";
+                                if (get_class($user) == "JuradoPopular") {
+                                    echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'><button class='btn btn-default edit-button'>Editar</button></a>";
+                                    if ($user->getBaneado()) {
+                                        echo "<a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'><button class='btn btn-success'>Desbanear</button></a>";
+                                    } else {
+                                        echo "<a href='../controller/useradmin_controller.php?action=ban&idemail=" . $user->getIdemail() . "'><button class='btn btn-warning'>Banear</button></a>";
+                                    }
+                                }
+
+                                if (get_class($user) == "JuradoProfesional") {
+                                    echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'><button class='btn btn-default edit-button'>Editar</button></a>";
+                                    if ($user->getBaneado()) {
+                                        echo "<a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'><button class='btn btn-success'>Desbanear</button></a>";
+                                    } else {
+                                        echo "<a href='../controller/useradmin_controller.php?action=ban&idemail=" . $user->getIdemail() . "'><button class='btn btn-warning'>Banear</button></a>";
+                                    }
+                                }
+
+                                if (get_class($user) == "Establecimiento") {
+                                    echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'><button class='btn btn-default edit-button'>Editar</button></a>";
+                                    if ($user->getBaneado()) {
+                                        echo "<a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'><button class='btn btn-success'>Desbanear</button></a>";
+                                    } else {
+                                        echo "<a href='../controller/useradmin_controller.php?action=ban&idemail=" . $user->getIdemail() . "'><button class='btn btn-warning'>Banear</button></a>";
+                                    }
+                                }
+                                echo "</td>";
+                                echo "</tr>";
+                            }
+                        }
+                        ?>
+                    </tbody>
+                </table>
 
             </div>
+
+
         </div>
-    </section>
-    <!-- /PINCHOS -->
-
-
-    <?php include("./footer.php"); ?>
-
-    <!-- Scroll-up -->
-    <div class="scroll-up">
-        <ul><li><a href="#header"><i class="fa fa-angle-up"></i></a></li></ul>
     </div>
+</section>
+<!-- /PINCHOS -->
 
 
-    <!-- JS -->
-    <script type="text/javascript" src="../js/jquery.min.js"></script><!-- jQuery -->
-    <script type="text/javascript" src="../js/bootstrap.min.js"></script><!-- Bootstrap -->
-    <script type="text/javascript" src="../js/jquery.parallax.js"></script><!-- Parallax -->
-    <script type="text/javascript" src="../js/smoothscroll.js"></script><!-- Smooth Scroll -->
-    <script type="text/javascript" src="../js/masonry.pkgd.min.js"></script><!-- masonry -->
-    <script type="text/javascript" src="../js/jquery.fitvids.js"></script><!-- fitvids -->
-    <script type="text/javascript" src="../js/owl.carousel.min.js"></script><!-- Owl-Carousel -->
-    <script type="text/javascript" src="../js/jquery.counterup.min.js"></script><!-- CounterUp -->
-    <script type="text/javascript" src="../js/waypoints.min.js"></script><!-- CounterUp -->
-    <script type="text/javascript" src="../js/jquery.isotope.min.js"></script><!-- isotope -->
-    <script type="text/javascript" src="../js/jquery.magnific-popup.min.js"></script><!-- magnific-popup -->
-    <script type="text/javascript" src="../js/scripts.js"></script><!-- Scripts -->
+<?php include("./footer.php"); ?>
+
+<!-- Scroll-up -->
+<div class="scroll-up">
+    <ul><li><a href="#header"><i class="fa fa-angle-up"></i></a></li></ul>
+</div>
+
+
+<!-- JS -->
+<script type="text/javascript" src="../js/jquery.min.js"></script><!-- jQuery -->
+<script type="text/javascript" src="../js/bootstrap.min.js"></script><!-- Bootstrap -->
+<script type="text/javascript" src="../js/jquery.parallax.js"></script><!-- Parallax -->
+<script type="text/javascript" src="../js/smoothscroll.js"></script><!-- Smooth Scroll -->
+<script type="text/javascript" src="../js/masonry.pkgd.min.js"></script><!-- masonry -->
+<script type="text/javascript" src="../js/jquery.fitvids.js"></script><!-- fitvids -->
+<script type="text/javascript" src="../js/owl.carousel.min.js"></script><!-- Owl-Carousel -->
+<script type="text/javascript" src="../js/jquery.counterup.min.js"></script><!-- CounterUp -->
+<script type="text/javascript" src="../js/waypoints.min.js"></script><!-- CounterUp -->
+<script type="text/javascript" src="../js/jquery.isotope.min.js"></script><!-- isotope -->
+<script type="text/javascript" src="../js/jquery.magnific-popup.min.js"></script><!-- magnific-popup -->
+<script type="text/javascript" src="../js/scripts.js"></script><!-- Scripts -->
+<script type="text/javascript" src="../js/main.js"></script><!-- My Scripts -->
 
 
 </body>

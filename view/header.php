@@ -84,7 +84,7 @@ include_once "../model/administrador.php";
 						<?php
 					}
 					?>
-
+					<li><a><i class="fa fa-search"></i></a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container -->
