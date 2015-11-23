@@ -1,4 +1,4 @@
-# Pincho Wire #
+![logo.png](https://bitbucket.org/repo/z5eBxa/images/1649576150-logo.png)
 
 Pincho Wire es una aplicación web para la gestión de un concurso de pinchos.
 
