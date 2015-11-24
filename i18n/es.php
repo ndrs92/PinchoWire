@@ -13,6 +13,7 @@ $l = array(
     "header_login" => "Identificarse",
     "header_about" => "Acerca de...",
     "header_gastromapa" => "GastroMapa",
+    "header_search_modal" => "Buscar...",
     "gastromapa_desc" => "El GastroMapa muestra las ubicaciones de los establecimientos que se encuentran en el concurso. Vé a echarle un ojo a los pinchos que ofrecen!",
     "statistics_comment" => "Comentarios",
     "statistics_user" => "Usuarios",
@@ -200,6 +201,12 @@ $l = array(
     "view_admin_ban" => "Banear",
     "view_admin_banned" => " Baneado ",
     "view_admin_active" => " Activo ",
+
+    "view_search_title" => "Resultados de búsqueda",
+    "view_search_pinchos" => "Resultados de pinchos:",
+    "view_search_establishments" => "Resultados de establecimientos:",
+    "view_search_not_found" => "No se ha encontrado ningun resultado. Prueba con otro criterio de búsqueda",
+
 
 
 

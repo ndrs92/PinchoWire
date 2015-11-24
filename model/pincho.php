@@ -21,6 +21,22 @@ class Pincho {
         $this->rutaimagen = $rutaimagen;
     }
 
+    public static function search($search_data){
+        $toRet = NULL;
+        $toSearch = PinchoMapper::retrieveAllAceptados();
+        if($toSearch == NULL){
+            return NULL;
+        }else{
+            foreach($toSearch as $p){
+                if(strpos(strtolower($p["idnombre"]), $search_data) != false || strpos(strtolower($p["descripcion"]), $search_data) != false || strpos(strtolower($p["ingredientes"]), $search_data) != false){
+                    $toRet[$p["idnombre"]] = new Pincho($p["idnombre"], $p["descripcion"], $p["precio"], $p["ingredientes"], $p["ganadorPopular"], $p["estadoPropuesta"], $p["establecimiento_idemail"]);
+                }
+            }
+        }
+
+        return $toRet;
+    }
+
     public function getEstablishment(){
         $pincho = PinchoMapper::find($this->getIdnombre());
         $idmail = $pincho["establecimiento_idemail"];
