@@ -109,7 +109,7 @@ class Pincho {
     public static function getByIdnombre($idnombre){
         $mapperData = pinchoMapper::find($idnombre);
 
-        return new Pincho($mapperData["idnombre"], $mapperData["descripcion"], $mapperData["precio"], $mapperData["ingredientes"], $mapperData["ganadorPopular"], $mapperData["estadoPropuesta"], $mapperData["establecimiento_idemail"]);
+        return new Pincho($mapperData["idnombre"], $mapperData["descripcion"], $mapperData["precio"], $mapperData["ingredientes"], $mapperData["ganadorPopular"], $mapperData["estadoPropuesta"], $mapperData["rutaimagen"]);
     }
 
     public function getAllComentarios(){
