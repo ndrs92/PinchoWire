@@ -1,3 +1,22 @@
+<?php
+include_once "../../model/concurso.php";
+include_once "../../controller/concurso_controller.php";
+
+try{
+	$concurso = getConcurso();
+}catch(Exception $e){
+	header("Location: ../../view/403.php");
+}
+
+if(!isset($_SESSION)){
+	session_start();
+}
+
+$_SESSION["installation"] = true;
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>

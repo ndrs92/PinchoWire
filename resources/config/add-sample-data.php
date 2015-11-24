@@ -1,3 +1,15 @@
+<?php
+if(!isset($_SESSION)){
+	session_start();
+}
+
+if(!isset($_SESSION["installation"])){
+	header("Location: ../../view/403.php");
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>

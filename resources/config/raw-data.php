@@ -1,6 +1,16 @@
 <?php
 include_once("../code/bd_manage.php");
 
+if(!isset($_SESSION)){
+	session_start();
+}
+
+if(!isset($_SESSION["installation"])){
+	header("Location: ../../view/403.php");
+	exit();
+}
+
+
 /* Creation of popular juries to sample data */
 $sql = "INSERT INTO G23.juradopopular (idemail, nombre, contrasena, rutaavatar) VALUES ('jurado1@wire.es', 'Jurado 1', 'abc123..', 'images/avatars/default.jpg');";
 mysqli_query($connectHandler, $sql);
