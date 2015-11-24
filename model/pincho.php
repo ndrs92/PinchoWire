@@ -21,6 +21,10 @@ class Pincho {
         $this->rutaimagen = $rutaimagen;
     }
 
+    public function getPopularScore(){
+        return PinchoMapper::retrievePopularScore($this->idnombre);
+    }
+
     public static function search($search_data){
         $toRet = NULL;
         $toSearch = PinchoMapper::retrieveAllAceptados();

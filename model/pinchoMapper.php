@@ -16,6 +16,21 @@ class PinchoMapper{
 
 	}
 
+	public static function retrievePopularScore($idnombre){
+		$toRet = 0;
+
+		global $connectHandler;
+		$query = "SELECT count(*) FROM vota WHERE pincho_idnombre = '".$idnombre."'";
+		$result = mysqli_query($connectHandler, $query);
+		if($result){
+			$row = mysqli_fetch_assoc($result);
+			return $row["count(*)"];
+		}else{
+			throw new Exception("Error Processing Request", 1);
+			
+		}
+	}
+
 	public static function updateEstado($new, $target){
 		global $connectHandler;
 		$query = "UPDATE pincho SET estadoPropuesta = '".$new."' WHERE idnombre = '".$target."'";

@@ -88,6 +88,7 @@ if($pinchoActual->getIdnombre() == NULL){
 							echo "</a>";
 							?>
 						</h3>
+						<h3><?= $l["view_pincho_score"].$pinchoActual->getPopularScore(); ?></h3>
 					</div>
 				</div>
 			</div>
