@@ -1,6 +1,5 @@
 <?php
-error_reporting(0);
-ini_set('display_errors', 0);
+
 include_once "../../model/concurso.php";
 include_once "../../controller/concurso_controller.php";
 
@@ -80,13 +79,11 @@ $_SESSION["installation"] = true;
 							<form action="./bd-install.php" method="POST" data-toggle="validator" class="form-horizontal">
 								<fieldset>
 									<legend>Configuration data</legend>
-									
-									
 
 									<div class="form-group">
 										<label for="host" class="col-lg-2 control-label">Server hostname:</label>
 										<div class="col-lg-10">
-											<input disabled required data-error="Input a valid host" pattern="^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$" type="text" class="form-control" name="host" placeholder="127.0.0.1" value="127.0.0.1">
+											 <input required data-error="Input a valid host" pattern="^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$" type="text" class="form-control" name="database-host" placeholder="127.0.0.1" value="127.0.0.1">
 											<div class="help-block with-errors"></div>
 										</div>
 									</div>
