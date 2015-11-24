@@ -133,6 +133,8 @@ $l = array(
     "view_list_eaten_not_logged" => "Identifícate para marcarlo!",
     "view_list_establishment_codes" => "Códigos para mi pincho",
     "view_list_vote" => "Vota este pincho",
+    "view_list_profesional_votacion_promociona" => "Promocinar Pinchos",
+    "view_list_profesional_votacion_finalista" => "Votar ganador",
 
     "view_enviarpropuesta_enviarpropuesta" => "Enviar propuesta",
     "view_enviarpropuesta_titulo" => "Introduce los datos de tu propuesta de pincho:",
