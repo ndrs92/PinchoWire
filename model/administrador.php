@@ -12,6 +12,10 @@ class Administrador extends Usuario{
         UserMapper::deleteFromDatabase($this->idemail, strtolower(get_class($this)));
     }
 
+    public function eliminar_comentario($idpincho){
+        UserMapper::eliminar_comentario($idpincho,$this->idemail);
+    }
+
     public function getBaneado(){
         return "0";
     }
