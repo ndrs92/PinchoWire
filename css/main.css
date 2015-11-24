@@ -222,9 +222,17 @@ table tbody td {
 	margin-bottom: 0px;
 }
 
-<<<<<<< HEAD
 .competition-state{
 	margin-bottom: 50px;
 }
-=======
->>>>>>> 6a6dc6aa35fbf4fb4b718cdfa662145f5196b620
+
+#install-page{
+	background-color: #f5f5f5;
+	padding-top: 50px;
+}
+
+.install-logo{
+	width: 200px;
+	margin-bottom: 50px;
+	padding-left: 3px; 
+}

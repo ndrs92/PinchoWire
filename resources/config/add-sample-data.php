@@ -3,10 +3,10 @@ if(!isset($_SESSION)){
 	session_start();
 }
 
+
 if(!isset($_SESSION["installation"])){
 	header("Location: ../../view/403.php");
 }
-
 
 ?>
 
@@ -51,12 +51,14 @@ if(!isset($_SESSION["installation"])){
 		<!-- /PRELOADER -->
 
 		<!-- STATS -->
-		<section id="stats">
+		<section id="install-page">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="section-title">
-							<h1>Pincho Wire Installation</h1>
+						<img class="install-logo" src="../../images/logo.png" />
+
+							<h1>Installation</h1>
 							<span class="st-border"></span>
 							<h3>Installation is completed! You can now start using your application or initialize it with some sample data. Choose wisely.</h3>
 							<br/>
@@ -64,14 +66,14 @@ if(!isset($_SESSION["installation"])){
 							<div class="row">
 								<div class="col-md-2 hidden-sm hidden-xs"></div>
 								<div class="col-md-8 col-sm-12 col-xs-12">
-									<div class="panel panel-primary">
+									<div class="panel panel-default">
 										<div class="panel-heading">
 											<h3 class="panel-title">Initialize sample data?</h3>
 										</div>
 										<div class="panel-body">
 											<div class="col-md-12">
-												<a href="raw-data.php" class="btn btn-success btn-lg">Add sample data</a>
-												<a href="../../index.php" class="btn btn-primary btn-lg">Continue without data</a>
+												<a href="raw-data.php" class="btn btn-info btn-lg">Add sample data</a>
+												<a href="../../index.php" class="btn btn-info btn-lg">Continue without data</a>
 											</div>
 										</div>
 									</div>

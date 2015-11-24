@@ -68,15 +68,16 @@ $_SESSION["installation"] = true;
 		<!-- /PRELOADER -->
 
 		<!-- STATS -->
-		<section id="stats">
+		<section id="install-page">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="section-title">
-							<h1>Pincho Wire Installation</h1>
+						<img class="install-logo" src="../../images/logo.png" />
+							<h1>Installation</h1>
 							<span class="st-border"></span>
 							<h3>Welcome to the installation wizard</h3>
-							<br/>
+							<p>It takes just a minute to be set up in Pincho Wire. Don't worry about not inserting everything, you can manage your information later.</p>
 							<br/>
 							<form action="./bd-install.php" method="POST" data-toggle="validator" class="form-horizontal">
 								<fieldset>
@@ -142,13 +143,6 @@ $_SESSION["installation"] = true;
 										</div>
 									</div>
 
-									<div class="form-group">
-										<label for="pwImage" class="col-lg-2 control-label">Competition Image:</label>
-										<div class="col-lg-10">
-											<input type="file" class="form-control" name="pw-title-image">
-											<div class="help-block with-errors"></div>
-										</div>
-									</div>
 
 									<div class="form-group">
 										<label for="pwFacebook" class="col-lg-2 control-label">Facebook</label>
