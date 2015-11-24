@@ -1,3 +1,10 @@
+<?php
+include_once "../resources/code/models.php";
+include_once "../controller/concurso_controller.php";
+
+$concurso = getConcurso();
+?>
+
 <!-- FOOTER -->
 <footer id="footer">
 	<div class="container">
@@ -8,10 +15,16 @@
 			<!-- SOCIAL ICONS -->
 			<div class="col-sm-6 col-sm-push-6 footer-social-icons">
 				<span><?= $l["footer_followus"] ?></span>
-				<a href=""><i class="fa fa-facebook"></i></a>
-				<a href=""><i class="fa fa-twitter"></i></a>
-				<a href=""><i class="fa fa-google-plus"></i></a>
-				<a href=""><i class="fa fa-pinterest-p"></i></a>
+				<!-- Show social icons only if the competition have links to them -->				
+				<?php if($concurso->getFacebook() != NULL){
+					echo "<a href='".$concurso->getFacebook()."'><i class='fa fa-facebook'></i></a>";
+				} ?>
+				<?php if($concurso->getTwitter() != NULL){
+					echo "<a href='".$concurso->getTwitter()."'><i class='fa fa-twitter'></i></a>";
+				} ?>
+				<?php if($concurso->getGoogleplus() != NULL){
+					echo "<a href='".$concurso->getGoogleplus()."'><i class='fa fa-google-plus'></i></a>";
+				} ?>
 			</div>
 			<!-- /SOCIAL ICONS -->
 			<div class="col-sm-6 col-sm-pull-6 copyright">

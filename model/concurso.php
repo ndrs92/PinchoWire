@@ -8,6 +8,9 @@ class Concurso{
 	private $fecha;
 	private $rutaportada;
 	private $titulo; 
+	private $facebook; 
+	private $twitter; 
+	private $googleplus; 
 
 
 	//returns the only row in database, as an object
@@ -17,8 +20,11 @@ class Concurso{
 		$this->fecha = ConcursoMapper::retrieveFecha();
 		$this->rutaportada = ConcursoMapper::retrieveRutaportada();
 		$this->titulo = ConcursoMapper::retrieveTitulo();
+		$this->facebook = ConcursoMapper::retrieveFacebook();
+		$this->twitter = ConcursoMapper::retrieveTwitter();
+		$this->googleplus = ConcursoMapper::retrieveGoogleplus();
 
-		if(!isset($this->idconcurso) || !isset($this->descripcion) || !isset($this->fecha) || !isset($this->rutaportada) || !isset($this->titulo)){
+		if(!isset($this->idconcurso) || !isset($this->descripcion) || !isset($this->fecha) || !isset($this->rutaportada) || !isset($this->titulo) || !isset($this->titulo)){
 			throw new Exception('<<Concurso>> info inexistent in database or corrupted.');
 		}
 	}
@@ -42,6 +48,18 @@ class Concurso{
 
 	public function getTitulo(){
 		return $this->titulo;
+	}
+
+	public function getFacebook(){
+		return $this->facebook;
+	}
+
+	public function getTwitter(){
+		return $this->twitter;
+	}
+
+	public function getGoogleplus(){
+		return $this->googleplus;
 	}
 
 	public function getNumberOfPinchos(){
