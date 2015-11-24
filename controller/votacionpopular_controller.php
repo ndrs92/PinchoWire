@@ -1,6 +1,6 @@
 <?php
 include_once "../model/juradopopular.php";
-
+include_once("../resources/code/bd_manage.php");
 include_once "pincho_controller.php";
 
 if(!isset($_SESSION)) session_start();
@@ -9,9 +9,6 @@ if(get_class($_SESSION["user"]) != "JuradoPopular"){
     header("Location: ../view/403.php");
     exit;
 }
-
-$pinchoActual = getCurrentPincho($_GET["idpincho"]);
-
 
 if($_POST["votacionpopular_codigo1"] && $_POST["votacionpopular_codigo2"] && $_POST["votacionpopular_codigo3"] && $_POST["votacionpopular_idpincho"]){
     //All params for vote a pincho OK
@@ -34,13 +31,33 @@ if($_POST["votacionpopular_codigo1"] && $_POST["votacionpopular_codigo2"] && $_P
                    (!PinchoMapper::isRetrieved($_POST["votacionpopular_codigo2"])) &&
                    (!PinchoMapper::isRetrieved($_POST["votacionpopular_codigo3"]))){
                     //Ninguno de los pinchos ha sido usado ya
-                    $_SESSION["user"]->votar_pincho($_POST["votacionpopular_idpincho"]);
-                    PinchoMapper::burnCode($_POST["votacionpopular_codigo1"],$_SESSION["user"]->getIdemail());
-                    PinchoMapper::burnCode($_POST["votacionpopular_codigo2"],$_SESSION["user"]->getIdemail());
-                    PinchoMapper::burnCode($_POST["votacionpopular_codigo3"],$_SESSION["user"]->getIdemail());
-                    $relpath = '../view/list.php';
-                    $_SESSION["vote"] = "success";
-                    echo "Todo bien, todo correcto";
+                    global $connectHandler;
+                    try {
+
+                        $connectHandler->autocommit(false);
+                        $_SESSION["user"]->votar_pincho($_POST["votacionpopular_idpincho"]);
+                        PinchoMapper::burnCode($_POST["votacionpopular_codigo1"], $_SESSION["user"]->getIdemail());
+                        PinchoMapper::burnCode($_POST["votacionpopular_codigo2"], $_SESSION["user"]->getIdemail());
+                        PinchoMapper::burnCode($_POST["votacionpopular_codigo3"], $_SESSION["user"]->getIdemail());
+
+                        if( !PinchoMapper::isProbado($pinchoCodigo1, $_SESSION["user"]->getIdemail()) ){
+                            PinchoMapper::toggleMarcado($pinchoCodigo1, $_SESSION["user"]->getIdemail());
+                        }
+                        if( !PinchoMapper::isProbado($pinchoCodigo2, $_SESSION["user"]->getIdemail()) ){
+                            PinchoMapper::toggleMarcado($pinchoCodigo2, $_SESSION["user"]->getIdemail());
+                        }
+                        if( !PinchoMapper::isProbado($pinchoCodigo3, $_SESSION["user"]->getIdemail()) ){
+                            PinchoMapper::toggleMarcado($pinchoCodigo3, $_SESSION["user"]->getIdemail());
+                        }
+                        $connectHandler->commit();
+
+                        $relpath = '../view/list.php';
+                        $_SESSION["vote"] = "success";
+                    }
+                    catch (Exception $e){
+                        $connectHandler->rollback();
+                    }
+                    $connectHandler->autocommit(true);
                 }
                 else {
                     $_SESSION["vote"] = "burned_code";
