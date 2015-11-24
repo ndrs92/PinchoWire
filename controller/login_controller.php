@@ -2,7 +2,7 @@
 if(!isset($_SESSION)) session_start();
 
 include_once "../model/usuario.php";
-
+include_once "../resources/code/lang_coverage.php";
 
 if(!empty($_SESSION["user"])){
 	header("Location: ../view/list.php");
@@ -14,14 +14,14 @@ if($_POST["login_user_login"] && $_POST["login_user_pass"]){
 	$userObject = Usuario::login_user($_POST["login_user_login"], $_POST["login_user_pass"]);
 	
 	if($userObject == NULL){
-		$_SESSION["login"] = "fail";
+		$_SESSION["alert"]["error"] = $l["alertify_login_fail"];
 		$host  = $_SERVER['HTTP_HOST'];
 		$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 		$relpath = '../view/login.php';
 		header("Location: http://$host$uri/$relpath");
 
 	}else if($userObject->getBaneado()){
-		$_SESSION["login"] = "banned";
+		$_SESSION["alert"]["error"] = $l["alertify_login_banned"];
 		$host  = $_SERVER['HTTP_HOST'];
 		$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 		$relpath = '../view/login.php';

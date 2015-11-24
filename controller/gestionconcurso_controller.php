@@ -1,6 +1,8 @@
 <?php
 include_once("../model/concursoMapper.php");
 include_once("../model/administrador.php");
+include_once "../resources/code/lang_coverage.php";
+
 if(!isset($_SESSION)) session_start();
 if(get_class($_SESSION["user"])!="Administrador"){
 	header("Location: ../view/403.php");
@@ -28,10 +30,10 @@ if($_POST["nombre"] && $_POST["descripcion"] ){
 	}
 
 	if($resultado){
-		echo "Se ha modificado correctamente<br/>";
+		$_SESSION["alert"]["success"] = "alertify_contestManage_success";
 	}
 	else{
-		echo "Error al guardar la modificación <br/>";			
+		$_SESSION["alert"]["error"] = "alertify_contestManage_error";
 	}
 	header("Location: ../view/view_admin_concurso.php");
 

@@ -44,7 +44,8 @@ $totalSearchElements = $numOfPinchos + $numOfEstablishments;
 	<link rel="stylesheet" href="../css/style.css" />
 	<link rel="stylesheet" href="../css/responsive.css" />
 	<link rel="stylesheet" href="../css/main.css" />
-
+	<link rel="stylesheet" href="../css/alertify.default.css" />
+	<link rel="stylesheet" href="../css/alertify.core.css" />
 	
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="../../images/icon/favicon.png">
@@ -196,6 +197,7 @@ $totalSearchElements = $numOfPinchos + $numOfEstablishments;
 		<script type="text/javascript" src="../js/jquery.isotope.min.js"></script><!-- isotope -->
 		<script type="text/javascript" src="../js/jquery.magnific-popup.min.js"></script><!-- magnific-popup -->
 		<script type="text/javascript" src="../js/scripts.js"></script><!-- Scripts -->
+		<script type="text/javascript" src="../js/alertify.min.js"></script><!-- Alertify -->
 
 
 	</body>

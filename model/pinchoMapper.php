@@ -183,6 +183,7 @@ class PinchoMapper{
 		}
 		else {
 			$query = "INSERT INTO probado (pincho_idnombre, juradopopular_idemail) VALUES ('$pinchoid','$userid');";
+
 		}
 		if(mysqli_query($connectHandler, $query)){
 			return true;

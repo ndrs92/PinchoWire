@@ -27,8 +27,8 @@ $establecimientos = getAllEstablecimientos();
 	<link rel="stylesheet" href="../css/style.css" />
 	<link rel="stylesheet" href="../css/responsive.css" />
 	<link rel="stylesheet" href="../css/main.css" />
-
-
+	<link rel="stylesheet" href="../css/alertify.default.css" />
+	<link rel="stylesheet" href="../css/alertify.core.css" />
 
 	
 	<!-- Favicon -->
@@ -124,7 +124,7 @@ $establecimientos = getAllEstablecimientos();
 									</a> 
 									<?php
 									if(isset($_SESSION["user"]) && get_class($_SESSION["user"]) == "JuradoPopular"){
-										echo "<a href='../controller/markeatenpincho_controller.php?markeatenpincho_probado_idpincho=". $pincho->getIdnombre() . "&markeatenpincho_probado_idmail=" . $_SESSION["user"]->getIdemail() . "'><div class='btn-probar-pincho'>" . $probado . "</div></a>";
+										echo "<a href='../controller/markeatenpincho_controller.php?markeatenpincho_probado_idpincho=". $pincho->getIdnombre() . "&markeatenpincho_probado_idemail=" . $_SESSION["user"]->getIdemail() . "'><div class='btn-probar-pincho'>" . $probado . "</div></a>";
 										echo "<a href='./view_votacionpopular.php?idpincho=". $pincho->getIdnombre() . "'><div class='btn-votar-pincho'>" . $l["view_list_vote"] . "</div></a>";
 
 									}
@@ -493,6 +493,8 @@ $establecimientos = getAllEstablecimientos();
 	</script><!-- Gastromapa -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApOBPY5dso4qlFcJUfiwwALFGBmdlWPGo&callback=initMap"
 	async defer></script>
+	<script type="text/javascript" src="../js/alertify.min.js"></script><!-- Alertify -->
+	<?php include_once "../resources/code/alertify.php"; ?>
 
 
 </body>

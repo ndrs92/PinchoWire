@@ -1,6 +1,7 @@
 <?php
 
 include_once "../model/pincho.php";
+include_once("../resources/code/bd_manage.php");
 include_once "../model/establecimiento.php";
 
 if(!isset($_SESSION)) session_start();
@@ -12,9 +13,16 @@ if(get_class($_SESSION["user"])!="Establecimiento"){
 
 $target = Pincho::getByIdnombre($_GET["idnombre"]);
 
-$target->createCodes(5);
-
-
+global $connectHandler;
+$connectHandler->autocommit(false);
+try {
+    $target->createCodes(5);
+    $connectHandler->commit();
+}
+catch (Exception $e){
+    $connectHandler->rollback();
+}
+$connectHandler->autocommit(true);
 $host  = $_SERVER['HTTP_HOST'];
 $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 

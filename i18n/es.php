@@ -207,8 +207,17 @@ $l = array(
     "view_search_establishments" => "Resultados de establecimientos:",
     "view_search_not_found" => "No se ha encontrado ningun resultado. Prueba con otro criterio de búsqueda",
 
-
-
+    "alertify_votacionPopular_success" => "Su voto se ha emitido correctamente",
+    "alertify_votacionPopular_error_codeBurnt" => "Algun código introducido está canjeado ya",
+    "alertify_votacionPopular_error_codeMultiplePinchoCode" => "Existe más de un codigo del mismo pincho",
+    "alertify_votacionPopular_error_invalidCode" => "Algún codigo es invalido",
+    "alertify_votacionPopular_error_noPinchoCode" => "No se ha introducido un codigo del pincho que se quiere votar",
+    "alertify_eatenPincho_eaten" => "El pincho se ha marcado como probado",
+    "alertify_eatenPincho_noEaten" => "El pincho se ha desmarcado como probado",
+    "alertify_login_banned" => "Este usuario está baneado, para conocer los motivos contacte con el administrador de la página",
+    "alertify_login_fail" => "Login incorrecto",
+    "alertify_contestManage_success" => "Información del concurso editada correctamente",
+    "alertify_contestManage_error" => "No se ha podido modificar la información del concurso",
 
     "view_profile_edit" => "Perfil",
     "view_profile_idmail" => "Correo electrónico",
