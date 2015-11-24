@@ -255,6 +255,12 @@ $l = array(
     "view_votacionpopular_invalidCode" => "Algún codigo es invalido",
     "view_votacionpopular_noPinchoCode" => "No se ha introducido un codigo del pincho que se quiere votar",
 
+    "view_votacionprofesional_tittle" => "Votacion profesional",
+    "view_votacionprofesional_header" => "Pinchos a votar",
+    "view_votacionprofesional_vote" => "Votación",
+    "view_votacionprofesional_enviar" => "Votar",
+    "view_votacionprofesional_finish" => "Ha votado todos los pinchos asignados",
+
     "view_establishment_codes_myCodes" => "Códigos de mi pincho",
     "view_establishment_codes_pincho" => "Pincho: ",
     "view_establishment_codes_generate" => "Generar 5 códigos más",
@@ -263,6 +269,7 @@ $l = array(
     "view_establishment_codes_burnt" => "Códigos canjeados",
     "view_establishment_codes_user" => "Usuario",
 
+    "view_pincho_name" => "Nombre del pincho",
     "view_pincho_description" => " Descripción: ",
     "view_pincho_price" => " Precio: ",
     "view_pincho_ingredients" => " Ingredientes: ",

@@ -96,7 +96,7 @@ class Pincho {
         $toRet = NULL;
         if($mapperData != NULL) {
             foreach ($mapperData as $toMake) {
-                $toRet[$toMake["establecimiento_idemail"]] = new Pincho($toMake["idnombre"], $toMake["descripcion"], $toMake["precio"], $toMake["ingredientes"], $toMake["ganadorPopular"], $toMake["estadoPropuesta"], $toMake["establecimiento_idemail"]);
+                $toRet[$toMake["establecimiento_idemail"]] = new Pincho($toMake["idnombre"], $toMake["descripcion"], $toMake["precio"], $toMake["ingredientes"], $toMake["ganadorPopular"], $toMake["estadoPropuesta"], $toMake["rutaimagen"]);
             }
         }
         return $toRet;
@@ -171,6 +171,11 @@ class Pincho {
     {
         $this->estadopropuesta = $estadopropuesta;
         PinchoMapper::updateEstado($this->getEstadopropuesta(), $this->getIdnombre());
+    }
+
+    public function getRutaimagen()
+    {
+        return $this->rutaimagen;
     }
 }
 

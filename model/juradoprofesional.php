@@ -1,4 +1,5 @@
 <?php
+include_once("usuario.php");
 
 class JuradoProfesional extends Usuario{
 	private $curriculum;
@@ -10,10 +11,19 @@ class JuradoProfesional extends Usuario{
 		$this->baneado = $baneado;
 	}
 
-	public function getPinchosAsignados(){
-		UserMapper::retrievePinchosAsignados($this->idemail);
+	public function votacionPromociona($pincho, $puntuacion){
+		return UserMapper::votacionPromociona($this->idemail, $pincho, $puntuacion);
+
 	}
 
+	public function getPinchosAsignados(){
+		return UserMapper::retrievePinchosAsignados($this->idemail);
+	}
+
+	public function getPinchosVotadosDePromociona(){
+		return UserMapper::retrievePinchosVotadosDePromociona($this->idemail);
+	}
+	
 	public function editBanFromDatabase($banned){
 		UserMapper::editBanFromDatabase($this->idemail, strtolower(get_class($this)), $banned);
 	}
