@@ -59,12 +59,11 @@ $establecimientos = getAllEstablecimientos();
 
 <?php include("./header.php"); ?>
 
-
 <!-- SLIDER -->
 <section id="slider">
     <div id="home-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="item active" style="background-image: url(../<?= $concurso->getRutaportada() ?>)">
+            <div class="item active" style="background-image: url(  ../<?= $concurso->getRutaportada(); ?>)">
                 <div class="carousel-caption container">
                     <div class="row">
                         <div class="col-sm-12">

@@ -130,9 +130,9 @@ class ConcursoMapper{
 		return $result;
 	}
 
-	public static function updateConcurso($titulo, $descripcion){
+	public static function updateConcurso($titulo, $descripcion, $rutaportada){
 		global $connectHandler;
-		$query = "UPDATE concurso SET titulo = '$titulo', descripcion = '$descripcion' ";
+		$query = "UPDATE concurso SET titulo = '$titulo', descripcion = '$descripcion', rutaportada = '$rutaportada' ";
 		$result = mysqli_query($connectHandler, $query);
 		return $result;
 	}
