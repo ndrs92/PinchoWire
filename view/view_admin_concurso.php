@@ -36,9 +36,9 @@ $pinchoList = Pincho::getAllPropuestas();
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../images/icon/favicon.png">
     <link rel="apple-touch-icon-precomposed" sizes="144x144"
-          href="../../images/icon/apple-touch-icon-144-precomposed.png">
+    href="../../images/icon/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114"
-          href="../../images/icon/apple-touch-icon-114-precomposed.png">
+    href="../../images/icon/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../images/icon/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../../images/icon/apple-touch-icon-57-precomposed.png">
 
@@ -52,44 +52,78 @@ $pinchoList = Pincho::getAllPropuestas();
 </head>
 <body>
 
-<!-- PRELOADER -->
-<div id="st-preloader">
-    <div id="pre-status">
-        <div class="preload-placeholder"></div>
+    <!-- PRELOADER -->
+    <div id="st-preloader">
+        <div id="pre-status">
+            <div class="preload-placeholder"></div>
+        </div>
     </div>
-</div>
-<!-- /PRELOADER -->
+    <!-- /PRELOADER -->
 
 
-<?php include("./header.php"); ?>
+    <?php include("./header.php"); ?>
 
 
-<!-- PINCHOS -->
-<section id="pinchos">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-title">
-                    <h1><?= $l["view_admin_infoManage"] ?></h1>
-                    <span class="st-border"></span>
+    <!-- PINCHOS -->
+    <section id="pinchos">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h1><?= $l["view_admin_infoManage"] ?></h1>
+                        <span class="st-border"></span>
+                    </div>
                 </div>
-            </div>
-            <?php
-            $concurso = new Concurso();
-            ?>
-            <div class="admin-user-table">
-                <form data-toggle="validator" class="form" action="../controller/gestionconcurso_controller.php"
-                      method="post" enctype="multipart/form-data">
+                <?php
+                $concurso = new Concurso();
+                $estado = $concurso->getEstado();
+                ?>
+                <div class="col-md-12 competition-state">
+                    <?php
+                    switch($estado){
+                        case 0:
+                        echo "<h3>".$l["view_admin_1"]."</h3>";
+                        echo '<div class="progress progress-striped active">';
+                        echo '<div class="progress-bar" style="width: 33%"></div>';
+                        echo '</div>';
+                        echo '<a href="../controller/competition_state_controller.php?increment=true" class="btn btn-primary btn-sm pull-right">'.$l["view_admin_1_bt"].'</a>';
+                        break;
+
+                        case 1:
+                        echo "<h3>".$l["view_admin_2"]."</h3>";
+                        echo '<div class="progress progress-striped active">';
+                        echo '<div class="progress-bar" style="width: 66%"></div>';
+                        echo '</div>';
+                        echo '<a href="../controller/competition_state_controller.php?increment=true" class="btn btn-primary btn-sm pull-right">'.$l["view_admin_2_bt"].'</a>';
+                        break;
+
+                        case 2:
+                        echo "<h3>".$l["view_admin_3"]."</h3>";
+                        echo '<div class="progress progress-striped active">';
+                        echo '<div class="progress-bar" style="width: 100%"></div>';
+                        echo '</div>';
+                        break;
+
+                        default:
+                        break;
+                    }
+                    ?>
+                </div>
+
+
+                <div class="admin-user-table">
+                    <form data-toggle="validator" class="form" action="../controller/gestionconcurso_controller.php"
+                    method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="name"><?= $l["view_admin_name"] ?></label>
                         <input data-error="<?= $l["register_name_error"] ?>" required data-minlength="4" type="text"
-                               class="form-control" name="nombre" value="<?php echo $concurso->getTitulo(); ?>"></br>
+                        class="form-control" name="nombre" value="<?php echo $concurso->getTitulo(); ?>"></br>
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group">
                         <label for="description"><?= $l["view_admin_contestInfo"] ?></label>
                         <textarea class="form-control" name="descripcion"
-                                  rows="5"><?php echo $concurso->getDescripcion(); ?></textarea></br>
+                        rows="5"><?php echo $concurso->getDescripcion(); ?></textarea></br>
                     </div>
                     <div class="form-group">
                         <label for="avatar"><?= $l["view_admin_mainPhoto"] ?></label>

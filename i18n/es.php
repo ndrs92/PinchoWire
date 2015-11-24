@@ -202,6 +202,12 @@ $l = array(
     "view_admin_banned" => " Baneado ",
     "view_admin_active" => " Activo ",
 
+    "view_admin_1" => "Estado del concurso: Votaciones para finalistas.",
+    "view_admin_1_bt" => "Avanzar a finales",
+    "view_admin_2" => "Estado del concurso: Votaciones para finalistas.",
+    "view_admin_2_bt" => "Finalizar concurso",
+    "view_admin_3" => "Estado del concurso: Concurso Finalizado.",
+
     "view_search_title" => "Resultados de búsqueda",
     "view_search_pinchos" => "Resultados de pinchos:",
     "view_search_establishments" => "Resultados de establecimientos:",
