@@ -82,7 +82,7 @@ include_once "../resources/code/lang_coverage.php";
 						<?php
 					}
 					?>
-					<li><a><i class="fa fa-search"></i></a></li>
+					<li><a href="#" data-toggle="modal" data-target="#searchModal"><i class="fa fa-search"></i></a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-globe"></i><span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
@@ -101,4 +101,20 @@ include_once "../resources/code/lang_coverage.php";
 		</div><!-- /.container -->
 	</nav>
 </header>
-	<!-- /HEADER -->
+<!-- /HEADER -->
+
+<!-- SEARCH MODAL -->
+<div id="searchModal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content search">
+			<form role="form" action="../view/search.php" method="post"> 
+				<div class="form-group has-feedback has-feedback-left search-form">
+					<input type="text" name="search-data" class="form-control input-lg" placeholder="<?= $l["header_search_modal"] ?>" />
+					<i class="form-control-feedback fa fa-search"></i>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+	<!-- /SEARCH MODAL -->

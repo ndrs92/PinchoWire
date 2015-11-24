@@ -22,6 +22,22 @@ class Establecimiento extends Usuario{
 		$this->baneado = $baneado;
 	}
 
+	public static function search($search_data){
+		$toRet = NULL;
+		$toSearch = UserMapper::retrieveAllEstablecimientos();
+		if($toSearch == NULL){
+			return NULL;
+		}else{
+			foreach($toSearch as $e){
+				if(strpos(strtolower($e["idemail"]), $search_data) != false || strpos(strtolower($e["nombre"]), $search_data) != false || strpos(strtolower($e["direccion"]), $search_data) != false || strpos(strtolower($e["web"]), $search_data) != false){
+					$toRet[$e["idemail"]] = new Establecimiento($e["idemail"], $e["nombre"], $e["contrasena"], $e["rutaavatar"], $e["direccion"], $e["web"], $e["horario"], $e["rutaimagen"], $e["geoloc"], $e["baneado"]);
+				}
+			}
+		}
+
+		return $toRet;
+	}
+
 	public function editBanFromDatabase($banned){
 		UserMapper::editBanFromDatabase($this->idemail, strtolower(get_class($this)), $banned);
 	}

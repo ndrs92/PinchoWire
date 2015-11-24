@@ -1,5 +1,5 @@
 <?php
-include_once("./../resources/code/bd_manage.php");
+include_once "../resources/code/bd_manage.php";
 include_once "concursoMapper.php";
 
 class Concurso{

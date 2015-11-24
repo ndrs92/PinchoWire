@@ -140,8 +140,7 @@ if($pinchoActual->getIdnombre() == NULL){
 									<div class="single-comment">
 										<div class="col-md-1 botonera-comment">
 											<?php
-											if (($_SESSION && get_class($_SESSION["user"]) == "JuradoPopular" && $_SESSION["user"]->getIdemail() == $comentario["juradopopular_idemail"]) ||
-												get_class($_SESSION["user"]) == "Administrador") {
+											if ($_SESSION && ((get_class($_SESSION["user"]) == "JuradoPopular" && $_SESSION["user"]->getIdemail() == $comentario["juradopopular_idemail"]) || get_class($_SESSION["user"]) == "Administrador")) {
 												?>
 												<form id="comment_<?= $comentario["idcomentario"] ?>" method="post" action="../controller/eliminarcomentario_controller.php">
 													<input type="hidden" name="delcomment_comment_id" value="<?= $comentario["idcomentario"] ?>" />  

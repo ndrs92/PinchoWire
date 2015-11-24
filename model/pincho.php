@@ -21,6 +21,22 @@ class Pincho {
         $this->rutaimagen = $rutaimagen;
     }
 
+    public static function search($search_data){
+        $toRet = NULL;
+        $toSearch = PinchoMapper::retrieveAllAceptados();
+        if($toSearch == NULL){
+            return NULL;
+        }else{
+            foreach($toSearch as $p){
+                if(strpos(strtolower($p["idnombre"]), $search_data) != false || strpos(strtolower($p["descripcion"]), $search_data) != false || strpos(strtolower($p["ingredientes"]), $search_data) != false){
+                    $toRet[$p["idnombre"]] = new Pincho($p["idnombre"], $p["descripcion"], $p["precio"], $p["ingredientes"], $p["ganadorPopular"], $p["estadoPropuesta"], $p["establecimiento_idemail"]);
+                }
+            }
+        }
+
+        return $toRet;
+    }
+
     public function getEstablishment(){
         $pincho = PinchoMapper::find($this->getIdnombre());
         $idmail = $pincho["establecimiento_idemail"];
@@ -80,7 +96,7 @@ class Pincho {
         $toRet = NULL;
         if($mapperData != NULL) {
             foreach ($mapperData as $toMake) {
-                $toRet[$toMake["establecimiento_idemail"]] = new Pincho($toMake["idnombre"], $toMake["descripcion"], $toMake["precio"], $toMake["ingredientes"], $toMake["ganadorPopular"], $toMake["estadoPropuesta"], $toMake["establecimiento_idemail"]);
+                $toRet[$toMake["establecimiento_idemail"]] = new Pincho($toMake["idnombre"], $toMake["descripcion"], $toMake["precio"], $toMake["ingredientes"], $toMake["ganadorPopular"], $toMake["estadoPropuesta"], $toMake["rutaimagen"]);
             }
         }
         return $toRet;
@@ -155,6 +171,11 @@ class Pincho {
     {
         $this->estadopropuesta = $estadopropuesta;
         PinchoMapper::updateEstado($this->getEstadopropuesta(), $this->getIdnombre());
+    }
+
+    public function getRutaimagen()
+    {
+        return $this->rutaimagen;
     }
 }
 

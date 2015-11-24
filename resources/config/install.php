@@ -1,11 +1,20 @@
 <?php
+error_reporting(0);
+ini_set('display_errors', 0);
 include_once "../../model/concurso.php";
 include_once "../../controller/concurso_controller.php";
+
+$continue = false;
 
 try{
 	$concurso = getConcurso();
 }catch(Exception $e){
+	$continue = true;
+}
+
+if(!$continue){
 	header("Location: ../../view/403.php");
+	exit();
 }
 
 if(!isset($_SESSION)){
@@ -211,3 +220,8 @@ $_SESSION["installation"] = true;
 
 	</body>
 	</html>
+
+	<?php
+	error_reporting(1);
+	ini_set('display_errors', 1);
+	?>
