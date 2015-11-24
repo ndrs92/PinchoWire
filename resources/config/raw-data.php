@@ -12,49 +12,49 @@ if(!isset($_SESSION["installation"])){
 
 
 /* Creation of popular juries to sample data */
-$sql = "INSERT INTO G23.juradopopular (idemail, nombre, contrasena, rutaavatar) VALUES ('jurado1@wire.es', 'Jurado 1', 'abc123..', 'images/avatars/default.jpg');";
+$sql = "INSERT INTO G23.juradopopular (idemail, nombre, contrasena, rutaavatar) VALUES ('jurado1@wire.es', 'Manuel Domínguez Rodríguez', 'abc123..', 'images/sample-data/jurado1@wire.es.jpg');";
 mysqli_query($connectHandler, $sql);
 
-$sql = "INSERT INTO G23.juradopopular (idemail, nombre, contrasena, rutaavatar) VALUES ('jurado2@wire.es', 'Jurado 2', 'abc123..', 'images/avatars/default.jpg');";
+$sql = "INSERT INTO G23.juradopopular (idemail, nombre, contrasena, rutaavatar) VALUES ('jurado2@wire.es', 'Rosa Jimenez Fernández', 'abc123..', 'images/sample-data/jurado2@wire.es.jpg');";
 mysqli_query($connectHandler, $sql);
 
-$sql = "INSERT INTO G23.juradopopular (idemail, nombre, contrasena, rutaavatar) VALUES ('jurado3@wire.es', 'Jurado 3', 'abc123..', 'images/avatars/default.jpg');";
+$sql = "INSERT INTO G23.juradopopular (idemail, nombre, contrasena, rutaavatar) VALUES ('jurado3@wire.es', 'Raul Jimenez Fernández', 'abc123..', 'images/sample-data/jurado3@wire.es.jpg');";
 mysqli_query($connectHandler, $sql);
 
-$sql = "INSERT INTO G23.juradopopular (idemail, nombre, contrasena, rutaavatar) VALUES ('jurado4@wire.es', 'Jurado 4', 'abc123..', 'images/avatars/default.jpg');";
+$sql = "INSERT INTO G23.juradopopular (idemail, nombre, contrasena, rutaavatar) VALUES ('jurado4@wire.es', 'Lucia Vázquez Lois', 'abc123..', 'images/sample-data/jurado4@wire.es.jpg');";
 mysqli_query($connectHandler, $sql);
 
-$sql = "INSERT INTO G23.juradopopular (idemail, nombre, contrasena, rutaavatar) VALUES ('jurado5@wire.es', 'Jurado 5', 'abc123..', 'images/avatars/default.jpg');";
+$sql = "INSERT INTO G23.juradopopular (idemail, nombre, contrasena, rutaavatar) VALUES ('jurado5@wire.es', 'Juan Mateo Fernández Camacho', 'abc123..', 'images/sample-data/jurado5@wire.es.jpg');";
 mysqli_query($connectHandler, $sql);
 
 /* Creation of professional juries to sample data */
-$sql = "INSERT INTO G23.juradoprofesional (curriculum, idemail, nombre, contrasena, rutaavatar) VALUES ('Currículum del Jurado Profesional 1', 'profesional1@wire.es', 'Profesional 1', 'abc123..', 'images/avatars/default.jpg');";
+$sql = "INSERT INTO G23.juradoprofesional (curriculum, idemail, nombre, contrasena, rutaavatar) VALUES ('Campeon Nacional Pincho Express 2012', 'profesional1@wire.es', 'Jose Francisco Rodríguez Pérez', 'abc123..', 'images/avatars/default.jpg');";
 mysqli_query($connectHandler, $sql);
 
-$sql = "INSERT INTO G23.juradoprofesional (curriculum, idemail, nombre, contrasena, rutaavatar) VALUES ('Currículum del Jurado Profesional 2', 'profesional2@wire.es', 'Profesional 2', 'abc123..', 'images/avatars/default.jpg');";
+$sql = "INSERT INTO G23.juradoprofesional (curriculum, idemail, nombre, contrasena, rutaavatar) VALUES ('Gerente Restaurante Saturno', 'profesional2@wire.es', 'Paula Fernández López', 'abc123..', 'images/avatars/default.jpg');";
 mysqli_query($connectHandler, $sql);
 
-$sql = "INSERT INTO G23.juradoprofesional (curriculum, idemail, nombre, contrasena, rutaavatar) VALUES ('Currículum del Jurado Profesional 3', 'profesional3@wire.es', 'Profesional 3', 'abc123..', 'images/avatars/default.jpg');";
+$sql = "INSERT INTO G23.juradoprofesional (curriculum, idemail, nombre, contrasena, rutaavatar) VALUES ('Finalista Campeonato Europeo PinchoWire 2015', 'profesional3@wire.es', 'Raul Martínez Pérez', 'abc123..', 'images/avatars/default.jpg');";
 mysqli_query($connectHandler, $sql);
 
-$sql = "INSERT INTO G23.juradoprofesional (curriculum, idemail, nombre, contrasena, rutaavatar) VALUES ('Currículum del Jurado Profesional 4', 'profesional4@wire.es', 'Profesional 4', 'abc123..', 'images/avatars/default.jpg');";
+$sql = "INSERT INTO G23.juradoprofesional (curriculum, idemail, nombre, contrasena, rutaavatar) VALUES ('Profesor FP Cocina - Ourense (Desde 2005))', 'profesional4@wire.es', 'Fran Perea López', 'abc123..', 'images/avatars/default.jpg');";
 mysqli_query($connectHandler, $sql);
 
-$sql = "INSERT INTO G23.juradoprofesional (curriculum, idemail, nombre, contrasena, rutaavatar) VALUES ('Currículum del Jurado Profesional 5', 'profesional5@wire.es', 'Profesional 5', 'abc123..', 'images/avatars/default.jpg');";
+$sql = "INSERT INTO G23.juradoprofesional (curriculum, idemail, nombre, contrasena, rutaavatar) VALUES ('Maestro chocolatero, desde 1972', 'profesional5@wire.es', 'Amador Casado Iglesias', 'abc123..', 'images/avatars/default.jpg');";
 mysqli_query($connectHandler, $sql);
 
 
 /*Creation of establishments to sample data */
 
-$sql = "INSERT INTO G23.establecimiento (idemail, nombre, contrasena, rutaavatar, direccion, web, horario, rutaimagen, geoloc) VALUES ('establecimiento1@wire.es', 'Establecimiento 1', 'abc123..', 'images/avatars/default.jpg', 'C/ Establecimiento 1', 'http://establecimiento1.wire.es/', '9:00 - 21:00', 'images/establishments/default.jpg', '42.345350, -7.855956');";
+$sql = "INSERT INTO G23.establecimiento (idemail, nombre, contrasena, rutaavatar, direccion, web, horario, rutaimagen, geoloc) VALUES ('establecimiento1@wire.es', 'La Cresta', 'abc123..', 'images/sample-data/establecimiento1@wire.es.jpg', 'C/ Rocio 23, Ourense', 'http://establecimiento1.wire.es/', '9:00 - 22:00', 'images/sample-data/establishments/establecimiento1@wire.es.jpg', '42.345350, -7.855956');";
 mysqli_query($connectHandler, $sql);
-$sql = "INSERT INTO G23.establecimiento (idemail, nombre, contrasena, rutaavatar, direccion, web, horario, rutaimagen, geoloc) VALUES ('establecimiento2@wire.es', 'Establecimiento 2', 'abc123..', 'images/avatars/default.jpg', 'C/ Establecimiento 2', 'http://establecimiento2.wire.es/', '9:00 - 21:00', 'images/establishments/default.jpg', '42.344373, -7.848144');";
+$sql = "INSERT INTO G23.establecimiento (idemail, nombre, contrasena, rutaavatar, direccion, web, horario, rutaimagen, geoloc) VALUES ('establecimiento2@wire.es', 'El Gallo', 'abc123..', 'images/sample-data/establecimiento2@wire.es.jpg', 'C/ Mercado 57, Ourense', 'http://establecimiento2.wire.es/', '9:00 - 00:00', 'images/sample-data/establishments/establecimiento2@wire.es.jpg', '42.344373, -7.848144');";
 mysqli_query($connectHandler, $sql);
-$sql = "INSERT INTO G23.establecimiento (idemail, nombre, contrasena, rutaavatar, direccion, web, horario, rutaimagen, geoloc) VALUES ('establecimiento3@wire.es', 'Establecimiento 3', 'abc123..', 'images/avatars/default.jpg', 'C/ Establecimiento 3', 'http://establecimiento3.wire.es/', '9:00 - 21:00', 'images/establishments/default.jpg', '42.342343, -7.851845');";
+$sql = "INSERT INTO G23.establecimiento (idemail, nombre, contrasena, rutaavatar, direccion, web, horario, rutaimagen, geoloc) VALUES ('establecimiento3@wire.es', 'A Carballeira', 'abc123..', 'images/sample-data/establecimiento3@wire.es.jpg', 'Avda. Santiago 60, Ourense', 'http://establecimiento3.wire.es/', '8:00 - 21:00', 'images/sample-data/establishments/establecimiento3@wire.es.jpg', '42.342343, -7.851845');";
 mysqli_query($connectHandler, $sql);
-$sql = "INSERT INTO G23.establecimiento (idemail, nombre, contrasena, rutaavatar, direccion, web, horario, rutaimagen, geoloc) VALUES ('establecimiento4@wire.es', 'Establecimiento 4', 'abc123..', 'images/avatars/default.jpg', 'C/ Establecimiento 4', 'http://establecimiento4.wire.es/', '9:00 - 21:00', 'images/establishments/default.jpg', '42.343231, -7.854409');";
+$sql = "INSERT INTO G23.establecimiento (idemail, nombre, contrasena, rutaavatar, direccion, web, horario, rutaimagen, geoloc) VALUES ('establecimiento4@wire.es', 'El corredor de Jiménez', 'abc123..', 'images/sample-data/establecimiento4@wire.es.jpg', 'Avda. de Marín 4, Ourense', 'http://establecimiento4.wire.es/', '7:30 - 22:00', 'images/sample-data/establishments/establecimiento4@wire.es.jpg', '42.343231, -7.854409');";
 mysqli_query($connectHandler, $sql);
-$sql = "INSERT INTO G23.establecimiento (idemail, nombre, contrasena, rutaavatar, direccion, web, horario, rutaimagen, geoloc) VALUES ('establecimiento5@wire.es', 'Establecimiento 5', 'abc123..', 'images/avatars/default.jpg', 'C/ Establecimiento 5', 'http://establecimiento5.wire.es/', '9:00 - 21:00', 'images/establishments/default.jpg', '42.346680, -7.853283');";
+$sql = "INSERT INTO G23.establecimiento (idemail, nombre, contrasena, rutaavatar, direccion, web, horario, rutaimagen, geoloc) VALUES ('establecimiento5@wire.es', 'El patio de mi casa', 'abc123..', 'images/sample-data/establecimiento5@wire.es.jpg', 'C/ Rui Señor 5, A Coruña', 'http://establecimiento5.wire.es/', '12:00 - 02:00', 'images/sample-data/establishments/establecimiento5@wire.es.jpg', '42.346680, -7.853283');";
 mysqli_query($connectHandler, $sql);
 
 /*Creation Pincho of to sample data*/

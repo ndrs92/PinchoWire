@@ -3,8 +3,21 @@
 include_once("../resources/code/bd_manage.php");
 
 
-class UserMapper 
+class UserMapper
 {
+    public static function eliminar_comentario($idpincho, $idemail)
+    {
+        //Abrir conexion BD
+        global $connectHandler;
+        $query = "DELETE FROM comentario WHERE (idcomentario = $idpincho)";
+        echo($query);
+
+        if (mysqli_query($connectHandler, $query)) {
+            echo("Comentario eliminado satisfactoriamente");
+        } else {
+            echo("Error en el eliminado del pincho");
+        }
+    }
 
     public static function editBanFromDatabase($idemail, $usertype, $banned)
     {
@@ -67,9 +80,10 @@ class UserMapper
         return $toRet;
     }
 
-    public static function retrievePinchosAsignados($idemail){
+    public static function retrievePinchosAsignados($idemail)
+    {
         global $connectHandler;
-        $query = "SELECT * FROM asignado, pincho WHERE asignado.juradoprofesional_idemail = '".$idemail."' AND pincho.idnombre = asignado.pincho_idnombre";
+        $query = "SELECT * FROM asignado, pincho WHERE asignado.juradoprofesional_idemail = '" . $idemail . "' AND pincho.idnombre = asignado.pincho_idnombre";
         $result = mysql_query($query);
     }
 
@@ -237,21 +251,23 @@ class UserMapper
         }
     }
 
-    public static function assignPinchoJuradoProfesional($idemail, $pincho){
+    public static function assignPinchoJuradoProfesional($idemail, $pincho)
+    {
         global $connectHandler;
-        $query = "INSERT INTO asignado VALUES('".$idemail."', '".$pincho."') ";
+        $query = "INSERT INTO asignado VALUES('" . $idemail . "', '" . $pincho . "') ";
         $result = mysqli_query($connectHandler, $query);
         return $result;
 
     }
-    public static function isAssignedPinchoJuradoProfesional( $idemail, $pincho){
+
+    public static function isAssignedPinchoJuradoProfesional($idemail, $pincho)
+    {
         global $connectHandler;
-        $query = "SELECT * FROM asignado WHERE juradoprofesional_idemail='".$idemail."' AND pincho_idnombre='".$pincho."';";
+        $query = "SELECT * FROM asignado WHERE juradoprofesional_idemail='" . $idemail . "' AND pincho_idnombre='" . $pincho . "';";
         $result = mysqli_query($connectHandler, $query) or die("Error en isAssignedPinchoJuradoProfesional() mapper");
-        if(mysqli_num_rows($result) == 0){
+        if (mysqli_num_rows($result) == 0) {
             return false;
-        }
-        else {
+        } else {
             return true;
         }
 
