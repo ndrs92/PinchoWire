@@ -266,7 +266,7 @@ $establecimientos = getAllEstablecimientos();
 					<div class="col-md-12">
 						<div class="section-title">
 							<h1><?= $l["main_team"]?></h1>
-							<h5><?= $l["main_team_desc"]?></h1>
+							<h5><?= $l["main_team_desc"]?></h5>
 							<span class="st-border"></span>
 						</div>
 					</div>
@@ -419,19 +419,19 @@ $establecimientos = getAllEstablecimientos();
 				"type": "pie",
 				"theme": "light",
 				"dataProvider": [ {
-					"campo": "Usuarios",
+					"campo": "<?= $l["statistics_user"] ?>",
 					"cantidad": <?= $concurso->getNumberOfUsers() ?>
 				}, {
-					"campo": "Pinchos",
+					"campo": "<?= $l["statistics_pincho"] ?>",
 					"cantidad": <?= $concurso->getNumberOfPinchos() ?>
 				}, {
-					"campo": "Establecimientos",
+					"campo": "<?= $l["statistics_establishment"] ?>",
 					"cantidad": <?= $concurso->getNumberOfEstablecimientos() ?>
 				}, {
-					"campo": "Votos Populares",
+					"campo": "<?= $l["statistics_popularVote"] ?>",
 					"cantidad": <?= $concurso->getNumberOfVotosPopulares() ?>
 				}, {
-					"campo": "Comentarios",
+					"campo": "<?= $l["statistics_comment"] ?>",
 					"cantidad": <?= $concurso->getNumberOfComments() ?>
 				} ],
 				"valueField": "cantidad",

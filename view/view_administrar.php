@@ -84,8 +84,8 @@ if(get_class($_SESSION["user"])!="Administrador"){
 								<p class="list-group-item-text"><?= $l["view_admin_manageUsers_text"] ?></p>
 							</a>
 							<a href="view_admin_propuestas.php" class="list-group-item">
-								<h4 class="list-group-item-heading"><?= $l["view_admin_managePinchos"] ?></h4>
-								<p class="list-group-item-text"><?= $l["view_admin_managePinchos_text"] ?></p>
+								<h4 class="list-group-item-heading"><?= $l["view_admin_managePincho"] ?></h4>
+								<p class="list-group-item-text"><?= $l["view_admin_managePincho_text"] ?></p>
 							</a>
 							<a href="view_admin_asignar.php" class="list-group-item">
 								<h4 class="list-group-item-heading"><?= $l["view_admin_assignPinchos"] ?></h4>
