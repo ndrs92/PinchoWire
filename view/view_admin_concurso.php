@@ -7,9 +7,8 @@ include_once "../controller/general_user_controller.php";
 include_once "../controller/concurso_controller.php";
 
 if (!isset($_SESSION)) session_start();
-$concurso = concursoController::getConcurso();
-echo $concurso->getNombre();
-if (get_class($_SESSION["user"]) != "Administrador" || $concurso->getEstado()!= 0) {
+
+if (get_class($_SESSION["user"]) != "Administrador") {
     header("Location: 403.php");
     exit;
 }
