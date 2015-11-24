@@ -27,7 +27,8 @@ if(get_class($_SESSION["user"]) != "Administrador"){
 	<link rel="stylesheet" href="../css/style.css" />
 	<link rel="stylesheet" href="../css/responsive.css" />
 	<link rel="stylesheet" href="../css/main.css" />
-
+	<link rel="stylesheet" href="../css/alertify.default.css" />
+	<link rel="stylesheet" href="../css/alertify.core.css" />
 	
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="../../images/icon/favicon.png">
@@ -117,6 +118,7 @@ if(get_class($_SESSION["user"]) != "Administrador"){
 		<script type="text/javascript" src="../js/waypoints.min.js"></script><!-- CounterUp -->
 		<script type="text/javascript" src="../js/jquery.isotope.min.js"></script><!-- isotope -->
  		<script type="text/javascript" src="../js/scripts.js"></script><!-- Scripts -->
+		<script type="text/javascript" src="../js/alertify.min.js"></script><!-- Alertify -->
 
 
 	</body>

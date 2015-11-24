@@ -33,7 +33,8 @@ if (isEstablishment($_GET["idemail"])) {
     <link rel="stylesheet" href="../css/style.css"/>
     <link rel="stylesheet" href="../css/responsive.css"/>
     <link rel="stylesheet" href="../css/main.css"/>
-
+    <link rel="stylesheet" href="../css/alertify.default.css" />
+    <link rel="stylesheet" href="../css/alertify.core.css" />
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../images/icon/favicon.png">
@@ -258,9 +259,10 @@ if (isEstablishment($_GET["idemail"])) {
         });
     }
 
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApOBPY5dso4qlFcJUfiwwALFGBmdlWPGo&callback=initMap"
-async defer></script>
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApOBPY5dso4qlFcJUfiwwALFGBmdlWPGo&callback=initMap"
+    async defer></script>
+    <script type="text/javascript" src="../js/alertify.min.js"></script><!-- Alertify -->
 
 
 </body>

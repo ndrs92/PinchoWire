@@ -33,7 +33,8 @@ if($pinchoActual->getIdnombre() == NULL){
 	<link rel="stylesheet" href="../css/style.css" />
 	<link rel="stylesheet" href="../css/responsive.css" />
 	<link rel="stylesheet" href="../css/main.css" />
-
+	<link rel="stylesheet" href="../css/alertify.default.css" />
+	<link rel="stylesheet" href="../css/alertify.core.css" />
 	
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="../../images/icon/favicon.png">
@@ -75,7 +76,12 @@ if($pinchoActual->getIdnombre() == NULL){
 						</div>
 					</div>
 					<div class="col-md-12">
-						<img src="../images/pinchos/default.jpg" height="250px" />
+						<?php
+						if ($pinchoActual->getRutaimagen() == "")
+							echo "<img class='img-responsive' src='../images/pinchos/default.jpg' alt=''>";
+						else
+							echo "<img class='img-responsive' src='../".$pinchoActual->getRutaimagen()."' alt=''>"; ?>
+
 					</div>
 					<div class="col-md-12">
 						<h3><?= $l["view_pincho_description"] . $pinchoActual->getDescripcion(); ?> </h3>
@@ -88,6 +94,7 @@ if($pinchoActual->getIdnombre() == NULL){
 							echo "</a>";
 							?>
 						</h3>
+						<h3><?= $l["view_pincho_score"].$pinchoActual->getPopularScore(); ?></h3>
 					</div>
 				</div>
 			</div>
@@ -204,7 +211,7 @@ if($pinchoActual->getIdnombre() == NULL){
 		<script type="text/javascript" src="../js/jquery.isotope.min.js"></script><!-- isotope -->
 		<script type="text/javascript" src="../js/jquery.magnific-popup.min.js"></script><!-- magnific-popup -->
 		<script type="text/javascript" src="../js/scripts.js"></script><!-- Scripts -->
-
+		<script type="text/javascript" src="../js/alertify.min.js"></script><!-- Alertify -->
 
 	</body>
 	</html>

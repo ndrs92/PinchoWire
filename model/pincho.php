@@ -21,6 +21,10 @@ class Pincho {
         $this->rutaimagen = $rutaimagen;
     }
 
+    public function getPopularScore(){
+        return PinchoMapper::retrievePopularScore($this->idnombre);
+    }
+
     public static function search($search_data){
         $toRet = NULL;
         $toSearch = PinchoMapper::retrieveAllAceptados();
@@ -105,7 +109,7 @@ class Pincho {
     public static function getByIdnombre($idnombre){
         $mapperData = pinchoMapper::find($idnombre);
 
-        return new Pincho($mapperData["idnombre"], $mapperData["descripcion"], $mapperData["precio"], $mapperData["ingredientes"], $mapperData["ganadorPopular"], $mapperData["estadoPropuesta"], $mapperData["establecimiento_idemail"]);
+        return new Pincho($mapperData["idnombre"], $mapperData["descripcion"], $mapperData["precio"], $mapperData["ingredientes"], $mapperData["ganadorPopular"], $mapperData["estadoPropuesta"], $mapperData["rutaimagen"]);
     }
 
     public function getAllComentarios(){

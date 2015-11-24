@@ -29,7 +29,8 @@ if(!empty($_SESSION["user"])){
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/responsive.css" />
     <link rel="stylesheet" href="../css/main.css" />
-
+    <link rel="stylesheet" href="../css/alertify.default.css" />
+    <link rel="stylesheet" href="../css/alertify.core.css" />
     
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../images/icon/favicon.png">
@@ -126,7 +127,8 @@ if(!empty($_SESSION["user"])){
     <script type="text/javascript" src="../js/jquery.isotope.min.js"></script><!-- isotope -->
     <script type="text/javascript" src="../js/validator.min.js"></script><!-- isotope -->
     <script type="text/javascript" src="../js/scripts.js"></script><!-- Scripts -->
-
+    <script type="text/javascript" src="../js/alertify.min.js"></script><!-- Alertify -->
+    <?php include_once "../resources/code/alertify.php"; ?>
 
 </body>
 </html>

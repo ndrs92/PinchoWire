@@ -2,6 +2,7 @@
 include_once "../model/juradopopular.php";
 include_once("../resources/code/bd_manage.php");
 include_once "pincho_controller.php";
+include_once "../resources/code/lang_coverage.php";
 
 if(!isset($_SESSION)) session_start();
 
@@ -52,7 +53,7 @@ if($_POST["votacionpopular_codigo1"] && $_POST["votacionpopular_codigo2"] && $_P
                         $connectHandler->commit();
 
                         $relpath = '../view/list.php';
-                        $_SESSION["vote"] = "success";
+                        $_SESSION["alert"]["success"] = $l["alertify_votacionPopular_error"];
                     }
                     catch (Exception $e){
                         $connectHandler->rollback();
@@ -60,23 +61,19 @@ if($_POST["votacionpopular_codigo1"] && $_POST["votacionpopular_codigo2"] && $_P
                     $connectHandler->autocommit(true);
                 }
                 else {
-                    $_SESSION["vote"] = "burned_code";
-                    echo "Algun código está canjeado ya";
+                    $_SESSION["alert"]["error"] = $l["alertify_votacionPopular_error_codeBurnt"];
                 }
             }
             else {
-                $_SESSION["vote"] = "repeated_code";
-                echo "Existe más de 1 codigo del mismo pincho";
+                $_SESSION["alert"]["error"] = $l["alertify_votacionPopular_error_codeMultiplePinchoCode"];
             }
         }
         else {
-            $_SESSION["vote"] = "invalid_code";
-            echo "Algún codigo es invalido";
+            $_SESSION["alert"]["error"] = $l["alertify_votacionPopular_error_invalidCode"];
         }
     }
     else{
-        $_SESSION["vote"] = "incorrect_pincho_code";
-        echo "No se ha introducido un codigo del pincho que se quiere votar";
+        $_SESSION["alert"]["error"] = $l["alertify_votacionPopular_error_noPinchoCode"];
     }
     $host = $_SERVER['HTTP_HOST'];
     $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
