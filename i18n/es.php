@@ -14,6 +14,11 @@ $l = array(
     "header_about" => "Acerca de...",
     "header_gastromapa" => "GastroMapa",
     "gastromapa_desc" => "El GastroMapa muestra las ubicaciones de los establecimientos que se encuentran en el concurso. Vé a echarle un ojo a los pinchos que ofrecen!",
+    "statistics_comment" => "Comentarios",
+    "statistics_user" => "Usuarios",
+    "statistics_pincho" => "Pinchos",
+    "statistics_establishment" => "Establecimientos",
+    "statistics_popularVote" => "Votos Populares",
 
     "footer_followus" => "Síguenos:",
     "footer_message" => "2015 Aprendizaxe Basada en Proxectos. Escola Superior de Enxeñería Informática.",
@@ -190,6 +195,12 @@ $l = array(
     "view_admin_managePincho_text" => "Permite revisar las propuestas de pinchos para aceptarlos o denegarlos.",
     "view_admin_assignPinchos" => "Administrar Asignación de Pinchos",
     "view_admin_assignPinchos_text" => "Permite asignar un pincho a distintos miembros del jurado profesional.",
+    "view_admin_edit" => "Editar",
+    "view_admin_unban" => "Desbanear",
+    "view_admin_ban" => "Banear",
+    "view_admin_banned" => " Baneado ",
+    "view_admin_active" => " Activo ",
+
 
 
     "view_profile_edit" => "Perfil",

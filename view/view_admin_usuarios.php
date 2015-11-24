@@ -107,34 +107,34 @@ $allUsers = getAllUsuarios();
                                 echo "<td class='data-to-filter'>" . $user->getNombre() . "</td>";
                                 echo "<td class='data-to-filter'>" . get_class($user) . "</td>";
                                 if ($user->getBaneado() == '1')
-                                    echo "<td class='data-to-filter'> Baneado </td>";
+                                    echo "<td class='data-to-filter'>". $l["view_admin_banned"] ."</td>";
                                 else
-                                    echo "<td class='data-to-filter'> Activo </td>";
+                                    echo "<td class='data-to-filter'>". $l["view_admin_active"] ."</td>";
                                 echo "<td>";
                                 if (get_class($user) == "JuradoPopular") {
-                                    echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'><button class='btn btn-default edit-button'>Editar</button></a>";
+                                    echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'><button class='btn btn-default edit-button'>". $l["view_admin_edit"] ."</button></a>";
                                     if ($user->getBaneado()) {
-                                        echo "<a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'><button class='btn btn-success'>Desbanear</button></a>";
+                                        echo "<a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'><button class='btn btn-success'>". $l["view_admin_unban"] ."</button></a>";
                                     } else {
-                                        echo "<a href='../controller/useradmin_controller.php?action=ban&idemail=" . $user->getIdemail() . "'><button class='btn btn-warning'>Banear</button></a>";
+                                        echo "<a href='../controller/useradmin_controller.php?action=ban&idemail=" . $user->getIdemail() . "'><button class='btn btn-warning'>". $l["view_admin_ban"] ."</button></a>";
                                     }
                                 }
 
                                 if (get_class($user) == "JuradoProfesional") {
-                                    echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'><button class='btn btn-default edit-button'>Editar</button></a>";
+                                    echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'><button class='btn btn-default edit-button'>". $l["view_admin_edit"] ."</button></a>";
                                     if ($user->getBaneado()) {
-                                        echo "<a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'><button class='btn btn-success'>Desbanear</button></a>";
+                                        echo "<a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'><button class='btn btn-success'>". $l["view_admin_unban"] ."</button></a>";
                                     } else {
-                                        echo "<a href='../controller/useradmin_controller.php?action=ban&idemail=" . $user->getIdemail() . "'><button class='btn btn-warning'>Banear</button></a>";
+                                        echo "<a href='../controller/useradmin_controller.php?action=ban&idemail=" . $user->getIdemail() . "'><button class='btn btn-warning'>". $l["view_admin_ban"] ."</button></a>";
                                     }
                                 }
 
                                 if (get_class($user) == "Establecimiento") {
-                                    echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'><button class='btn btn-default edit-button'>Editar</button></a>";
+                                    echo "<a href='../controller/useradmin_controller.php?action=edit&idemail=" . $user->getIdemail() . "'><button class='btn btn-default edit-button'>". $l["view_admin_edit"] ."</button></a>";
                                     if ($user->getBaneado()) {
-                                        echo "<a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'><button class='btn btn-success'>Desbanear</button></a>";
+                                        echo "<a href='../controller/useradmin_controller.php?action=unban&idemail=" . $user->getIdemail() . "'><button class='btn btn-success'>". $l["view_admin_unban"] ."</button></a>";
                                     } else {
-                                        echo "<a href='../controller/useradmin_controller.php?action=ban&idemail=" . $user->getIdemail() . "'><button class='btn btn-warning'>Banear</button></a>";
+                                        echo "<a href='../controller/useradmin_controller.php?action=ban&idemail=" . $user->getIdemail() . "'><button class='btn btn-warning'>". $l["view_admin_ban"] ."</button></a>";
                                     }
                                 }
                                 echo "</td>";
