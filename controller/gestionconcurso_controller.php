@@ -36,9 +36,9 @@ if ($_POST["nombre"] && $_POST["descripcion"]) {
 
 
     if ($resultado) {
-        $_SESSION["alert"]["success"] = "alertify_contestManage_success";
+        $_SESSION["alert"]["success"] = $l["alertify_contestManage_success"];
     } else {
-        $_SESSION["alert"]["error"] = "alertify_contestManage_error";
+        $_SESSION["alert"]["error"] = $l["alertify_contestManage_error"];
     }
     header("Location: ../view/view_admin_concurso.php");
 
