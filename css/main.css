@@ -221,3 +221,18 @@ table tbody td {
 .search-form{
 	margin-bottom: 0px;
 }
+
+.competition-state{
+	margin-bottom: 50px;
+}
+
+#install-page{
+	background-color: #f5f5f5;
+	padding-top: 50px;
+}
+
+.install-logo{
+	width: 200px;
+	margin-bottom: 50px;
+	padding-left: 3px; 
+}

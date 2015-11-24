@@ -21,6 +21,10 @@ class Pincho {
         $this->rutaimagen = $rutaimagen;
     }
 
+    public function getPopularScore(){
+        return PinchoMapper::retrievePopularScore($this->idnombre);
+    }
+
     public static function search($search_data){
         $toRet = NULL;
         $toSearch = PinchoMapper::retrieveAllAceptados();
@@ -96,7 +100,7 @@ class Pincho {
         $toRet = NULL;
         if($mapperData != NULL) {
             foreach ($mapperData as $toMake) {
-                $toRet[$toMake["establecimiento_idemail"]] = new Pincho($toMake["idnombre"], $toMake["descripcion"], $toMake["precio"], $toMake["ingredientes"], $toMake["ganadorPopular"], $toMake["estadoPropuesta"], $toMake["establecimiento_idemail"]);
+                $toRet[$toMake["establecimiento_idemail"]] = new Pincho($toMake["idnombre"], $toMake["descripcion"], $toMake["precio"], $toMake["ingredientes"], $toMake["ganadorPopular"], $toMake["estadoPropuesta"], $toMake["rutaimagen"]);
             }
         }
         return $toRet;
@@ -105,7 +109,7 @@ class Pincho {
     public static function getByIdnombre($idnombre){
         $mapperData = pinchoMapper::find($idnombre);
 
-        return new Pincho($mapperData["idnombre"], $mapperData["descripcion"], $mapperData["precio"], $mapperData["ingredientes"], $mapperData["ganadorPopular"], $mapperData["estadoPropuesta"], $mapperData["establecimiento_idemail"]);
+        return new Pincho($mapperData["idnombre"], $mapperData["descripcion"], $mapperData["precio"], $mapperData["ingredientes"], $mapperData["ganadorPopular"], $mapperData["estadoPropuesta"], $mapperData["rutaimagen"]);
     }
 
     public function getAllComentarios(){
@@ -171,6 +175,11 @@ class Pincho {
     {
         $this->estadopropuesta = $estadopropuesta;
         PinchoMapper::updateEstado($this->getEstadopropuesta(), $this->getIdnombre());
+    }
+
+    public function getRutaimagen()
+    {
+        return $this->rutaimagen;
     }
 }
 

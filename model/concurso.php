@@ -1,4 +1,4 @@
-<?php
+<?php 
 include_once "../resources/code/bd_manage.php";
 include_once "concursoMapper.php";
 
@@ -8,6 +8,7 @@ class Concurso{
 	private $fecha;
 	private $rutaportada;
 	private $titulo; 
+	private $estado; 
 	private $facebook; 
 	private $twitter; 
 	private $googleplus; 
@@ -20,15 +21,23 @@ class Concurso{
 		$this->fecha = ConcursoMapper::retrieveFecha();
 		$this->rutaportada = ConcursoMapper::retrieveRutaportada();
 		$this->titulo = ConcursoMapper::retrieveTitulo();
+		$this->estado = ConcursoMapper::retrieveEstado();
 		$this->facebook = ConcursoMapper::retrieveFacebook();
 		$this->twitter = ConcursoMapper::retrieveTwitter();
 		$this->googleplus = ConcursoMapper::retrieveGoogleplus();
 
-		if(!isset($this->idconcurso) || !isset($this->descripcion) || !isset($this->fecha) || !isset($this->rutaportada) || !isset($this->titulo) || !isset($this->titulo)){
+		if(!isset($this->idconcurso) || !isset($this->descripcion) || !isset($this->fecha) || !isset($this->rutaportada) || !isset($this->titulo) || !isset($this->titulo)  || !isset($this->estado)){
 			throw new Exception('<<Concurso>> info inexistent in database or corrupted.');
 		}
 	}
 
+	public function setEstado($value){
+		if(ConcursoMapper::updateEstado($value)){
+			$this->estado = $value;
+		}else{
+			throw new Exception("There was a problem updating competition actual state");
+		}
+	}
 
 	public function getIdconcurso(){
 		return $this->idconcurso;
@@ -48,6 +57,10 @@ class Concurso{
 
 	public function getTitulo(){
 		return $this->titulo;
+	}
+
+	public function getEstado(){
+		return $this->estado;
 	}
 
 	public function getFacebook(){

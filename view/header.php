@@ -1,5 +1,6 @@
 <?php
 include_once "../resources/code/models.php";
+include_once "../controller/concurso_controller.php";
 include_once "../resources/code/lang_coverage.php";
 
 ?>
@@ -73,6 +74,15 @@ include_once "../resources/code/lang_coverage.php";
 								}
 								if(get_class($_SESSION["user"]) == "Administrador"){
 									echo "<li><a href='./view_administrar.php'>".$l["view_list_admin_event"]."</a></li>";
+								}
+								if(get_class($_SESSION["user"]) == "JuradoProfesional"){
+									$concurso= getConcurso();
+									if($concurso->getEstado() == 0){
+										echo "<li><a href='./view_votacionprofesional.php'>".$l["view_list_profesional_votacion_promociona"]."</a></li>";
+									}
+									if($concurso->getEstado() == 1){
+										echo "<li><a href='./view_votacionprofesional.php'>".$l["view_list_profesional_votacion_finalista"]."</a></li>";
+									}
 								}	
 								echo "<li><a href='profile.php?idemail=".$_SESSION['user']->getIdemail()."'>".$l["view_list_view_profile"]."</a></li>";
 								echo "<li><a href='../controller/logout_controller.php'>".$l["view_list_disconnect"]."</a></li>";

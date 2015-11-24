@@ -1,8 +1,9 @@
 
 
 <?php
+
 $sqlFileToExecute = 'database.sql';
-$hostname = $_POST["host"];
+$hostname = $_POST["database-host"];
 $db_user = $_POST["database-user"];
 $db_password = $_POST["database-password"];
 

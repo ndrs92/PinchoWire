@@ -7,7 +7,6 @@ include_once "../controller/pincho_controller.php";
 
 
 if(!isset($_SESSION)) session_start();
-$pinchoActual = getCurrentPincho($_GET["id"]);
 
 if(get_class($_SESSION["user"])!="Administrador"){
 	header("Location: 403.php");

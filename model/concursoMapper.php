@@ -3,6 +3,15 @@ include_once("../resources/code/bd_manage.php");
 
 class ConcursoMapper{
 
+	public static function retrieveEstado(){
+		global $connectHandler;
+		$toRet = NULL;
+		$query = "select estado from concurso LIMIT 1";
+		$result = mysqli_query($connectHandler, $query);
+		$toRet = mysqli_fetch_assoc($result);
+		return $toRet["estado"];
+	}
+
 	public static function retrieveFacebook(){
 		global $connectHandler;
 		$toRet = NULL;
@@ -113,9 +122,17 @@ class ConcursoMapper{
 		$toRet = mysqli_fetch_assoc($result);
 		return $toRet['COUNT(*)'];
 	}
-	public static function updateConcurso($titulo, $descripcion){
+
+	public static function updateEstado($newValue){
 		global $connectHandler;
-		$query = "UPDATE concurso SET titulo = '$titulo', descripcion = '$descripcion' ";
+		$query = "UPDATE concurso SET estado = '$newValue' ";
+		$result = mysqli_query($connectHandler, $query);
+		return $result;
+	}
+
+	public static function updateConcurso($titulo, $descripcion, $rutaportada){
+		global $connectHandler;
+		$query = "UPDATE concurso SET titulo = '$titulo', descripcion = '$descripcion', rutaportada = '$rutaportada' ";
 		$result = mysqli_query($connectHandler, $query);
 		return $result;
 	}

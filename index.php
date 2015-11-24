@@ -40,7 +40,7 @@ include_once "resources/code/bd_manage.php";
 			
 
 			function check_permissions(){
-				if(is_writable("./")){
+				if(is_writable("./") && is_writable("./resources/config/database.sql")){
 					return true;
 				}else{
 					return false;

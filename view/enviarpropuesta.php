@@ -69,7 +69,7 @@ if(get_class($_SESSION["user"])!="Establecimiento"){
   					</div>
   				</div>
   				<div class="form-enviar-propuesta">
-  					<form class="form" action="../controller/enviarpropuesta_controller.php" method="POST">
+  					<form class="form" action="../controller/enviarpropuesta_controller.php" method="POST" enctype="multipart/form-data">
   						<div class="form-group">
   							<label for="name"><?= $l["view_enviarpropuesta_intronombre"] ?></label>
   							<input type="text" class="form-control" name="enviarpropuesta_propuesta_nombre" placeholder="<?= $l["view_enviarpropuesta_intronombre_placeholder"] ?>" />
@@ -88,7 +88,7 @@ if(get_class($_SESSION["user"])!="Establecimiento"){
   						</div>
   						<div class="form-group">
   							<label for="image"><?= $l["view_enviarpropuesta_rutaimagen"] ?></label>
-  							<input class="form-control"  type="text" name="enviarpropuesta_propuesta_rutaimagen" placeholder="<?= $l["view_enviarpropuesta_rutaimagen_placeholder"] ?>"/>
+  							<input class="form-control"  type="file" name="enviarpropuesta_propuesta_rutaimagen" placeholder="<?= $l["view_enviarpropuesta_rutaimagen_placeholder"] ?>"/>
   						</div>
   						<input class="btn btn-success"  type="submit" name="enviarpropuesta_propuesta_enviar" value="<?= $l["view_enviarpropuesta_enviar"] ?>" />
   					</form>

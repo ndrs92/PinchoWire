@@ -202,6 +202,12 @@ $l = array(
     "view_admin_banned" => " Baneado ",
     "view_admin_active" => " Activo ",
 
+    "view_admin_1" => "Estado del concurso: Votaciones para finalistas.",
+    "view_admin_1_bt" => "Avanzar a finales",
+    "view_admin_2" => "Estado del concurso: Votaciones para finalistas.",
+    "view_admin_2_bt" => "Finalizar concurso",
+    "view_admin_3" => "Estado del concurso: Concurso Finalizado.",
+
     "view_search_title" => "Resultados de búsqueda",
     "view_search_pinchos" => "Resultados de pinchos:",
     "view_search_establishments" => "Resultados de establecimientos:",
@@ -258,6 +264,12 @@ $l = array(
     "view_votacionpopular_invalidCode" => "Algún codigo es invalido",
     "view_votacionpopular_noPinchoCode" => "No se ha introducido un codigo del pincho que se quiere votar",
 
+    "view_votacionprofesional_tittle" => "Votacion profesional",
+    "view_votacionprofesional_header" => "Pinchos a votar",
+    "view_votacionprofesional_vote" => "Votación",
+    "view_votacionprofesional_enviar" => "Votar",
+    "view_votacionprofesional_finish" => "Ha votado todos los pinchos asignados",
+
     "view_establishment_codes_myCodes" => "Códigos de mi pincho",
     "view_establishment_codes_pincho" => "Pincho: ",
     "view_establishment_codes_generate" => "Generar 5 códigos más",
@@ -266,6 +278,7 @@ $l = array(
     "view_establishment_codes_burnt" => "Códigos canjeados",
     "view_establishment_codes_user" => "Usuario",
 
+    "view_pincho_name" => "Nombre del pincho",
     "view_pincho_description" => " Descripción: ",
     "view_pincho_price" => " Precio: ",
     "view_pincho_ingredients" => " Ingredientes: ",
@@ -273,6 +286,7 @@ $l = array(
     "view_pincho_comment" => "Comentarios",
     "view_pincho_insertComment" => "Insertar comentario:",
     "view_pincho_sendComment" => "Enviar Comentario",
+    "view_pincho_score" => "Puntuación: ",
 
 
     "eula" => "Acuerdo de Licencia",

@@ -1,5 +1,5 @@
 <?php
-
+ 
 include_once("../resources/code/bd_manage.php");
 
 
@@ -68,6 +68,14 @@ class UserMapper
         return $toRet;
     }
 
+    public static function votacionPromociona($idemail, $pincho, $puntuacion){
+        global $connectHandler;
+        $query = "INSERT INTO promociona VALUES('$idemail', '$pincho', $puntuacion)";
+        $result = mysqli_query($connectHandler, $query);
+        return $result;
+
+    }
+
     public static function retrieveAllEstablecimientos()
     {
         global $connectHandler;
@@ -83,9 +91,15 @@ class UserMapper
     public static function retrievePinchosAsignados($idemail)
     {
         global $connectHandler;
-        $query = "SELECT * FROM asignado, pincho WHERE asignado.juradoprofesional_idemail = '" . $idemail . "' AND pincho.idnombre = asignado.pincho_idnombre";
-        $result = mysql_query($query);
+        $query = "SELECT juradoprofesional_idemail, idnombre, establecimiento_idemail FROM asignado, pincho WHERE asignado.juradoprofesional_idemail= '" . $idemail . "' AND pincho.idnombre = asignado.pincho_idnombre";
+        $result = mysqli_query($connectHandler, $query);
+        while ($row = mysqli_fetch_assoc($result)) {
+            $toRet[$row["idnombre"]] = $row;
+        }
+
+        return $toRet;
     }
+
 
     public static function registerUser($userObject)
     {
@@ -271,6 +285,18 @@ class UserMapper
             return true;
         }
 
+    }
+
+    public static function retrievePinchosVotadosDePromociona($idemail)
+    {
+        global $connectHandler;
+        $query = "SELECT * FROM promociona WHERE juradoprofesional_idemail='".$idemail."'";
+        $result = mysqli_query($connectHandler, $query) or die("Error en retrievePinchosVotadosDePromociona mapper");
+        while ($row = mysqli_fetch_assoc($result)) {
+            $toRet[$row["pincho_idnombre"]] = $row;
+        }
+
+        return $toRet;
     }
 
 }

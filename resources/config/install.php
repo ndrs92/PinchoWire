@@ -1,6 +1,7 @@
 <?php
 error_reporting(0);
 ini_set('display_errors', 0);
+
 include_once "../../model/concurso.php";
 include_once "../../controller/concurso_controller.php";
 
@@ -67,26 +68,25 @@ $_SESSION["installation"] = true;
 		<!-- /PRELOADER -->
 
 		<!-- STATS -->
-		<section id="stats">
+		<section id="install-page">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="section-title">
-							<h1>Pincho Wire Installation</h1>
+						<img class="install-logo" src="../../images/logo.png" />
+							<h1>Installation</h1>
 							<span class="st-border"></span>
 							<h3>Welcome to the installation wizard</h3>
-							<br/>
+							<p>It takes just a minute to be set up in Pincho Wire. Don't worry about not inserting everything, you can manage your information later.</p>
 							<br/>
 							<form action="./bd-install.php" method="POST" data-toggle="validator" class="form-horizontal">
 								<fieldset>
 									<legend>Configuration data</legend>
-									
-									
 
 									<div class="form-group">
 										<label for="host" class="col-lg-2 control-label">Server hostname:</label>
 										<div class="col-lg-10">
-											<input disabled required data-error="Input a valid host" pattern="^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$" type="text" class="form-control" name="host" placeholder="127.0.0.1" value="127.0.0.1">
+											<input required data-error="Input a valid host" pattern="^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$" type="text" class="form-control" name="database-host" placeholder="127.0.0.1" value="127.0.0.1">
 											<div class="help-block with-errors"></div>
 										</div>
 									</div>
@@ -143,13 +143,6 @@ $_SESSION["installation"] = true;
 										</div>
 									</div>
 
-									<div class="form-group">
-										<label for="pwImage" class="col-lg-2 control-label">Competition Image:</label>
-										<div class="col-lg-10">
-											<input type="file" class="form-control" name="pw-title-image">
-											<div class="help-block with-errors"></div>
-										</div>
-									</div>
 
 									<div class="form-group">
 										<label for="pwFacebook" class="col-lg-2 control-label">Facebook</label>

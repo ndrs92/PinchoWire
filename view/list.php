@@ -6,7 +6,7 @@ include_once "../controller/pincho_controller.php";
 include_once "../controller/concurso_controller.php";
 include_once "../controller/general_user_controller.php";
 
-if(!isset($_SESSION)) session_start();
+if (!isset($_SESSION)) session_start();
 $concurso = getConcurso();
 $establecimientos = getAllEstablecimientos();
 ?>
@@ -94,8 +94,8 @@ $establecimientos = getAllEstablecimientos();
 				<div class="row">
 					<div class="col-md-12">
 						<div class="section-title">
-							<h1><?= $l["main_lista_pinchos"]?></h1>
-							<h5><?= $l["main_lista_pinchos_desc"]?></h5>
+							<h1><?= $l["main_lista_pinchos"] ?></h1>
+							<h5><?= $l["main_lista_pinchos_desc"] ?></h5>
 							<span class="st-border"></span>
 						</div>
 					</div>
@@ -103,14 +103,13 @@ $establecimientos = getAllEstablecimientos();
 					if (getAllPinchos() != NULL) {
 						foreach (getAllPinchos() as $pincho) {
 
-							if(isset($_SESSION["user"])){
-								if(isProbado($pincho->getIdnombre(),$_SESSION["user"]->getIdemail())){
+							if (isset($_SESSION["user"])) {
+								if (isProbado($pincho->getIdnombre(), $_SESSION["user"]->getIdemail())) {
 									$probado = $l["view_list_eaten"];
-								}
-								else{
+								} else {
 									$probado = $l["view_list_not_eaten"];
 								}
-							}else{
+							} else {
 								$probado = $l["view_list_eaten_not_logged"];
 							}
 							?>
@@ -119,13 +118,18 @@ $establecimientos = getAllEstablecimientos();
 								<div class="team-member">
 									<a href='viewPincho.php?id=<?= $pincho->getIdnombre() ?> '>
 										<div class="member-image pincho-image">
-											<img class="img-responsive" src="../images/pinchos/default.jpg" alt="">
+											<?php
+											if ($pincho->getRutaimagen() == "")
+												echo "<img class='img-responsive' src='../images/pinchos/default.jpg' alt=''>";
+											else
+												echo "<img class='img-responsive' src='../".$pincho->getRutaimagen()."' alt=''>"; ?>
+
 										</div>
-									</a> 
+									</a>
 									<?php
-									if(isset($_SESSION["user"]) && get_class($_SESSION["user"]) == "JuradoPopular"){
-										echo "<a href='../controller/markeatenpincho_controller.php?markeatenpincho_probado_idpincho=". $pincho->getIdnombre() . "&markeatenpincho_probado_idemail=" . $_SESSION["user"]->getIdemail() . "'><div class='btn-probar-pincho'>" . $probado . "</div></a>";
-										echo "<a href='./view_votacionpopular.php?idpincho=". $pincho->getIdnombre() . "'><div class='btn-votar-pincho'>" . $l["view_list_vote"] . "</div></a>";
+									if (isset($_SESSION["user"]) && get_class($_SESSION["user"]) == "JuradoPopular") {
+										echo "<a href='../controller/markeatenpincho_controller.php?markeatenpincho_probado_idpincho=" . $pincho->getIdnombre() . "&markeatenpincho_probado_idmail=" . $_SESSION["user"]->getIdemail() . "'><div class='btn-probar-pincho'>" . $probado . "</div></a>";
+										echo "<a href='./view_votacionpopular.php?idpincho=" . $pincho->getIdnombre() . "'><div class='btn-votar-pincho'>" . $l["view_list_vote"] . "</div></a>";
 
 									}
 									?>
@@ -133,7 +137,7 @@ $establecimientos = getAllEstablecimientos();
 										<h4><?= $pincho->getIdnombre() ?></h4>
 										<span><?= $pincho->getDescripcion() ?></span>
 									</div>
-									
+
 								</div>
 							</div>
 							<?php
@@ -495,7 +499,6 @@ $establecimientos = getAllEstablecimientos();
 	async defer></script>
 	<script type="text/javascript" src="../js/alertify.min.js"></script><!-- Alertify -->
 	<?php include_once "../resources/code/alertify.php"; ?>
-
 
 </body>
 </html>

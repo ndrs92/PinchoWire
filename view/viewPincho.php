@@ -76,7 +76,12 @@ if($pinchoActual->getIdnombre() == NULL){
 						</div>
 					</div>
 					<div class="col-md-12">
-						<img src="../images/pinchos/default.jpg" height="250px" />
+						<?php
+						if ($pinchoActual->getRutaimagen() == "")
+							echo "<img class='img-responsive' src='../images/pinchos/default.jpg' alt=''>";
+						else
+							echo "<img class='img-responsive' src='../".$pinchoActual->getRutaimagen()."' alt=''>"; ?>
+
 					</div>
 					<div class="col-md-12">
 						<h3><?= $l["view_pincho_description"] . $pinchoActual->getDescripcion(); ?> </h3>
@@ -89,6 +94,7 @@ if($pinchoActual->getIdnombre() == NULL){
 							echo "</a>";
 							?>
 						</h3>
+						<h3><?= $l["view_pincho_score"].$pinchoActual->getPopularScore(); ?></h3>
 					</div>
 				</div>
 			</div>
