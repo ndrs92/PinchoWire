@@ -16,12 +16,20 @@ class JuradoProfesional extends Usuario{
 
 	}
 
+	public function votacionFinalista($pincho, $puntuacion){
+		return UserMapper::votacionFinalista($this->idemail, $pincho, $puntuacion);
+	}
+
 	public function getPinchosAsignados(){
 		return UserMapper::retrievePinchosAsignados($this->idemail);
 	}
 
 	public function getPinchosVotadosDePromociona(){
 		return UserMapper::retrievePinchosVotadosDePromociona($this->idemail);
+	}
+
+	public function getPinchosVotadosDeFinalistas(){
+		return UserMapper::retrievePinchosVotadosDeFinalistas($this->idemail);
 	}
 	
 	public function editBanFromDatabase($banned){

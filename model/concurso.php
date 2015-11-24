@@ -1,7 +1,7 @@
 <?php 
 include_once "../resources/code/bd_manage.php";
 include_once "concursoMapper.php";
-
+ 
 class Concurso{
 	private $idconcurso;
 	private $descripcion;
@@ -12,6 +12,7 @@ class Concurso{
 	private $facebook; 
 	private $twitter; 
 	private $googleplus; 
+	private $numFinalistas;
 
 
 	//returns the only row in database, as an object
@@ -25,8 +26,9 @@ class Concurso{
 		$this->facebook = ConcursoMapper::retrieveFacebook();
 		$this->twitter = ConcursoMapper::retrieveTwitter();
 		$this->googleplus = ConcursoMapper::retrieveGoogleplus();
+		$this->numFinalistas = ConcursoMapper::retrieveNumFinalistas();
 
-		if(!isset($this->idconcurso) || !isset($this->descripcion) || !isset($this->fecha) || !isset($this->rutaportada) || !isset($this->titulo) || !isset($this->titulo)  || !isset($this->estado)){
+		if(!isset($this->idconcurso) || !isset($this->descripcion) || !isset($this->fecha) || !isset($this->rutaportada) || !isset($this->titulo) || !isset($this->titulo)  || !isset($this->estado) || !isset($this->numFinalistas)){
 			throw new Exception('<<Concurso>> info inexistent in database or corrupted.');
 		}
 	}
@@ -38,6 +40,17 @@ class Concurso{
 			throw new Exception("There was a problem updating competition actual state");
 		}
 	}
+	public function setNumFinalistas($num){
+		if(ConcursoMapper::updateNumFinalistas($num)){
+			$this->numFinalistas = $num;
+		}else{
+			throw new Exception("There was a problem updating competition actual finalist number");
+		}
+	}
+
+	public function getFinalistas(){
+		return ConcursoMapper::crearFinalistas($this->numFinalistas);
+	} 
 
 	public function getIdconcurso(){
 		return $this->idconcurso;
@@ -73,6 +86,10 @@ class Concurso{
 
 	public function getGoogleplus(){
 		return $this->googleplus;
+	}
+
+	public function getNumFinalistas(){
+		return $this->numFinalistas;
 	}
 
 	public function getNumberOfPinchos(){

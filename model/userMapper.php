@@ -2,7 +2,7 @@
  
 include_once("../resources/code/bd_manage.php");
 
-
+ 
 class UserMapper
 {
     public static function eliminar_comentario($idpincho, $idemail)
@@ -76,6 +76,14 @@ class UserMapper
 
     }
 
+    public static function votacionFinalista($idemail, $pincho, $puntuacion){
+        global $connectHandler;
+        $query = "INSERT INTO finalista VALUES('$idemail', '$pincho', 0, $puntuacion)";
+        $result = mysqli_query($connectHandler, $query);
+        return $result;
+
+    }
+
     public static function retrieveAllEstablecimientos()
     {
         global $connectHandler;
@@ -91,6 +99,7 @@ class UserMapper
     public static function retrievePinchosAsignados($idemail)
     {
         global $connectHandler;
+        $toRet = array();
         $query = "SELECT juradoprofesional_idemail, idnombre, establecimiento_idemail FROM asignado, pincho WHERE asignado.juradoprofesional_idemail= '" . $idemail . "' AND pincho.idnombre = asignado.pincho_idnombre";
         $result = mysqli_query($connectHandler, $query);
         while ($row = mysqli_fetch_assoc($result)) {
@@ -290,8 +299,22 @@ class UserMapper
     public static function retrievePinchosVotadosDePromociona($idemail)
     {
         global $connectHandler;
+        $toRet=array();
         $query = "SELECT * FROM promociona WHERE juradoprofesional_idemail='".$idemail."'";
         $result = mysqli_query($connectHandler, $query) or die("Error en retrievePinchosVotadosDePromociona mapper");
+        while ($row = mysqli_fetch_assoc($result)) {
+            $toRet[$row["pincho_idnombre"]] = $row;
+        }
+
+        return $toRet;
+    }
+
+    public static function retrievePinchosVotadosDeFinalistas($idemail)
+    {
+        global $connectHandler;
+        $toRet=array();
+        $query = "SELECT * FROM finalista WHERE juradoprofesional_idemail='".$idemail."'";
+        $result = mysqli_query($connectHandler, $query) or die("Error en retrievePinchosVotadosDeFinalistas mapper");
         while ($row = mysqli_fetch_assoc($result)) {
             $toRet[$row["pincho_idnombre"]] = $row;
         }

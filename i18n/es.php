@@ -203,7 +203,7 @@ $l = array(
     "view_admin_ban" => "Banear",
     "view_admin_banned" => " Baneado ",
     "view_admin_active" => " Activo ",
-
+    "view_admin_limit" => "Introduzca el número de finalistas",
     "view_admin_1" => "Estado del concurso: Votaciones para finalistas.",
     "view_admin_1_bt" => "Avanzar a finales",
     "view_admin_2" => "Estado del concurso: Votaciones para finalistas.",

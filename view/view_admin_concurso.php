@@ -87,7 +87,8 @@ $pinchoList = Pincho::getAllPropuestas();
                         echo '<div class="progress progress-striped active">';
                         echo '<div class="progress-bar" style="width: 33%"></div>';
                         echo '</div>';
-                        echo '<a href="../controller/competition_state_controller.php?increment=true" class="btn btn-primary btn-sm pull-right">'.$l["view_admin_1_bt"].'</a>';
+                        echo '<button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#limit">'.$l["view_admin_1_bt"].'</button>';
+                        //echo '<a href="../controller/competition_state_controller.php?increment=true" class="btn btn-primary btn-sm pull-right">'.$l["view_admin_1_bt"].'</a>';
                         break;
 
                         case 1:
@@ -169,3 +170,18 @@ $pinchoList = Pincho::getAllPropuestas();
 
 </body>
 </html>
+
+
+<!-- Modal -->
+<div id="limit" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content search">
+            <form role="form" action="../controller/competition_state_controller.php" method="post"> 
+                <div class="form-group has-feedback has-feedback-left search-form">
+                    <input type="number" min="0" name="num" class="form-control input-lg" placeholder="<?= $l["view_admin_limit"] ?>" />
+                    <i class="form-control-feedback fa fa-check-square-o"></i>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

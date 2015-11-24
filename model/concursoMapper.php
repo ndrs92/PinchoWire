@@ -12,6 +12,16 @@ class ConcursoMapper{
 		return $toRet["estado"];
 	}
 
+	public static function retrieveNumFinalistas(){
+		global $connectHandler;
+		$toRet = NULL;
+		$query = "select numfinalistas from concurso LIMIT 1";
+		$result = mysqli_query($connectHandler, $query);
+		$toRet = mysqli_fetch_assoc($result);
+
+		return $toRet["numfinalistas"];
+	}
+
 	public static function retrieveFacebook(){
 		global $connectHandler;
 		$toRet = NULL;
@@ -135,6 +145,24 @@ class ConcursoMapper{
 		$query = "UPDATE concurso SET titulo = '$titulo', descripcion = '$descripcion' ";
 		$result = mysqli_query($connectHandler, $query);
 		return $result;
+	}
+	public static function updateNumFinalistas($num){
+		global $connectHandler;
+		$query = "UPDATE concurso SET numfinalistas = $num ";
+		$result = mysqli_query($connectHandler, $query);
+		return $result;
+	}
+
+	public static function crearFinalistas($num){
+		global $connectHandler;
+		$toRet = array();
+		$query = "SELECT pincho_idnombre, SUM( voto ) AS total FROM promociona GROUP BY pincho_idnombre ORDER BY total DESC LIMIT ".$num.";";
+		$result = mysqli_query($connectHandler, $query);
+		while ($row = mysqli_fetch_assoc($result)) {
+            $toRet[$row["pincho_idnombre"]] = $row;
+        }
+		return $toRet;
+
 	}
 
 }

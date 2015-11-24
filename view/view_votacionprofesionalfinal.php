@@ -10,29 +10,31 @@ include_once "../model/administrador.php";
 
 if(!isset($_SESSION)) session_start();
 $concurso = getConcurso();
-if(get_class($_SESSION["user"])!="JuradoProfesional" || $concurso->getEstado() != 0){
+if(get_class($_SESSION["user"])!="JuradoProfesional" || $concurso->getEstado() != 1){
     header("Location: 403.php");
     exit;
 }
-$pinchoList = $_SESSION["user"]->getPinchosAsignados();
-$pinchosPromocionados = $_SESSION["user"]->getPinchosVotadosDePromociona();
+$pinchoList = $concurso->getFinalistas();
+$pinchosVotados = $_SESSION["user"]->getPinchosVotadosDeFinalistas();
 
 $toShow = array();
 
-if(!empty($pinchoList) && empty($pinchosPromocionados)){
+
+
+if(!empty($pinchoList) && empty($pinchosVotados)){
 
     $toShow = $pinchoList;
 }
-if(!empty($pinchoList) && !empty($pinchosPromocionados)){
+if(!empty($pinchoList) && !empty($pinchosVotados)){
     foreach ($pinchoList as $key => $asignado) {
     	$toAdd = true;
-    	foreach ($pinchosPromocionados as $key2 => $votado) {
-    		if($asignado["idnombre"]==$votado["pincho_idnombre"]){
+    	foreach ($pinchosVotados as $key2 => $votado) {
+    		if($asignado["pincho_idnombre"]==$votado["pincho_idnombre"]){
     			$toAdd = false;
     		}		
     	}
     	if($toAdd){
-    		$toShow[$asignado["idnombre"]] = $asignado;
+    		$toShow[$asignado["pincho_idnombre"]] = $asignado;
         }
     }
 }
@@ -116,12 +118,12 @@ if(!empty($pinchoList) && !empty($pinchosPromocionados)){
                             	
                                 foreach ($toShow as $indexRow => $row) {
                                     echo "<tr>";
-                                    echo "<form action='../controller/votacionprofesionalparafinalista_controller.php' method='post'>";
+                                    echo "<form action='../controller/votacionprofesionalparaganador_controller.php' method='post'>";
 
-                                    echo "<td><a href='viewPincho.php?id=".$row["idnombre"]."'>" . $row["idnombre"] . "</a></td>";
-                                    echo "<input type='hidden' name='pincho' value='".$row["idnombre"]."'>";
+                                    echo "<td><a href='viewPincho.php?id=".$row["pincho_idnombre"]."'>" . $row["pincho_idnombre"] . "</a></td>";
+                                    echo "<input type='hidden' name='pincho' value='".$row["pincho_idnombre"]."'>";
 
-                                    echo "<td>";
+                                    echo "<td>"; 
                                         
                                         echo "<label class='radio-inline'>";
       										echo "<input type='radio' name='puntuacion' value='1'>1 ";

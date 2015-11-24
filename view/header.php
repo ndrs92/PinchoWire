@@ -81,7 +81,7 @@ include_once "../resources/code/lang_coverage.php";
 										echo "<li><a href='./view_votacionprofesional.php'>".$l["view_list_profesional_votacion_promociona"]."</a></li>";
 									}
 									if($concurso->getEstado() == 1){
-										echo "<li><a href='./view_votacionprofesional.php'>".$l["view_list_profesional_votacion_finalista"]."</a></li>";
+										echo "<li><a href='./view_votacionprofesionalfinal.php'>".$l["view_list_profesional_votacion_finalista"]."</a></li>";
 									}
 								}	
 								echo "<li><a href='profile.php?idemail=".$_SESSION['user']->getIdemail()."'>".$l["view_list_view_profile"]."</a></li>";
