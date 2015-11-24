@@ -77,7 +77,7 @@
 								</div>
 							</div>
 							<br/>
-
+							<a href="../../index.php" class="btn btn-danger btn-lg">Retry Installation</a>
 						</div>
 					</div>
 

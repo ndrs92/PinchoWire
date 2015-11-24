@@ -91,6 +91,9 @@ include_once "../resources/code/lang_coverage.php";
 							<li><a href="../controller/lang.php?l=de"><img class="lang" src="../images/lang/de.png" />Deusch</a></li>
 							<li><a href="../controller/lang.php?l=jp"><img class="lang" src="../images/lang/jp.png" />日本人</a></li>
 							<li><a href="../controller/lang.php?l=pt"><img class="lang" src="../images/lang/pt.png" />Português</a></li>
+							<li><a href="../controller/lang.php?l=fr"><img class="lang" src="../images/lang/fr.png" />Français</a></li>
+							<li><a href="../controller/lang.php?l=sy"><img class="lang" src="../images/lang/sy.png" />العربية</a></li>
+
 						</ul>
 					</li>
 				</ul>

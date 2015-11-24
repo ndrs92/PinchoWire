@@ -83,14 +83,16 @@ if(!empty($_SESSION["user"])){
                     ?>
                     <br/>
 
-                    <form role="form" action="../controller/login_controller.php" method="POST">
+                    <form data-toggle="validator" role="form" action="../controller/login_controller.php" method="POST">
                         <div class="form-group">
                             <label for="email"><?= $l["login_email"] ?></label>
-                            <input type="email" class="form-control" name="login_user_login">
+                            <input data-error="<?= $l["register_email_error"] ?>" required data-minlength="7" type="email" class="form-control" name="login_user_login">
+                            <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
                             <label for="pwd"><?= $l["login_password"] ?></label>
-                            <input type="password" class="form-control" name="login_user_pass">
+                            <input data-error="<?= $l["register_password_error_length"] ?>" required data-minlength="8"  type="password" class="form-control" name="login_user_pass">
+                            <div class="help-block with-errors"></div>
                         </div>
                         <input id="login-button" class="btn btn-success" type="submit" value="Log In" />
                     </form>
@@ -122,6 +124,7 @@ if(!empty($_SESSION["user"])){
     <script type="text/javascript" src="../js/jquery.counterup.min.js"></script><!-- CounterUp -->
     <script type="text/javascript" src="../js/waypoints.min.js"></script><!-- CounterUp -->
     <script type="text/javascript" src="../js/jquery.isotope.min.js"></script><!-- isotope -->
+    <script type="text/javascript" src="../js/validator.min.js"></script><!-- isotope -->
     <script type="text/javascript" src="../js/scripts.js"></script><!-- Scripts -->
 
 
