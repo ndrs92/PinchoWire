@@ -58,15 +58,15 @@ $sql = "INSERT INTO G23.establecimiento (idemail, nombre, contrasena, rutaavatar
 mysqli_query($connectHandler, $sql);
 
 /*Creation Pincho of to sample data*/
-$sql = "INSERT INTO G23.pincho (idnombre, descripcion, precio, ingredientes, ganadorPopular, estadoPropuesta, establecimiento_idemail) VALUES ('Pincho 1', 'Descripcion del Pincho 1', '1', 'Ingrediente 1, Ingrediente 2', NULL, '2', 'establecimiento1@wire.es');";
+$sql = "INSERT INTO G23.pincho (idnombre, descripcion, precio, ingredientes, ganadorPopular, estadoPropuesta, establecimiento_idemail, rutaimagen) VALUES ('Banderillas de salmón', 'Banderillas de salmón y otros pescados', '10', 'Salmón, pimiento', NULL, '2', 'establecimiento1@wire.es', 'images/sample-data/pinchos/p1.jpg');";
 mysqli_query($connectHandler, $sql);
-$sql = "INSERT INTO G23.pincho (idnombre, descripcion, precio, ingredientes, ganadorPopular, estadoPropuesta, establecimiento_idemail) VALUES ('Pincho 2', 'Descripcion del Pincho 2', '2', 'Ingrediente 2, Ingrediente 3', NULL, '0', 'establecimiento2@wire.es');";
+$sql = "INSERT INTO G23.pincho (idnombre, descripcion, precio, ingredientes, ganadorPopular, estadoPropuesta, establecimiento_idemail, rutaimagen) VALUES ('Piñas del mar', 'Tapas de diferentes mariscos', '20', 'Queso, huevo, pan', NULL, '0', 'establecimiento2@wire.es', 'images/sample-data/pinchos/p2.jpg');";
 mysqli_query($connectHandler, $sql);
-$sql = "INSERT INTO G23.pincho (idnombre, descripcion, precio, ingredientes, ganadorPopular, estadoPropuesta, establecimiento_idemail) VALUES ('Pincho 3', 'Descripcion del Pincho 3', '3', 'Ingrediente 3, Ingrediente 4', NULL, '2', 'establecimiento3@wire.es');";
+$sql = "INSERT INTO G23.pincho (idnombre, descripcion, precio, ingredientes, ganadorPopular, estadoPropuesta, establecimiento_idemail, rutaimagen) VALUES ('Toda mi huerta', 'Jamón, ensaladilla y pollo adornados en pan', '15', 'Jamón, ensaladilla, pimiento, huevo, patatas', NULL, '2', 'establecimiento3@wire.es', 'images/sample-data/pinchos/p3.jpg');";
 mysqli_query($connectHandler, $sql);
-$sql = "INSERT INTO G23.pincho (idnombre, descripcion, precio, ingredientes, ganadorPopular, estadoPropuesta, establecimiento_idemail) VALUES ('Pincho 4', 'Descripcion del Pincho 4', '4', 'Ingrediente 4, Ingrediente 5', NULL, '2', 'establecimiento4@wire.es');";
+$sql = "INSERT INTO G23.pincho (idnombre, descripcion, precio, ingredientes, ganadorPopular, estadoPropuesta, establecimiento_idemail, rutaimagen) VALUES ('Brocheta de lienzo', 'Brochetas empañadas en una ligera aceituna', '13', 'Brocheta, pimiento y aceituna', NULL, '2', 'establecimiento4@wire.es', 'images/sample-data/pinchos/p4.jpg');";
 mysqli_query($connectHandler, $sql);
-$sql = "INSERT INTO G23.pincho (idnombre, descripcion, precio, ingredientes, ganadorPopular, estadoPropuesta, establecimiento_idemail) VALUES ('Pincho 5', 'Descripcion del Pincho 5', '5', 'Ingrediente 5, Ingrediente 1', NULL, '2', 'establecimiento5@wire.es');";
+$sql = "INSERT INTO G23.pincho (idnombre, descripcion, precio, ingredientes, ganadorPopular, estadoPropuesta, establecimiento_idemail, rutaimagen) VALUES ('Sardina express', 'Sardina enlatada en una tosta de pan', '8', 'Sardina, pan', NULL, '2', 'establecimiento5@wire.es', 'images/sample-data/pinchos/p5.jpg' );";
 mysqli_query($connectHandler, $sql);
 
 
