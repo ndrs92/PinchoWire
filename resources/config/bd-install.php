@@ -31,7 +31,7 @@ if ($sqlErrorCode == 0) {
 	echo "Script is executed succesfully!";
 
 	mysql_select_db("G23");
-	mysql_query("INSERT INTO administrador (idemail, nombre, contrasena) VALUES ('".$_POST["admin-idemail"]."', 'Administrador', '".$_POST["admin-password"]."')");
+	mysql_query("INSERT INTO administrador (idemail, nombre, contrasena, rutaavatar) VALUES ('".$_POST["admin-idemail"]."', 'Administrador', '".$_POST["admin-password"]."', 'images/avatars/default.jpg')");
 	mysql_query("INSERT INTO concurso (descripcion, fecha, rutaportada, titulo, estado, facebook, twitter, googleplus) VALUES ('".$_POST["pw-desc"]."', '".date('Y-m-d')."', '".$_POST["pw-title-image"]."', '".$_POST["pw-name"]."', '0', '".$_POST["pw-facebook"]."', '".$_POST["pw-twitter"]."', '".$_POST["pw-google-plus"]."')");
 	
 	mysql_query("DROP USER 'g23_abp_user'@'%'");
