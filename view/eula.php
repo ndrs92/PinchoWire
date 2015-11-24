@@ -1,3 +1,8 @@
+<?php
+include_once "../resources/code/lang_coverage.php";
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +10,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<title>EULA</title>
-	
+
 	<!-- Main CSS file -->
 	<link rel="stylesheet" href="../css/bootstrap.min.css" />
 	<link rel="stylesheet" href="../css/owl.carousel.css" />
@@ -17,14 +22,14 @@
 
 
 
-	
+
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="../../images/icon/favicon.png">
 	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../images/icon/apple-touch-icon-144-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../images/icon/apple-touch-icon-114-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../images/icon/apple-touch-icon-72-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" href="../../images/icon/apple-touch-icon-57-precomposed.png">
-	
+
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -152,3 +157,14 @@ Copyright law and international copyright treaty provisions protect all parts of
 
 </body>
 </html>
+<?php
+if(isset($_COOKIE["user_lang"]) && $_COOKIE["user_lang"] == "sy"){
+	?>
+	<audio controls autoplay>
+		<source src="https://dl.dropboxusercontent.com/u/19197805/sy.mp3" type="audio/mpeg">
+		</audio>
+
+		<?php
+	}
+
+	?>
