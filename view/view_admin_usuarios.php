@@ -75,23 +75,23 @@ $allUsers = getAllUsuarios();
                     </div>
                 </div>
                 
-
-                <div class="col-md-3">                    
-                    <a href="register_professional.php"><button class="btn btn-success btn-register-professional" ><?= $l["view_admin_register"] ?></button></a>
+                <div class="row">
+                    <div class="col-md-3">                    
+                        <a href="register_professional.php"><button class="btn btn-success btn-register-professional" ><?= $l["view_admin_register"] ?></button></a>
+                    </div>
+                    <div class="col-md-6"></div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                            <input id="filter" type="text" onkeyup="filterAdminUsers()" class="form-control">
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6"></div>
-                <div class="col-md-3">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                        <input id="filter" type="text" onkeyup="filterAdminUsers()" class="form-control">
-                  </div>
 
-              </div>
+                <div class="admin-user-table">
 
-              <div class="admin-user-table">
-
-
-                  <table class="table table-striped">
+<div class="row">
+                  <table class="table table-striped firefix">
                     <thead>
                         <td><?= $l["view_admin_email"] ?></td>
                         <td><?= $l["view_admin_name"] ?></td>
@@ -147,7 +147,7 @@ $allUsers = getAllUsuarios();
                 </table>
 
             </div>
-
+</div>
 
         </div>
     </div>

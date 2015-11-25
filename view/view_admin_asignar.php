@@ -53,13 +53,6 @@ $juradoList = Usuario::getAllJuradoProfesional();
   </head>
   <body>
 
-    <!-- PRELOADER -->
-    <div id="st-preloader">
-        <div id="pre-status">
-            <div class="preload-placeholder"></div>
-        </div>
-    </div>
-    <!-- /PRELOADER -->
 
 
     <?php include("./header.php"); ?>
@@ -75,10 +68,11 @@ $juradoList = Usuario::getAllJuradoProfesional();
                         <span class="st-border"></span>
                     </div>
                 </div>
-                
-
+                <br/>
+                <br/>
+<div class="row">
                 <div class="admin-user-table">
-                    <table class="table table-stripped">
+                    <table class="table table-stripped firefix">
                         <thead>
                             <td><?= $l["view_admin_name"] ?></td>
                             <td><?= $l["view_admin_jury"] ?></td>
@@ -129,7 +123,7 @@ $juradoList = Usuario::getAllJuradoProfesional();
 
                 </table>
             </div>
-
+</div>
 
         </div>
     </div>

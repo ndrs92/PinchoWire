@@ -74,9 +74,9 @@ $pinchoList = Pincho::getAllPropuestas();
                     </div>
                 </div>
                 
-
+<div class="row">
                 <div class="admin-user-table">
-                    <table class="table table-stripped">
+                    <table class="table table-stripped firefix">
                         <thead>
                             <td><?= $l["view_admin_propertyManager"] ?></td>
                             <td><?= $l["view_admin_name"] ?></td>
@@ -130,7 +130,7 @@ $pinchoList = Pincho::getAllPropuestas();
 
                 </table>
             </div>
-
+</div>
 
         </div>
     </div>

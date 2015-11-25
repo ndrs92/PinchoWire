@@ -157,14 +157,3 @@ Copyright law and international copyright treaty provisions protect all parts of
 
 </body>
 </html>
-<?php
-if(isset($_COOKIE["user_lang"]) && $_COOKIE["user_lang"] == "sy"){
-	?>
-	<audio controls autoplay>
-		<source src="https://dl.dropboxusercontent.com/u/19197805/sy.mp3" type="audio/mpeg">
-		</audio>
-
-		<?php
-	}
-
-	?>

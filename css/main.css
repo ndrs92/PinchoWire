@@ -236,3 +236,7 @@ table tbody td {
 	margin-bottom: 50px;
 	padding-left: 3px; 
 }
+
+.firefix{
+	float:right;
+}

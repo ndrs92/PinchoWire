@@ -84,7 +84,7 @@ if (isEstablishment($_GET["idemail"])) {
                             <img class="img-responsive" src="../<?php echo $user->getRutaavatar(); ?>" alt="">
                         </div>
                         <div class="member-info">
-                            <h4><? echo $user->getNombre(); ?></h4>
+                            <h4><?php echo $user->getNombre(); ?></h4>
                             <span><?= strtoupper(get_class($user)) ?></span>
                         </div>
                     </div>
@@ -97,7 +97,7 @@ if (isEstablishment($_GET["idemail"])) {
                     <div class="form-group">
                         <label for="name"><?php echo $l["view_profile_editmail"] ?></label>
 
-                        <div class="well well-sm"><? echo $user->getIdemail(); ?> </div>
+                        <div class="well well-sm"><?php echo $user->getIdemail(); ?> </div>
                     </div>
                     <div class="form-group">
                         <?php
@@ -112,7 +112,7 @@ if (isEstablishment($_GET["idemail"])) {
                     <div class="form-group">
                         <label for="name"><?php echo $l["view_profile_editname"] ?></label>
                         <input data-error="<?= $l["view_profile_name_error"] ?>" required data-minlength="4" class="form-control" type="text" name="profile_name"
-                        value="<? echo $user->getNombre(); ?>"/>
+                        value="<?php echo $user->getNombre(); ?>"/>
                         <div class="help-block with-errors"></div>
                     </div>
                     <div class="form-group">
@@ -132,7 +132,7 @@ if (isEstablishment($_GET["idemail"])) {
                         <div class="form-group">
                             <label for="name"><?php echo $l["view_profile_editcurriculum"] ?></label>
                             <textarea class="form-control" type="text"
-                            name="profile_curriculum"><? echo $user->getCurriculum(); ?></textarea>
+                            name="profile_curriculum"><?php echo $user->getCurriculum(); ?></textarea>
                         </div>
 
                         <?php } ?>
@@ -142,19 +142,19 @@ if (isEstablishment($_GET["idemail"])) {
                             <div class="form-group">
                                 <label for="name"><?php echo $l["view_profile_address"] ?></label>
                                 <input required data-error="<?= $l["view_profile_place_error"] ?>" required data-minlength="8" class="form-control" type="text" name="profile_direccion"
-                                value="<? echo $user->getDireccion(); ?>"/>
+                                value="<?php echo $user->getDireccion(); ?>"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="name"><?php echo $l["view_profile_web"] ?></label>
                                 <input required type="url" data-error="<?= $l["view_profile_url_error"] ?>" class="form-control" name="profile_web"
-                                value="<? echo $user->getWeb(); ?>"/>
+                                value="<?php echo $user->getWeb(); ?>"/>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
                                 <label for="name"><?php echo $l["view_profile_schedule"] ?></label>
                                 <input required type="text" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9] - ([01]?[0-9]|2[0-3]):[0-5][0-9]" data-error="<?= $l["view_profile_schedule_error"] ?>"  class="form-control" type="text" name="profile_horario"
-                                value="<? echo $user->getHorario(); ?>"/>
+                                value="<?php echo $user->getHorario(); ?>"/>
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
@@ -171,7 +171,7 @@ if (isEstablishment($_GET["idemail"])) {
                             <div class="form-group">
                                 <label for="name"><?php echo $l["view_profile_geloc"] ?></label>
                                 <input required type="text" pattern="^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?), \s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$" data-error="<?= $l["view_profile_geoloc_error"] ?>" class="form-control" type="text" name="profile_geoloc"
-                                value="<? echo $user->getGeoloc(); ?>"/>
+                                value="<?php echo $user->getGeoloc(); ?>"/>
                                 <div class="help-block with-errors"></div>
                                 <?php
                                 $lat = explode(", ", $user->getGeoloc())[0];
@@ -185,14 +185,14 @@ if (isEstablishment($_GET["idemail"])) {
                             ?>
 
                             <input class="btn btn-default" type="hidden" name="imagen"
-                            value="<? echo $user->getRutaimagen(); ?>"/>
+                            value="<?php echo $user->getRutaimagen(); ?>"/>
                             <br/>
                             <?php } ?>
                             <input class="btn btn-default" type="hidden" name="avatar"
-                            value="<? echo $user->getRutaavatar(); ?>"/>
+                            value="<?php echo $user->getRutaavatar(); ?>"/>
 
                             <input class="btn btn-default" type="hidden" name="profile_mail"
-                            value="<? echo $user->getIdemail(); ?>"/>
+                            value="<?php echo $user->getIdemail(); ?>"/>
                             <input class="btn btn-default" type="hidden" name="type" value="<?php echo $user->getTable(); ?>"/>
                             <?php
                             if (isset($_SESSION["user"]) && ($_SESSION["user"]->getIdemail() == $_GET["idemail"] || get_class($_SESSION["user"]) == "Administrador")) {
