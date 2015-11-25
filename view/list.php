@@ -48,14 +48,13 @@ $establecimientos = getAllEstablecimientos();
 	</head>
 	<body>
 
-		<!-- PRELOADER -->
-		<div id="st-preloader">
-			<div id="pre-status">
-				<div class="preload-placeholder"></div>
-			</div>
+	<!-- PRELOADER -->
+	<div id="st-preloader">
+		<div id="pre-status">
+			<div class="preload-placeholder"></div>
 		</div>
-		<!-- /PRELOADER -->
-
+	</div>
+	<!-- /PRELOADER -->
 
 		<?php include("./header.php"); ?>
 
@@ -128,7 +127,7 @@ $establecimientos = getAllEstablecimientos();
 									</a>
 									<?php
 									if (isset($_SESSION["user"]) && get_class($_SESSION["user"]) == "JuradoPopular") {
-										echo "<a href='../controller/markeatenpincho_controller.php?markeatenpincho_probado_idpincho=" . $pincho->getIdnombre() . "&markeatenpincho_probado_idmail=" . $_SESSION["user"]->getIdemail() . "'><div class='btn-probar-pincho'>" . $probado . "</div></a>";
+										echo "<a href='../controller/markeatenpincho_controller.php?markeatenpincho_probado_idpincho=" . $pincho->getIdnombre() . "&markeatenpincho_probado_idemail=" . $_SESSION["user"]->getIdemail() . "'><div class='btn-probar-pincho'>" . $probado . "</div></a>";
 										echo "<a href='./view_votacionpopular.php?idpincho=" . $pincho->getIdnombre() . "'><div class='btn-votar-pincho'>" . $l["view_list_vote"] . "</div></a>";
 
 									}

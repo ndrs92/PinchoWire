@@ -43,8 +43,8 @@ class Pincho {
 
     public function getEstablishment(){
         $pincho = PinchoMapper::find($this->getIdnombre());
-        $idmail = $pincho["establecimiento_idemail"];
-        return Usuario::getByIdemail($idmail);
+        $idemail = $pincho["establecimiento_idemail"];
+        return Usuario::getByIdemail($idemail);
     }
 
     public function createCodes($numberOfCodes){
