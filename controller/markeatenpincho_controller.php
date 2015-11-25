@@ -10,7 +10,6 @@
         exit;
     }
 
-
     if($_GET["markeatenpincho_probado_idpincho"] && $_GET["markeatenpincho_probado_idemail"]){
         //All params for delete a comment OK
 
@@ -24,6 +23,7 @@
         $host  = $_SERVER['HTTP_HOST'];
         $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
         $relpath = '../view/list.php';
+
         header("Location: http://$host$uri/$relpath");
 
     }else{
