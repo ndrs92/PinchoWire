@@ -277,12 +277,13 @@ $establecimientos = getAllEstablecimientos();
 					<div class="col-md-3 col-sm-6  col-xs-6">
 						<div class="team-member">
 							<div class="member-image">
-								<img class="img-responsive" src="../images/members/team1.jpg" alt="">
+								<img class="img-responsive" src="../images/members/andres.png" alt="">
 								<div class="member-social">
-									<a href=""><i class="fa fa-facebook"></i></a>
-									<a href=""><i class="fa fa-twitter"></i></a>
-									<a href=""><i class="fa fa-google-plus"></i></a>
-									<a href=""><i class="fa fa-linkedin"></i></a>
+									<a target="_blank" href="https://www.facebook.com/ndrs1992"><i class="fa fa-facebook"></i></a>
+									<a target="_blank" href="https://twitter.com/ndrs_"><i class="fa fa-twitter"></i></a>
+									<a target="_blank" href="https://github.com/ndrs92"><i class="fa fa-github"></i></a>
+									<a target="_blank" href="https://bitbucket.org/ndrs92/"><i class="fa fa-bitbucket"></i></a>
+									<a target="_blank" href="https://bitbucket.org/ndrs92/"><i class="fa fa-linkedin"></i></a>
 								</div>
 							</div>
 							<div class="member-info">
@@ -295,12 +296,10 @@ $establecimientos = getAllEstablecimientos();
 					<div class="col-md-3 col-sm-6  col-xs-6">
 						<div class="team-member">
 							<div class="member-image">
-								<img class="img-responsive" src="../images/members/team2.jpg" alt="">
+								<img class="img-responsive" src="../images/members/alex.png" alt="">
 								<div class="member-social">
-									<a href=""><i class="fa fa-facebook"></i></a>
-									<a href=""><i class="fa fa-twitter"></i></a>
-									<a href=""><i class="fa fa-google-plus"></i></a>
-									<a href=""><i class="fa fa-linkedin"></i></a>
+									<a target="_blank" href="https://bitbucket.org/agnovoa/"><i class="fa fa-bitbucket"></i></a>
+									<a target="_blank" href="https://github.com/agnovoa2"><i class="fa fa-github"></i></a>
 								</div>
 							</div>
 							<div class="member-info">
@@ -313,12 +312,10 @@ $establecimientos = getAllEstablecimientos();
 					<div class="col-md-3 col-sm-6  col-xs-6">
 						<div class="team-member">
 							<div class="member-image">
-								<img class="img-responsive" src="../images/members/team1.jpg" alt="">
+								<img class="img-responsive" src="../images/members/javi.png" alt="">
 								<div class="member-social">
-									<a href=""><i class="fa fa-facebook"></i></a>
-									<a href=""><i class="fa fa-twitter"></i></a>
-									<a href=""><i class="fa fa-google-plus"></i></a>
-									<a href=""><i class="fa fa-linkedin"></i></a>
+									<a target="_blank" href="https://bitbucket.org/lazajavier/"><i class="fa fa-bitbucket"></i></a>
+									<a target="_blank" href="https://github.com/lazajavier"><i class="fa fa-github"></i></a>
 								</div>
 							</div>
 							<div class="member-info">
@@ -331,12 +328,10 @@ $establecimientos = getAllEstablecimientos();
 					<div class="col-md-3 col-sm-6  col-xs-6">
 						<div class="team-member">
 							<div class="member-image">
-								<img class="img-responsive" src="../images/members/team2.jpg" alt="">
+								<img class="img-responsive" src="../images/members/diego.png" alt="">
 								<div class="member-social">
-									<a href=""><i class="fa fa-facebook"></i></a>
-									<a href=""><i class="fa fa-twitter"></i></a>
-									<a href=""><i class="fa fa-google-plus"></i></a>
-									<a href=""><i class="fa fa-linkedin"></i></a>
+									<a target="_blank" href="https://twitter.com/DiegoV2_"><i class="fa fa-twitter"></i></a>
+									<a target="_blank" href="https://github.com/dvillanuevavilar"><i class="fa fa-github"></i></a>
 								</div>
 							</div>
 							<div class="member-info">
