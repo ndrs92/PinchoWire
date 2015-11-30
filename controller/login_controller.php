@@ -11,7 +11,7 @@ if(!empty($_SESSION["user"])){
 if($_POST["login_user_login"] && $_POST["login_user_pass"]){
 	//Okey, all seems legit, proceed to log in
 
-	$userObject = Usuario::login_user($_POST["login_user_login"], $_POST["login_user_pass"]);
+	$userObject = Usuario::login_user($_POST["login_user_login"], md5($_POST["login_user_pass"]));
 	
 	if($userObject == NULL){
 		$_SESSION["alert"]["error"] = $l["alertify_login_fail"];

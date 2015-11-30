@@ -116,13 +116,13 @@ class UserMapper
         $result = false;
 
         if (get_class($userObject) == "JuradoPopular") {
-            $query = "Insert into juradopopular values('" . $userObject->getIdemail() . "','" . $userObject->getNombre() . "','" . $userObject->getContrasena() . "','" . $userObject->getRutaavatar() . "','" . $userObject->getBaneado() . "')";
+            $query = "Insert into juradopopular values('" . $userObject->getIdemail() . "','" . $userObject->getNombre() . "','" . md5($userObject->getContrasena()) . "','" . $userObject->getRutaavatar() . "','" . $userObject->getBaneado() . "')";
             $result = mysqli_query($connectHandler, $query);
         } else if (get_class($userObject) == "Establecimiento") {
-            $query = "Insert into establecimiento values('" . $userObject->getIdemail() . "','" . $userObject->getNombre() . "','" . $userObject->getContrasena() . "','" . $userObject->getRutaavatar() . "','" . $userObject->getDireccion() . "','" . $userObject->getWeb() . "','" . $userObject->getHorario() . "','" . $userObject->getRutaimagen() . "','" . $userObject->getGeoloc() . "','" . $userObject->getBaneado() . "')";
+            $query = "Insert into establecimiento values('" . $userObject->getIdemail() . "','" . $userObject->getNombre() . "','" . md5($userObject->getContrasena()) . "','" . $userObject->getRutaavatar() . "','" . $userObject->getDireccion() . "','" . $userObject->getWeb() . "','" . $userObject->getHorario() . "','" . $userObject->getRutaimagen() . "','" . $userObject->getGeoloc() . "','" . $userObject->getBaneado() . "')";
             $result = mysqli_query($connectHandler, $query);
         } else if (get_class($userObject) == "JuradoProfesional") {
-            $query = "Insert into juradoprofesional values('" . $userObject->getCurriculum() . "','" . $userObject->getIdemail() . "','" . $userObject->getNombre() . "','" . $userObject->getContrasena() . "','" . $userObject->getRutaavatar() . "','" . $userObject->getBaneado() . "')";
+            $query = "Insert into juradoprofesional values('" . $userObject->getCurriculum() . "','" . $userObject->getIdemail() . "','" . $userObject->getNombre() . "','" . md5($userObject->getContrasena()) . "','" . $userObject->getRutaavatar() . "','" . $userObject->getBaneado() . "')";
             $result = mysqli_query($connectHandler, $query);
         }
 
@@ -197,6 +197,7 @@ class UserMapper
     public static function update($mail, $pass, $name, $avatar, $typeuser, $curriculum, $direccion, $web, $horario, $imagen, $geoloc)
     {
         global $connectHandler;
+        $pass = md5($pass);
 
         switch ($typeuser) {
             case "administrador":
