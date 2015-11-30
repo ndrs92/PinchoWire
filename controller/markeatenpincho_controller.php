@@ -10,11 +10,11 @@
         exit;
     }
 
-    if($_GET["markeatenpincho_probado_idpincho"] && $_GET["markeatenpincho_probado_idemail"]){
+    if($_POST["markeatenpincho_probado_idpincho"] && $_POST["markeatenpincho_probado_idemail"]){
         //All params for delete a comment OK
 
-        PinchoMapper::toggleMarcado($_GET["markeatenpincho_probado_idpincho"],$_GET["markeatenpincho_probado_idemail"]);
-        if(PinchoMapper::isProbado($_GET["markeatenpincho_probado_idpincho"],$_GET["markeatenpincho_probado_idemail"])){
+        PinchoMapper::toggleMarcado($_POST["markeatenpincho_probado_idpincho"],$_POST["markeatenpincho_probado_idemail"]);
+        if(PinchoMapper::isProbado($_POST["markeatenpincho_probado_idpincho"],$_POST["markeatenpincho_probado_idemail"])){
             $_SESSION["alert"]["success"] = $l["alertify_eatenPincho_eaten"];
         } else {
             $_SESSION["alert"]["success"] = $l["alertify_eatenPincho_noEaten"];

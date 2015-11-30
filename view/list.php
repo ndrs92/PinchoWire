@@ -127,9 +127,14 @@ $establecimientos = getAllEstablecimientos();
 									</a>
 									<?php
 									if (isset($_SESSION["user"]) && get_class($_SESSION["user"]) == "JuradoPopular") {
-										echo "<a href='../controller/markeatenpincho_controller.php?markeatenpincho_probado_idpincho=" . $pincho->getIdnombre() . "&markeatenpincho_probado_idemail=" . $_SESSION["user"]->getIdemail() . "'><div class='btn-probar-pincho'>" . $probado . "</div></a>";
+										?>
+										<form id="form-<?= md5($pincho->getIdnombre()) ?>" action="../controller/markeatenpincho_controller.php" method="POST">
+										<input type="hidden" value="<?= $pincho->getIdnombre() ?>" name="markeatenpincho_probado_idpincho" />
+										<input type="hidden" value="<?= $_SESSION["user"]->getIdemail() ?>" name="markeatenpincho_probado_idemail" />
+										<a onclick="document.getElementById('form-<?= md5($pincho->getIdnombre()) ?>').submit();"><div class='btn-probar-pincho'><?= $probado ?></div></a>
+										</form>
+										<?php
 										echo "<a href='./view_votacionpopular.php?idpincho=" . $pincho->getIdnombre() . "'><div class='btn-votar-pincho'>" . $l["view_list_vote"] . "</div></a>";
-
 									}
 									?>
 									<div class="pincho-info">

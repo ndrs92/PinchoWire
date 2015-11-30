@@ -68,6 +68,7 @@ table tbody td {
 
 .btn-probar-pincho:hover{
 	background-color: #D1D1D1;
+	cursor: pointer;
 	color: black;
 	transition: 0.1s;
 }
