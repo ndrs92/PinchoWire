@@ -130,7 +130,7 @@ $_SESSION["installation"] = true;
 									<div class="form-group">
 										<label for="pwName" class="col-lg-2 control-label">Competition name:</label>
 										<div class="col-lg-10">
-											<input required type="text" data-minlength="3" maxlength="21" class="form-control" name="pw-name" placeholder="My fancy competition">
+											<input required type="text" data-minlength="3" maxlength="50" class="form-control" name="pw-name" placeholder="My fancy competition">
 											<div class="help-block with-errors"></div>
 										</div>
 									</div>
@@ -138,7 +138,7 @@ $_SESSION["installation"] = true;
 									<div class="form-group">
 										<label for="pwDesc" class="col-lg-2 control-label">Description:</label>
 										<div class="col-lg-10">
-											<input required type="text" data-minlength="8" maxlength="50" class="form-control" name="pw-desc" placeholder="Description for the competition">
+											<input required type="text" data-minlength="8" maxlength="500" class="form-control" name="pw-desc" placeholder="Description for the competition">
 											<div class="help-block with-errors"></div>
 										</div>
 									</div>
