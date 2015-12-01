@@ -143,7 +143,7 @@ class UserController{
 		if(!isset($_SESSION)) session_start();
 		global $l;
 		if (isset($_POST["profile_user_submit"])) {
-			if ($_POST["profile_mail"] && $_POST["profile_pass"] && $_POST["profile_name"]) {
+			if ($_POST["profile_mail"] && $_POST["profile_name"]) {
 				/* Validar avatar */
 				$rutaavatar = $_POST["avatar"];
 				$validFormats = array("jpg", "jpeg", "png", "bmp");
