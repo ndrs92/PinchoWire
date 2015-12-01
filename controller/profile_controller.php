@@ -24,7 +24,7 @@ function verPerfil($idemail){
 
 if (isset($_POST["profile_user_submit"])) {
 
-    if ($_POST["profile_mail"] && $_POST["profile_pass"] && $_POST["profile_name"]) {
+    if ($_POST["profile_mail"] && $_POST["profile_name"]) {
 
         /* Validar avatar */
         $rutaavatar = $_POST["avatar"];

@@ -197,7 +197,12 @@ class UserMapper
     public static function update($mail, $pass, $name, $avatar, $typeuser, $curriculum, $direccion, $web, $horario, $imagen, $geoloc)
     {
         global $connectHandler;
-        $pass = md5($pass);
+    
+        if(!empty($pass)){
+            $pass = md5($pass);
+        } else {
+            $pass = $_SESSION["user"]->getContrasena();
+        }
 
         switch ($typeuser) {
             case "administrador":

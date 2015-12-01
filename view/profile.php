@@ -105,7 +105,7 @@ if (isEstablishment($_GET["idemail"])) {
                             echo "<label for='name'>";
                             echo $l["view_profile_editpass"];
                             echo "</label>";
-                            echo "<input type='password' class='form-control' name='profile_pass' value='" . $user->getContrasena() . "'/>";
+                            echo "<input type='password' class='form-control' name='profile_pass'/>";
                         }
                         ?>
                     </div>
