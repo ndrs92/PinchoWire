@@ -2,13 +2,17 @@
 include_once "../resources/code/models.php";
 include_once "../resources/code/lang_coverage.php";
 
+include_once "../controller/pw.php";
+include_once "../controller/pwctrl_user.php";
+
 include_once "../controller/pincho_controller.php";
 include_once "../controller/concurso_controller.php";
-include_once "../controller/general_user_controller.php";
+
+
 
 if (!isset($_SESSION)) session_start();
 $concurso = getConcurso();
-$establecimientos = getAllEstablecimientos();
+$establecimientos = UserController::getAllEstablecimientos();
 ?>
 
 <!DOCTYPE html>
@@ -48,13 +52,13 @@ $establecimientos = getAllEstablecimientos();
 	</head>
 	<body>
 
-	<!-- PRELOADER -->
-	<div id="st-preloader">
-		<div id="pre-status">
-			<div class="preload-placeholder"></div>
+		<!-- PRELOADER -->
+		<div id="st-preloader">
+			<div id="pre-status">
+				<div class="preload-placeholder"></div>
+			</div>
 		</div>
-	</div>
-	<!-- /PRELOADER -->
+		<!-- /PRELOADER -->
 
 		<?php include("./header.php"); ?>
 
@@ -78,7 +82,7 @@ $establecimientos = getAllEstablecimientos();
 									?>
 								</div>
 							</div>
-						<img class="logo-powered" src="../images/logo-inverted.png" alt="">
+							<img class="logo-powered" src="../images/logo-inverted.png" alt="">
 						</div>					
 					</div>
 				</div>		
@@ -128,10 +132,10 @@ $establecimientos = getAllEstablecimientos();
 									<?php
 									if (isset($_SESSION["user"]) && get_class($_SESSION["user"]) == "JuradoPopular") {
 										?>
-										<form id="form-<?= md5($pincho->getIdnombre()) ?>" action="../controller/markeatenpincho_controller.php" method="POST">
-										<input type="hidden" value="<?= $pincho->getIdnombre() ?>" name="markeatenpincho_probado_idpincho" />
-										<input type="hidden" value="<?= $_SESSION["user"]->getIdemail() ?>" name="markeatenpincho_probado_idemail" />
-										<a onclick="document.getElementById('form-<?= md5($pincho->getIdnombre()) ?>').submit();"><div class='btn-probar-pincho'><?= $probado ?></div></a>
+										<form id="form-<?= md5($pincho->getIdnombre()) ?>" action="../controller/pw.php?controller=user&action=pinchoConsumed" method="POST">
+											<input type="hidden" value="<?= $pincho->getIdnombre() ?>" name="markeatenpincho_probado_idpincho" />
+											<input type="hidden" value="<?= $_SESSION["user"]->getIdemail() ?>" name="markeatenpincho_probado_idemail" />
+											<a onclick="document.getElementById('form-<?= md5($pincho->getIdnombre()) ?>').submit();"><div class='btn-probar-pincho'><?= $probado ?></div></a>
 										</form>
 										<?php
 										echo "<a href='./view_votacionpopular.php?idpincho=" . $pincho->getIdnombre() . "'><div class='btn-votar-pincho'>" . $l["view_list_vote"] . "</div></a>";

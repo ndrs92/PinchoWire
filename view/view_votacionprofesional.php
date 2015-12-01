@@ -1,12 +1,9 @@
 <?php 
 include_once "../resources/code/lang_coverage.php";
+include_once "../resources/code/models.php";
 include_once "../controller/pincho_controller.php";
-include_once "../controller/general_user_controller.php";
+include_once "../controller/pwctrl_user.php";
 include_once "../controller/concurso_controller.php";
-include_once "../model/pincho.php";
-include_once "../model/usuario.php";
-include_once "../model/juradoprofesional.php";
-include_once "../model/administrador.php";
 
 if(!isset($_SESSION)) session_start();
 $concurso = getConcurso();
@@ -116,7 +113,7 @@ if(!empty($pinchoList) && !empty($pinchosPromocionados)){
                             	
                                 foreach ($toShow as $indexRow => $row) {
                                     echo "<tr>";
-                                    echo "<form action='../controller/votacionprofesionalparafinalista_controller.php' method='post'>";
+                                    echo "<form action='../controller/pw.php?controller=user&action=votacionProfesionalFinalista' method='post'>";
 
                                     echo "<td><a href='viewPincho.php?id=".$row["idnombre"]."'>" . $row["idnombre"] . "</a></td>";
                                     echo "<input type='hidden' name='pincho' value='".$row["idnombre"]."'>";

@@ -2,15 +2,16 @@
 include_once "../resources/code/models.php";
 include_once "../resources/code/lang_coverage.php";
 
-include_once "../controller/profile_controller.php";
+include_once "../controller/pw.php";
+include_once "../controller/pwctrl_user.php";
 
 if(!isset($_SESSION)) session_start();
 
-if (isEstablishment($_GET["idemail"])) {
-    $user = verPerfil($_GET["idemail"]);
+if (UserController::isEstablishment($_GET["idemail"])) {
+    $user = UserController::verPerfil($_GET["idemail"]);
 } else {
     if (isset($_SESSION["user"]) && (get_class($_SESSION["user"]) == "Administrador" || $_SESSION["user"]->getIdemail() == $_GET["idemail"])) {
-        $user = verPerfil($_GET["idemail"]);
+        $user = UserController::verPerfil($_GET["idemail"]);
     } else {
         header("Location: 403.php");
     }
@@ -92,7 +93,7 @@ if (isEstablishment($_GET["idemail"])) {
 
                 <div class="col-md-8 col-sm-12">
 
-                    <form data-toggle="validator" role="form" action="../controller/profile_controller.php" method="POST"
+                    <form data-toggle="validator" role="form" action="../controller/pw.php?controller=user&action=changeProfile" method="POST"
                     enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="name"><?php echo $l["view_profile_editmail"] ?></label>

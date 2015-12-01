@@ -122,7 +122,7 @@ if($pinchoActual->getIdnombre() == NULL){
                 </div>
 
                 <div class="votacion-body">
-                    <form role="form" action="../controller/votacionpopular_controller.php" method="POST">
+                    <form role="form" action="../controller/pw.php?controller=user&action=votacionPopular" method="POST">
                       <div class="form-group">
                           <label for="codigo1"><?= $l["view_votacionpopular_codigo1"] . $_GET["idpincho"] ?></label>
                           <input class="form-control" type="text" name="votacionpopular_codigo1" placeholder="<?= $l["view_votacionpopular_codigo1_placeholder"]?>"/>

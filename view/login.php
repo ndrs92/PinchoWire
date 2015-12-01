@@ -84,7 +84,7 @@ if(!empty($_SESSION["user"])){
                     ?>
                     <br/>
 
-                    <form data-toggle="validator" role="form" action="../controller/login_controller.php" method="POST">
+                    <form data-toggle="validator" role="form" action="../controller/pw.php?controller=user&action=login" method="POST">
                         <div class="form-group">
                             <label for="email"><?= $l["login_email"] ?></label>
                             <input data-error="<?= $l["register_email_error"] ?>" required data-minlength="7" type="email" class="form-control" name="login_user_login">
