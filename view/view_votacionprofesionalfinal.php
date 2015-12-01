@@ -1,7 +1,8 @@
 <?php 
 include_once "../resources/code/lang_coverage.php";
 include_once "../controller/pincho_controller.php";
-include_once "../controller/general_user_controller.php";
+include_once "../controller/pw.php";
+include_once "../controller/pwctrl_user.php";
 include_once "../controller/concurso_controller.php";
 include_once "../model/pincho.php";
 include_once "../model/usuario.php";
@@ -118,7 +119,7 @@ if(!empty($pinchoList) && !empty($pinchosVotados)){
                             	
                                 foreach ($toShow as $indexRow => $row) {
                                     echo "<tr>";
-                                    echo "<form action='../controller/votacionprofesionalparaganador_controller.php' method='post'>";
+                                    echo "<form action='../controller/pw.php?controller=user&action=votacionProfesionalParaGanador' method='post'>";
 
                                     echo "<td><a href='viewPincho.php?id=".$row["pincho_idnombre"]."'>" . $row["pincho_idnombre"] . "</a></td>";
                                     echo "<input type='hidden' name='pincho' value='".$row["pincho_idnombre"]."'>";

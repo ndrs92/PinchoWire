@@ -85,7 +85,7 @@ include_once "../resources/code/lang_coverage.php";
 									}
 								}	
 								echo "<li><a href='profile.php?idemail=".$_SESSION['user']->getIdemail()."'>".$l["view_list_view_profile"]."</a></li>";
-								echo "<li><a href='../controller/logout_controller.php'>".$l["view_list_disconnect"]."</a></li>";
+								echo "<li><a href='../controller/pw.php?controller=user&action=logout'>".$l["view_list_disconnect"]."</a></li>";
 								?>		          
 							</ul>
 						</li>
@@ -96,13 +96,13 @@ include_once "../resources/code/lang_coverage.php";
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-globe"></i><span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="../controller/lang.php?l=es"><img class="lang" src="../images/lang/es.png" />Español</a></li>
-							<li><a href="../controller/lang.php?l=en"><img class="lang" src="../images/lang/gb.png" />English</a></li>
-							<li><a href="../controller/lang.php?l=de"><img class="lang" src="../images/lang/de.png" />Deusch</a></li>
-							<li><a href="../controller/lang.php?l=jp"><img class="lang" src="../images/lang/jp.png" />日本人</a></li>
-							<li><a href="../controller/lang.php?l=pt"><img class="lang" src="../images/lang/pt.png" />Português</a></li>
-							<li><a href="../controller/lang.php?l=fr"><img class="lang" src="../images/lang/fr.png" />Français</a></li>
-							<li><a href="../controller/lang.php?l=sy"><img class="lang" src="../images/lang/sy.png" />العربية</a></li>
+							<li><a href="../controller/pw.php?controller=user&action=setLanguage&l=es"><img class="lang" src="../images/lang/es.png" />Español</a></li>
+							<li><a href="../controller/pw.php?controller=user&action=setLanguage&l=en"><img class="lang" src="../images/lang/gb.png" />English</a></li>
+							<li><a href="../controller/pw.php?controller=user&action=setLanguage&l=de"><img class="lang" src="../images/lang/de.png" />Deusch</a></li>
+							<li><a href="../controller/pw.php?controller=user&action=setLanguage&l=jp"><img class="lang" src="../images/lang/jp.png" />日本人</a></li>
+							<li><a href="../controller/pw.php?controller=user&action=setLanguage&l=pt"><img class="lang" src="../images/lang/pt.png" />Português</a></li>
+							<li><a href="../controller/pw.php?controller=user&action=setLanguage&l=fr"><img class="lang" src="../images/lang/fr.png" />Français</a></li>
+							<li><a href="../controller/pw.php?controller=user&action=setLanguage&l=sy"><img class="lang" src="../images/lang/sy.png" />العربية</a></li>
 
 						</ul>
 					</li>

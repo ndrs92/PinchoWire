@@ -35,7 +35,8 @@ include_once "resources/code/bd_manage.php";
 				die();
 			}
 
-			//All goes well, redirect user to the application
+			//All goes well, open session and redirect user to the application
+			if(!isset($_SESSION)) session_start();
 			header("Location: ./view/list.php");
 			
 

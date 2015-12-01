@@ -3,7 +3,8 @@ include_once "../resources/code/models.php";
 include_once "../resources/code/lang_coverage.php";
 
 include_once "../controller/pincho_controller.php";
-include_once "../controller/general_user_controller.php";
+include_once "../controller/pw.php";
+include_once "../controller/pwctrl_user.php";
 
 
 
@@ -95,7 +96,7 @@ if($pinchoActual->getIdnombre() == NULL){
 							?>
 						</h3>
 						<h3><?= $l["view_pincho_score"].$pinchoActual->getPopularScore(); ?></h3>
-						<a href='./view_votacionpopular.php?idpincho=<?= $pinchoActual->getIdnombre() ?>'><div class='btn btn-success'><?= $l["view_list_vote"] ?></div>
+						<a href='./view_votacionpopular.php?idpincho=<?= $pinchoActual->getIdnombre() ?>'><div class='btn btn-success'><?= $l["view_list_vote"] ?></div></a>
 					</div>
 				</div>
 			</div>
@@ -139,7 +140,7 @@ if($pinchoActual->getIdnombre() == NULL){
 						<?php
 						if(getAllComentarios($pinchoActual) != NULL) {
 							foreach (getAllComentarios($pinchoActual) as $comentario) {
-								$rutaImagen = getUsuarioByID($comentario["juradopopular_idemail"])->getRutaavatar();
+								$rutaImagen = UserController::getUsuarioByID($comentario["juradopopular_idemail"])->getRutaavatar();
 								?>
 
 
@@ -150,7 +151,7 @@ if($pinchoActual->getIdnombre() == NULL){
 											<?php
 											if ($_SESSION && ((get_class($_SESSION["user"]) == "JuradoPopular" && $_SESSION["user"]->getIdemail() == $comentario["juradopopular_idemail"]) || get_class($_SESSION["user"]) == "Administrador")) {
 												?>
-												<form id="comment_<?= $comentario["idcomentario"] ?>" method="post" action="../controller/eliminarcomentario_controller.php">
+												<form id="comment_<?= $comentario["idcomentario"] ?>" method="post" action="../controller/pw.php?controller=user&action=deleteComment">
 													<input type="hidden" name="delcomment_comment_id" value="<?= $comentario["idcomentario"] ?>" />  
 													<input type="hidden" name="delcomment_comment_idpincho" value="<?= $pinchoActual->getIdnombre() ?>" />  
 													<a onclick="document.getElementById('comment_<?= $comentario["idcomentario"] ?>').submit();"><img class='delete-comment' src='../images/trash.png'/></a>

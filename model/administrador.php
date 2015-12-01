@@ -7,11 +7,6 @@ class Administrador extends Usuario{
         parent::__construct($idemail, $nombre, $contrasena, $rutaavatar);
     }
 
-    public function deleteFromDatabase()
-    {
-        UserMapper::deleteFromDatabase($this->idemail, strtolower(get_class($this)));
-    }
-
     public function eliminar_comentario($idpincho){
         UserMapper::eliminar_comentario($idpincho,$this->idemail);
     }

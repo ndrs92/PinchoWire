@@ -80,7 +80,7 @@ if(!empty($_SESSION["user"])){
 							</ul>
 							<div class="tab-content">
 								<div id="pane1" class="tab-pane active">
-									<form data-toggle="validator" role="form" action="../controller/register_controller.php?type=juradopopular" method="POST" enctype="multipart/form-data">
+									<form data-toggle="validator" role="form" action="../controller/pw.php?type=juradopopular&controller=user&action=register" method="POST" enctype="multipart/form-data">
 										<div class="form-group">
 											<label for="name"><?= $l["register_name"] ?></label>
 											<input data-error="<?= $l["register_name_error"] ?>" required data-minlength="4" type="text" class="form-control" name="nombre">
@@ -110,7 +110,7 @@ if(!empty($_SESSION["user"])){
 									</form>
 								</div>
 								<div id="pane2" class="tab-pane">
-									<form data-toggle="validator" role="form" action="../controller/register_controller.php?type=establishment" method="POST" enctype="multipart/form-data">
+									<form data-toggle="validator" role="form" action="../controller/pw.php?type=establishment&controller=user&action=register" method="POST" enctype="multipart/form-data">
 										<div class="form-group">
 											<label for="name"><?= $l["register_name"] ?></label>
 											<input required data-error="<?= $l["register_name_error"] ?>" required data-minlength="4" type="text" class="form-control" name="nombre">
