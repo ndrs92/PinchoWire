@@ -79,12 +79,33 @@ $retrievedCodes = $pinchoTarget->getRetrievedCodes();
                         <h1><?= $l["view_establishment_codes_myCodes"] ?></h1>
                         <span class="st-border"></span>
                         <h3><?= $l["view_establishment_codes_pincho"].$pinchoTarget->getIdnombre(); ?></h3>
-                        <a href="../controller/code_generator_controller.php?idnombre=<?= $pinchoTarget->getIdnombre(); ?>"><button class="btn btn-success"><?= $l["view_establishment_codes_generate"] ?></button></a><br/><br/>
-                        <h4><?= $l["view_establishment_codes_unretrieved"] ?></h4>
                     </div>
                 </div>
-                
 
+                <h4><?= $l["view_establishment_codes_generateTitle"] ?></h4>
+                <div class="row">
+                    <div class="col-md-3">
+                        <?= $l["view_establishment_codes_numgenerate"]; ?>
+                    </div>
+                    <form action="../controller/code_generator_controller.php" method="POST">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <select class="form-control" name="numCodes">
+                                    <option "selected" value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>
+                                    <option value="50">50</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="hidden" name="idnombre" value="<?= $pinchoTarget->getIdnombre(); ?>"/>
+                            <input class="btn btn-success" type="submit" name="profile_user_submit" value="<?= $l["view_establishment_codes_generate"] ?>"/>
+                        </div>
+                    </form>
+                </div>
+
+                <h4><?= $l["view_establishment_codes_unretrieved"] ?></h4>
                 <div class="admin-user-table">
                     <table class="table table-striped">
                         <thead>
