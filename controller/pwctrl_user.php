@@ -319,9 +319,14 @@ class UserController{
 		}
 
 		if($_POST["votacionpopular_codigo1"] && $_POST["votacionpopular_codigo2"] && $_POST["votacionpopular_codigo3"] && $_POST["votacionpopular_idpincho"]){
-			$pinchoCodigo1 = PinchoMapper::getPinchoIdFromCode($_POST["votacionpopular_codigo1"]);
-			$pinchoCodigo2 = PinchoMapper::getPinchoIdFromCode($_POST["votacionpopular_codigo2"]);
-			$pinchoCodigo3 = PinchoMapper::getPinchoIdFromCode($_POST["votacionpopular_codigo3"]);
+			$pincho1 = Pincho::getPinchoFromCode($_POST["votacionpopular_codigo1"]);
+			$pincho2 = Pincho::getPinchoFromCode($_POST["votacionpopular_codigo2"]);
+			$pincho3 = Pincho::getPinchoFromCode($_POST["votacionpopular_codigo3"]);
+
+			$pinchoCodigo1 = $pincho1->getIdnombre();
+			$pinchoCodigo2 = $pincho2->getIdnombre();
+			$pinchoCodigo3 = $pincho3->getIdnombre();
+			
 			$relpath = '../view/view_votacionpopular.php?idpincho='. $_POST["votacionpopular_idpincho"];
 
 			if( $pinchoCodigo1 == $_POST["votacionpopular_idpincho"] ||
@@ -332,27 +337,27 @@ class UserController{
             		//Todos los códigos existen en la BD
 					if (($pinchoCodigo1 != $pinchoCodigo2) && ($pinchoCodigo1 != $pinchoCodigo3) && ($pinchoCodigo2 != $pinchoCodigo3)) {
                 		//Todos los codigos son de pinchos diferentes
-						if((!PinchoMapper::isRetrieved($_POST["votacionpopular_codigo1"])) &&
-							(!PinchoMapper::isRetrieved($_POST["votacionpopular_codigo2"])) &&
-							(!PinchoMapper::isRetrieved($_POST["votacionpopular_codigo3"]))){
+						if((!$pincho1->isCodeRetrieved($_POST["votacionpopular_codigo1"])) &&
+							(!$pincho2->isCodeRetrieved($_POST["votacionpopular_codigo2"])) &&
+							(!$pincho3->isCodeRetrieved($_POST["votacionpopular_codigo3"]))){
                     		//Ninguno de los pinchos ha sido usado ya
 							global $connectHandler;
 						try {
 
 							$connectHandler->autocommit(false);
 							$_SESSION["user"]->votar_pincho($_POST["votacionpopular_idpincho"]);
-							PinchoMapper::burnCode($_POST["votacionpopular_codigo1"], $_SESSION["user"]->getIdemail());
-							PinchoMapper::burnCode($_POST["votacionpopular_codigo2"], $_SESSION["user"]->getIdemail());
-							PinchoMapper::burnCode($_POST["votacionpopular_codigo3"], $_SESSION["user"]->getIdemail());
+							$pincho1->burnCode($_POST["votacionpopular_codigo1"]);
+							$pincho2->burnCode($_POST["votacionpopular_codigo2"]);
+							$pincho3->burnCode($_POST["votacionpopular_codigo3"]);
 
-							if( !PinchoMapper::isProbado($pinchoCodigo1, $_SESSION["user"]->getIdemail()) ){
-								PinchoMapper::toggleMarcado($pinchoCodigo1, $_SESSION["user"]->getIdemail());
+							if( !$pincho1->isProbado($_SESSION["user"]->getIdemail())){
+								$pincho1->toggleMarcado($_SESSION["user"]->getIdemail());
 							}
-							if( !PinchoMapper::isProbado($pinchoCodigo2, $_SESSION["user"]->getIdemail()) ){
-								PinchoMapper::toggleMarcado($pinchoCodigo2, $_SESSION["user"]->getIdemail());
+							if( !$pincho2->isProbado($_SESSION["user"]->getIdemail()) ){
+								$pincho2->toggleMarcado($_SESSION["user"]->getIdemail());
 							}
-							if( !PinchoMapper::isProbado($pinchoCodigo3, $_SESSION["user"]->getIdemail()) ){
-								PinchoMapper::toggleMarcado($pinchoCodigo3, $_SESSION["user"]->getIdemail());
+							if( !$pincho3->isProbado($_SESSION["user"]->getIdemail()) ){
+								$pincho3->toggleMarcado($_SESSION["user"]->getIdemail());
 							}
 							$connectHandler->commit();
 

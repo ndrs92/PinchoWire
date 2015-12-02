@@ -1,6 +1,5 @@
 <?php
 include_once("usuario.php");
-include_once("juradopopularMapper.php");
 class JuradoPopular extends Usuario{
 	private $baneado;
 	
@@ -14,11 +13,11 @@ class JuradoPopular extends Usuario{
     }
 
     public function comentar_pincho($pincho, $textcomentario){
-        JuradoPopularMapper::comentar_pincho($pincho,$textcomentario,$this->idemail);
+        UserMapper::comentar_pincho($pincho,$textcomentario,$this->idemail);
     }
 
     public function eliminar_comentario($idpincho){
-        JuradoPopularMapper::eliminar_comentario($idpincho,$this->idemail);
+        UserMapper::eliminar_comentario($idpincho,$this->idemail);
     }
 
     public function registerUser(){
@@ -26,7 +25,7 @@ class JuradoPopular extends Usuario{
     }
 
     public function votar_pincho($idpincho){
-        JuradoPopularMapper::votar_pincho($idpincho,$this->idemail);
+        UserMapper::votar_pincho($idpincho,$this->idemail);
     }
 	
 	public function getBaneado()
