@@ -180,7 +180,7 @@ class UserMapper
         return null; //No es nadie
     }
 
-    public static function update($mail, $pass, $name, $avatar, $typeuser, $curriculum, $direccion, $web, $horario, $imagen, $geoloc)
+    public static function update($email, $pass, $name, $avatar, $typeuser, $curriculum, $direccion, $web, $horario, $imagen, $geoloc)
     {
         global $connectHandler;
     
@@ -193,38 +193,38 @@ class UserMapper
         switch ($typeuser) {
             case "administrador":
                 $result = mysqli_query($connectHandler, "UPDATE administrador
-            SET idemail=\"$mail\",
+            SET idemail=\"$email\",
             nombre=\"$name\",
             contrasena=\"$pass\",
             rutaavatar=\"$avatar\"
-            WHERE idemail=\"$mail\"");
+            WHERE idemail=\"$email\"");
                 break;
 
             case "juradoprofesional":
                 $lastmail = $_SESSION["user"]->getIdemail();
                 $result = mysqli_query($connectHandler, "UPDATE juradoprofesional
-            SET idemail=\"$mail\",
+            SET idemail=\"$email\",
             nombre=\"$name\",
             contrasena=\"$pass\",
             rutaavatar=\"$avatar\",
             curriculum=\"$curriculum\"
-            WHERE idemail=\"$mail\"");
+            WHERE idemail=\"$email\"");
                 break;
 
             case "juradopopular":
                 $lastmail = $_SESSION["user"]->getIdemail();
                 $result = mysqli_query($connectHandler, "UPDATE juradopopular
-            SET idemail=\"$mail\",
+            SET idemail=\"$email\",
             nombre=\"$name\",
             contrasena=\"$pass\",
             rutaavatar=\"$avatar\"
-            WHERE idemail=\"$mail\"");
+            WHERE idemail=\"$email\"");
                 break;
 
             case "establecimiento":
                 $lastmail = $_SESSION["user"]->getIdemail();
                 $result = mysqli_query($connectHandler, "UPDATE establecimiento
-            SET idemail=\"$mail\",
+            SET idemail=\"$email\",
             nombre=\"$name\",
             contrasena=\"$pass\",
             rutaavatar=\"$avatar\",
@@ -233,7 +233,7 @@ class UserMapper
             web=\"$web\",
             horario=\"$horario\",
             rutaimagen=\"$imagen\"
-            WHERE idemail=\"$mail\"");
+            WHERE idemail=\"$email\"");
                 break;
 
 

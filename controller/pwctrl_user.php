@@ -110,8 +110,9 @@ class UserController{
 			exit;
 		}
 		if($_POST["markeatenpincho_probado_idpincho"] && $_POST["markeatenpincho_probado_idemail"]){
-			PinchoMapper::toggleMarcado($_POST["markeatenpincho_probado_idpincho"],$_POST["markeatenpincho_probado_idemail"]);
-			if(PinchoMapper::isProbado($_POST["markeatenpincho_probado_idpincho"],$_POST["markeatenpincho_probado_idemail"])){
+			$pincho = Pincho::getByIdnombre($_POST["markeatenpincho_probado_idpincho"]);
+			$pincho->toggleMarcado($_POST["markeatenpincho_probado_idemail"]);
+			if($pincho->isProbado($_POST["markeatenpincho_probado_idemail"])){
 				$_SESSION["alert"]["success"] = $l["alertify_eatenPincho_eaten"];
 			} else {
 				$_SESSION["alert"]["success"] = $l["alertify_eatenPincho_noEaten"];
@@ -124,8 +125,9 @@ class UserController{
 	}
 
 	function isEstablishment($idemail){
-		$result = UserMapper::findByEmail($idemail, "establecimiento");
-		if($result == NULL)
+		$user = Usuario::getByIdemail($idemail);
+
+		if($user == "JuradoPopular")
 			return false;
 		return true;
 	}
@@ -165,23 +167,25 @@ class UserController{
 						move_uploaded_file($from["tmp_name"], "../" . $rutaimagen);
 					}
 				}
+				$user = Usuario::getByIdemail($_POST["profile_mail"]);
 				switch ($_POST["type"]) {
 					case "administrador":
-					userMapper::update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $rutaavatar, "administrador", NULL, NULL, NULL, NULL, NULL, NULL);
+					$user->update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $rutaavatar, "administrador", NULL, NULL, NULL, NULL, NULL, NULL);
 					break;
 
 					case "juradoprofesional":
-					userMapper::update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $rutaavatar, "juradoprofesional", $_POST["profile_curriculum"], NULL, NULL, NULL, NULL);
+					$user->update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $rutaavatar, "juradoprofesional", $_POST["profile_curriculum"], NULL, NULL, NULL, NULL);
 					break;
 
 					case "juradopopular":
-					userMapper::update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $rutaavatar, "juradopopular", NULL, NULL, NULL, NULL, NULL, NULL);
+					$user->update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $rutaavatar, "juradopopular", NULL, NULL, NULL, NULL, NULL, NULL);
 					break;
 
 					case "establecimiento":
-					userMapper::update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $rutaavatar, "establecimiento", NULL, $_POST["profile_direccion"], $_POST["profile_web"], $_POST["profile_horario"], $rutaimagen, $_POST["profile_geoloc"]);
+					$user->update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $rutaavatar, "establecimiento", NULL, $_POST["profile_direccion"], $_POST["profile_web"], $_POST["profile_horario"], $rutaimagen, $_POST["profile_geoloc"]);
 					break;
 				}
+				$_SESSION["user"] = $user;
 				header("Location: ../view/profile.php?idemail=".$_POST['profile_mail']);
 			} else {
 				throw new Exception("Ningun campo puede estar vacio. Comprobar javascript");
@@ -326,7 +330,7 @@ class UserController{
 			$pinchoCodigo1 = $pincho1->getIdnombre();
 			$pinchoCodigo2 = $pincho2->getIdnombre();
 			$pinchoCodigo3 = $pincho3->getIdnombre();
-			
+
 			$relpath = '../view/view_votacionpopular.php?idpincho='. $_POST["votacionpopular_idpincho"];
 
 			if( $pinchoCodigo1 == $_POST["votacionpopular_idpincho"] ||
