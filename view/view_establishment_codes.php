@@ -107,7 +107,7 @@ $retrievedCodes = $pinchoTarget->getRetrievedCodes();
 
                 <h4><?= $l["view_establishment_codes_unretrieved"] ?></h4>
                 <div class="admin-user-table">
-                    <table class="table table-striped">
+                    <table class="table table-striped firefix">
                         <thead>
                             <td><?= $l["view_establishment_codes_code"] ?></td>
                         </thead>
@@ -129,7 +129,7 @@ $retrievedCodes = $pinchoTarget->getRetrievedCodes();
                 </div>
                 <h4><?= $l["view_establishment_codes_burnt"] ?></h4>
                 <div class="admin-user-table">
-                    <table class="table table-striped">
+                    <table class="table table-striped firefix">
                         <thead>
                             <td><?= $l["view_establishment_codes_code"] ?></td>
                             <td><?= $l["view_establishment_codes_user"] ?></td>
@@ -152,11 +152,8 @@ $retrievedCodes = $pinchoTarget->getRetrievedCodes();
 
                             ?>
                         </tbody>
-
                     </table>
                 </div>
-
-
             </div>
         </div>
     </section>
