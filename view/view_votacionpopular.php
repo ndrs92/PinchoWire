@@ -80,7 +80,7 @@ if($pinchoActual->getIdnombre() == NULL){
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <img src="../images/pinchos/default.jpg" height="250px" />
+                    <img <?= "src=\"../".$pinchoActual->getRutaimagen()."\""?> height="250px" />
                 </div>
                 <div class="col-md-12">
                     <h3><?= $l["view_votacionpopular_description"] . $pinchoActual->getIdnombre(); ?> </h3>
