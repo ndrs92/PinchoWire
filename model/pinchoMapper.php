@@ -115,21 +115,19 @@ class PinchoMapper{
 		while($row = mysqli_fetch_assoc($result)){
 			$allRetrievedCodes[$row["codigo_idcodigo"]] = $row;
 		}
-		if(isset($allRetrievedCodes)) {
+		if(isset($allRetrievedCodes) && isset($allCodes)) {
 			foreach ($allRetrievedCodes as $individual) {
 				if (array_key_exists($individual["codigo_idcodigo"], $allCodes)) {
 					$toRet[$individual["codigo_idcodigo"]] = $individual;
 				}
 			}
 		}
-
-
 		return $toRet;
-
 	}
 
 	public static function retrieveUnusedCodes($idnombre){
 		global $connectHandler;
+		$toRet = NULL;
 		$query = "Select * from canjea";
 
 		$result = mysqli_query($connectHandler, $query);	
@@ -140,20 +138,17 @@ class PinchoMapper{
 			$allRetrievedCodes[$row["codigo_idcodigo"]] = $row;
 		}
 
-		if(isset($allRetrievedCodes)) {
+		if(isset($allRetrievedCodes) && isset($allCodes)) {
 			foreach ($allCodes as $individual) {
 				if (!array_key_exists($individual["idcodigo"], $allRetrievedCodes)) {
 					$toRet[$individual["idcodigo"]] = $individual;
 				}
 			}
+			return $toRet;
 		}
 		else{
 			return $allCodes;
 		}
-
-
-		return $toRet;
-
 	}
 
 
@@ -259,16 +254,23 @@ class PinchoMapper{
 		}
 	}
 
-	public static function burnCode($codigo, $idnombre){
+	public static function burnCode($codigo, $userid){
 		global $connectHandler;
 		$date = date('Y-m-d H:i:sa');
 
-		$query = "INSERT INTO canjea (codigo_idcodigo, juradopopular_idemail, fecha) values('$codigo', '$idnombre', '$date')";
+		$query = "INSERT INTO canjea (codigo_idcodigo, juradopopular_idemail, fecha) values('$codigo', '$userid', '$date')";
 
+		
 		if(mysqli_query($connectHandler, $query)){
 			return true;
 		}
 		else{
+			echo $query;
+			echo " Codigo: ".$codigo;
+			echo " idnombre: ".$idnombre;
+			echo " Date: ".$date;
+
+			die();
 			return false;
 		}
 	}

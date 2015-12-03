@@ -350,9 +350,9 @@ class UserController{
 
 							$connectHandler->autocommit(false);
 							$_SESSION["user"]->votar_pincho($_POST["votacionpopular_idpincho"]);
-							$pincho1->burnCode($_POST["votacionpopular_codigo1"]);
-							$pincho2->burnCode($_POST["votacionpopular_codigo2"]);
-							$pincho3->burnCode($_POST["votacionpopular_codigo3"]);
+							$pincho1->burnCode($_POST["votacionpopular_codigo1"], $_SESSION["user"]->getIdemail());
+							$pincho2->burnCode($_POST["votacionpopular_codigo2"], $_SESSION["user"]->getIdemail());
+							$pincho3->burnCode($_POST["votacionpopular_codigo3"], $_SESSION["user"]->getIdemail());
 
 							if( !$pincho1->isProbado($_SESSION["user"]->getIdemail())){
 								$pincho1->toggleMarcado($_SESSION["user"]->getIdemail());

@@ -1,8 +1,8 @@
 <?php
- 
+
 include_once("../resources/code/bd_manage.php");
 
- 
+
 class UserMapper
 {
     public static function editBanFromDatabase($idemail, $usertype, $banned)
@@ -124,17 +124,17 @@ class UserMapper
             $row = mysqli_fetch_assoc($result);
             switch ($usertype) {
                 case "administrador":
-                    $user = new $usertype($row["idemail"], $row["nombre"], $row["contrasena"], $row["rutaavatar"]);
-                    break;
+                $user = new $usertype($row["idemail"], $row["nombre"], $row["contrasena"], $row["rutaavatar"]);
+                break;
                 case "juradoprofesional":
-                    $user = new $usertype($row["idemail"], $row["nombre"], $row["contrasena"], $row["rutaavatar"], $row["curriculum"], $row["baneado"]);
-                    break;
+                $user = new $usertype($row["idemail"], $row["nombre"], $row["contrasena"], $row["rutaavatar"], $row["curriculum"], $row["baneado"]);
+                break;
                 case "juradopopular":
-                    $user = new $usertype($row["idemail"], $row["nombre"], $row["contrasena"], $row["rutaavatar"], $row["baneado"]);
-                    break;
+                $user = new $usertype($row["idemail"], $row["nombre"], $row["contrasena"], $row["rutaavatar"], $row["baneado"]);
+                break;
                 case "establecimiento":
-                    $user = new $usertype($row["idemail"], $row["nombre"], $row["contrasena"], $row["rutaavatar"], $row["direccion"], $row["web"], $row["horario"], $row["rutaimagen"], $row["geoloc"], $row["baneado"]);
-                    break;
+                $user = new $usertype($row["idemail"], $row["nombre"], $row["contrasena"], $row["rutaavatar"], $row["direccion"], $row["web"], $row["horario"], $row["rutaimagen"], $row["geoloc"], $row["baneado"]);
+                break;
             }
 
             return $user;
@@ -183,7 +183,7 @@ class UserMapper
     public static function update($email, $pass, $name, $avatar, $typeuser, $curriculum, $direccion, $web, $horario, $imagen, $geoloc)
     {
         global $connectHandler;
-    
+        
         if(!empty($pass)){
             $pass = md5($pass);
         } else {
@@ -192,49 +192,49 @@ class UserMapper
 
         switch ($typeuser) {
             case "administrador":
-                $result = mysqli_query($connectHandler, "UPDATE administrador
-            SET idemail=\"$email\",
-            nombre=\"$name\",
-            contrasena=\"$pass\",
-            rutaavatar=\"$avatar\"
-            WHERE idemail=\"$email\"");
-                break;
+            $result = mysqli_query($connectHandler, "UPDATE administrador
+                SET idemail=\"$email\",
+                nombre=\"$name\",
+                contrasena=\"$pass\",
+                rutaavatar=\"$avatar\"
+                WHERE idemail=\"$email\"");
+            break;
 
             case "juradoprofesional":
-                $lastmail = $_SESSION["user"]->getIdemail();
-                $result = mysqli_query($connectHandler, "UPDATE juradoprofesional
-            SET idemail=\"$email\",
-            nombre=\"$name\",
-            contrasena=\"$pass\",
-            rutaavatar=\"$avatar\",
-            curriculum=\"$curriculum\"
-            WHERE idemail=\"$email\"");
-                break;
+            $lastmail = $_SESSION["user"]->getIdemail();
+            $result = mysqli_query($connectHandler, "UPDATE juradoprofesional
+                SET idemail=\"$email\",
+                nombre=\"$name\",
+                contrasena=\"$pass\",
+                rutaavatar=\"$avatar\",
+                curriculum=\"$curriculum\"
+                WHERE idemail=\"$email\"");
+            break;
 
             case "juradopopular":
-                $lastmail = $_SESSION["user"]->getIdemail();
-                $result = mysqli_query($connectHandler, "UPDATE juradopopular
-            SET idemail=\"$email\",
-            nombre=\"$name\",
-            contrasena=\"$pass\",
-            rutaavatar=\"$avatar\"
-            WHERE idemail=\"$email\"");
-                break;
+            $lastmail = $_SESSION["user"]->getIdemail();
+            $result = mysqli_query($connectHandler, "UPDATE juradopopular
+                SET idemail=\"$email\",
+                nombre=\"$name\",
+                contrasena=\"$pass\",
+                rutaavatar=\"$avatar\"
+                WHERE idemail=\"$email\"");
+            break;
 
             case "establecimiento":
-                $lastmail = $_SESSION["user"]->getIdemail();
-                $result = mysqli_query($connectHandler, "UPDATE establecimiento
-            SET idemail=\"$email\",
-            nombre=\"$name\",
-            contrasena=\"$pass\",
-            rutaavatar=\"$avatar\",
-            geoloc=\"$geoloc\",
-            direccion=\"$direccion\",
-            web=\"$web\",
-            horario=\"$horario\",
-            rutaimagen=\"$imagen\"
-            WHERE idemail=\"$email\"");
-                break;
+            $lastmail = $_SESSION["user"]->getIdemail();
+            $result = mysqli_query($connectHandler, "UPDATE establecimiento
+                SET idemail=\"$email\",
+                nombre=\"$name\",
+                contrasena=\"$pass\",
+                rutaavatar=\"$avatar\",
+                geoloc=\"$geoloc\",
+                direccion=\"$direccion\",
+                web=\"$web\",
+                horario=\"$horario\",
+                rutaimagen=\"$imagen\"
+                WHERE idemail=\"$email\"");
+            break;
 
 
         }
@@ -341,7 +341,7 @@ class UserMapper
     public static function votar_pincho($idpincho, $idemail){
         global $connectHandler;
         $query = "INSERT INTO vota (pincho_idnombre, juradopopular_idemail) VALUES ('$idpincho','$idemail')";
-        echo($query);
+        
         if(mysqli_query($connectHandler, $query)){
             echo("Guardado satisfactorio");
         }

@@ -186,8 +186,8 @@ class Pincho {
         return PinchoMapper::isRetrieved($codigo);
     }
 
-    public function burnCode($codigo){
-        return PinchoMapper::burnCode($codigo ,$this->getIdnombre());
+    public function burnCode($codigo, $userid){
+        return PinchoMapper::burnCode($codigo ,$userid);
     }
 
     public function isProbado($userid){

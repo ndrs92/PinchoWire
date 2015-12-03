@@ -96,7 +96,9 @@ if($pinchoActual->getIdnombre() == NULL){
 							?>
 						</h3>
 						<h3><?= $l["view_pincho_score"].$pinchoActual->getPopularScore(); ?></h3>
+						<?php if(isset($_SESSION["user"]) && get_class($_SESSION["user"]) == "JuradoPopular"){ ?>
 						<a href='./view_votacionpopular.php?idpincho=<?= $pinchoActual->getIdnombre() ?>'><div class='btn btn-success'><?= $l["view_list_vote"] ?></div></a>
+						<?php } ?>
 					</div>
 				</div>
 			</div>
