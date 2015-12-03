@@ -3,7 +3,7 @@ include_once "../resources/code/models.php";
 include_once "../resources/code/lang_coverage.php";
 
 include_once "../controller/pincho_controller.php";
-include_once "../controller/general_user_controller.php";
+include_once "../controller/pwctrl_user.php";
 
 
 if(!isset($_SESSION)) session_start();
@@ -74,63 +74,63 @@ $pinchoList = Pincho::getAllPropuestas();
                     </div>
                 </div>
                 
-<div class="row">
-                <div class="admin-user-table">
-                    <table class="table table-stripped firefix">
-                        <thead>
-                            <td><?= $l["view_admin_propertyManager"] ?></td>
-                            <td><?= $l["view_admin_name"] ?></td>
-                            <td><?= $l["view_admin_description"] ?></td>
-                            <td><?= $l["view_admin_ingredients"] ?></td>
-                            <td><?= $l["view_admin_status"] ?></td>
-                            <td><?= $l["view_admin_actions"] ?></td>
-                        </thead>
-                        <tbody>
-                            <?php
-                            if (isset($pinchoList)) {
-                                foreach ($pinchoList as $indexRow => $row) {
-                                    echo "<tr>";
-                                    echo "<td>" . $indexRow . "</td>";
-                                    echo "<td>" . $row->getIdnombre() . "</td>";
-                                    echo "<td>" . $row->getDescripcion() . "</td>";
-                                    echo "<td>" . $row->getIngredientes() . "</td>";
+                <div class="row">
+                    <div class="admin-user-table">
+                        <table class="table table-stripped firefix">
+                            <thead>
+                                <td><?= $l["view_admin_propertyManager"] ?></td>
+                                <td><?= $l["view_admin_name"] ?></td>
+                                <td><?= $l["view_admin_description"] ?></td>
+                                <td><?= $l["view_admin_ingredients"] ?></td>
+                                <td><?= $l["view_admin_status"] ?></td>
+                                <td><?= $l["view_admin_actions"] ?></td>
+                            </thead>
+                            <tbody>
+                                <?php
+                                if (isset($pinchoList)) {
+                                    foreach ($pinchoList as $indexRow => $row) {
+                                        echo "<tr>";
+                                        echo "<td>" . $indexRow . "</td>";
+                                        echo "<td>" . $row->getIdnombre() . "</td>";
+                                        echo "<td>" . $row->getDescripcion() . "</td>";
+                                        echo "<td>" . $row->getIngredientes() . "</td>";
 
-                                    switch ($row->getEstadopropuesta()) {
-                                        case 0:
-                                        echo "<td>". $l["view_admin_pending"] ."</td>";
+                                        switch ($row->getEstadopropuesta()) {
+                                            case 0:
+                                            echo "<td>". $l["view_admin_pending"] ."</td>";
+                                            break;
+                                            case 1:
+                                            echo "<td>". $l["view_admin_denied"] ."</td>";
+                                            break;
+                                            default:
+                                            echo "<td>Error por aqui</td>";
+                                            break;
+                                        }
+
+                                        switch ($row->getEstadopropuesta()) {
+                                            case 0:
+                                            echo "<td>
+                                            <a class='btn btn-success' href='../controller/gestionpropuesta_controller.php?action=accept_pincho&idnombre=" . $row->getIdnombre() . "'>". $l["view_admin_accept"] ."</a>
+                                            <a class='btn btn-danger' href='../controller/gestionpropuesta_controller.php?action=deny_pincho&idnombre=" . $row->getIdnombre() . "'>". $l["view_admin_deny"] ."</a>
+                                        </td>";
                                         break;
                                         case 1:
-                                        echo "<td>". $l["view_admin_denied"] ."</td>";
+                                        echo "<td><a class='btn btn-success' href='../controller/gestionpropuesta_controller.php?action=set_pendant&idnombre=" . $row->getIdnombre() . "'>". $l["view_admin_revision"] ."</a></td>";
                                         break;
                                         default:
-                                            echo "<td>Error por aqui</td>";
+                                        echo "<td>Error por aqui</td>";
                                         break;
                                     }
 
-                                    switch ($row->getEstadopropuesta()) {
-                                        case 0:
-                                        echo "<td>
-                                        <a class='btn btn-success' href='../controller/gestionpropuesta_controller.php?action=accept_pincho&idnombre=" . $row->getIdnombre() . "'>". $l["view_admin_accept"] ."</a>
-                                        <a class='btn btn-danger' href='../controller/gestionpropuesta_controller.php?action=deny_pincho&idnombre=" . $row->getIdnombre() . "'>". $l["view_admin_deny"] ."</a>
-                                    </td>";
-                                    break;
-                                    case 1:
-                                    echo "<td><a class='btn btn-success' href='../controller/gestionpropuesta_controller.php?action=set_pendant&idnombre=" . $row->getIdnombre() . "'>". $l["view_admin_revision"] ."</a></td>";
-                                    break;
-                                    default:
-                                    echo "<td>Error por aqui</td>";
-                                    break;
+                                    echo "</tr>";
                                 }
-
-                                echo "</tr>";
                             }
-                        }
-                        ?>
-                    </tbody>
+                            ?>
+                        </tbody>
 
-                </table>
+                    </table>
+                </div>
             </div>
-</div>
 
         </div>
     </div>
