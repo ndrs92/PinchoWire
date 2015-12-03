@@ -1,8 +1,8 @@
 <?php
 include_once "../resources/code/models.php";
-include_once "../controller/concurso_controller.php";
+include_once "../controller/pwctrl_competition.php";
 
-$concurso = getConcurso();
+$concurso = CompetitionController::getConcurso();
 ?>
 
 <!-- FOOTER -->

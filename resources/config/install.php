@@ -3,12 +3,13 @@ error_reporting(0);
 ini_set('display_errors', 0);
 
 include_once "../../model/concurso.php";
-include_once "../../controller/concurso_controller.php";
+include_once "../../controller/pw.php";
+include_once "../../controller/pwctrl_competition.php";
 
 $continue = false;
 
 try{
-	$concurso = getConcurso();
+	$concurso = CompetitionController::getConcurso();
 }catch(Exception $e){
 	$continue = true;
 }

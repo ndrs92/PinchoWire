@@ -5,7 +5,7 @@ include_once "../resources/code/lang_coverage.php";
 include_once "../controller/pincho_controller.php";
 include_once "../controller/pw.php";
 include_once "../controller/pwctrl_user.php";
-include_once "../controller/concurso_controller.php";
+include_once "../controller/pw.php";
 
 if (!isset($_SESSION)) session_start();
 
@@ -90,7 +90,6 @@ $pinchoList = Pincho::getAllPropuestas();
                         echo '<div class="progress-bar" style="width: 33%"></div>';
                         echo '</div>';
                         echo '<button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#limit">'.$l["view_admin_1_bt"].'</button>';
-                        //echo '<a href="../controller/competition_state_controller.php?increment=true" class="btn btn-primary btn-sm pull-right">'.$l["view_admin_1_bt"].'</a>';
                         break;
 
                         case 1:
@@ -98,7 +97,7 @@ $pinchoList = Pincho::getAllPropuestas();
                         echo '<div class="progress progress-striped active">';
                         echo '<div class="progress-bar" style="width: 66%"></div>';
                         echo '</div>';
-                        echo '<a href="../controller/competition_state_controller.php?increment=true" class="btn btn-primary btn-sm pull-right">'.$l["view_admin_2_bt"].'</a>';
+                        echo '<a href="../controller/pw.php?increment=true&controller=competition&action=changeState" class="btn btn-primary btn-sm pull-right">'.$l["view_admin_2_bt"].'</a>';
                         break;
 
                         case 2:
@@ -116,7 +115,7 @@ $pinchoList = Pincho::getAllPropuestas();
 
 
                 <div class="admin-user-table">
-                    <form data-toggle="validator" class="form" action="../controller/gestionconcurso_controller.php"
+                    <form data-toggle="validator" class="form" action="../controller/pw.php?controller=competition&action=gestionConcurso"
                     method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="name"><?= $l["view_admin_name"] ?></label>
@@ -179,7 +178,7 @@ $pinchoList = Pincho::getAllPropuestas();
 <div id="limit" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content search">
-            <form role="form" action="../controller/competition_state_controller.php" method="post"> 
+            <form role="form" action="../controller/pw.php?controller=competition&action=changeState" method="post"> 
                 <div class="form-group has-feedback has-feedback-left search-form">
                     <input type="number" min="0" name="num" class="form-control input-lg" placeholder="<?= $l["view_admin_limit"] ?>" />
                     <i class="form-control-feedback fa fa-check-square-o"></i>

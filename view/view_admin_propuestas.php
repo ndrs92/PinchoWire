@@ -110,12 +110,12 @@ $pinchoList = Pincho::getAllPropuestas();
                                         switch ($row->getEstadopropuesta()) {
                                             case 0:
                                             echo "<td>
-                                            <a class='btn btn-success' href='../controller/gestionpropuesta_controller.php?action=accept_pincho&idnombre=" . $row->getIdnombre() . "'>". $l["view_admin_accept"] ."</a>
-                                            <a class='btn btn-danger' href='../controller/gestionpropuesta_controller.php?action=deny_pincho&idnombre=" . $row->getIdnombre() . "'>". $l["view_admin_deny"] ."</a>
+                                            <a class='btn btn-success' href='../controller/pw.php?controller=competition&action=accept_pincho&idnombre=" . $row->getIdnombre() . "'>". $l["view_admin_accept"] ."</a>
+                                            <a class='btn btn-danger' href='../controller/pw.php?controller=competition&action=deny_pincho&idnombre=" . $row->getIdnombre() . "'>". $l["view_admin_deny"] ."</a>
                                         </td>";
                                         break;
                                         case 1:
-                                        echo "<td><a class='btn btn-success' href='../controller/gestionpropuesta_controller.php?action=set_pendant&idnombre=" . $row->getIdnombre() . "'>". $l["view_admin_revision"] ."</a></td>";
+                                        echo "<td><a class='btn btn-success' href='../controller/pw.php?controller=competition&action=set_pendant&idnombre=" . $row->getIdnombre() . "'>". $l["view_admin_revision"] ."</a></td>";
                                         break;
                                         default:
                                         echo "<td>Error por aqui</td>";

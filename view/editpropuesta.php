@@ -73,7 +73,7 @@ if(get_class($_SESSION["user"])!="Establecimiento"){
   				if(!empty($row) && $row["estadoPropuesta"] == 0){
   					?>
   					<h1><?= $l["view_editpropuesta_titulo"] ?> </h1>
-  					<form class="form" action="../controller/editpropuesta_controller.php" method="POST">
+  					<form class="form" action="../controller/pw.php?controller=competition&action=editPropuesta" method="POST">
   						<div class="form-group">
   							<label for="email"><?= $l["view_editpropuesta_intronombre"] ?></label>
   							<input class="form-control" type="text" name="editpropuesta_propuesta_nombre" value="<?= $row['idnombre']; ?>" />

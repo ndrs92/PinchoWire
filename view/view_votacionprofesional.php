@@ -3,10 +3,11 @@ include_once "../resources/code/lang_coverage.php";
 include_once "../resources/code/models.php";
 include_once "../controller/pincho_controller.php";
 include_once "../controller/pwctrl_user.php";
-include_once "../controller/concurso_controller.php";
+include_once "../controller/pwctrl_competition.php";
+include_once "../controller/pw.php";
 
 if(!isset($_SESSION)) session_start();
-$concurso = getConcurso();
+$concurso = CompetitionController::getConcurso();
 if(get_class($_SESSION["user"])!="JuradoProfesional" || $concurso->getEstado() != 0){
     header("Location: 403.php");
     exit;

@@ -436,6 +436,49 @@ public static function votacionProfesionalParaGanador(){
 	}
 }
 
+public static function edit()
+{
+	$idemail = $_GET["idemail"];
+	$host  = $_SERVER['HTTP_HOST'];
+	$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+	$relpath = '../view/profile.php?idemail='.$idemail;
+	header("Location: http://$host$uri/$relpath");
+
+}
+
+public static function ban()
+{
+	$idemail = $_GET["idemail"];
+	$toBan = Usuario::getByIdemail($idemail);
+	$toBan->editBanFromDatabase("1");
+	$host  = $_SERVER['HTTP_HOST'];
+	$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+
+	$relpath = '../view/view_admin_usuarios.php';
+
+	header("Location: http://$host$uri/$relpath");
+
+}
+
+public static function unban()
+{
+	$idemail = $_GET["idemail"];
+	$toUnBan = Usuario::getByIdemail($idemail);
+	$toUnBan->editBanFromDatabase("0");
+	$host  = $_SERVER['HTTP_HOST'];
+	$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+
+	$relpath = '../view/view_admin_usuarios.php';
+
+	header("Location: http://$host$uri/$relpath");
+
+}
+
+
+
+
+
+
 }
 
 ?>

@@ -71,7 +71,7 @@ if(get_class($_SESSION["user"]) != "Administrador"){
 						</ul>
 						<div class="tab-content">
 							<div id="pane1" class="tab-pane active">
-								<form role="form" action="../controller/register_controller.php?type=juradoprofesional" method="POST">
+								<form role="form" action="../controller/pw.php?controller=user&action=register&type=juradoprofesional" method="POST">
 									<div class="form-group">
 										<label for="name"><?= $l["register_name"]?></label>
 										<input type="text" class="form-control" name="nombre">

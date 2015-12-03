@@ -69,7 +69,7 @@ if(get_class($_SESSION["user"])!="Establecimiento"){
   					</div>
   				</div>
   				<div class="form-enviar-propuesta">
-  					<form class="form" action="../controller/enviarpropuesta_controller.php" method="POST" enctype="multipart/form-data">
+  					<form class="form" action="../controller/pw.php?controller=competition&action=enviarPropuesta" method="POST" enctype="multipart/form-data">
   						<div class="form-group">
   							<label for="name"><?= $l["view_enviarpropuesta_intronombre"] ?></label>
   							<input type="text" class="form-control" name="enviarpropuesta_propuesta_nombre" placeholder="<?= $l["view_enviarpropuesta_intronombre_placeholder"] ?>" />

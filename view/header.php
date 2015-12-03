@@ -1,6 +1,7 @@
 <?php
 include_once "../resources/code/models.php";
-include_once "../controller/concurso_controller.php";
+include_once "../controller/pw.php";
+include_once "../controller/pwctrl_competition.php";
 include_once "../resources/code/lang_coverage.php";
 
 ?>
@@ -76,7 +77,7 @@ include_once "../resources/code/lang_coverage.php";
 									echo "<li><a href='./view_administrar.php'>".$l["view_list_admin_event"]."</a></li>";
 								}
 								if(get_class($_SESSION["user"]) == "JuradoProfesional"){
-									$concurso= getConcurso();
+									$concurso= CompetitionController::getConcurso();
 									if($concurso->getEstado() == 0){
 										echo "<li><a href='./view_votacionprofesional.php'>".$l["view_list_profesional_votacion_promociona"]."</a></li>";
 									}

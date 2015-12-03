@@ -122,7 +122,7 @@ if($pinchoActual->getIdnombre() == NULL){
 							?>
 							<div class="row insert-comment">
 								<div>
-									<form role="form" action="../controller/addcomment_controller.php" method="POST">
+									<form role="form" action="../controller/pw.php?controller=user&action=addComment" method="POST">
 										<input type="hidden" name="addcomment_comment_idpincho" value="<?php echo $pinchoActual->getIdnombre(); ?>"/>
 										<div class="col-md-2"><h5><?= $l["view_pincho_insertComment"] ?></h5></div>
 										<div class="col-md-6"><textarea class="form-control" rows="1" name="addcomment_comment_name" ></textarea></div>

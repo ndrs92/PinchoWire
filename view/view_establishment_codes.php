@@ -87,7 +87,7 @@ $retrievedCodes = $pinchoTarget->getRetrievedCodes();
                     <div class="col-md-3">
                         <?= $l["view_establishment_codes_numgenerate"]; ?>
                     </div>
-                    <form action="../controller/code_generator_controller.php" method="POST">
+                    <form action="../controller/pw.php?controller=competition&action=generateCodes" method="POST">
                         <div class="col-md-2">
                             <div class="form-group">
                                 <select class="form-control" name="numCodes">

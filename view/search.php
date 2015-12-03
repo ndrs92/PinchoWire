@@ -1,7 +1,7 @@
 <?php
 include_once "../resources/code/models.php";
 include_once "../resources/code/lang_coverage.php";
-include_once "../controller/search_controller.php";
+include_once "../controller/pwctrl_competition.php";
 
 if(!isset($_SESSION)) session_start();
 
@@ -10,7 +10,7 @@ if(!isset($_POST["search-data"])){
 	exit();
 }
 
-$results = search(strtolower($_POST["search-data"]));
+$results = CompetitionController::search(strtolower($_POST["search-data"]));
 
 if($results["establishments"] == NULL){
 	$numOfEstablishments = 0;
