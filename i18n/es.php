@@ -274,11 +274,13 @@ $l = array(
 
     "view_establishment_codes_myCodes" => "Códigos de mi pincho",
     "view_establishment_codes_pincho" => "Pincho: ",
-    "view_establishment_codes_generate" => "Generar 5 códigos más",
+    "view_establishment_codes_generate" => "Generar códigos",
     "view_establishment_codes_unretrieved" => "Códigos disponibles sin canjear",
     "view_establishment_codes_code" => "Código",
     "view_establishment_codes_burnt" => "Códigos canjeados",
     "view_establishment_codes_user" => "Usuario",
+    "view_establishment_codes_generateTitle" => "Generador de códigos",
+    "view_establishment_codes_numgenerate" => "Elija el número de códigos a generar",
 
     "view_pincho_name" => "Nombre del pincho",
     "view_pincho_description" => " Descripción: ",

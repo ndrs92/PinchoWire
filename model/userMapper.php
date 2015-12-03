@@ -5,20 +5,6 @@ include_once("../resources/code/bd_manage.php");
  
 class UserMapper
 {
-    public static function eliminar_comentario($idpincho, $idemail)
-    {
-        //Abrir conexion BD
-        global $connectHandler;
-        $query = "DELETE FROM comentario WHERE (idcomentario = $idpincho)";
-        echo($query);
-
-        if (mysqli_query($connectHandler, $query)) {
-            echo("Comentario eliminado satisfactoriamente");
-        } else {
-            echo("Error en el eliminado del pincho");
-        }
-    }
-
     public static function editBanFromDatabase($idemail, $usertype, $banned)
     {
         global $connectHandler;
@@ -194,46 +180,51 @@ class UserMapper
         return null; //No es nadie
     }
 
-    public static function update($mail, $pass, $name, $avatar, $typeuser, $curriculum, $direccion, $web, $horario, $imagen, $geoloc)
+    public static function update($email, $pass, $name, $avatar, $typeuser, $curriculum, $direccion, $web, $horario, $imagen, $geoloc)
     {
         global $connectHandler;
-        $pass = md5($pass);
+    
+        if(!empty($pass)){
+            $pass = md5($pass);
+        } else {
+            $pass = $_SESSION["user"]->getContrasena();
+        }
 
         switch ($typeuser) {
             case "administrador":
                 $result = mysqli_query($connectHandler, "UPDATE administrador
-            SET idemail=\"$mail\",
+            SET idemail=\"$email\",
             nombre=\"$name\",
             contrasena=\"$pass\",
             rutaavatar=\"$avatar\"
-            WHERE idemail=\"$mail\"");
+            WHERE idemail=\"$email\"");
                 break;
 
             case "juradoprofesional":
                 $lastmail = $_SESSION["user"]->getIdemail();
                 $result = mysqli_query($connectHandler, "UPDATE juradoprofesional
-            SET idemail=\"$mail\",
+            SET idemail=\"$email\",
             nombre=\"$name\",
             contrasena=\"$pass\",
             rutaavatar=\"$avatar\",
             curriculum=\"$curriculum\"
-            WHERE idemail=\"$mail\"");
+            WHERE idemail=\"$email\"");
                 break;
 
             case "juradopopular":
                 $lastmail = $_SESSION["user"]->getIdemail();
                 $result = mysqli_query($connectHandler, "UPDATE juradopopular
-            SET idemail=\"$mail\",
+            SET idemail=\"$email\",
             nombre=\"$name\",
             contrasena=\"$pass\",
             rutaavatar=\"$avatar\"
-            WHERE idemail=\"$mail\"");
+            WHERE idemail=\"$email\"");
                 break;
 
             case "establecimiento":
                 $lastmail = $_SESSION["user"]->getIdemail();
                 $result = mysqli_query($connectHandler, "UPDATE establecimiento
-            SET idemail=\"$mail\",
+            SET idemail=\"$email\",
             nombre=\"$name\",
             contrasena=\"$pass\",
             rutaavatar=\"$avatar\",
@@ -242,7 +233,7 @@ class UserMapper
             web=\"$web\",
             horario=\"$horario\",
             rutaimagen=\"$imagen\"
-            WHERE idemail=\"$mail\"");
+            WHERE idemail=\"$email\"");
                 break;
 
 
@@ -321,6 +312,40 @@ class UserMapper
         }
 
         return $toRet;
+    }
+
+    public static function comentar_pincho($pincho, $textcomentario, $idemail){
+        global $connectHandler;
+        $date = date('Y-m-d H:i:sa');
+        $query = "INSERT INTO comentario (juradopopular_idemail, pincho_idnombre, contenido, fecha) VALUES ('$idemail','$pincho','$textcomentario', '$date')";
+        echo($query);
+
+        if(mysqli_query($connectHandler, $query)){
+            echo("Guardado satisfactorio");
+        }
+        else{echo("Error en el guardado");}
+    }
+
+    public static function eliminar_comentario($idpincho, $idemail){
+        //Abrir conexion BD
+        global $connectHandler;
+        $query = "DELETE FROM comentario WHERE (idcomentario = $idpincho AND juradopopular_idemail = '$idemail')";
+        echo($query);
+
+        if(mysqli_query($connectHandler, $query)){
+            echo("Comentario eliminado satisfactoriamente");
+        }
+        else{echo("Error en el eliminado del pincho");}
+    }
+
+    public static function votar_pincho($idpincho, $idemail){
+        global $connectHandler;
+        $query = "INSERT INTO vota (pincho_idnombre, juradopopular_idemail) VALUES ('$idpincho','$idemail')";
+        echo($query);
+        if(mysqli_query($connectHandler, $query)){
+            echo("Guardado satisfactorio");
+        }
+        else{echo("Error en el guardado");}
     }
 
 }

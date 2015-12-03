@@ -259,11 +259,11 @@ class PinchoMapper{
 		}
 	}
 
-	public static function burnCode($codigo, $idemail){
+	public static function burnCode($codigo, $idnombre){
 		global $connectHandler;
 		$date = date('Y-m-d H:i:sa');
 
-		$query = "INSERT INTO canjea (codigo_idcodigo, juradopopular_idemail, fecha) values('$codigo', '$idemail', '$date')";
+		$query = "INSERT INTO canjea (codigo_idcodigo, juradopopular_idemail, fecha) values('$codigo', '$idnombre', '$date')";
 
 		if(mysqli_query($connectHandler, $query)){
 			return true;

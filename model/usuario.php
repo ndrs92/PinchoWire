@@ -167,6 +167,11 @@ class Usuario
     {
         $this->rutaavatar = $rutaavatar;
     }
+
+    public static function update($email, $pass, $name, $avatar, $typeuser, $curriculum, $direccion, $web, $horario, $imagen, $geoloc)
+    {
+        UserMapper::update($email, $pass, $name, $avatar, $typeuser, $curriculum, $direccion, $web, $horario, $imagen, $geoloc);
+    }
 }
 
 

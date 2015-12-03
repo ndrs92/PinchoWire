@@ -99,7 +99,7 @@ if(!empty($pinchoList) && !empty($pinchosPromocionados)){
                 
 
                 <div class="admin-user-table">
-                    <table class="table table-stripped">
+                    <table class="table table-stripped firefix">
                         <thead>
                             <td><?= $l["view_pincho_name"] ?></td>
                             <td><?= $l["view_votacionprofesional_vote"] ?></td>

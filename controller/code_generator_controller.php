@@ -11,12 +11,12 @@ if(get_class($_SESSION["user"])!="Establecimiento"){
     exit;
 }
 
-$target = Pincho::getByIdnombre($_GET["idnombre"]);
+$target = Pincho::getByIdnombre($_POST["idnombre"]);
 
 global $connectHandler;
 $connectHandler->autocommit(false);
 try {
-    $target->createCodes(5);
+    $target->createCodes($_POST["numCodes"]);
     $connectHandler->commit();
 }
 catch (Exception $e){

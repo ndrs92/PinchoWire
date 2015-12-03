@@ -110,8 +110,9 @@ class UserController{
 			exit;
 		}
 		if($_POST["markeatenpincho_probado_idpincho"] && $_POST["markeatenpincho_probado_idemail"]){
-			PinchoMapper::toggleMarcado($_POST["markeatenpincho_probado_idpincho"],$_POST["markeatenpincho_probado_idemail"]);
-			if(PinchoMapper::isProbado($_POST["markeatenpincho_probado_idpincho"],$_POST["markeatenpincho_probado_idemail"])){
+			$pincho = Pincho::getByIdnombre($_POST["markeatenpincho_probado_idpincho"]);
+			$pincho->toggleMarcado($_POST["markeatenpincho_probado_idemail"]);
+			if($pincho->isProbado($_POST["markeatenpincho_probado_idemail"])){
 				$_SESSION["alert"]["success"] = $l["alertify_eatenPincho_eaten"];
 			} else {
 				$_SESSION["alert"]["success"] = $l["alertify_eatenPincho_noEaten"];
@@ -124,8 +125,9 @@ class UserController{
 	}
 
 	function isEstablishment($idemail){
-		$result = UserMapper::findByEmail($idemail, "establecimiento");
-		if($result == NULL)
+		$user = Usuario::getByIdemail($idemail);
+
+		if($user == "JuradoPopular")
 			return false;
 		return true;
 	}
@@ -143,7 +145,7 @@ class UserController{
 		if(!isset($_SESSION)) session_start();
 		global $l;
 		if (isset($_POST["profile_user_submit"])) {
-			if ($_POST["profile_mail"] && $_POST["profile_pass"] && $_POST["profile_name"]) {
+			if ($_POST["profile_mail"] && $_POST["profile_name"]) {
 				/* Validar avatar */
 				$rutaavatar = $_POST["avatar"];
 				$validFormats = array("jpg", "jpeg", "png", "bmp");
@@ -165,23 +167,25 @@ class UserController{
 						move_uploaded_file($from["tmp_name"], "../" . $rutaimagen);
 					}
 				}
+				$user = Usuario::getByIdemail($_POST["profile_mail"]);
 				switch ($_POST["type"]) {
 					case "administrador":
-					userMapper::update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $rutaavatar, "administrador", NULL, NULL, NULL, NULL, NULL, NULL);
+					$user->update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $rutaavatar, "administrador", NULL, NULL, NULL, NULL, NULL, NULL);
 					break;
 
 					case "juradoprofesional":
-					userMapper::update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $rutaavatar, "juradoprofesional", $_POST["profile_curriculum"], NULL, NULL, NULL, NULL);
+					$user->update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $rutaavatar, "juradoprofesional", $_POST["profile_curriculum"], NULL, NULL, NULL, NULL);
 					break;
 
 					case "juradopopular":
-					userMapper::update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $rutaavatar, "juradopopular", NULL, NULL, NULL, NULL, NULL, NULL);
+					$user->update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $rutaavatar, "juradopopular", NULL, NULL, NULL, NULL, NULL, NULL);
 					break;
 
 					case "establecimiento":
-					userMapper::update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $rutaavatar, "establecimiento", NULL, $_POST["profile_direccion"], $_POST["profile_web"], $_POST["profile_horario"], $rutaimagen, $_POST["profile_geoloc"]);
+					$user->update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $rutaavatar, "establecimiento", NULL, $_POST["profile_direccion"], $_POST["profile_web"], $_POST["profile_horario"], $rutaimagen, $_POST["profile_geoloc"]);
 					break;
 				}
+				$_SESSION["user"] = $user;
 				header("Location: ../view/profile.php?idemail=".$_POST['profile_mail']);
 			} else {
 				throw new Exception("Ningun campo puede estar vacio. Comprobar javascript");
@@ -319,9 +323,14 @@ class UserController{
 		}
 
 		if($_POST["votacionpopular_codigo1"] && $_POST["votacionpopular_codigo2"] && $_POST["votacionpopular_codigo3"] && $_POST["votacionpopular_idpincho"]){
-			$pinchoCodigo1 = PinchoMapper::getPinchoIdFromCode($_POST["votacionpopular_codigo1"]);
-			$pinchoCodigo2 = PinchoMapper::getPinchoIdFromCode($_POST["votacionpopular_codigo2"]);
-			$pinchoCodigo3 = PinchoMapper::getPinchoIdFromCode($_POST["votacionpopular_codigo3"]);
+			$pincho1 = Pincho::getPinchoFromCode($_POST["votacionpopular_codigo1"]);
+			$pincho2 = Pincho::getPinchoFromCode($_POST["votacionpopular_codigo2"]);
+			$pincho3 = Pincho::getPinchoFromCode($_POST["votacionpopular_codigo3"]);
+
+			$pinchoCodigo1 = $pincho1->getIdnombre();
+			$pinchoCodigo2 = $pincho2->getIdnombre();
+			$pinchoCodigo3 = $pincho3->getIdnombre();
+
 			$relpath = '../view/view_votacionpopular.php?idpincho='. $_POST["votacionpopular_idpincho"];
 
 			if( $pinchoCodigo1 == $_POST["votacionpopular_idpincho"] ||
@@ -332,27 +341,27 @@ class UserController{
             		//Todos los códigos existen en la BD
 					if (($pinchoCodigo1 != $pinchoCodigo2) && ($pinchoCodigo1 != $pinchoCodigo3) && ($pinchoCodigo2 != $pinchoCodigo3)) {
                 		//Todos los codigos son de pinchos diferentes
-						if((!PinchoMapper::isRetrieved($_POST["votacionpopular_codigo1"])) &&
-							(!PinchoMapper::isRetrieved($_POST["votacionpopular_codigo2"])) &&
-							(!PinchoMapper::isRetrieved($_POST["votacionpopular_codigo3"]))){
+						if((!$pincho1->isCodeRetrieved($_POST["votacionpopular_codigo1"])) &&
+							(!$pincho2->isCodeRetrieved($_POST["votacionpopular_codigo2"])) &&
+							(!$pincho3->isCodeRetrieved($_POST["votacionpopular_codigo3"]))){
                     		//Ninguno de los pinchos ha sido usado ya
 							global $connectHandler;
 						try {
 
 							$connectHandler->autocommit(false);
 							$_SESSION["user"]->votar_pincho($_POST["votacionpopular_idpincho"]);
-							PinchoMapper::burnCode($_POST["votacionpopular_codigo1"], $_SESSION["user"]->getIdemail());
-							PinchoMapper::burnCode($_POST["votacionpopular_codigo2"], $_SESSION["user"]->getIdemail());
-							PinchoMapper::burnCode($_POST["votacionpopular_codigo3"], $_SESSION["user"]->getIdemail());
+							$pincho1->burnCode($_POST["votacionpopular_codigo1"]);
+							$pincho2->burnCode($_POST["votacionpopular_codigo2"]);
+							$pincho3->burnCode($_POST["votacionpopular_codigo3"]);
 
-							if( !PinchoMapper::isProbado($pinchoCodigo1, $_SESSION["user"]->getIdemail()) ){
-								PinchoMapper::toggleMarcado($pinchoCodigo1, $_SESSION["user"]->getIdemail());
+							if( !$pincho1->isProbado($_SESSION["user"]->getIdemail())){
+								$pincho1->toggleMarcado($_SESSION["user"]->getIdemail());
 							}
-							if( !PinchoMapper::isProbado($pinchoCodigo2, $_SESSION["user"]->getIdemail()) ){
-								PinchoMapper::toggleMarcado($pinchoCodigo2, $_SESSION["user"]->getIdemail());
+							if( !$pincho2->isProbado($_SESSION["user"]->getIdemail()) ){
+								$pincho2->toggleMarcado($_SESSION["user"]->getIdemail());
 							}
-							if( !PinchoMapper::isProbado($pinchoCodigo3, $_SESSION["user"]->getIdemail()) ){
-								PinchoMapper::toggleMarcado($pinchoCodigo3, $_SESSION["user"]->getIdemail());
+							if( !$pincho3->isProbado($_SESSION["user"]->getIdemail()) ){
+								$pincho3->toggleMarcado($_SESSION["user"]->getIdemail());
 							}
 							$connectHandler->commit();
 

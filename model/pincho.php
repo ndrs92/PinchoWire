@@ -181,6 +181,28 @@ class Pincho {
     {
         return $this->rutaimagen;
     }
+
+    public function isCodeRetrieved($codigo){
+        return PinchoMapper::isRetrieved($codigo);
+    }
+
+    public function burnCode($codigo){
+        return PinchoMapper::burnCode($codigo ,$this->getIdnombre());
+    }
+
+    public function isProbado($userid){
+        return PinchoMapper::isProbado($this->getIdnombre(),$userid);
+    }
+
+    public function toggleMarcado($userid){
+        return PinchoMapper::toggleMarcado($this->getIdnombre(),$userid);
+    }
+
+    public static function getPinchoFromCode($code){
+
+        return Pincho::getByIdnombre(PinchoMapper::getPinchoIdFromCode($code));
+
+    }
 }
 
 ?>

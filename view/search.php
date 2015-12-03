@@ -110,7 +110,7 @@ $totalSearchElements = $numOfPinchos + $numOfEstablishments;
 								<?php
 							}else{
 								?>
-								<table class="table table-stripped">
+								<table class="table table-stripped firefix">
 									<thead>
 										<td><?= $l["view_admin_name"] ?></td>
 										<td><?= $l["view_admin_description"] ?></td>
