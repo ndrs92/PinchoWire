@@ -197,6 +197,7 @@ class UserController{
 
 	public static function register(){
 		global $l;
+
 		if(!isset($_SESSION)) session_start();
 		if (empty($_GET["type"])) {
 			header("Location: ../view/404.php");
@@ -218,7 +219,7 @@ class UserController{
 			/* Jurado profesional */
 			if ($registerType == "juradoprofesional") {
 				if ($contrasena == $contrasena_verif) {
-					$userToAdd = new JuradoProfesional($idemail, $nombre, $contrasena, "", "", $baneado);
+					$userToAdd = new JuradoProfesional($idemail, $nombre, $contrasena, "images/avatars/default.jpg", "", $baneado);
 					$userToAdd->registerUser();
 				} else {
             // Password incorrect. Javascript correct?
@@ -301,8 +302,7 @@ class UserController{
 		} else {
     //Javascript: email, pass and name are required
 		}
-		$host = $_SERVER['HTTP_HOST'];
-		$uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+		header("Location: ../view/list.php");
 
 		if ($_SESSION) {
     //if you're login
