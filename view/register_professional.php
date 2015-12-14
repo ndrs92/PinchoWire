@@ -23,6 +23,7 @@ if(get_class($_SESSION["user"]) != "Administrador"){
 	<!-- Main CSS file -->
 	<link rel="stylesheet" href="../css/bootstrap.min.css" />
 	<link rel="stylesheet" href="../css/owl.carousel.css" />
+	<link rel="stylesheet" href="../css/magnific-popup.css" />
 	<link rel="stylesheet" href="../css/font-awesome.css" />
 	<link rel="stylesheet" href="../css/style.css" />
 	<link rel="stylesheet" href="../css/responsive.css" />
@@ -45,7 +46,7 @@ if(get_class($_SESSION["user"]) != "Administrador"){
 	  <![endif]-->
 
 	</head>
-	<body id="register-body">
+	<body>
 
 		<!-- PRELOADER -->
 		<div id="st-preloader">
@@ -55,55 +56,56 @@ if(get_class($_SESSION["user"]) != "Administrador"){
 		</div>
 		<!-- /PRELOADER -->
 
-		<a class="logo-register" href="./list.php"><img src="../images/logo.png" alt=""></a>
 
-		<div class="container register">
-			<div class="row">
-				<div class="col-md-3 hidden-sm hidden-xs"></div>
-				
-				<div class="col-md-6 col-sm-12 col-xs-12 register-body">
-					<h2><?= $l["register_title"] ?></h2>
-					<p class="register-description" ><?= $l["register_professional"]?></p><br>
-					
-					<div class="register-tab">
-						<ul class="nav nav-tabs">
-							<li class="active"><a href="#pane1" data-toggle="tab"><?= $l["register_user3"] ?></a></li>
-						</ul>
-						<div class="tab-content">
-							<div id="pane1" class="tab-pane active">
-								<form role="form" action="../controller/pw.php?controller=user&action=register&type=juradoprofesional" method="POST">
-									<div class="form-group">
-										<label for="name"><?= $l["register_name"]?></label>
-										<input type="text" class="form-control" name="nombre">
-									</div>
+		<?php include("./header.php"); ?>
 
-									<div class="form-group">
-										<label for="email"><?= $l["register_email"]?></label>
-										<input type="email" class="form-control" name="idemail">
-									</div>
-									<div class="form-group">
-										<label for="pwd"><?= $l["register_password"]?></label>
-										<input type="password" class="form-control" name="contrasena">
-									</div>
-									<div class="form-group">
-										<label for="pwd"><?= $l["register_passwordRepeat"]?></label>
-										<input type="password" class="form-control" name="contrasena_verif">
-									</div>
-									<input class="btn btn-success" type="submit" value="<?= $l["register_createUser"] ?>" />
-								</form>
+
+		<!-- PINCHOS -->
+		<section id="pinchos">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="section-title">
+							<h1><?= $l["register_proffesional_title"] ?></h1>
+							<p class="register-description" ><?= $l["register_proffesional_select"]?></p>
+							<span class="st-border"></span>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<form role="form" action="../controller/pw.php?controller=user&action=register&type=juradoprofesional" method="POST">
+							<div class="form-group">
+								<label for="name"><?= $l["register_name"]?></label>
+								<input type="text" class="form-control" name="nombre">
 							</div>
 
-						</div><!-- /.tab-content -->
-					</div><!-- /.register-tab -->
-
+							<div class="form-group">
+								<label for="email"><?= $l["register_email"]?></label>
+								<input type="email" class="form-control" name="idemail">
+							</div>
+							<div class="form-group">
+								<label for="pwd"><?= $l["register_password"]?></label>
+								<input type="password" class="form-control" name="contrasena">
+							</div>
+							<div class="form-group">
+								<label for="pwd"><?= $l["register_passwordRepeat"]?></label>
+								<input type="password" class="form-control" name="contrasena_verif">
+							</div>
+							<input class="btn btn-success" type="submit" value="<?= $l["register_createUser"] ?>" />
+						</form>
+						
+						
+					</div>
 				</div>
-				<div class="col-md-3 hidden-xs hidden-sm"></div>
-
 			</div>
-		</div>
-
+		</section>
+		<!-- /PINCHOS -->
 
 		<?php include("./footer.php"); ?>
+
+		<!-- Scroll-up -->
+		<div class="scroll-up">
+			<ul><li><a href="#header"><i class="fa fa-angle-up"></i></a></li></ul>
+		</div>
 
 
 		<!-- JS -->
@@ -117,9 +119,14 @@ if(get_class($_SESSION["user"]) != "Administrador"){
 		<script type="text/javascript" src="../js/jquery.counterup.min.js"></script><!-- CounterUp -->
 		<script type="text/javascript" src="../js/waypoints.min.js"></script><!-- CounterUp -->
 		<script type="text/javascript" src="../js/jquery.isotope.min.js"></script><!-- isotope -->
- 		<script type="text/javascript" src="../js/scripts.js"></script><!-- Scripts -->
+		<script type="text/javascript" src="../js/validator.min.js"></script><!-- isotope -->
+		<script type="text/javascript" src="../js/scripts.js"></script><!-- Scripts -->
 		<script type="text/javascript" src="../js/alertify.min.js"></script><!-- Alertify -->
 
 
 	</body>
 	</html>
+
+
+
+
