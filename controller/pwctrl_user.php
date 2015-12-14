@@ -194,7 +194,7 @@ class UserController{
 
 		}
 	}
-
+ 
 	public static function register(){
 		global $l;
 
