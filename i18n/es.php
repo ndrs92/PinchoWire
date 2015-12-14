@@ -1,5 +1,5 @@
 <?php
-
+ 
 $l = array(
     "appname" => "Pincho Wire",
     "app_description" => "Pincho Wire es una aplicación web para la gestión de un concurso de cata de pinchos.",
