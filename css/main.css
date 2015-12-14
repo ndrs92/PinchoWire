@@ -130,6 +130,11 @@ table tbody td {
 	width		: 100%;
 	height		: 400px;
 	font-size	: 11px;
+}
+
+.piechart h3{
+	text-align: center;
+	margin-top: -50px;
 }					
 
 
@@ -256,4 +261,8 @@ table tbody td {
 	background-position: center center;
 
 	background-size: 63px;
+}
+
+.stats-list{
+	margin-top: 80px;
 }

@@ -43,7 +43,7 @@ if($rutaPortada == "") {
 	
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="../images/icon/favicon.ico">
-	 
+
 	
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -64,7 +64,7 @@ if($rutaPortada == "") {
 		<!-- /PRELOADER -->
 
 		<?php include("./header.php"); ?>
- 
+
 
 		<!-- SLIDER -->
 		<section id="slider">
@@ -190,12 +190,31 @@ if($rutaPortada == "") {
 						<h1><?= $l["main_stats"]?></h1>
 						<h5><?= $l["main_stats_desc"]?></h5>
 						<span class="st-border"></span>
+						<div class="container">
+							<div class="col-md-6 col-sm-12 col-xs-12 piechart">
+								<div id="chartdiv"></div>
+								<h3 class="chart-text"><?= $l["statistics_chart_text"]?></h3>
+							</div>
+							<div class="col-md-6 col-sm-12 col-xs-12">
 
-						<div id="chartdiv"></div>
-
+								<ul class="list-group stats-list">
+									<li class="list-group-item">
+										<span class="badge"><?= $concurso->getNumberOfUsers() ?></span>
+										<?= $l["statistics_number_users"]?>
+									</li>
+									<li class="list-group-item">
+										<span class="badge"><?= $concurso->getNumberOfPinchos() ?></span>
+										<?= $l["statistics_number_pinchos"]?>
+									</li>
+									<li class="list-group-item">
+										<span class="badge"><?= $concurso->getNumberOfComments() ?></span>
+										<?= $l["statistics_number_comments"]?>
+									</li>
+								</ul>
+							</div>
+						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</section>
@@ -465,6 +484,8 @@ if($rutaPortada == "") {
 			} ],
 			"valueField": "cantidad",
 			"titleField": "campo",
+			"labelsEnabled": false,
+			"hideLabelsPercent": 100,
 			"balloon":{
 				"fixedPosition":false
 			},

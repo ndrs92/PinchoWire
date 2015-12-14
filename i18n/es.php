@@ -21,6 +21,11 @@ $l = array(
     "statistics_establishment" => "Establecimientos",
     "statistics_popularVote" => "Votos Populares",
 
+    "statistics_chart_text" => "Relación de Datos",
+    "statistics_number_users" => "Número de Usuarios",
+    "statistics_number_pinchos" => "Número de Pinchos",
+    "statistics_number_comments" => "Número de Comentarios",
+
     "footer_followus" => "Síguenos:",
     "footer_message" => "2015 Aprendizaxe Basada en Proxectos. Escola Superior de Enxeñería Informática.",
 
