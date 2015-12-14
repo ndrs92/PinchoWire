@@ -37,6 +37,7 @@ table tbody td {
 .comments-body{
 	padding-left: 50px;
 	padding-right: 50px;
+	margin-bottom: 90px;
 }
 
 .delete-comment{
@@ -129,6 +130,11 @@ table tbody td {
 	width		: 100%;
 	height		: 400px;
 	font-size	: 11px;
+}
+
+.piechart h3{
+	text-align: center;
+	margin-top: -50px;
 }					
 
 
@@ -151,7 +157,7 @@ table tbody td {
 }
 
 .list-group-item:hover {
-    border: 1px solid #ddd;
+	border: 1px solid #ddd;
 }
 
 #gastromapa{
@@ -240,4 +246,23 @@ table tbody td {
 
 .firefix{
 	float:right;
+}
+
+.comment-avatar{
+	height: 63px;
+	width: 63px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgba(181, 181, 181, 0.68);
+	border-radius: 10px;
+	padding: 0px;
+
+	background-repeat:no-repeat;
+	background-position: center center;
+
+	background-size: 63px;
+}
+
+.stats-list{
+	margin-top: 80px;
 }
