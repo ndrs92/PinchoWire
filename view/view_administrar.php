@@ -80,6 +80,11 @@ if(get_class($_SESSION["user"])!="Administrador"){
 								<h4 class="list-group-item-heading"><?= $l["view_admin_manageUsers"] ?></h4>
 								<p class="list-group-item-text"><?= $l["view_admin_manageUsers_text"] ?></p>
 							</a>
+							<?php 
+							$concurso= CompetitionController::getConcurso();
+							if($concurso->getEstado() == 0){				
+							?> 
+							
 							<a href="view_admin_propuestas.php" class="list-group-item">
 								<h4 class="list-group-item-heading"><?= $l["view_admin_managePincho"] ?></h4>
 								<p class="list-group-item-text"><?= $l["view_admin_managePincho_text"] ?></p>
@@ -88,6 +93,9 @@ if(get_class($_SESSION["user"])!="Administrador"){
 								<h4 class="list-group-item-heading"><?= $l["view_admin_assignPinchos"] ?></h4>
 								<p class="list-group-item-text"><?= $l["view_admin_assignPinchos_text"] ?></p>
 							</a>
+							<?php 
+							}
+							?>
 						</div>
 					</div>
 				</div>

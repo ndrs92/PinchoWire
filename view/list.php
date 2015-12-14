@@ -57,7 +57,7 @@ $establecimientos = UserController::getAllEstablecimientos();
 		<!-- /PRELOADER -->
 
 		<?php include("./header.php"); ?>
-
+ 
 
 		<!-- SLIDER -->
 		<section id="slider">
