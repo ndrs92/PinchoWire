@@ -16,7 +16,7 @@ if (UserController::isEstablishment($_GET["idemail"])) {
         header("Location: 403.php");
     }
 }
-?>
+?> 
 
 <!DOCTYPE html>
 <html>

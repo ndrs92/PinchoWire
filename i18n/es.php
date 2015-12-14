@@ -158,6 +158,7 @@ $l = array(
     "view_editpropuesta_introdescripcion" => "Su descripción: ",
     "view_editpropuesta_introprecio" => "Precio: ",
     "view_editpropuesta_introingredientes" => "Los Ingredientes: ",
+    "view_editpropuesta_introimagen" => "Imagen: ",
     "view_editpropuesta_enviar" => "Editar propuesta",
     "view_editpropuesta_exists" => "No tiene una propuesta, por lo que no se puede editar o su propuesta ya ha sido validada",
     "view_editpropuesta_return" => "Volver a pagina principal",
