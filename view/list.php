@@ -12,6 +12,13 @@ include_once "../controller/pincho_controller.php";
 if (!isset($_SESSION)) session_start();
 $concurso = CompetitionController::getConcurso();
 $establecimientos = UserController::getAllEstablecimientos();
+
+$rutaPortada = $concurso->getRutaportada(); 
+
+
+if($rutaPortada == "") {
+	$rutaPortada = "images/concurso/default.jpg";
+}
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +70,7 @@ $establecimientos = UserController::getAllEstablecimientos();
 		<section id="slider">
 			<div id="home-carousel" class="carousel slide" data-ride="carousel">			
 				<div class="carousel-inner">
-					<div class="item active" style="background-image: url(../<?= $concurso->getRutaportada() ?>)">
+					<div class="item active" style="background-image: url(../<?= $rutaPortada ?>)">
 						<div class="carousel-caption container">
 							<div class="row">
 								<div class="col-sm-12">
@@ -370,7 +377,7 @@ $establecimientos = UserController::getAllEstablecimientos();
 	<!-- /EQUIPO -->
 
 	<!-- TESTIMONIAL -->
-	<section id="testimonial" style="background-image: url('../<?= $concurso->getRutaportada() ?>')">
+	<section id="testimonial" style="background-image: url('../<?= $rutaPortada ?>')">
 		<div class="container">
 			<div class="row">
 				<div class="overlay"></div>

@@ -159,9 +159,7 @@ if($pinchoActual->getIdnombre() == NULL){
 											}
 											?>
 										</div>
-										<div class="col-md-1">
-											<img height="56px"src="../<?= $rutaImagen ?>" />
-										</div>
+										<div class="col-md-1 comment-avatar" style="background-image: url(../<?= $rutaImagen ?>)"></div>
 										<div class="col-md-8">
 											<div class="panel panel-default">
 												<div class="panel-body">

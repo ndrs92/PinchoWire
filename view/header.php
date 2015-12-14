@@ -93,7 +93,7 @@ include_once "../resources/code/lang_coverage.php";
 						<?php
 					}
 					?>
-					<li><a href="#" data-toggle="modal" data-target="#searchModal"><i class="fa fa-search"></i></a></li>
+					<li><a href="#" data-toggle="modal" data-target="#searchModal"><i class="fa fa-search hidden-xs"></i>  <span class="visible-xs"><i class="fa fa-search"></i> Buscar</span></a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-globe"></i><span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
