@@ -206,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `G23`.`comentario` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 41
+AUTO_INCREMENT = 49
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -225,7 +225,7 @@ CREATE TABLE IF NOT EXISTS `G23`.`concurso` (
   `facebook` VARCHAR(45) NULL DEFAULT NULL,
   `twitter` VARCHAR(45) NULL DEFAULT NULL,
   `googleplus` VARCHAR(45) NULL DEFAULT NULL,
-  `numfinalistas` INT(4) NOT NULL DEFAULT 0,
+  `numfinalistas` INT(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`idconcurso`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -269,14 +269,14 @@ CREATE TABLE IF NOT EXISTS `G23`.`probado` (
   PRIMARY KEY (`pincho_idnombre`, `juradopopular_idemail`),
   INDEX `fk_pincho_has_juradopopular_juradopopular2_idx` (`juradopopular_idemail` ASC),
   INDEX `fk_pincho_has_juradopopular_pincho2_idx` (`pincho_idnombre` ASC),
-  CONSTRAINT `fk_pincho_has_juradopopular_pincho2`
-    FOREIGN KEY (`pincho_idnombre`)
-    REFERENCES `G23`.`pincho` (`idnombre`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_pincho_has_juradopopular_juradopopular2`
     FOREIGN KEY (`juradopopular_idemail`)
     REFERENCES `G23`.`juradopopular` (`idemail`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_pincho_has_juradopopular_pincho2`
+    FOREIGN KEY (`pincho_idnombre`)
+    REFERENCES `G23`.`pincho` (`idnombre`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -292,6 +292,7 @@ CREATE TABLE IF NOT EXISTS `G23`.`promociona` (
   `juradoprofesional_idemail` VARCHAR(40) NOT NULL,
   `pincho_idnombre` VARCHAR(40) NOT NULL,
   `voto` INT(11) NULL DEFAULT NULL,
+  `esfinalista` BIT NULL,
   PRIMARY KEY (`juradoprofesional_idemail`, `pincho_idnombre`),
   INDEX `fk_juradoprofesional_has_Pincho_Pincho1_idx` (`pincho_idnombre` ASC),
   INDEX `fk_juradoprofesional_has_Pincho_juradoprofesional1_idx` (`juradoprofesional_idemail` ASC),
@@ -321,14 +322,14 @@ CREATE TABLE IF NOT EXISTS `G23`.`vota` (
   PRIMARY KEY (`id`),
   INDEX `fk_pincho_has_juradopopular_juradopopular1_idx` (`juradopopular_idemail` ASC),
   INDEX `fk_pincho_has_juradopopular_pincho1_idx` (`pincho_idnombre` ASC),
-  CONSTRAINT `fk_pincho_has_juradopopular_pincho1`
-    FOREIGN KEY (`pincho_idnombre`)
-    REFERENCES `G23`.`pincho` (`idnombre`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_pincho_has_juradopopular_juradopopular1`
     FOREIGN KEY (`juradopopular_idemail`)
     REFERENCES `G23`.`juradopopular` (`idemail`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_pincho_has_juradopopular_pincho1`
+    FOREIGN KEY (`pincho_idnombre`)
+    REFERENCES `G23`.`pincho` (`idnombre`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
