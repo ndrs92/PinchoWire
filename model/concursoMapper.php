@@ -159,10 +159,19 @@ class ConcursoMapper{
 		$query = "SELECT pincho_idnombre, SUM( voto ) AS total FROM promociona GROUP BY pincho_idnombre ORDER BY total DESC LIMIT ".$num.";";
 		$result = mysqli_query($connectHandler, $query);
 		while ($row = mysqli_fetch_assoc($result)) {
-            $toRet[$row["pincho_idnombre"]] = $row;
-        }
+			$toRet[$row["pincho_idnombre"]] = $row;
+		}
 		return $toRet;
 
+	}
+
+	public static function setGanadorProfesional(){
+		global $connectHandler;
+		$query = "SELECT pincho_idnombre, SUM( voto ) AS total FROM finalista GROUP BY pincho_idnombre ORDER BY total DESC Limit 1";
+		$result = mysqli_query($connectHandler, $query);
+		$row = mysqli_fetch_assoc($result);
+		$query = "UPDATE finalista SET ganadorFinalista = 1 WHERE pincho_idnombre = '".$row["pincho_idnombre"]."';";
+		$result = mysqli_query($connectHandler, $query);
 	}
 
 }
