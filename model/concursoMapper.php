@@ -215,7 +215,7 @@ class ConcursoMapper{
 		global $connectHandler;
 		//Teño que cambialo para coller os que teñe 1 en promociona.esfinalista
 		$toRet = array();
-		$query = "SELECT pincho_idnombre, SUM( voto ) AS total FROM promociona GROUP BY pincho_idnombre ORDER BY total DESC LIMIT ".$num.";";
+		$query = "SELECT pincho_idnombre, SUM( voto ) AS total FROM promociona WHERE esfinalista = 1 GROUP BY pincho_idnombre ORDER BY total DESC LIMIT ".$num.";";
 		$result = mysqli_query($connectHandler, $query);
 		while ($row = mysqli_fetch_assoc($result)) {
 			$toRet[$row["pincho_idnombre"]] = $row;
