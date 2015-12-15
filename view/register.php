@@ -62,7 +62,7 @@ if(!empty($_SESSION["user"])){
 				<div class="row">
 					<div class="col-md-12">
 						<div class="section-title">
-							<h1><?= $l["register_title"] ?></h1>
+							<a href="list.php"><div class="back-button"></div></a><h1><?= $l["register_title"] ?></h1>
 							<p class="register-description" ><?= $l["register_select"]?></p>
 							<span class="st-border"></span>
 						</div>

@@ -34,10 +34,10 @@ if(!empty($_SESSION["user"])){
     
     <!-- Favicon -->
     <link rel="shortcut icon" href="../images/icon/favicon.ico">
-     
-     
-     
-     
+
+
+
+
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -67,7 +67,7 @@ if(!empty($_SESSION["user"])){
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h1><?= $l["login_title"] ?></h1>
+                        <a href="list.php"><div class="back-button"></div></a><h1><?= $l["login_title"] ?></h1>
                         <p class="register-description" ><?= $l["login_desc"]?></p>
                         <span class="st-border"></span>
                     </div>

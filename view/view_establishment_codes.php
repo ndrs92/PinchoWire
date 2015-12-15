@@ -76,7 +76,7 @@ $retrievedCodes = $pinchoTarget->getRetrievedCodes();
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h1><?= $l["view_establishment_codes_myCodes"] ?></h1>
+                        <a href="list.php"><div class="back-button"></div></a><h1><?= $l["view_establishment_codes_myCodes"] ?></h1>
                         <span class="st-border"></span>
                         <h3><?= $l["view_establishment_codes_pincho"].$pinchoTarget->getIdnombre(); ?></h3>
                     </div>

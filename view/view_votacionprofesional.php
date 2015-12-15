@@ -93,7 +93,7 @@ if(!empty($pinchoList) && !empty($pinchosPromocionados)){
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h1><?= $l["view_votacionprofesional_header"] ?></h1>
+                        <a href="list.php"><div class="back-button"></div></a><h1><?= $l["view_votacionprofesional_header"] ?></h1>
                         <span class="st-border"></span>
                     </div>
                 </div>

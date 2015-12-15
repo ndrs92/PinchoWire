@@ -63,7 +63,7 @@ if(get_class($_SESSION["user"]) != "Administrador"){
 				<div class="row">
 					<div class="col-md-12">
 						<div class="section-title">
-							<h1><?= $l["register_proffesional_title"] ?></h1>
+							<a href="view_admin_usuarios.php"><div class="back-button"></div></a><h1><?= $l["register_proffesional_title"] ?></h1>
 							<p class="register-description" ><?= $l["register_proffesional_select"]?></p>
 							<span class="st-border"></span>
 						</div>

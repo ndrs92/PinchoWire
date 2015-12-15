@@ -266,3 +266,15 @@ table tbody td {
 .stats-list{
 	margin-top: 80px;
 }
+
+.back-button{
+	position:relative;
+	bottom:0;
+	height: 39px;
+	width: 39px;
+	background-image: url("../images/icon/back.png");
+	background-position: center;
+	background-size: 39px 39px;
+	float:left;
+	margin-right: 15px;
+}
