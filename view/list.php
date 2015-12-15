@@ -126,16 +126,17 @@ if($rutaPortada == "") {
 						?>
 
 
-						<div class="col-md-3 col-sm-6 col-xs-6">
+						<div class="col-md-3 col-sm-6 col-xs-6 pincho-info-list">
 							<div class="team-member">
 								<a href='viewPincho.php?id=<?= $pincho->getIdnombre() ?> '>
 									<div class="member-image pincho-image">
 										<?php
 										if ($pincho->getRutaimagen() == "")
-											echo "<img class='img-responsive' src='../images/pinchos/default.jpg' alt=''>";
-										else
-											echo "<img class='img-responsive' src='../".$pincho->getRutaimagen()."' alt=''>"; ?>
-
+											echo "<img class='pincho-info-image' src='../images/pinchos/default.jpg' alt=''>";
+										else{
+											echo "<img class='pincho-info-image' src='../".$pincho->getRutaimagen()."' alt=''>"; 
+										}
+										?>
 									</div>
 								</a>
 								<?php

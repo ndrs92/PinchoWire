@@ -96,18 +96,6 @@ table tbody td {
 	margin-bottom: 15px;
 }
 
-.pincho-image{
-	background-color: black;
-}
-.pincho-image img{
-	opacity: 1;
-	transition: 0.1s;
-}
-
-.pincho-image img:hover{
-	opacity: 0.8;
-	transition: 0.1s;
-}
 
 .admin-options{
 	padding-left: 50px;
@@ -277,4 +265,40 @@ table tbody td {
 	background-size: 39px 39px;
 	float:left;
 	margin-right: 15px;
+}
+
+
+.pincho-info-list{
+	min-height: 400px;
+	background-color: rgba(245,245,245,1);
+	border: solid #FFFFFF 1px;
+}
+
+.pincho-info-list .team-member .pincho-info{
+	position: absolute;
+	bottom: 0px;
+}
+
+.pincho-info-image{
+	height: 100%;
+	margin: auto;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.pincho-image{
+	background-color: black;
+	height: 200px;
+	overflow: hidden;
+
+}
+.pincho-image img{
+	opacity: 1;
+	transition: 0.1s;
+}
+
+.pincho-image img:hover{
+	opacity: 0.8;
+	transition: 0.1s;
 }
