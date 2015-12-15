@@ -165,45 +165,75 @@ class ConcursoMapper{
 		while ($row = mysqli_fetch_assoc($resultado)) {
 
 			if( $row["total"] != $value ){
+				echo $row["total"]."!=".$value;
 				$query = "UPDATE promociona SET esfinalista = 1 WHERE pincho_idnombre = '".$row["pincho_idnombre"]."'";
+				
 				$result = mysqli_query($connectHandler, $query) or die(mysqli_error());
 
 			}
 		}
+
 		//Consigo o numero de elemento da seleccion anterior que teñen o valor minimo
 		$query = "SELECT COUNT(*) AS pinchosMenorVotosParaFinalista FROM (SELECT pincho_idnombre, SUM( voto ) AS total FROM promociona GROUP BY pincho_idnombre ORDER BY total DESC LIMIT ".$num.") as A WHERE A.total = ".$value;
 		$result = mysqli_query($connectHandler, $query);
 		$row = mysqli_fetch_assoc($result);
 		$pinchosMenorVotosParaFinalista = $row["pinchosMenorVotosParaFinalista"];
+		
 		//Obteño todos os elementos da tabla promociona que teñen o valor minimo, incluindo os que non saliron na primeira seleccion
 		$query = "SELECT * from (SELECT pincho_idnombre, SUM( voto ) AS total FROM promociona GROUP BY pincho_idnombre) as minimo  where minimo.total = ".$value;
 		$result = mysqli_query($connectHandler, $query);
 		if( mysqli_num_rows($result) == 1 ){
 			$row = mysqli_fetch_assoc($result);
 			$query = "UPDATE promociona SET esfinalista = 1 WHERE pincho_idnombre = '".$row["pincho_idnombre"]."'";
+			
 			$result = mysqli_query($connectHandler, $query);
 		}
 		else{
 			$listAux = array();
+
 		//consigo os votos populares de cada pincho empatado e gardoos en un array
 			while($row = mysqli_fetch_assoc($result)){
 				$query = "SELECT pincho_idnombre, COUNT(*) AS votos FROM vota WHERE pincho_idnombre ='".$row["pincho_idnombre"]."' GROUP BY pincho_idnombre";
 				$arrayAux = mysqli_query($connectHandler, $query);
-				$aux = mysqli_fetch_assoc($arrayAux);
-				$listAux[$aux["pincho_idnombre"]] = $aux["votos"];
-
+				if( mysqli_num_rows($arrayAux) == 1 ){
+					$aux = mysqli_fetch_assoc($arrayAux);
+					$listAux[$aux["pincho_idnombre"]] = $aux["votos"];
+				}
 			}
-		//ordeno array de mayor a menor
-			arsort($listAux);
-			$i = 0;
-			foreach ($listAux as $key => $value) {
-				if($i < $pinchosMenorVotosParaFinalista){
-					$query = "UPDATE promociona SET esfinalista = 1 WHERE pincho_idnombre = '".$key."'";
+
+			if(empty($listAux)){
+				$query = "SELECT pincho_idnombre, SUM( voto ) AS total FROM promociona GROUP BY pincho_idnombre ORDER BY total DESC LIMIT ".$num.";";
+				$res = mysqli_query($connectHandler, $query) or die(mysqli_error());
+				while($row = mysqli_fetch_assoc($res)){
+					print_r($row);
+					$query = "UPDATE promociona SET esfinalista = 1 WHERE pincho_idnombre = '".$row["pincho_idnombre"]."'";
+					
+					$result = mysqli_query($connectHandler, $query);
+				}		
+			}else{
+//--------------------creo que me falta algunha cousa estilo si un pincho non foi votado por jurado popular 
+				arsort($listAux);
+				$i = 0;
+				foreach ($listAux as $key => $valor) {
+					if($i < $pinchosMenorVotosParaFinalista){
+						$query = "UPDATE promociona SET esfinalista = 1 WHERE pincho_idnombre = '".$key."'";
+						
+						$result = mysqli_query($connectHandler, $query);
+						$i++;
+					}
+					else{
+						break;
+					}
+				}
+				
+				while( $i < $pinchosMenorVotosParaFinalista){
+					$query = "SELECT * from (SELECT pincho_idnombre, SUM( voto ) AS total, SUM(esfinalista) as esfinalista FROM promociona GROUP BY pincho_idnombre) as minimo  where minimo.total = ".$value." and (esfinalista < 1 OR esfinalista IS NULL) LIMIT 1 " ;
+					$result = mysqli_query($connectHandler, $query);
+					$row = mysqli_fetch_assoc($result);
+					$query = "UPDATE promociona SET esfinalista = 1 WHERE pincho_idnombre = '".$row["pincho_idnombre"]."'";
+					
 					$result = mysqli_query($connectHandler, $query);
 					$i++;
-				}
-				else{
-					break;
 				}
 			}
 		}
@@ -225,12 +255,44 @@ class ConcursoMapper{
 	}
 
 	public static function setGanadorProfesional(){
+		//teño que cambialo por cambios na posibilidade de que existan mais de un ganador
 		global $connectHandler;
 		$query = "SELECT pincho_idnombre, SUM( voto ) AS total FROM finalista GROUP BY pincho_idnombre ORDER BY total DESC Limit 1";
 		$result = mysqli_query($connectHandler, $query);
-		$row = mysqli_fetch_assoc($result);
-		$query = "UPDATE finalista SET ganadorFinalista = 1 WHERE pincho_idnombre = '".$row["pincho_idnombre"]."';";
-		$result = mysqli_query($connectHandler, $query);
+		if (mysqli_num_rows($result) != 0) {
+			$row = mysqli_fetch_assoc($result);
+			$query = "SELECT * from (SELECT pincho_idnombre, SUM( voto ) AS total FROM finalista GROUP BY pincho_idnombre) as valor  where valor.total = ".$row["total"];
+			$result = mysqli_query($connectHandler, $query);
+			if( mysqli_num_rows($result) == 1 ){
+				$row = mysqli_fetch_assoc($result);
+				$query = "UPDATE finalista SET ganadorFinalista = 1 WHERE pincho_idnombre = '".$row["pincho_idnombre"]."';";
+				$result = mysqli_query($connectHandler, $query);
+			}
+			else{
+
+				$listAux = array();
+				while($row = mysqli_fetch_assoc($result)){
+					$query = "SELECT pincho_idnombre, COUNT(*) AS votos FROM vota WHERE pincho_idnombre ='".$row["pincho_idnombre"]."' GROUP BY pincho_idnombre";
+					$arrayAux = mysqli_query($connectHandler, $query);
+					if(mysqli_num_rows($result) == 1){
+						$aux = mysqli_fetch_assoc($arrayAux);
+						$listAux[$aux["pincho_idnombre"]] = $aux["votos"];//ordenar array =>
+					}
+				}
+				if(empty($listAux)){
+					echo "hola";die();
+				}
+				arsort($listAux);
+				print_r($listAux);die();
+			}
+
+			die();
+			//$query = "UPDATE finalista SET ganadorFinalista = 1 WHERE pincho_idnombre = '".$row["pincho_idnombre"]."';";
+			//$result = mysqli_query($connectHandler, $query);
+		}else{
+			echo "Error";
+		}
+
 	}
 
 }
