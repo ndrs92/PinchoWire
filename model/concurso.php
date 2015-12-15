@@ -40,8 +40,8 @@ class Concurso{
 			throw new Exception("There was a problem updating competition actual state");
 		}
 	}
-	public function setNumFinalistas($num){
-		if(ConcursoMapper::updateNumFinalistas($num)){
+	public function setFinalistas($num){
+		if(ConcursoMapper::updateFinalistas($num)){
 			$this->numFinalistas = $num;
 		}else{
 			throw new Exception("There was a problem updating competition actual finalist number");

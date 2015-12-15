@@ -58,7 +58,7 @@ class UserMapper
 
     public static function votacionPromociona($idemail, $pincho, $puntuacion){
         global $connectHandler;
-        $query = "INSERT INTO promociona VALUES('$idemail', '$pincho', $puntuacion)";
+        $query = "INSERT INTO promociona (juradoprofesional_idemail, pincho_idnombre, voto)VALUES('$idemail', '$pincho', $puntuacion)";
         $result = mysqli_query($connectHandler, $query);
         return $result;
 
