@@ -69,7 +69,7 @@ class CompetitionController{
 		$estadoActual++;
 		switch($estadoActual){
 			case 1:
-			$concurso->setNumFinalistas($_POST["num"]);
+			$concurso->setFinalistas($_POST["num"]);
 			break;
 			case 2:
 			$concurso->setGanadorProfesional();

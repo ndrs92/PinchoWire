@@ -402,7 +402,7 @@ public static function votacionProfesionalFinalista(){
 		$return = $_SESSION["user"]->votacionPromociona($_POST["pincho"], $_POST["puntuacion"] );
 		if($return){
 			header("Location: ../view/view_votacionprofesional.php");
-		}
+		} 
 		else{
 			echo "Error BD votacionprofesionalparafinalista_controller.php";
 		}
