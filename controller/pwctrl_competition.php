@@ -224,32 +224,13 @@ class CompetitionController{
 		return $toRet;
 	}
 
-	function accept_pincho(){
+	function validate_pincho(){
 		$idnombre = $_GET["idnombre"];
-
 		$target = Pincho::getByIdnombre($idnombre);
-		$target->setEstadopropuesta(2);
+		$target->setEstadopropuesta($_GET["estado"]);
 		header("Location: ../view/view_admin_propuestas.php");
 
 	}
-
-	function deny_pincho(){
-		$idnombre = $_GET["idnombre"];
-		$target = Pincho::getByIdnombre($idnombre);
-		$target->setEstadopropuesta(1);
-		header("Location: ../view/view_admin_propuestas.php");
-
-	}
-
-	function set_pendant(){
-		$idnombre = $_GET["idnombre"];
-		$target = Pincho::getByIdnombre($idnombre);
-		$target->setEstadopropuesta(0);
-		header("Location: ../view/view_admin_propuestas.php");
-
-	}
-
-
 }
 
 ?>
