@@ -65,7 +65,7 @@ if(get_class($_SESSION["user"])!="Administrador"){
 				<div class="row">
 					<div class="col-md-12">
 						<div class="section-title">
-							<h1><?= $l["view_admin_management"] ?></h1>
+							<a href="list.php"><div class="back-button"></div></a><h1><?= $l["view_admin_management"] ?></h1>
 							<span class="st-border"></span>
 						</div>
 					</div>

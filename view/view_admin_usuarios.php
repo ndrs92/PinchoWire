@@ -71,7 +71,7 @@ $allUsers = UserController::getAllUsuarios();
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h1><?= $l["view_admin_userManage"] ?></h1>
+                        <a href="view_administrar.php"><div class="back-button"></div></a><h1><?= $l["view_admin_userManage"] ?></h1>
                         <span class="st-border"></span>
                     </div>
                 </div>

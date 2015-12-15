@@ -167,6 +167,7 @@ $l = array(
     "view_editpropuesta_enviar" => "Editar propuesta",
     "view_editpropuesta_exists" => "No tiene una propuesta, por lo que no se puede editar o su propuesta ya ha sido validada",
     "view_editpropuesta_return" => "Volver a pagina principal",
+    "view_editpropuesta_actual" => "Imagen actual (Si existe): ",
 
     "view_addcomment_tittle" => "Añadir comentario",
     "view_addcomment_comment" => "Comentario",
