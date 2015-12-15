@@ -31,7 +31,7 @@ if(get_class($_SESSION["user"])!="Establecimiento"){
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="../images/icon/favicon.ico">
-	 
+
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -40,91 +40,105 @@ if(get_class($_SESSION["user"])!="Establecimiento"){
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
 
-  </head>
-  <body>
+    </head>
+    <body>
 
-  	<!-- PRELOADER -->
-  	<div id="st-preloader">
-  		<div id="pre-status">
-  			<div class="preload-placeholder"></div>
-  		</div>
-  	</div>
-  	<!-- /PRELOADER -->
-
-
-  	<?php include("./header.php"); ?>
+     <!-- PRELOADER -->
+     <div id="st-preloader">
+      <div id="pre-status">
+       <div class="preload-placeholder"></div>
+     </div>
+   </div>
+   <!-- /PRELOADER -->
 
 
-  	<!-- PINCHOS -->
-  	<section id="pinchos">
-  		<div class="container">
-  			<div class="row">
-  				<div class="col-md-12">
-  					<div class="section-title">
-  						<a href="list.php"><div class="back-button"></div></a><h1><?= $l["view_editpropuesta_editpropuesta"] ?> </h1>
-  						<span class="st-border"></span>
-  					</div>
-  				</div>
-  				<?php
-  				$row = $_SESSION["user"]->havePropuesta();
-  				if(!empty($row) && $row["estadoPropuesta"] == 0){
-  					?>
-  					<h1><?= $l["view_editpropuesta_titulo"] ?> </h1>
-  					<form class="form" action="../controller/pw.php?controller=competition&action=editPropuesta" method="POST">
-  						<div class="form-group">
-  							<label for="email"><?= $l["view_editpropuesta_intronombre"] ?></label>
-  							<input class="form-control" type="text" name="editpropuesta_propuesta_nombre" value="<?= $row['idnombre']; ?>" />
-  						</div>
-  						<div class="form-group">
-  							<label for="email"><?= $l["view_editpropuesta_introdescripcion"] ?></label>
-  							<textarea class="form-control" name="editpropuesta_propuesta_descripcion" row="4" cols="50" ><?= $row['descripcion']; ?></textarea>
-  						</div>
-  						<div class="form-group">
-  							<label for="email"><?= $l["view_editpropuesta_introingredientes"] ?></label>
-  							<textarea class="form-control" name="editpropuesta_propuesta_ingredientes" row="4" cols="50" ><?= $row['ingredientes']; ?></textarea>
-  						</div>
-  						<div class="form-group">
-  							<label for="email"><?= $l["view_editpropuesta_introprecio"] ?></label>
-  							<input class="form-control" type="text" name="editpropuesta_propuesta_precio" value="<?= $row['precio']; ?>" />
-  						</div>
-  						<input class="btn btn-success" type="submit" name="editpropuesta_propuesta_enviar" value="<?= $l["view_editpropuesta_enviar"] ?>" />
-  					</form>
-  					<?php 
-  				}else{
-  					echo $l["view_editpropuesta_exists"]."<br/>";
-  					echo "<a href='./list.php'>". $l["view_editpropuesta_return"] ."</a>";
-  				}
-  				?>
-  				
-  			</div>
-  		</div>
-  	</section>
-  	<!-- /PINCHOS -->
+   <?php include("./header.php"); ?>
 
 
-  	<?php include("./footer.php"); ?>
+   <!-- PINCHOS -->
+   <section id="pinchos">
+    <div class="container">
+     <div class="row">
+      <div class="col-md-12">
+       <div class="section-title">
+        <a href="list.php"><div class="back-button"></div></a><h1><?= $l["view_editpropuesta_editpropuesta"] ?> </h1>
+        <span class="st-border"></span>
+      </div>
+    </div>
+    <?php
+    $row = $_SESSION["user"]->havePropuesta();
+    if(!empty($row) && $row["estadoPropuesta"] == 0){
+     ?>
+     <h1><?= $l["view_editpropuesta_titulo"] ?> </h1>
+     <form class="form" action="../controller/pw.php?controller=competition&action=editPropuesta" method="POST">
+       <div class="col-md-6 col-sm-12 col-xs-12">
+        <div class="form-group">
+         <label for="email"><?= $l["view_editpropuesta_intronombre"] ?></label>
+         <input class="form-control" type="text" name="editpropuesta_propuesta_nombre" value="<?= $row['idnombre']; ?>" />
+       </div>
+       <div class="form-group">
+         <label for="email"><?= $l["view_editpropuesta_introdescripcion"] ?></label>
+         <textarea class="form-control" name="editpropuesta_propuesta_descripcion" row="4" cols="50" ><?= $row['descripcion']; ?></textarea>
+       </div>
+       <div class="form-group">
+         <label for="email"><?= $l["view_editpropuesta_introingredientes"] ?></label>
+         <textarea class="form-control" name="editpropuesta_propuesta_ingredientes" row="4" cols="50" ><?= $row['ingredientes']; ?></textarea>
+       </div>
+       <div class="form-group">
+         <label for="email"><?= $l["view_editpropuesta_introprecio"] ?></label>
+         <input class="form-control" type="text" name="editpropuesta_propuesta_precio" value="<?= $row['precio']; ?>" />
+       </div>
+     </div>
+     <div class="col-md-6 col-sm-12 col-xs-12">
+       <div class="form-group">
+         <label for="image"><?= $l["view_editpropuesta_actual"] ?></label><br/>
+         <img height="230px" src="../<?= $row['rutaimagen']; ?>" />
+       </div>
+       <div class="form-group">
+         <label for="image"><?= $l["view_editpropuesta_introimagen"] ?></label>
+         <input class="form-control" type="file" name="editpropuesta_propuesta_imagen"/>
+       </div>
+     </div>
+     <div class="col-md-12">
+       <input class="btn btn-success" type="submit" name="editpropuesta_propuesta_enviar" value="<?= $l["view_editpropuesta_enviar"] ?>" />
+     </div>
+   </form>
+   <?php 
+ }else{
+   echo $l["view_editpropuesta_exists"]."<br/>";
+   echo "<a href='./list.php'>". $l["view_editpropuesta_return"] ."</a>";
+ }
+ ?>
 
-  	<!-- Scroll-up -->
-  	<div class="scroll-up">
-  		<ul><li><a href="#header"><i class="fa fa-angle-up"></i></a></li></ul>
-  	</div>
+</div>
+</div>
+</section>
+<!-- /PINCHOS -->
 
 
-  	<!-- JS -->
-  	<script type="text/javascript" src="../js/jquery.min.js"></script><!-- jQuery -->
-  	<script type="text/javascript" src="../js/bootstrap.min.js"></script><!-- Bootstrap -->
-  	<script type="text/javascript" src="../js/jquery.parallax.js"></script><!-- Parallax -->
-  	<script type="text/javascript" src="../js/smoothscroll.js"></script><!-- Smooth Scroll -->
-  	<script type="text/javascript" src="../js/masonry.pkgd.min.js"></script><!-- masonry -->
-  	<script type="text/javascript" src="../js/jquery.fitvids.js"></script><!-- fitvids -->
-  	<script type="text/javascript" src="../js/owl.carousel.min.js"></script><!-- Owl-Carousel -->
-  	<script type="text/javascript" src="../js/jquery.counterup.min.js"></script><!-- CounterUp -->
-  	<script type="text/javascript" src="../js/waypoints.min.js"></script><!-- CounterUp -->
-  	<script type="text/javascript" src="../js/jquery.isotope.min.js"></script><!-- isotope -->
-  	<script type="text/javascript" src="../js/jquery.magnific-popup.min.js"></script><!-- magnific-popup -->
-  	<script type="text/javascript" src="../js/scripts.js"></script><!-- Scripts -->
-	<script type="text/javascript" src="../js/alertify.min.js"></script><!-- Alertify -->
+<?php include("./footer.php"); ?>
+
+<!-- Scroll-up -->
+<div class="scroll-up">
+  <ul><li><a href="#header"><i class="fa fa-angle-up"></i></a></li></ul>
+</div>
 
 
-  </body>
-  </html>
+<!-- JS -->
+<script type="text/javascript" src="../js/jquery.min.js"></script><!-- jQuery -->
+<script type="text/javascript" src="../js/bootstrap.min.js"></script><!-- Bootstrap -->
+<script type="text/javascript" src="../js/jquery.parallax.js"></script><!-- Parallax -->
+<script type="text/javascript" src="../js/smoothscroll.js"></script><!-- Smooth Scroll -->
+<script type="text/javascript" src="../js/masonry.pkgd.min.js"></script><!-- masonry -->
+<script type="text/javascript" src="../js/jquery.fitvids.js"></script><!-- fitvids -->
+<script type="text/javascript" src="../js/owl.carousel.min.js"></script><!-- Owl-Carousel -->
+<script type="text/javascript" src="../js/jquery.counterup.min.js"></script><!-- CounterUp -->
+<script type="text/javascript" src="../js/waypoints.min.js"></script><!-- CounterUp -->
+<script type="text/javascript" src="../js/jquery.isotope.min.js"></script><!-- isotope -->
+<script type="text/javascript" src="../js/jquery.magnific-popup.min.js"></script><!-- magnific-popup -->
+<script type="text/javascript" src="../js/scripts.js"></script><!-- Scripts -->
+<script type="text/javascript" src="../js/alertify.min.js"></script><!-- Alertify -->
+
+
+</body>
+</html>
