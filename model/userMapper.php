@@ -24,6 +24,7 @@ class UserMapper
         global $connectHandler;
         $query = "Select * from juradopopular";
         $result = mysqli_query($connectHandler, $query);
+        $toRet = NULL;
         while ($row = mysqli_fetch_assoc($result)) {
             $toRet["juradopopular"][$row["idemail"]] = $row;
         }
@@ -46,6 +47,7 @@ class UserMapper
     public static function retriveAllJuradoProfesional()
     {
         global $connectHandler;
+        $toRet = NULL;
         $query = "Select * from juradoprofesional";
         $result = mysqli_query($connectHandler, $query);
         while ($row = mysqli_fetch_assoc($result)) {
@@ -75,6 +77,7 @@ class UserMapper
         global $connectHandler;
         $query = "Select * from establecimiento";
         $result = mysqli_query($connectHandler, $query);
+        $toRet = NULL;
         while ($row = mysqli_fetch_assoc($result)) {
             $toRet[$row["idemail"]] = $row;
         }

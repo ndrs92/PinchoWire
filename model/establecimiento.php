@@ -49,8 +49,10 @@ class Establecimiento extends Usuario{
 	public static function getAll(){
 		$ests = UserMapper::retrieveAllEstablecimientos();
 		$toRet = NULL;
-		foreach($ests as $e){
-			$toRet[$e["idemail"]] = new Establecimiento($e["idemail"], $e["nombre"], $e["contrasena"], $e["rutaavatar"], $e["direccion"], $e["web"], $e["horario"], $e["rutaimagen"], $e["geoloc"], $e["baneado"]);
+		if(isset($ests)){
+			foreach($ests as $e){
+				$toRet[$e["idemail"]] = new Establecimiento($e["idemail"], $e["nombre"], $e["contrasena"], $e["rutaavatar"], $e["direccion"], $e["web"], $e["horario"], $e["rutaimagen"], $e["geoloc"], $e["baneado"]);
+			}	
 		}
 		return $toRet;
 	}

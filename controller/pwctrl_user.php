@@ -303,13 +303,6 @@ class UserController{
     //Javascript: email, pass and name are required
 		}
 		header("Location: ../view/list.php");
-
-		if ($_SESSION) {
-    //if you're login
-		} else {
-			$relpath = '../view/list.php';
-			header("Location: http://$host$uri/$relpath");
-		}
 	}
 
 

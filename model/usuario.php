@@ -70,6 +70,7 @@ class Usuario
     public static function getAllUsuarios()
     {
         $dataset = UserMapper::retrieveAll();
+        $toRet = NULL;
         if (isset($dataset["juradopopular"])) {
             foreach ($dataset["juradopopular"] as $parsed) {
                 $toRet[$parsed["idemail"]] = new JuradoPopular($parsed["idemail"], $parsed["nombre"], $parsed["contrasena"], $parsed["rutaavatar"], $parsed["baneado"]);
@@ -94,6 +95,7 @@ class Usuario
 
     public static function getAllJuradoProfesional(){
         $dataset = UserMapper::retriveAllJuradoProfesional();
+        $toRet = NULL;
         if(isset($dataset)){
             foreach ($dataset as $parsed) {
                  $toRet[$parsed["idemail"]] = new JuradoProfesional($parsed["idemail"], $parsed["nombre"], $parsed["contrasena"], $parsed["rutaavatar"], $parsed["curriculum"], $parsed["baneado"]);
