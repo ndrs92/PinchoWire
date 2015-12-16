@@ -342,3 +342,21 @@ table tbody td {
 	bottom: -10px;
 	z-index: 1000;
 }
+
+#page-404{
+	position: relative;
+	height: 800px;
+	padding-top: 150px;
+	background-color: white;
+	text-align: center;
+}
+
+#page-404 img{
+	position:absolute;
+	bottom: 0px;
+	height: 404px;
+}
+
+#page-404 h1{
+	font-size: 80px;
+}
