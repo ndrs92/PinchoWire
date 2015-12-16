@@ -25,6 +25,9 @@ $l = array(
     "statistics_number_users" => "Número de Usuarios",
     "statistics_number_pinchos" => "Número de Pinchos",
     "statistics_number_comments" => "Número de Comentarios",
+    "statistics_number_average" => "Precio medio de los pinchos",
+    "statistics_number_total_consumptions" => "Consumiciones totales",
+    "statistics_number_total_spent" => "Importe total gastado en pinchos",
 
     "footer_followus" => "Síguenos:",
     "footer_message" => "2015 Aprendizaxe Basada en Proxectos. Escola Superior de Enxeñería Informática.",
