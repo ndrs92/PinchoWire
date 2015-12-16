@@ -71,7 +71,9 @@ if(!empty($_SESSION["user"])){
                         <span class="st-border"></span>
                     </div>
                 </div>
-                <div class="col-md-12">
+                
+                <div class="col-md-4">
+                    <h1>Credenciales: </h1>
                     <?php
                     if (isset($_SESSION["login"])) {
                         if ($_SESSION["login"] == "fail")
@@ -86,18 +88,35 @@ if(!empty($_SESSION["user"])){
                     <form data-toggle="validator" role="form" action="../controller/pw.php?controller=user&action=login" method="POST">
                         <div class="form-group">
                             <label for="email"><?= $l["login_email"] ?></label>
-                            <input data-error="<?= $l["register_email_error"] ?>" required data-minlength="7" type="email" class="form-control" name="login_user_login">
+                            <div class="input-group">
+                                <input data-error="<?= $l["register_email_error"] ?>" required data-minlength="7" type="email" class="form-control" name="login_user_login">
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                            </div>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
                             <label for="pwd"><?= $l["login_password"] ?></label>
-                            <input data-error="<?= $l["register_password_error_length"] ?>" required data-minlength="8"  type="password" class="form-control" name="login_user_pass">
+                            <div class="input-group">
+                                <input data-error="<?= $l["register_password_error_length"] ?>" required data-minlength="8"  type="password" class="form-control" name="login_user_pass">
+                                <span class="input-group-addon"><i class="fa fa-unlock-alt"></i></span>
+                            </div>
                             <div class="help-block with-errors"></div>
                         </div>
                         <input id="login-button" class="btn btn-success" type="submit" value="Log In" />
                     </form>
-
-
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-7">
+                    <h1><?= $l["login_info_welcome"] ?></h1>
+                    <p><?= $l["login_info_loginfeatures"] ?></p>
+                    <div style="padding-left: 15px;">
+                        <h5><?= $l["login_info_as_popular"] ?></h5>
+                        <p><?= $l["login_info_popular_info"] ?></p>
+                        <h5><?= $l["login_info_as_professional"] ?></h5>
+                        <p><?= $l["login_info_professional_info"] ?></p>
+                        <h5><?= $l["login_info_as_establishment"] ?></h5>
+                        <p><?= $l["login_info_establishment_info"] ?></p>
+                    </div>
                 </div>
             </div>
         </div>

@@ -25,6 +25,8 @@ $concurso = CompetitionController::getConcurso();
 				<?php if($concurso->getGoogleplus() != NULL){
 					echo "<a href='".$concurso->getGoogleplus()."'><i class='fa fa-google-plus'></i></a>";
 				} ?>
+				<br/>
+				<span>Bitbucket: </span> <a href="https://bitbucket.org/ndrs92/pinchowire"><i class="fa fa-bitbucket"></i></a>
 			</div>
 			<!-- /SOCIAL ICONS -->
 			<div class="col-sm-6 col-sm-pull-6 copyright">
