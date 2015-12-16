@@ -91,9 +91,14 @@ table tbody td {
 }
 
 .pincho-info{
-	padding-left: 5px;
-	padding-right: 5px;
-	margin-bottom: 15px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 15px;
+	background-color: #E6E6E6;
+	width: 100%;
+	margin-left: -15px;
+	margin-right: 0px;
+	min-height: 100px;
 }
 
 
@@ -301,4 +306,39 @@ table tbody td {
 .pincho-image img:hover{
 	opacity: 0.8;
 	transition: 0.1s;
+}
+
+.winners-text{
+	margin-left: 20px;
+	margin-bottom: 40px;
+}
+
+.winners-list{
+	background-color: #F9F9F9;
+	height: 150px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	position: relative;
+}
+
+.winners-list:hover{
+	background-color: #F0F0F0;
+}
+
+.winner-pincho-image{
+	max-height: 120px;
+}
+
+.winner-pincho-ingredients, .winner-pincho-prize, .winner-pincho-establishment{
+	font-weight: 400;
+	margin-left: 10px
+}
+
+.winner-pincho-badge{
+	position: absolute;
+	right: 10px;
+	bottom: -10px;
+	z-index: 1000;
 }

@@ -4,6 +4,14 @@ include_once "../controller/pw.php";
 include_once "../controller/pwctrl_competition.php";
 include_once "../resources/code/lang_coverage.php";
 
+
+$currentConcurso = CompetitionController::getconcurso();
+$estado = -1;
+
+$estado = $currentConcurso->getEstado();
+
+
+
 ?>
 
 <!-- HEADER -->
@@ -22,7 +30,7 @@ include_once "../resources/code/lang_coverage.php";
 
 			<div class="collapse navbar-collapse" id="st-navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					
+					<?php if($estado != 2){ ?>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?= $l["header_contest"] ?> <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
@@ -94,6 +102,7 @@ include_once "../resources/code/lang_coverage.php";
 					}
 					?>
 					<li><a href="#" data-toggle="modal" data-target="#searchModal"><i class="fa fa-search hidden-xs"></i>  <span class="visible-xs"><i class="fa fa-search"></i> Buscar</span></a></li>
+					<?php } ?>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-globe"></i><span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">

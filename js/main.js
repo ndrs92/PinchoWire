@@ -1,4 +1,3 @@
-
 //filtra la tabla de usuarios de administracion, de modo que 
 //cada vez que se pulsa una tecla desaparezcan los campos que no
 //contienen valores iguales al buscado. No es case sensitive

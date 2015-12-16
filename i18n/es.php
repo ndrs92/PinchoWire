@@ -78,8 +78,8 @@ $l = array(
     "register_user3" => "Jurado Profesional",
     "register_name" => "Nombre:",
     "register_email" => "Email:",
-    "register_password" => "Password:",
-    "register_passwordRepeat" => "Repite Password:",
+    "register_password" => "Contraseña:",
+    "register_passwordRepeat" => "Repite Contraseña:",
     "register_avatar" => "Avatar:",
     "register_adress" => "Dirección:",
     "register_webPage" => "Pagina Web:",
@@ -102,8 +102,17 @@ $l = array(
     "login_incorrect" => "Login incorrecto",
     "login_baned" => "Este usuario ha sido baneado. Póngase en contacto con el Administrador",
     "login_email" => "Email:",
-    "login_password" => "Password:",
+    "login_password" => "Contraseña:",
+    "login_credentials" => "Credenciales:",
 
+    "login_info_welcome" => "Bienvenido!",
+    "login_info_loginfeatures" => "Identificándote en el concurso se te permitirá:",
+    "login_info_as_popular" => "Como Jurado Popular:",
+    "login_info_popular_info" => "Participar en la votación y consumo general de pinchos. Gracias a tu contribución se decidirá cuál o cuales de los pinchos a concurso pasará a la final y recibirá un premio. Con el objetivo de promocionar el consumo de pinchos, la votación solo requerirá que introduzcas códigos emitidos por tu establecimiento habitual cada vez que consumas un pincho que está en concurso.",
+    "login_info_as_professional" => "Como Jurado Profesional:",
+    "login_info_professional_info" => "Ser asignado por un administrador para la votación de una serie de pinchos seleccionados. Todos tus años de experiencia y tus logros nos ayudarán a reconocer el mejor de los pinchos en concurso.",
+    "login_info_as_establishment" => "Como Establecimiento:",
+    "login_info_establishment_info" => "Lanza tu pincho al estrellato! Identificarte como establecimiento te permite publicar un pincho en el concurso. A partir de ahí, con un poco de magia y buen sabor, numerosos jurados acudirán a tu establecimiento a valorar tu esfuerzo y dedicación.",
 
 
 
@@ -301,6 +310,16 @@ $l = array(
     "view_pincho_insertComment" => "Insertar comentario:",
     "view_pincho_sendComment" => "Enviar Comentario",
     "view_pincho_score" => "Puntuación: ",
+
+    "view_winners_title" => "El concurso ha terminado!",
+    "view_winners_professional_winners" => "Ganadores del premio profesional:",
+    "view_winners_popular_winners" => "Ganadores del premio popular: ",
+    "view_winners_" => "Puntuación: ",
+    "view_winners_" => "Puntuación: ",
+    "view_winners_" => "Puntuación: ",
+    "view_winners_" => "Puntuación: ",
+    "view_winners_" => "Puntuación: ",
+
 
 
     "eula" => "Acuerdo de Licencia",

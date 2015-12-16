@@ -50,19 +50,20 @@ if(!empty($pinchoList) && !empty($pinchosPromocionados)){
     <!-- Main CSS file -->
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/owl.carousel.css" />
-    <link rel="stylesheet" href="../css/magnific-popup.css" />
     <link rel="stylesheet" href="../css/font-awesome.css" />
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/responsive.css" />
     <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/alertify.default.css" />
+    <link rel="stylesheet" href="../css/alertify.core.css" />
 
     
     <!-- Favicon -->
     <link rel="shortcut icon" href="../images/icon/favicon.ico">
-     
-     
-     
-     
+    
+    
+    
+    
     
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -120,29 +121,29 @@ if(!empty($pinchoList) && !empty($pinchosPromocionados)){
                                     echo "<input type='hidden' name='pincho' value='".$row["idnombre"]."'>";
 
                                     echo "<td>";
-                                        
-                                        echo "<label class='radio-inline'>";
-      										echo "<input type='radio' name='puntuacion' value='1'>1 ";
-    									echo "</label>";
-    									echo "<label class='radio-inline'>";
-      										echo "<input type='radio' name='puntuacion' value='2'>2 ";
-    									echo "</label>";
-    									echo "<label class='radio-inline'>";
-      										echo "<input type='radio' name='puntuacion' value='3'>3 ";
-    									echo "</label>";
-    									echo "<label class='radio-inline'>";
-      										echo "<input type='radio' name='puntuacion' value='4'>4 ";
-    									echo "</label>";
-    									echo "<label class='radio-inline'>";
-      										echo "<input type='radio' name='puntuacion' value='5'>5 ";
-    									echo "</label>";
-                                        
+                                    
+                                    echo "<label class='radio-inline'>";
+                                    echo "<input type='radio' name='puntuacion' value='1'>1 ";
+                                    echo "</label>";
+                                    echo "<label class='radio-inline'>";
+                                    echo "<input type='radio' name='puntuacion' value='2'>2 ";
+                                    echo "</label>";
+                                    echo "<label class='radio-inline'>";
+                                    echo "<input type='radio' name='puntuacion' value='3'>3 ";
+                                    echo "</label>";
+                                    echo "<label class='radio-inline'>";
+                                    echo "<input type='radio' name='puntuacion' value='4'>4 ";
+                                    echo "</label>";
+                                    echo "<label class='radio-inline'>";
+                                    echo "<input type='radio' name='puntuacion' value='5'>5 ";
+                                    echo "</label>";
+                                    
                                     echo "</td>";
-                                   
+                                    
                                     echo "<td><button type='submit' class='btn btn-success'>". $l["view_votacionprofesional_enviar"] ."</button></td>";
                                     
                                     echo "</form>";
-                                echo "</tr>";
+                                    echo "</tr>";
                                 }
 
                             }
@@ -154,39 +155,38 @@ if(!empty($pinchoList) && !empty($pinchosPromocionados)){
                             	<?php
                             }
                             ?>
-                    </tbody>
+                        </tbody>
 
-                </table>
+                    </table>
+                </div>
+
+
             </div>
-
-
         </div>
+    </section>
+    <!-- /PINCHOS -->
+
+
+    <?php include("./footer.php"); ?>
+
+    <!-- Scroll-up -->
+    <div class="scroll-up">
+        <ul><li><a href="#header"><i class="fa fa-angle-up"></i></a></li></ul>
     </div>
-</section>
-<!-- /PINCHOS -->
 
 
-<?php include("./footer.php"); ?>
-
-<!-- Scroll-up -->
-<div class="scroll-up">
-    <ul><li><a href="#header"><i class="fa fa-angle-up"></i></a></li></ul>
-</div>
-
-
-<!-- JS -->
-<script type="text/javascript" src="../js/jquery.min.js"></script><!-- jQuery -->
-<script type="text/javascript" src="../js/bootstrap.min.js"></script><!-- Bootstrap -->
-<script type="text/javascript" src="../js/jquery.parallax.js"></script><!-- Parallax -->
-<script type="text/javascript" src="../js/smoothscroll.js"></script><!-- Smooth Scroll -->
-<script type="text/javascript" src="../js/masonry.pkgd.min.js"></script><!-- masonry -->
-<script type="text/javascript" src="../js/jquery.fitvids.js"></script><!-- fitvids -->
-<script type="text/javascript" src="../js/owl.carousel.min.js"></script><!-- Owl-Carousel -->
-<script type="text/javascript" src="../js/jquery.counterup.min.js"></script><!-- CounterUp -->
-<script type="text/javascript" src="../js/waypoints.min.js"></script><!-- CounterUp -->
-<script type="text/javascript" src="../js/jquery.isotope.min.js"></script><!-- isotope -->
-<script type="text/javascript" src="../js/jquery.magnific-popup.min.js"></script><!-- magnific-popup -->
-<script type="text/javascript" src="../js/scripts.js"></script><!-- Scripts -->
+    <!-- JS -->
+    <script type="text/javascript" src="../js/amcharts.js"></script> <!-- AmChart General Lib -->
+    <script type="text/javascript" src="../js/pie.js"></script><!-- AmChart PieChart -->
+    <script type="text/javascript" src="../js/light.js"></script><!-- AmChart PieChart Theme -->
+    <script type="text/javascript" src="../js/jquery.min.js"></script><!-- jQuery -->
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script><!-- Bootstrap -->
+    <script type="text/javascript" src="../js/jquery.parallax.js"></script><!-- Parallax -->
+    <script type="text/javascript" src="../js/smoothscroll.js"></script><!-- Smooth Scroll -->
+    <script type="text/javascript" src="../js/owl.carousel.min.js"></script><!-- Owl-Carousel -->
+    <script type="text/javascript" src="../js/scripts.js"></script><!-- Scripts -->
+    <script type="text/javascript" src="../js/main.js"></script><!-- PinchoWire Scripts -->
+    <script type="text/javascript" src="../js/alertify.min.js"></script><!-- Alertify -->
 
 
 </body>
