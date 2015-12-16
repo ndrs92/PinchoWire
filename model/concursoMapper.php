@@ -3,6 +3,30 @@ include_once("../resources/code/bd_manage.php");
 
 class ConcursoMapper{
 
+
+	public static function retrieveGanadoresPopulares(){
+		global $connectHandler;
+		$toRet = NULL;
+		$query = "SELECT * FROM pincho where ganadorPopular is not null order by ganadorPopular";
+		$result = mysqli_query($connectHandler, $query);
+		while($row = mysqli_fetch_assoc($result)){
+			$toRet[$row["idnombre"]] = $row;
+		} 
+		return $toRet;
+	}
+
+
+	public static function retrieveGanadoresProfesionales(){
+		global $connectHandler;
+		$toRet = NULL;
+		$query = "SELECT * FROM finalista where ganadorFinalista is not null  group by pincho_idnombre order by ganadorFinalista ";
+		$result = mysqli_query($connectHandler, $query);
+		while($row = mysqli_fetch_assoc($result)){
+			$toRet[$row["pincho_idnombre"]] = $row["pincho_idnombre"];
+		} 
+		return $toRet;
+	}
+
 	public static function retrieveMeanPrice(){
 		global $connectHandler;
 		$toRet = NULL;

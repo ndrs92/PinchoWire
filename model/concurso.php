@@ -1,7 +1,8 @@
 <?php 
 include_once "../resources/code/bd_manage.php";
+include_once "../resources/code/models.php";
 include_once "concursoMapper.php";
- 
+
 class Concurso{
 	private $idconcurso;
 	private $descripcion;
@@ -130,6 +131,24 @@ class Concurso{
 
 	public function getTotalGastado(){
 		return ConcursoMapper::retrieveTotalSpent();
+	}
+
+	public function getGanadoresPopulares(){
+		$tuplas = ConcursoMapper::retrieveGanadoresPopulares();
+		$toRet = NULL;
+		foreach($tuplas as $key => $values){
+			$toRet[$key] = new Pincho($values["idnombre"], $values["descripcion"], $values["precio"], $values["ingredientes"], $values["ganadorPopular"], $values["estadoPropuesta"], $values["rutaimagen"]);
+		}
+		return $toRet;
+	}
+
+	public function getGanadoresProfesionales(){
+		$tuplas = ConcursoMapper::retrieveGanadoresProfesionales();
+		$toRet = NULL;
+		foreach($tuplas as $key => $values){
+			$toRet[$key] = Pincho::getByIdnombre($values);
+		}
+		return $toRet;
 	}
 
 }
