@@ -253,12 +253,11 @@ class ConcursoMapper{
 
 	}
 
-	public static function setGanadorProfesional(){
+	public static function setGanadorProfesional($num){
 		
 		//non esta funcionando hai que cambialo.
 		global $connectHandler;
-		
-		$num = 3;//hai que cambialo para que o pase o admin;
+
 		//Saco todos os pincho que podrian ser finalistas pondo como limite o numero de finalistas que se pasa
 		$query = "SELECT pincho_idnombre, SUM( voto ) AS total FROM finalista GROUP BY pincho_idnombre ORDER BY total DESC LIMIT ".$num.";";
 		$result = mysqli_query($connectHandler, $query);

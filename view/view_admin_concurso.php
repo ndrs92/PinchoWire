@@ -42,8 +42,8 @@ $pinchoList = Pincho::getAllPropuestas();
     href="../../images/icon/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114"
     href="../../images/icon/apple-touch-icon-114-precomposed.png">
-     
-     
+
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -97,7 +97,9 @@ $pinchoList = Pincho::getAllPropuestas();
                         echo '<div class="progress progress-striped active">';
                         echo '<div class="progress-bar" style="width: 66%"></div>';
                         echo '</div>';
-                        echo '<a href="../controller/pw.php?increment=true&controller=competition&action=changeState" class="btn btn-primary btn-sm pull-right">'.$l["view_admin_2_bt"].'</a>';
+                        echo '<button type="button" class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#limitWinner">'.$l["view_admin_1_bt"].'</button>';
+                        
+                        //echo '<a href="../controller/pw.php?increment=true&controller=competition&action=changeState" class="btn btn-primary btn-sm pull-right">'.$l["view_admin_2_bt"].'</a>';
                         break;
 
                         case 2:
@@ -136,7 +138,6 @@ $pinchoList = Pincho::getAllPropuestas();
                 </form>
 
             </div>
-
 
         </div>
     </div>
@@ -180,7 +181,21 @@ $pinchoList = Pincho::getAllPropuestas();
         <div class="modal-content search">
             <form role="form" action="../controller/pw.php?controller=competition&action=changeState" method="post"> 
                 <div class="form-group has-feedback has-feedback-left search-form">
-                    <input type="number" min="0" name="num" class="form-control input-lg" placeholder="<?= $l["view_admin_limit"] ?>" />
+                    <input type="number" min="1" name="num" class="form-control input-lg" placeholder="<?= $l["view_admin_limit"] ?>" />
+                    <i class="form-control-feedback fa fa-check-square-o"></i>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="limitWinner" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content search">
+            <form role="form" action="../controller/pw.php?controller=competition&action=changeState" method="post"> 
+                <div class="form-group has-feedback has-feedback-left search-form">
+                    <input type="number" min="1" name="num" class="form-control input-lg" placeholder="<?= $l["view_admin_limitWinner"] ?>" />
                     <i class="form-control-feedback fa fa-check-square-o"></i>
                 </div>
             </form>
