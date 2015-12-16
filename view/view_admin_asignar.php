@@ -28,7 +28,6 @@ $juradoList = Usuario::getAllJuradoProfesional();
     <!-- Main CSS file -->
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
     <link rel="stylesheet" href="../css/owl.carousel.css" />
-    <link rel="stylesheet" href="../css/magnific-popup.css" />
     <link rel="stylesheet" href="../css/font-awesome.css" />
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/responsive.css" />
@@ -38,10 +37,10 @@ $juradoList = Usuario::getAllJuradoProfesional();
     
     <!-- Favicon -->
     <link rel="shortcut icon" href="../images/icon/favicon.ico">
-     
-     
-     
-     
+    
+    
+    
+    
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -140,18 +139,16 @@ $juradoList = Usuario::getAllJuradoProfesional();
 
 
     <!-- JS -->
+    <script type="text/javascript" src="../js/amcharts.js"></script> <!-- AmChart General Lib -->
+    <script type="text/javascript" src="../js/pie.js"></script><!-- AmChart PieChart -->
+    <script type="text/javascript" src="../js/light.js"></script><!-- AmChart PieChart Theme -->
     <script type="text/javascript" src="../js/jquery.min.js"></script><!-- jQuery -->
     <script type="text/javascript" src="../js/bootstrap.min.js"></script><!-- Bootstrap -->
     <script type="text/javascript" src="../js/jquery.parallax.js"></script><!-- Parallax -->
     <script type="text/javascript" src="../js/smoothscroll.js"></script><!-- Smooth Scroll -->
-    <script type="text/javascript" src="../js/masonry.pkgd.min.js"></script><!-- masonry -->
-    <script type="text/javascript" src="../js/jquery.fitvids.js"></script><!-- fitvids -->
     <script type="text/javascript" src="../js/owl.carousel.min.js"></script><!-- Owl-Carousel -->
-    <script type="text/javascript" src="../js/jquery.counterup.min.js"></script><!-- CounterUp -->
-    <script type="text/javascript" src="../js/waypoints.min.js"></script><!-- CounterUp -->
-    <script type="text/javascript" src="../js/jquery.isotope.min.js"></script><!-- isotope -->
-    <script type="text/javascript" src="../js/jquery.magnific-popup.min.js"></script><!-- magnific-popup -->
-    <script type="text/javascript" src="../js/alertify.min.js"></script><!-- Alertify -->
+    <script type="text/javascript" src="../js/scripts.js"></script><!-- Scripts -->
+    <script type="text/javascript" src="../js/main.js"></script><!-- PinchoWire Scripts -->
     <script type="text/javascript" src="../js/alertify.min.js"></script><!-- Alertify -->
 
 </body>

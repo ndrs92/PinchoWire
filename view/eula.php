@@ -14,18 +14,19 @@ include_once "../resources/code/lang_coverage.php";
 	<!-- Main CSS file -->
 	<link rel="stylesheet" href="../css/bootstrap.min.css" />
 	<link rel="stylesheet" href="../css/owl.carousel.css" />
-	<link rel="stylesheet" href="../css/magnific-popup.css" />
 	<link rel="stylesheet" href="../css/font-awesome.css" />
 	<link rel="stylesheet" href="../css/style.css" />
 	<link rel="stylesheet" href="../css/responsive.css" />
 	<link rel="stylesheet" href="../css/main.css" />
+	<link rel="stylesheet" href="../css/alertify.default.css" />
+	<link rel="stylesheet" href="../css/alertify.core.css" />
 
 
 
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="../images/icon/favicon.ico">
-	 
+	
 
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
