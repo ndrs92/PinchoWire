@@ -52,8 +52,8 @@ class Concurso{
 		return ConcursoMapper::crearFinalistas($this->numFinalistas);
 	} 
 
-	public function setGanadorProfesional(){
-		ConcursoMapper::setGanadorProfesional();
+	public function setGanadorProfesional($num){
+		ConcursoMapper::setGanadorProfesional($num);
 	}
 
 	public function getIdconcurso(){
