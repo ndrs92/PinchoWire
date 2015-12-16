@@ -72,7 +72,9 @@ class CompetitionController{
 			$concurso->setFinalistas($_POST["num"]);
 			break;
 			case 2:
-			$concurso->setGanadorProfesional($_POST["num"]);
+			$num = $_POST["num"];
+			$concurso->setGanadorProfesional($num);
+			$concurso->setGanadorPopular($num);
 			break;
 		}
 

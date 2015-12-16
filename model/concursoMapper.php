@@ -165,7 +165,6 @@ class ConcursoMapper{
 		while ($row = mysqli_fetch_assoc($resultado)) {
 
 			if( $row["total"] != $value ){
-				echo $row["total"]."!=".$value;
 				$query = "UPDATE promociona SET esfinalista = 1 WHERE pincho_idnombre = '".$row["pincho_idnombre"]."'";
 				
 				$result = mysqli_query($connectHandler, $query) or die(mysqli_error());
@@ -273,7 +272,6 @@ class ConcursoMapper{
 		while ($row = mysqli_fetch_assoc($resultado)) {
 
 			if( $row["total"] != $value ){
-				echo $row["total"]."!=".$value;
 				$query = "UPDATE finalista SET ganadorFinalista = 1 WHERE pincho_idnombre = '".$row["pincho_idnombre"]."'";
 				
 				$result = mysqli_query($connectHandler, $query) or die(mysqli_error());
@@ -347,6 +345,53 @@ class ConcursoMapper{
 
 		return $result;
 
+	}
+
+	public static function setGanadorPopular($num){
+		global $connectHandler;
+
+		//Saco todos os pincho que podrian ser ganadoresPopular pondo como limite o numero de ganadores indicado
+		$query = "SELECT pincho_idnombre, COUNT( * ) AS total FROM vota GROUP BY pincho_idnombre ORDER BY total DESC LIMIT ".$num.";";
+		$result = mysqli_query($connectHandler, $query);
+		$votos = array();
+		while ($row = mysqli_fetch_assoc($result)) {
+			if(empty($votos[$row["total"]])){
+				$votos[$row["total"]]=$row["total"];
+			}
+		}
+		arsort($votos);
+		$toTieBreak = array();
+
+		foreach ($votos as $key => $value) {
+			$query = "SELECT * from (SELECT pincho_idnombre, COUNT( * ) AS total FROM vota GROUP BY pincho_idnombre ORDER BY total DESC) as lista  where lista.total = ".$value;
+			$result = mysqli_query($connectHandler, $query);
+			while ($row = mysqli_fetch_assoc($result)) {
+				$query = "SELECT pincho_idnombre, SUM(voto) AS total FROM promociona WHERE pincho_idnombre = '".$row["pincho_idnombre"]."';";
+				$resultado = mysqli_query($connectHandler, $query);
+				$rowed = mysqli_fetch_assoc($resultado);
+				$toTieBreak[$value][$rowed["pincho_idnombre"]] = $rowed["total"];
+			}	
+		}
+		
+		foreach ($votos as $key => $value) {
+			arsort($toTieBreak[$value]);
+		}
+
+		$i = 0;
+		foreach ($votos as $key => $value) {
+			foreach ($toTieBreak[$key] as $key2 => $value2){
+				if($i < $num){
+					$i++;
+					$queries = 'UPDATE pincho SET ganadorPopular = '.$i.' WHERE idnombre = "'.$key2.'"';
+					echo $queries."<br>";
+					$result = mysqli_query($connectHandler, $queries) or die("Fallou o por o puesto $i");
+				}else{
+					break;break;
+				}
+			}
+		}
+
+		return $result;
 	}
 
 }

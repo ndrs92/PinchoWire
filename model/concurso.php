@@ -56,6 +56,10 @@ class Concurso{
 		ConcursoMapper::setGanadorProfesional($num);
 	}
 
+	public function setGanadorPopular($num){
+		ConcursoMapper::setGanadorPopular($num);
+	}
+
 	public function getIdconcurso(){
 		return $this->idconcurso;
 	}
