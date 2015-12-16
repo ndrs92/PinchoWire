@@ -49,7 +49,7 @@ $totalSearchElements = $numOfPinchos + $numOfEstablishments;
 	
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="../images/icon/favicon.ico">
-	 
+
 	
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -107,7 +107,7 @@ $totalSearchElements = $numOfPinchos + $numOfEstablishments;
 								<?php
 							}else{
 								?>
-								<table class="table table-stripped firefix">
+								<table class="table table-striped firefix">
 									<thead>
 										<td><?= $l["view_admin_name"] ?></td>
 										<td><?= $l["view_admin_description"] ?></td>
@@ -115,13 +115,13 @@ $totalSearchElements = $numOfPinchos + $numOfEstablishments;
 									</thead>
 									<tbody>
 										<?php
-
 										foreach ($results["pinchos"] as $indexRow => $row) {
 											echo "<tr>";
-											echo "<td>" . $row->getIdnombre() . "</td>";
+											echo "<td><a href='viewPincho.php?id=".$row->getIdnombre()."'>" . $row->getIdnombre() . "</a></td>";
 											echo "<td>" . $row->getDescripcion() . "</td>";
 											echo "<td>" . $row->getIngredientes() . "</td>";
 											echo "</tr>";
+
 										}
 										?>
 									</tbody>
@@ -152,11 +152,13 @@ $totalSearchElements = $numOfPinchos + $numOfEstablishments;
 										<?php
 
 										foreach ($results["establishments"] as $indexRow => $row) {
+											//echo "";
 											echo "<tr>";
-											echo "<td>" . $row->getIdemail() . "</td>";
-											echo "<td>" . $row->getNombre() . "</td>";
+											echo "<td><a href='profile.php?idemail=".$row->getIdemail()."'>" . $row->getIdemail() . "</a></td>";
+											echo "<td><a href='profile.php?idemail=".$row->getIdemail()."'>" . $row->getNombre() . "</a></td>";
 											echo "<td>" . $row->getDireccion() . "</td>";
 											echo "<td>" . $row->getWeb() . "</td>";
+											//echo "";
 											echo "</tr>";
 										}
 										?>

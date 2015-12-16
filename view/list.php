@@ -15,6 +15,13 @@ $establecimientos = UserController::getAllEstablecimientos();
 
 $rutaPortada = $concurso->getRutaportada(); 
 
+$estado = -1;
+
+$estado = $concurso->getEstado();
+
+if($estado == 2){
+	header("Location: ganadores.php");
+}
 
 if($rutaPortada == "") {
 	$rutaPortada = "images/concurso/default.jpg";
@@ -28,7 +35,7 @@ if($rutaPortada == "") {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<title><?= $l["appname"] ?></title>
-	
+
 	<!-- Main CSS file -->
 	<link rel="stylesheet" href="../css/bootstrap.min.css" />
 	<link rel="stylesheet" href="../css/owl.carousel.css" />
@@ -40,11 +47,11 @@ if($rutaPortada == "") {
 	<link rel="stylesheet" href="../css/alertify.default.css" />
 	<link rel="stylesheet" href="../css/alertify.core.css" />
 
-	
+
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="../images/icon/favicon.ico">
 
-	
+
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>

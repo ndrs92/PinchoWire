@@ -301,6 +301,16 @@ $l = array(
     "view_pincho_sendComment" => "Enviar Comentario",
     "view_pincho_score" => "Puntuación: ",
 
+    "view_winners_title" => "El concurso ha terminado!",
+    "view_winners_professional_winners" => "Ganadores del premio profesional:",
+    "view_winners_popular_winners" => "Ganadores del premio popular: ",
+    "view_winners_" => "Puntuación: ",
+    "view_winners_" => "Puntuación: ",
+    "view_winners_" => "Puntuación: ",
+    "view_winners_" => "Puntuación: ",
+    "view_winners_" => "Puntuación: ",
+
+
 
     "eula" => "Acuerdo de Licencia",
     "cookies" => "Este sitio web utiliza cookies. Utilizándolo das tu consentimiento.",
