@@ -120,5 +120,17 @@ class Concurso{
 		return ConcursoMapper::retrieveNumComments();
 	}
 
+	public function getMeanPrice(){
+		return ConcursoMapper::retrieveMeanPrice();
+	}
+
+	public function getTotalConsumptions(){
+		return ConcursoMapper::retrieveTotalConsumptions();
+	}
+
+	public function getTotalGastado(){
+		return ConcursoMapper::retrieveTotalSpent();
+	}
+
 }
 ?>

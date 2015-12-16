@@ -217,6 +217,18 @@ if($rutaPortada == "") {
 										<span class="badge"><?= $concurso->getNumberOfComments() ?></span>
 										<?= $l["statistics_number_comments"]?>
 									</li>
+									<li class="list-group-item">
+										<span class="badge"><?= $concurso->getMeanPrice() ?> €</span>
+										<?= $l["statistics_number_average"]?>
+									</li>
+									<li class="list-group-item">
+										<span class="badge"><?= $concurso->getTotalConsumptions() ?></span>
+										<?= $l["statistics_number_total_consumptions"]?>
+									</li>
+									<li class="list-group-item">
+										<span class="badge"><?= $concurso->getTotalGastado() ?> €</span>
+										<?= $l["statistics_number_total_spent"]?>
+									</li>
 								</ul>
 							</div>
 						</div>

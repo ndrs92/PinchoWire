@@ -3,6 +3,33 @@ include_once("../resources/code/bd_manage.php");
 
 class ConcursoMapper{
 
+	public static function retrieveMeanPrice(){
+		global $connectHandler;
+		$toRet = NULL;
+		$query = "SELECT ROUND(AVG(precio), 2) as media  from pincho";
+		$result = mysqli_query($connectHandler, $query);
+		$toRet = mysqli_fetch_assoc($result);
+		return $toRet["media"];
+	}
+
+	public static function retrieveTotalSpent(){
+		global $connectHandler;
+		$toRet = NULL;
+		$query = "SELECT SUM(p.precio) as totalGastado FROM codigo as co, canjea as ca, pincho as p WHERE co.idcodigo = ca.codigo_idcodigo AND co.pincho_idnombre = p.idnombre";
+		$result = mysqli_query($connectHandler, $query);
+		$toRet = mysqli_fetch_assoc($result);
+		return $toRet["totalGastado"];
+	}
+
+	public static function retrieveTotalConsumptions(){
+		global $connectHandler;
+		$toRet = NULL;
+		$query = "SELECT count(*) as totales FROM canjea ";
+		$result = mysqli_query($connectHandler, $query);
+		$toRet = mysqli_fetch_assoc($result);
+		return $toRet["totales"];
+	}
+
 	public static function retrieveEstado(){
 		global $connectHandler;
 		$toRet = NULL;
