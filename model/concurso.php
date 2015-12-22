@@ -1,7 +1,8 @@
 <?php 
 include_once "../resources/code/bd_manage.php";
+include_once "../resources/code/models.php";
 include_once "concursoMapper.php";
- 
+
 class Concurso{
 	private $idconcurso;
 	private $descripcion;
@@ -52,8 +53,12 @@ class Concurso{
 		return ConcursoMapper::crearFinalistas($this->numFinalistas);
 	} 
 
-	public function setGanadorProfesional(){
-		ConcursoMapper::setGanadorProfesional();
+	public function setGanadorProfesional($num){
+		ConcursoMapper::setGanadorProfesional($num);
+	}
+
+	public function setGanadorPopular($num){
+		ConcursoMapper::setGanadorPopular($num);
 	}
 
 	public function getIdconcurso(){
@@ -114,6 +119,36 @@ class Concurso{
 
 	public function getNumberOfComments(){
 		return ConcursoMapper::retrieveNumComments();
+	}
+
+	public function getMeanPrice(){
+		return ConcursoMapper::retrieveMeanPrice();
+	}
+
+	public function getTotalConsumptions(){
+		return ConcursoMapper::retrieveTotalConsumptions();
+	}
+
+	public function getTotalGastado(){
+		return ConcursoMapper::retrieveTotalSpent();
+	}
+
+	public function getGanadoresPopulares(){
+		$tuplas = ConcursoMapper::retrieveGanadoresPopulares();
+		$toRet = NULL;
+		foreach($tuplas as $key => $values){
+			$toRet[$key] = new Pincho($values["idnombre"], $values["descripcion"], $values["precio"], $values["ingredientes"], $values["ganadorPopular"], $values["estadoPropuesta"], $values["rutaimagen"]);
+		}
+		return $toRet;
+	}
+
+	public function getGanadoresProfesionales(){
+		$tuplas = ConcursoMapper::retrieveGanadoresProfesionales();
+		$toRet = NULL;
+		foreach($tuplas as $key => $values){
+			$toRet[$key] = Pincho::getByIdnombre($values);
+		}
+		return $toRet;
 	}
 
 }

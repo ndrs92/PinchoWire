@@ -15,6 +15,13 @@ $establecimientos = UserController::getAllEstablecimientos();
 
 $rutaPortada = $concurso->getRutaportada(); 
 
+$estado = -1;
+
+$estado = $concurso->getEstado();
+
+if($estado == 2){
+	header("Location: ganadores.php");
+}
 
 if($rutaPortada == "") {
 	$rutaPortada = "images/concurso/default.jpg";
@@ -28,11 +35,10 @@ if($rutaPortada == "") {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<title><?= $l["appname"] ?></title>
-	
+
 	<!-- Main CSS file -->
 	<link rel="stylesheet" href="../css/bootstrap.min.css" />
 	<link rel="stylesheet" href="../css/owl.carousel.css" />
-	<link rel="stylesheet" href="../css/magnific-popup.css" />
 	<link rel="stylesheet" href="../css/font-awesome.css" />
 	<link rel="stylesheet" href="../css/style.css" />
 	<link rel="stylesheet" href="../css/responsive.css" />
@@ -40,11 +46,11 @@ if($rutaPortada == "") {
 	<link rel="stylesheet" href="../css/alertify.default.css" />
 	<link rel="stylesheet" href="../css/alertify.core.css" />
 
-	
+
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="../images/icon/favicon.ico">
 
-	
+
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -210,6 +216,18 @@ if($rutaPortada == "") {
 									<li class="list-group-item">
 										<span class="badge"><?= $concurso->getNumberOfComments() ?></span>
 										<?= $l["statistics_number_comments"]?>
+									</li>
+									<li class="list-group-item">
+										<span class="badge"><?= $concurso->getMeanPrice() ?> €</span>
+										<?= $l["statistics_number_average"]?>
+									</li>
+									<li class="list-group-item">
+										<span class="badge"><?= $concurso->getTotalConsumptions() ?></span>
+										<?= $l["statistics_number_total_consumptions"]?>
+									</li>
+									<li class="list-group-item">
+										<span class="badge"><?= $concurso->getTotalGastado() ?> €</span>
+										<?= $l["statistics_number_total_spent"]?>
 									</li>
 								</ul>
 							</div>
@@ -452,112 +470,22 @@ if($rutaPortada == "") {
 
 
 	<!-- JS -->
-	<script src="../js/amcharts.js"></script>
-	<script src="../js/pie.js"></script>
-	<script src="../js/light.js"></script>
+	<script type="text/javascript" src="../js/amcharts.js"></script> <!-- AmChart General Lib -->
+	<script type="text/javascript" src="../js/pie.js"></script><!-- AmChart PieChart -->
+	<script type="text/javascript" src="../js/light.js"></script><!-- AmChart PieChart Theme -->
 	<script type="text/javascript" src="../js/jquery.min.js"></script><!-- jQuery -->
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script><!-- Bootstrap -->
 	<script type="text/javascript" src="../js/jquery.parallax.js"></script><!-- Parallax -->
 	<script type="text/javascript" src="../js/smoothscroll.js"></script><!-- Smooth Scroll -->
-	<script type="text/javascript" src="../js/masonry.pkgd.min.js"></script><!-- masonry -->
-	<script type="text/javascript" src="../js/jquery.fitvids.js"></script><!-- fitvids -->
 	<script type="text/javascript" src="../js/owl.carousel.min.js"></script><!-- Owl-Carousel -->
-	<script type="text/javascript" src="../js/jquery.counterup.min.js"></script><!-- CounterUp -->
-	<script type="text/javascript" src="../js/waypoints.min.js"></script><!-- CounterUp -->
-	<script type="text/javascript" src="../js/jquery.isotope.min.js"></script><!-- isotope -->
-	<script type="text/javascript" src="../js/jquery.magnific-popup.min.js"></script><!-- magnific-popup -->
 	<script type="text/javascript" src="../js/scripts.js"></script><!-- Scripts -->
 	<script type="text/javascript" src="../js/main.js"></script><!-- PinchoWire Scripts -->
-	<script type="text/javascript">
-		var chart = AmCharts.makeChart( "chartdiv", {
-			"type": "pie",
-			"theme": "light",
-			"dataProvider": [ {
-				"campo": "<?= $l["statistics_user"] ?>",
-				"cantidad": <?= $concurso->getNumberOfUsers() ?>
-			}, {
-				"campo": "<?= $l["statistics_pincho"] ?>",
-				"cantidad": <?= $concurso->getNumberOfPinchos() ?>
-			}, {
-				"campo": "<?= $l["statistics_establishment"] ?>",
-				"cantidad": <?= $concurso->getNumberOfEstablecimientos() ?>
-			}, {
-				"campo": "<?= $l["statistics_popularVote"] ?>",
-				"cantidad": <?= $concurso->getNumberOfVotosPopulares() ?>
-			}, {
-				"campo": "<?= $l["statistics_comment"] ?>",
-				"cantidad": <?= $concurso->getNumberOfComments() ?>
-			} ],
-			"valueField": "cantidad",
-			"titleField": "campo",
-			"labelsEnabled": false,
-			"hideLabelsPercent": 100,
-			"balloon":{
-				"fixedPosition":false
-			},
-			"export": {
-				"enabled": false
-			}
-		});
+	<script type="text/javascript" src="../js/alertify.min.js"></script><!-- Alertify -->
+	<script type="text/javascript"><?php include_once "../js/chart-setup-php.js"; ?></script><!-- Chart -->
+	<script type="text/javascript"><?php include_once "../js/mainpage-maps-setup-php.js"; ?></script><!-- Gastromapa -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApOBPY5dso4qlFcJUfiwwALFGBmdlWPGo&callback=initMap" async defer></script>
 
-
-	</script><!-- Chart -->
-
-	<script type="text/javascript">
-
-		<?php
-			//Procesar todos los establecimientos y sus geoloc
-			//Se pasan las geolocs a un array particular
-			//Se calcula la geoloc media
-		if(isset($establecimientos)){
-			foreach($establecimientos as $e){
-				$geoloc[$e->getIdemail()]["lat"] = explode(", ", $e->getGeoloc())[0];
-				$latarray[$e->getIdemail()] = explode(", ", $e->getGeoloc())[0];
-				$geoloc[$e->getIdemail()]["lng"] = explode(", ", $e->getGeoloc())[1];
-				$lngarray[$e->getIdemail()] = explode(", ", $e->getGeoloc())[1];
-			}	
-		}
-
-		?>
-
-		var map;
-
-		<?php
-		if(isset($establecimientos)){
-			?>
-			function initMap() {
-				var myLatLng = {lat: <?= (min($latarray) + max($latarray)) /2 ?>, lng: <?= (min($lngarray) + max($lngarray)) /2 ?>};
-
-		  // Create a map object and specify the DOM element for display.
-		  var map = new google.maps.Map(document.getElementById('gastromapa-map'), {
-		  	//Need to be set to... whatever, the first establishment inserted or something
-		  	center: myLatLng,
-		  	scrollwheel: false,
-		  	zoom: 14
-		  });
-
-		  // Create a marker and set its position.
-		  // needs one for each establishment in the database
-		  <?php
-		  foreach($geoloc as $key=>$g){
-		  	?>
-		  	var marker = new google.maps.Marker({
-		  		map: map,
-		  		position: {lat: <?= $g["lat"] ?> , lng: <?= $g["lng"] ?>},
-		  		title: '<?= $key ?>'
-		  	});	
-		  	<?php	  	
-		  }
-		}
-		?>
-
-	}
-
-</script><!-- Gastromapa -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApOBPY5dso4qlFcJUfiwwALFGBmdlWPGo&callback=initMap"
-async defer></script>
-<script type="text/javascript" src="../js/alertify.min.js"></script><!-- Alertify -->
-<?php include_once "../resources/code/alertify.php"; ?>
+	<?php include_once "../resources/code/alertify.php"; ?>
 
 </body>
 </html>
