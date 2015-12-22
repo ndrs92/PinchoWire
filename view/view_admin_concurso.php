@@ -13,8 +13,6 @@ if (get_class($_SESSION["user"]) != "Administrador") {
     header("Location: 403.php");
     exit;
 }
-$pinchoList = Pincho::getAllPropuestas();
-
 ?>
 
 <!DOCTYPE html>
