@@ -169,13 +169,13 @@ class PinchoMapper{
 
 	}
 
-	public static function editPropuesta($nombre, $descripcion, $ingredientes, $precio, $idemail){
+	public static function editPropuesta($nombre, $descripcion, $ingredientes, $precio, $rutaimagen, $idemail){
 		global $connectHandler;
 		if (!$connectHandler) {
 			die("Connection failed: " . mysqli_connect_error());
 		}
 		
-		$query = "UPDATE pincho SET idnombre = '$nombre', descripcion = '$descripcion', ingredientes = '$ingredientes', precio = $precio WHERE establecimiento_idemail = '$idemail';";
+		$query = "UPDATE pincho SET idnombre = '$nombre', descripcion = '$descripcion', ingredientes = '$ingredientes', precio = $precio, rutaimagen = '$rutaimagen' WHERE establecimiento_idemail = '$idemail';";
 		if(mysqli_query($connectHandler, $query)){
 			return true;
 		}  

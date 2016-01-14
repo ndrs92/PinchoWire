@@ -70,7 +70,7 @@ if(get_class($_SESSION["user"])!="Establecimiento"){
     if(!empty($row) && $row["estadoPropuesta"] == 0){
      ?>
      <h1><?= $l["view_editpropuesta_titulo"] ?> </h1>
-     <form class="form" action="../controller/pw.php?controller=competition&action=editPropuesta" method="POST">
+     <form class="form" action="../controller/pw.php?controller=competition&action=editPropuesta" method="POST" enctype="multipart/form-data">
        <div class="col-md-6 col-sm-12 col-xs-12">
         <div class="form-group">
          <label for="email"><?= $l["view_editpropuesta_intronombre"] ?></label>
@@ -96,9 +96,10 @@ if(get_class($_SESSION["user"])!="Establecimiento"){
        </div>
        <div class="form-group">
          <label for="image"><?= $l["view_editpropuesta_introimagen"] ?></label>
-         <input class="form-control" type="file" name="editpropuesta_propuesta_imagen"/>
+         <input type='file' name='propuesta_imagen' class='form-control' accept='image/*'/>
        </div>
      </div>
+     <input class="btn btn-default" type="hidden" name="imagen" value="<?= $row['rutaimagen']; ?>"/>
      <div class="col-md-12">
        <input class="btn btn-success" type="submit" name="editpropuesta_propuesta_enviar" value="<?= $l["view_editpropuesta_enviar"] ?>" />
      </div>

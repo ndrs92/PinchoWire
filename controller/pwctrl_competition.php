@@ -97,9 +97,21 @@ class CompetitionController{
 			exit;
 		}
 
+		/* Validar fotografia */
+		$rutaimagen = $_POST["imagen"];
+		$validFormats = array("jpg", "jpeg", "png", "bmp");
+		if (is_uploaded_file($_FILES["propuesta_imagen"]["tmp_name"])) {
+			$from = $_FILES["propuesta_imagen"];
+			$imageFileType = pathinfo($from["name"], PATHINFO_EXTENSION);
+			if (in_array($imageFileType, $validFormats)) {
+				$rutaimagen = "images/pinchos/" . $_POST["editpropuesta_propuesta_nombre"] . "." . $imageFileType;
+				move_uploaded_file($from["tmp_name"], "../" . $rutaimagen);
+			}
+		}
+
 		if($_POST["editpropuesta_propuesta_nombre"] && $_POST["editpropuesta_propuesta_descripcion"] && $_POST["editpropuesta_propuesta_ingredientes"] && $_POST["editpropuesta_propuesta_precio"]){
 			
-			$resultado = $_SESSION["user"]->editar_propuesta($_POST["editpropuesta_propuesta_nombre"], $_POST["editpropuesta_propuesta_descripcion"], $_POST["editpropuesta_propuesta_ingredientes"], $_POST["editpropuesta_propuesta_precio"]);
+			$resultado = $_SESSION["user"]->editar_propuesta($_POST["editpropuesta_propuesta_nombre"], $_POST["editpropuesta_propuesta_descripcion"], $_POST["editpropuesta_propuesta_ingredientes"], $_POST["editpropuesta_propuesta_precio"], $rutaimagen);
 			if($resultado){
 				echo "Se ha modificado correctamente<br/>";
 			}
@@ -108,8 +120,6 @@ class CompetitionController{
 			}
 			echo "<a href='../view/list.php'>Volver a pagina principal</a><br/>";
 			header("Location: ../view/list.php");
-
-
 		}else{
 			header("Location: ../view/404.php");
 			exit();

@@ -62,8 +62,8 @@ class Establecimiento extends Usuario{
 		
 		return PinchoMapper::addPropuesta($nombre, $descripcion, $ingredientes, $precio, $this->idemail, $rutaimagen);
 	}
-	public function editar_propuesta($nombre, $descripcion, $ingredientes, $precio){
-		return PinchoMapper::editPropuesta($nombre, $descripcion, $ingredientes, $precio, $this->idemail);
+	public function editar_propuesta($nombre, $descripcion, $ingredientes, $precio, $rutaimagen){
+		return PinchoMapper::editPropuesta($nombre, $descripcion, $ingredientes, $precio, $rutaimagen, $this->idemail);
 	}
 	public function havePropuesta(){
 		return UserMapper::havePropuesta($this->idemail);
