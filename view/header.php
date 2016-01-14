@@ -61,18 +61,18 @@ $estado = $currentConcurso->getEstado();
 								if(get_class($_SESSION["user"]) == "Establecimiento"){
 									$row = $_SESSION["user"]->havePropuesta();
 
-									if(empty($row)){
+									if(empty($row) && $estado < 1){
 										echo "<li><a href='enviarpropuesta.php'>".$l["view_list_send_proposal"]."</a></li>";
 									}
 									else{
-										if($row["estadoPropuesta"] == 0){
+										if($row["estadoPropuesta"] == 0 && $estado < 1){
 											echo "<li><a href='editpropuesta.php'>".$l["view_list_edit_proposal"]."</a></li>";
 										}
 										else{
 											if($row["estadoPropuesta"] == 1){
 												echo " <li><a>". $l["header_pincho_denied"] ."</a></li>";
 											}
-											else{
+											else if($row["estadoPropuesta"] == 2){
 												echo " <li><a>". $l["header_pincho_allowed"] ."</a></li>";
 
 												echo "<li><a href='./view_establishment_codes.php'>".$l["view_list_establishment_codes"]."</a></li>";
