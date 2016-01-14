@@ -78,7 +78,6 @@ $ganadoresProfesionales = CompetitionController::getConcurso()->getGanadoresProf
 							<div class="col-md-10 col-xs-9 col-sm-9 winner-pincho-info">
 								<h5 class="winner-pincho-name"><?= $target->getIdnombre();?></h5>
 								<h5 class="winner-pincho-ingredients"><?= $target->getIngredientes(); ?></h5>
-								<h5 class="winner-pincho-prize">PREMIO PARA ESTE GANADOR</h5>
 								<h5 class="winner-pincho-establishment"><?= $target->getEstablishment()->getNombre().": ".$target->getEstablishment()->getIdemail(); ?></h5>
 							</div>
 							<?php 
@@ -121,7 +120,6 @@ $ganadoresProfesionales = CompetitionController::getConcurso()->getGanadoresProf
 							<div class="col-md-10 col-xs-9 col-sm-9 winner-pincho-info">
 								<h5 class="winner-pincho-name"><?= $target->getIdnombre();?></h5>
 								<h5 class="winner-pincho-ingredients"><?= $target->getIngredientes(); ?></h5>
-								<h5 class="winner-pincho-prize">PREMIO PARA ESTE GANADOR</h5>
 								<h5 class="winner-pincho-establishment"><?= $target->getEstablishment()->getNombre().": ".$target->getEstablishment()->getIdemail(); ?></h5>
 							</div>
 							<?php 

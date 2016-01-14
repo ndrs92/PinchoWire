@@ -108,12 +108,7 @@ $estado = $currentConcurso->getEstado();
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="../controller/pw.php?controller=user&action=setLanguage&l=es"><img class="lang" src="../images/lang/es.png" />Español</a></li>
 							<li><a href="../controller/pw.php?controller=user&action=setLanguage&l=en"><img class="lang" src="../images/lang/gb.png" />English</a></li>
-							<li><a href="../controller/pw.php?controller=user&action=setLanguage&l=de"><img class="lang" src="../images/lang/de.png" />Deusch</a></li>
-							<li><a href="../controller/pw.php?controller=user&action=setLanguage&l=jp"><img class="lang" src="../images/lang/jp.png" />日本人</a></li>
-							<li><a href="../controller/pw.php?controller=user&action=setLanguage&l=pt"><img class="lang" src="../images/lang/pt.png" />Português</a></li>
-							<li><a href="../controller/pw.php?controller=user&action=setLanguage&l=fr"><img class="lang" src="../images/lang/fr.png" />Français</a></li>
-							<li><a href="../controller/pw.php?controller=user&action=setLanguage&l=sy"><img class="lang" src="../images/lang/sy.png" />العربية</a></li>
-
+							
 						</ul>
 					</li>
 				</ul>

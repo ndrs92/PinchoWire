@@ -317,11 +317,6 @@ $l = array(
     "view_winners_title" => "El concurso ha terminado!",
     "view_winners_professional_winners" => "Ganadores del premio profesional:",
     "view_winners_popular_winners" => "Ganadores del premio popular: ",
-    "view_winners_" => "Puntuación: ",
-    "view_winners_" => "Puntuación: ",
-    "view_winners_" => "Puntuación: ",
-    "view_winners_" => "Puntuación: ",
-    "view_winners_" => "Puntuación: ",
 
 
 
