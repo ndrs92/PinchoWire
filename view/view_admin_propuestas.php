@@ -114,7 +114,7 @@ $pinchoList = Pincho::getAllPropuestas();
                                         </td>";
                                         break;
                                         case 1:
-                                        echo "<td><a class='btn btn-success' href='../controller/pw.php?controller=competition&action=set_pendant&estado=0&idnombre=" . $row->getIdnombre() . "'>". $l["view_admin_revision"] ."</a></td>";
+                                        echo "<td><a class='btn btn-success' href='../controller/pw.php?controller=competition&action=validate_pincho&estado=0&idnombre=" . $row->getIdnombre() . "'>". $l["view_admin_revision"] ."</a></td>";
                                         break;
                                         default:
                                         echo "<td>Error por aqui</td>";
