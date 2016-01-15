@@ -9,7 +9,6 @@ if(!isset($_SESSION)) session_start();
 $ganadoresPopulares = CompetitionController::getConcurso()->getGanadoresPopulares();
 $ganadoresProfesionales = CompetitionController::getConcurso()->getGanadoresProfesionales();
 
-
 ?>
 
 <!DOCTYPE html>
@@ -112,38 +111,43 @@ $ganadoresProfesionales = CompetitionController::getConcurso()->getGanadoresProf
 				<h3 class="winners-text"><?= $l["view_winners_popular_winners"] ?></h3>
 				<?php
 				$badge = 1;
-				foreach($ganadoresPopulares as $target){
-					?>
-					<a href="viewPincho.php?id=<?= $target->getIdnombre(); ?>">
-						<div class="winners-list">
-							<div class="col-md-2 col-xs-3 col-sm-3"><img class="winner-pincho-image img-responsive" src="../<?= $target->getRutaimagen(); ?>" /></div>
-							<div class="col-md-10 col-xs-9 col-sm-9 winner-pincho-info">
-								<h5 class="winner-pincho-name"><?= $target->getIdnombre();?></h5>
-								<h5 class="winner-pincho-ingredients"><?= $target->getIngredientes(); ?></h5>
-								<h5 class="winner-pincho-establishment"><?= $target->getEstablishment()->getNombre().": ".$target->getEstablishment()->getIdemail(); ?></h5>
+				if(!empty($ganadoresPopulares)){
+					foreach($ganadoresPopulares as $target){
+						?>
+						<a href="viewPincho.php?id=<?= $target->getIdnombre(); ?>">
+							<div class="winners-list">
+								<div class="col-md-2 col-xs-3 col-sm-3"><img class="winner-pincho-image img-responsive" src="../<?= $target->getRutaimagen(); ?>" /></div>
+								<div class="col-md-10 col-xs-9 col-sm-9 winner-pincho-info">
+									<h5 class="winner-pincho-name"><?= $target->getIdnombre();?></h5>
+									<h5 class="winner-pincho-ingredients"><?= $target->getIngredientes(); ?></h5>
+									<h5 class="winner-pincho-establishment"><?= $target->getEstablishment()->getNombre().": ".$target->getEstablishment()->getIdemail(); ?></h5>
+								</div>
+								<?php 
+								switch($badge){
+									case 1:
+									?> <img class="winner-pincho-badge" src="../images/icon/badge_gold.png"/> <?php
+									break;
+									case 2:
+									?> <img class="winner-pincho-badge" src="../images/icon/badge_silver.png"/> <?php
+									break;
+									case 3:
+									?> <img class="winner-pincho-badge" src="../images/icon/badge_bronze.png"/> <?php
+									break;
+									default:
+									break;
+								}
+								?>
+
+
 							</div>
-							<?php 
-							switch($badge){
-								case 1:
-								?> <img class="winner-pincho-badge" src="../images/icon/badge_gold.png"/> <?php
-								break;
-								case 2:
-								?> <img class="winner-pincho-badge" src="../images/icon/badge_silver.png"/> <?php
-								break;
-								case 3:
-								?> <img class="winner-pincho-badge" src="../images/icon/badge_bronze.png"/> <?php
-								break;
-								default:
-								break;
-							}
-							?>
-
-
-						</div>
-					</a>
-					<?php
-					$badge++;
+						</a>
+						<?php
+						$badge++;
+					}
+				}else{
+					echo "No hay votos registrados";
 				}
+
 				?>
 
 

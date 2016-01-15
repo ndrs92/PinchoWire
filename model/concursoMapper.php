@@ -19,7 +19,7 @@ class ConcursoMapper{
 	public static function retrieveGanadoresProfesionales(){
 		global $connectHandler;
 		$toRet = NULL;
-		$query = "SELECT * FROM finalista where ganadorFinalista is not null  group by pincho_idnombre order by ganadorFinalista ";
+		$query = "SELECT * FROM finalista where ganadorFinalista is not null and ganadorFinalista <> 0  group by pincho_idnombre order by ganadorFinalista ";
 		$result = mysqli_query($connectHandler, $query);
 		while($row = mysqli_fetch_assoc($result)){
 			$toRet[$row["pincho_idnombre"]] = $row["pincho_idnombre"];

@@ -171,6 +171,7 @@ class UserController{
 				switch ($_POST["type"]) {
 					case "administrador":
 					$user->update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $rutaavatar, "administrador", NULL, NULL, NULL, NULL, NULL, NULL);
+					$_SESSION["user"] = $user;
 					break;
 
 					case "juradoprofesional":
@@ -185,7 +186,9 @@ class UserController{
 					$user->update($_POST["profile_mail"], $_POST["profile_pass"], $_POST["profile_name"], $rutaavatar, "establecimiento", NULL, $_POST["profile_direccion"], $_POST["profile_web"], $_POST["profile_horario"], $rutaimagen, $_POST["profile_geoloc"]);
 					break;
 				}
-				$_SESSION["user"] = $user;
+				if(get_class($_SESSION["user"]) != "Administrador"){
+					$_SESSION["user"] = $user;
+				}
 				header("Location: ../view/profile.php?idemail=".$_POST['profile_mail']);
 			} else {
 				throw new Exception("Ningun campo puede estar vacio. Comprobar javascript");
