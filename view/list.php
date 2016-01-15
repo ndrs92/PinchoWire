@@ -1,12 +1,12 @@
 <?php
-include_once "../resources/code/models.php";
-include_once "../resources/code/lang_coverage.php";
+include_once __DIR__."/../resources/code/models.php";
+include_once __DIR__."/../resources/code/lang_coverage.php";
 
-include_once "../controller/pw.php";
-include_once "../controller/pwctrl_user.php";
-include_once "../controller/pwctrl_competition.php";
+include_once __DIR__."/../controller/pw.php";
+include_once __DIR__."/../controller/pwctrl_user.php";
+include_once __DIR__."/../controller/pwctrl_competition.php";
 
-include_once "../controller/pincho_controller.php";
+include_once __DIR__."/../controller/pincho_controller.php";
 
 
 if (!isset($_SESSION)) session_start();
@@ -481,11 +481,11 @@ if($rutaPortada == "") {
 	<script type="text/javascript" src="../js/scripts.js"></script><!-- Scripts -->
 	<script type="text/javascript" src="../js/main.js"></script><!-- PinchoWire Scripts -->
 	<script type="text/javascript" src="../js/alertify.min.js"></script><!-- Alertify -->
-	<script type="text/javascript"><?php include_once "../js/chart-setup-php.js"; ?></script><!-- Chart -->
-	<script type="text/javascript"><?php include_once "../js/mainpage-maps-setup-php.js"; ?></script><!-- Gastromapa -->
+	<script type="text/javascript"><?php include_once __DIR__."/../js/chart-setup-php.js"; ?></script><!-- Chart -->
+	<script type="text/javascript"><?php include_once __DIR__."/../js/mainpage-maps-setup-php.js"; ?></script><!-- Gastromapa -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApOBPY5dso4qlFcJUfiwwALFGBmdlWPGo&callback=initMap" async defer></script>
 
-	<?php include_once "../resources/code/alertify.php"; ?>
+	<?php include_once __DIR__."/../resources/code/alertify.php"; ?>
 
 </body>
 </html>

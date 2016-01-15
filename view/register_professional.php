@@ -1,8 +1,8 @@
 <?php
-include_once "../resources/code/models.php";
-include_once "../resources/code/lang_coverage.php";
+include_once __DIR__."/../resources/code/models.php";
+include_once __DIR__."/../resources/code/lang_coverage.php";
 
-include_once "../controller/pincho_controller.php";
+include_once __DIR__."/../controller/pincho_controller.php";
 
 if(!isset($_SESSION)) session_start();
 

@@ -154,7 +154,7 @@ class UserController{
 					$imageFileType = pathinfo($from["name"], PATHINFO_EXTENSION);
 					if (in_array($imageFileType, $validFormats)) {
 						$rutaavatar = "images/avatars/" . $_POST["profile_mail"] . "." . $imageFileType;
-						move_uploaded_file($from["tmp_name"], "../" . $rutaavatar);
+						move_uploaded_file($from["tmp_name"], __DIR__."/../" . $rutaavatar);
 					}
 				}
 				/* Validar fotografia local */
@@ -164,7 +164,7 @@ class UserController{
 					$imageFileType = pathinfo($from["name"], PATHINFO_EXTENSION);
 					if (in_array($imageFileType, $validFormats)) {
 						$rutaimagen = "images/establishments/" . $_POST["profile_mail"] . "." . $imageFileType;
-						move_uploaded_file($from["tmp_name"], "../" . $rutaimagen);
+						move_uploaded_file($from["tmp_name"], __DIR__."/../" . $rutaimagen);
 					}
 				}
 				$user = Usuario::getByIdemail($_POST["profile_mail"]);
@@ -292,11 +292,11 @@ class UserController{
 				$isRegister = $userToAdd->registerUser();
 				if ($isRegister && $validUpload) {
 					$from = $_FILES["rutaavatar"]["tmp_name"];
-					move_uploaded_file($from, "../" . $rutaavatar);
+					move_uploaded_file($from, __DIR__."/../" . $rutaavatar);
 				}
 				if($isRegister && $validUploadEst){
 					$from = $_FILES["foto"]["tmp_name"];
-					move_uploaded_file($from, "../" . $rutafoto);
+					move_uploaded_file($from, __DIR__."/../" . $rutafoto);
 				}
 			}
 		} else {

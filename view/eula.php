@@ -1,5 +1,5 @@
 <?php
-include_once "../resources/code/lang_coverage.php";
+include_once __DIR__."/../resources/code/lang_coverage.php";
 
 ?>
 

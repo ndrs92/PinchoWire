@@ -1,5 +1,5 @@
 <?php
-include_once "../model/pincho.php";
+include_once __DIR__."/../model/pincho.php";
  
 //Returns arrays of pinchos to list in the view
 function getAllPinchos(){

@@ -105,7 +105,7 @@ class CompetitionController{
 			$imageFileType = pathinfo($from["name"], PATHINFO_EXTENSION);
 			if (in_array($imageFileType, $validFormats)) {
 				$rutaimagen = "images/pinchos/" . $_POST["editpropuesta_propuesta_nombre"] . "." . $imageFileType;
-				move_uploaded_file($from["tmp_name"], "../" . $rutaimagen);
+				move_uploaded_file($from["tmp_name"], __DIR__."/../" . $rutaimagen);
 			}
 		}
 
@@ -151,7 +151,7 @@ class CompetitionController{
 
 			$resultado = $_SESSION["user"]->enviar_propuesta($_POST["enviarpropuesta_propuesta_nombre"], $_POST["enviarpropuesta_propuesta_descripcion"], $_POST["enviarpropuesta_propuesta_ingredientes"], $_POST["enviarpropuesta_propuesta_precio"], $rutaimagen);
 			if ($resultado) {
-				move_uploaded_file($from["tmp_name"], "../" . $rutaimagen);
+				move_uploaded_file($from["tmp_name"], __DIR__."/../" . $rutaimagen);
 				echo "guardado satisfactorio <br/>";
 			} else {
 				echo "error en guardado <br/>";
@@ -187,7 +187,7 @@ class CompetitionController{
 
 			$resultado = concursoMapper::updateConcurso($_POST["nombre"], $_POST ["descripcion"], $rutaportada);
 			if ($validUpload == 1) {
-				move_uploaded_file($from["tmp_name"], "../" . $rutaportada);
+				move_uploaded_file($from["tmp_name"], __DIR__."/../" . $rutaportada);
 			}
 
 			if ($resultado) {

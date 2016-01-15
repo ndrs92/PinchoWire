@@ -1,8 +1,8 @@
 <?php
-include_once "../resources/code/models.php";
-include_once "../resources/code/lang_coverage.php";
+include_once __DIR__."/../resources/code/models.php";
+include_once __DIR__."/../resources/code/lang_coverage.php";
 
-include_once "../controller/pincho_controller.php";
+include_once __DIR__."/../controller/pincho_controller.php";
 
 
 
@@ -165,6 +165,6 @@ if($pinchoActual->getIdnombre() == NULL){
     <script type="text/javascript" src="../js/scripts.js"></script><!-- Scripts -->
     <script type="text/javascript" src="../js/main.js"></script><!-- PinchoWire Scripts -->
     <script type="text/javascript" src="../js/alertify.min.js"></script><!-- Alertify -->
-    <?php include_once "../resources/code/alertify.php"; ?>
+    <?php include_once __DIR__."/../resources/code/alertify.php"; ?>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php 
-include_once "../resources/code/bd_manage.php";
-include_once "../resources/code/models.php";
+include_once __DIR__."/../resources/code/bd_manage.php";
+include_once __DIR__."/../resources/code/models.php";
 include_once "concursoMapper.php";
 
 class Concurso{

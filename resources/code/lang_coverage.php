@@ -6,9 +6,9 @@
 */
 
 if(isset($_COOKIE["user_lang"])){
-	include_once "../i18n/".$_COOKIE["user_lang"].".php";
+	include_once __DIR__."/../../i18n/".$_COOKIE["user_lang"].".php";
 }else{
-	include_once "../i18n/es.php";
+	include_once __DIR__."/../../i18n/es.php";
 }
 
 

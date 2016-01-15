@@ -1,5 +1,5 @@
 <?php
-include_once "../model/usuario.php";
+include_once __DIR__."/../model/usuario.php";
 
 class Administrador extends Usuario{
 

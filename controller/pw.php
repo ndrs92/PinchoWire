@@ -17,10 +17,10 @@ All application forms should end in this file
 	}
 
 //Include all models, to deal with different type of objects.
-	include_once "../resources/code/models.php";
+	include_once __DIR__."/../resources/code/models.php";
 
 //Include language coverage, to ensure all its working with error mensajes and so on
-	include_once "../resources/code/lang_coverage.php";
+	include_once __DIR__."/../resources/code/lang_coverage.php";
 
 //Check if this script was executed as a standard controller GET request
 //Execute appropiate controller action

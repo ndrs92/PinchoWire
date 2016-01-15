@@ -1,6 +1,6 @@
 <?php
-include_once "../resources/code/models.php";
-include_once "../controller/pwctrl_competition.php";
+include_once __DIR__."/../resources/code/models.php";
+include_once __DIR__."/../controller/pwctrl_competition.php";
 
 $concurso = CompetitionController::getConcurso();
 ?>

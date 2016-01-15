@@ -8,12 +8,12 @@
 		- Models
 */
 
-include_once "../model/administrador.php";
-include_once "../model/concurso.php";
-include_once "../model/establecimiento.php";
-include_once "../model/juradopopular.php";
-include_once "../model/juradoprofesional.php";
-include_once "../model/pincho.php";
-include_once "../model/usuario.php";
+include_once __DIR__."/../../model/administrador.php";
+include_once __DIR__."/../../model/concurso.php";
+include_once __DIR__."/../../model/establecimiento.php";
+include_once __DIR__."/../../model/juradopopular.php";
+include_once __DIR__."/../../model/juradoprofesional.php";
+include_once __DIR__."/../../model/pincho.php";
+include_once __DIR__."/../../model/usuario.php";
 
 ?>
